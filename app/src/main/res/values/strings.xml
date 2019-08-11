@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">蜀猪猪</string>
+    <string name="load_full">已加载全部</string>
+    <string name="no_data">暂无数据</string>
+    <string name="more">加载中&#8230;</string>
+    <color name="colorhit">#cccccc</color>
+    <string name="fast_login">第三方登录</string>
+
+
+    <string name="null_text">--</string>
+
+
+    <!--我的-->
+    <string name="add_new_address">添加新地址</string>
+    <string name="edit_receive_address">编辑收货地址</string>
+    <string name="shopping_address">收货地址</string>
+    <string name="default_address">默认</string>
+    <string name="btn_confirm">确定</string>
+    <string name="btn_complete">完成</string>
+
+
+    <!--拼团-->
+    <string name="select_partner_groupon">选择下面的小伙伴快速拼团</string>
+    <string name="look_more">查看更多</string>
+    <string name="groupon_now">立即参团</string>
+    <string name="groupon_rules">拼团规则说明</string>
+    <string name="groupon_oerder_pay_success">订单支付成功</string>
+    <string name="congratulation_groupon_success">恭喜您，拼团成功</string>
+    <string name="groupon_together">快来和我一起拼团吧！</string>
+    <string name="pity_groupon_fail">很遗憾，差一点就成功了</string>
+    <string name="groupon_success">拼团成功</string>
+    <string name="groupon_fild">拼团失败</string>
+    <string name="groupon_more">查看更多拼团活动</string>
+    <string name="groupon_has_beyound_24">限时24小时拼团已超时</string>
+    <string name="invite_partner_groupon">邀请小伙伴拼团</string>
+    <string name="groupon_process_tip">支付开团—支付参团—凑齐人数发货—凑不齐退款</string>
+    <string name="card_rule">使用说明\n
+1、蜀猪猪购物卡是指由成都市好蔬食农业科技有限公司(“本公司”) 发行的，可以在www.haoshusi.com (“本网站”)或蜀猪猪APP上购买自营商品。\n
+2、为保障资金安全，使用蜀猪猪购物卡之前必须开启支付密码，开启支付密码位置:”个人中心-设置-支付密码设置”中设置并开启支付密码。\n
+3、购买蜀猪猪购物卡可开具电子普通发票，订单付款且完成后，可在提交订单时填写的邮箱中接收。\n
+4、订单金额中使用礼品卡支付的部分，将不再开具发票，如需发票可开具零元保修发票。\n
+5、使用购物卡支付商品发生退货时，购物卡支付部分将退回到个人账户，不能直接退还现金。\n
+6、购物卡兑换有效期为12个月，充值成余额长期有效，请各位会员尽早进行充值。\n
+7、蜀猪猪的其他使用规则以《购卡章程》及蜀猪猪所公示的内容为准。</string>
+    <string name="please_input_card_code">请输入购物卡兑换码</string>
+
+
+    <!--购物车-->
+    <string name="not_login_hint">您还未登录，请点击下方按钮登录</string>
+    <string name="login_direct">立即登录</string>
+    <string name="shop_cart_empty">购物车空空如也</string>
+    <string name="to_collection">移到收藏</string>
+    <string name="delete">删除</string>
+    <string name="total_price">商品合计：</string>
+    <string name="no_contain_send">不含配送费</string>
+    <string name="to_account">去结算</string>
+    <string name="check_all">全选</string>
+
+
+    <!--评价列表-->
+    <string name="all_prise">全部(%1$d)</string>
+    <string name="high_prise">好评(%1$d)</string>
+    <string name="middle_prise">中评(%1$d)</string>
+    <string name="low_prise">差评(%1$d)</string>
+    <string name="has_pic_prise">有图(%1$d)</string>
+    <!--<string name="brackets"></string>-->
+
+    <!--提交订单-->
+    <string name="confirm_order">确认订单</string>
+    <string name="no_recommend_coupon">暂无可用优惠劵</string>
+    <string name="useable_coupon">可用优惠券(%1$d)</string>
+    <string name="unuseable_coupon">不可用优惠券(%1$d)</string>
+    <string name="recommend_coupon">已选中推荐优惠券，使用该优惠券抵扣¥&#160;%1$s元</string>
+    <string name="recommend_coupon1">已选推荐优惠券 -¥&#160;%1$s</string>
+    <string name="price_unit">¥&#160;%1$s</string>
+    <string name="price_discount_unit">-¥&#160;%1$s</string>
+    <string name="total_count">共%1$d件</string>
+    <string name="express_spend">快递 ¥%1$s</string>
+    <string name="express_free">快递免邮</string>
+
+    <!--dialog-->
+    <string name="password_set">检测到您没有设置支付密码，是否继续继续购买？</string>
+    <string name="pay_success">支付成功</string>
+    <string name="not_install_weixin">检测到您没有安装微信</string>
+    <string name="pay_fail">支付失败</string>
+    <string name="input_password">请输入密码</string>
+    <string name="balance_not_enough">余额不足</string>
+    <string name="input_receiver_name">请输入收件人名称！</string>
+    <string name="input_correct_phone">请输入正确的手机号码！</string>
+    <string name="input_detail_address">请输入详细收货地址！</string>
+    <string name="select_belong_city">请选择所属城市！</string>
+    <string name="select_delete_address">请选择要删除的地址</string>
+
+    <!--订单详情-->
+    <string name="order_detail">订单详情</string>
+    <string name="count">数量：&#160;%1$d</string>
+    <string name="good_suk">净含量：&#160;%1$s</string>
+    <string name="good_receiver">收货人</string>
+    <string name="delete_order">删除订单</string>
+    <string name="apply_after_sales">申请售后</string>
+    <string name="buy_again">再次购买</string>
+    <string name="good_total_price">商品总价</string>
+    <string name="good_postage">快递运费</string>
+    <string name="good_coupon">优惠券</string>
+    <string name="good_coin">金币</string>
+    <string name="order_total_price">订单总价</string>
+    <string name="order_information">订单信息</string>
+    <string name="order_number">订单编号</string>
+    <string name="copy">复制</string>
+    <string name="order_deal_number">交易号</string>
+    <string name="order_create_time">创建时间</string>
+    <string name="order_pay_time">付款时间</string>
+    <string name="order_send_time">发货时间</string>
+    <string name="attention_success">提醒成功</string>
+    <string name="corfirm_to_receive">是否确认收货？</string>
+    <string name="order_cancel">取消订单</string>
+    <string name="pay_now">付款</string>
+    <string name="attention_send">催单</string>
+    <string name="look_express">查看物流</string>
+    <string name="confirm_receive">确定收货</string>
+    <string name="order_delete">删除订单</string>
+    <string name="order_prise">评价</string>
+    <string name="order_prised">已评价</string>
+    <string name="copy_success">复制成功！</string>
+
+    <!--物流信息-->
+    <string name="express_detail">物流详情</string>
+    <string name="express_company">物流公司：</string>
+    <string name="express_number">快递单号：</string>
+    <string name="authority_phone">官方电话：</string>
+
+    <!--审批-->
+    <string name="approvaling">待审批</string>
+    <string name="approvaled">已完成</string>
+    <string name="has_approval">待办事项</string>
+    <string name="apply_reason">申请理由：</string>
+    <string name="apply_type">费用类型：</string>
+    <string name="apply_amount">费用金额：</string>
+    <string name="happen_time">发生日期：</string>
+    <string name="apply_attention">备注事项：</string>
+    <string name="apply_user">申请人：</string>
+    <string name="apply_time">申请时间：</string>
+    <string name="apply_suggest">填写意见：</string>
+    <string name="apply_reject">驳回</string>
+    <string name="apply_agree">同意</string>
+    <string name="apply_review">转审</string>
+
+</resources>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="优惠券"
+            android:textColor="#4d4d4d"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/width15"/>
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/goods_close"
+            android:layout_marginEnd="@dimen/width15"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/item_pop_viable_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="可用优惠券"
+            android:textColor="#c22222"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/item_pop_unavailable_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="不可用优惠券"
+            android:textColor="#0f0f0f"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <View style="@style/ui_line" />
+
+
+    <TextView
+        android:id="@+id/item_pop_save_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/width15"
+        android:text="已选中推荐优惠券，使用该优惠券抵扣10"
+        android:textColor="#0f0f0f"
+        android:textSize="10sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f0f0f0">
+
+        <ListView
+            android:id="@+id/item_pop_coupon_list"
+            style="@style/base_margin_border"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:divider="@null"
+            android:scrollbars="none" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/btn_ok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#c22222"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/whiteColor"
+        android:textSize="14sp" />
+</LinearLayout>

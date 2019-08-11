@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><!--未登录状态-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ui_shopcart_not_login_hint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/not_login_hint"
+        android:textColor="@color/baseRedColor"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/ui_shopcart_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_red01"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:text="@string/login_direct"
+        android:textColor="@color/whiteColor"
+        android:textSize="14sp" />
+</LinearLayout>
+

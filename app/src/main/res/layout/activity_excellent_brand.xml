@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg_excellent_brang">
+
+    <ImageView
+        android:id="@+id/ui_excellent_life_banner"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:scaleType="centerCrop"/>
+
+    <com.example.applibrary.widget.freshLoadView.RefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:id="@+id/list_view"
+            style="@style/base_padding_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="5dp"
+            android:scrollbars="none" />
+
+    </com.example.applibrary.widget.freshLoadView.RefreshLayout>
+
+</LinearLayout>

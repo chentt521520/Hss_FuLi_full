@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin10"
+    android:layout_marginEnd="@dimen/width15"
+    android:layout_marginStart="@dimen/width15">
+
+    <RelativeLayout
+        style="@style/base_padding_border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bai01"
+        app:layout_constraintEnd_toStartOf="@+id/item_approval_status_image">
+
+        <TextView
+            android:id="@+id/item_approval_username"
+            style="@style/_333333_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/item_approval_type"
+            style="@style/_333333_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin10"
+            android:layout_toEndOf="@+id/item_approval_username" />
+
+
+        <TextView
+            android:id="@+id/item_approval_amount"
+            style="@style/_c22222_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_approval_username"
+            android:layout_marginTop="@dimen/margin10" />
+
+        <View
+            android:id="@+id/ui_line"
+            style="@style/ui_line"
+            android:layout_below="@+id/item_approval_amount"
+            android:layout_marginBottom="@dimen/margin10"
+            android:layout_marginTop="@dimen/margin10" />
+
+        <TextView
+            android:id="@+id/item_approval_time"
+            style="@style/_666666_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ui_line" />
+
+        <TextView
+            android:id="@+id/item_approval_status"
+            style="@style/_666666_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ui_line"
+            android:textColor="#f68d1d" />
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/item_approval_status_image"
+        android:layout_width="@dimen/height80"
+        android:layout_height="@dimen/height80"
+        android:layout_marginEnd="15dp"
+        android:visibility="gone"
+        android:src="@mipmap/tefuse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

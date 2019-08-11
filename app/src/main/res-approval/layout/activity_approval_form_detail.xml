@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            style="@style/base_padding_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/include_approval_detail" />
+
+            <RelativeLayout
+                style="@style/base_padding_border"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/width15"
+                android:background="@drawable/bg_bai01"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/ui_detail_apply_suggest_view"
+                    style="@style/_333333_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply_suggest" />
+
+                <TextView
+                    android:id="@+id/ui_detail_apply_suggest"
+                    style="@style/_333333_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/ui_detail_apply_suggest_view"
+                    android:layout_toEndOf="@+id/ui_detail_apply_suggest_view" />
+            </RelativeLayout>
+
+            <com.example.applibrary.custom.MyListView
+                android:id="@+id/my_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+        <!---->
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" -->
+        <!--android:src="@mipmap/agree"/>-->
+        <!--</LinearLayout>-->
+
+        <TextView
+            android:id="@+id/ui_detail_apply_reject"
+            style="@style/radio_btn"
+            android:drawableStart="@mipmap/reject"
+            android:text="@string/apply_reject" />
+
+        <TextView
+            android:id="@+id/ui_detail_apply_agree"
+            style="@style/radio_btn"
+            android:drawableStart="@mipmap/agree"
+            android:text="@string/apply_agree" />
+
+        <TextView
+            android:id="@+id/ui_detail_apply_review"
+            style="@style/radio_btn"
+            android:drawableStart="@mipmap/review"
+            android:text="@string/apply_review" />
+    </LinearLayout>
+
+</FrameLayout>

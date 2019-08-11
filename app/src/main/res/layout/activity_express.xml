@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View style="@style/ui_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#ffffff"
+        android:padding="@dimen/width15">
+
+        <ImageView
+            android:id="@+id/express_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/margin10"
+            android:src="@mipmap/express_icon" />
+
+        <TextView
+            android:id="@+id/express_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/express_icon"
+            android:text="物流公司"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/express_order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/margin10"
+            android:layout_toEndOf="@+id/express_icon"
+            android:text="快递单号"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/express_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/express_icon"
+            android:text="官方电话"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/express_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/width15"
+        android:background="#ffffff"
+        android:padding="@dimen/width15"
+        android:text="物流跟踪"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+    <View style="@style/ui_line" />
+
+    <ListView
+        android:id="@+id/express_trace"
+        style="@style/base_padding_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:divider="@null"
+        android:scrollbars="none" />
+
+</LinearLayout>

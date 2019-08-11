@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--商品评价列表界面-->
+
+    <com.example.applibrary.widget.WordWrapView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/all_estimate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_all_corner_btn_red"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/high_estimate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_all_corner_btn_grey"
+            android:gravity="center"
+            android:text="好评"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/middle_estimate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_all_corner_btn_grey"
+
+            android:gravity="center"
+            android:text="中评"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/low_estimate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_all_corner_btn_grey"
+            android:gravity="center"
+            android:text="差评"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/has_image_estimate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_all_corner_btn_grey"
+            android:gravity="center"
+            android:text="有图"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+
+    </com.example.applibrary.widget.WordWrapView>
+
+    <include layout="@layout/include_fresh_list_layout" />
+
+</LinearLayout>

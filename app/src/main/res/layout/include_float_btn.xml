@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@mipmap/icon_ali_rechange" />
+
+    <ImageView
+        android:id="@+id/img_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@mipmap/icon_card_convert" />
+
+    <ImageView
+        android:id="@+id/img_d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@mipmap/icon_convert" />
+
+    <ImageView
+        android:id="@+id/img_e"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@mipmap/icon_balance_consume" />
+
+    <ImageView
+        android:id="@+id/img_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:src="@mipmap/icon_weixin_rechange" />
+</FrameLayout>

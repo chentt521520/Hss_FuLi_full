@@ -1,0 +1,31 @@
+<resources>
+    <!--<string name="app_name">AppLibrary</string>-->
+    <string name="input_text">1234567890QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm</string>
+    <string name="input_phone">1234567890</string>
+
+
+    <!--上拉下拉控件-->
+    <string name="listview_load_more">上拉加载更多</string>
+
+    <string name="listview_loading">加载中…</string>
+
+    <string name="listview_pull_to_refresh">下拉刷新</string>
+
+    <string name="listview_release_refresh">释放刷新</string>
+
+    <string name="listview_refreshing">刷新中…</string>
+
+
+    <!--母婴用品-->
+    <string name="hot_package">热销套餐</string>
+
+    <!--exception-->
+    <string name="exception">网络异常</string>
+    <string name="exception_unknown_host">IP地址/域名无法解析</string>
+    <string name="exception_http_hsot_connect">服务器连接被拒绝，请检查服务器地址是否正确</string>
+    <string name="exception_connect">网络连接异常</string>
+    <string name="exception_connect_timeout">网络连接超时，请检查网络</string>
+    <string name="exception_socket_timeout">数据连接超时，请检查网络</string>
+    <string name="exception_socket">网络异常，请检查服务器地址是否正确</string>
+    <string name="exception_ssl">发生了SSL错误，无法建立与该服务器的安全连接</string>
+</resources>

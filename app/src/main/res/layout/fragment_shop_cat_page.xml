@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--标题-->
+    <include layout="@layout/action_title" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--未登录-->
+        <include
+            layout="@layout/include_not_login"
+            android:visibility="gone" />
+
+        <!--已登录，无数据状态-->
+        <TextView
+            android:id="@+id/ui_shopcart_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="@string/shop_cart_empty"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/ui_shopcart_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f0f0f0"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="@dimen/height10">
+
+                <!--已登录，列表状态-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_shop_car"
+                    android:orientation="vertical"
+                    android:focusableInTouchMode="true">
+
+                    <TextView
+                        android:id="@+id/ui_shopcart_checkall_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/height10"
+                        android:drawableStart="@mipmap/checked_false"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/width15"
+                        android:text="@string/check_all"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <View style="@style/ui_line" />
+
+                    <com.example.applibrary.custom.MyListView
+                        android:id="@+id/ui_shopcart_listview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:layout_marginBottom="@dimen/width5"
+                        android:background="#ffffff"
+                        android:divider="#f0f0f0"
+                        android:dividerHeight="0.5dp"
+                        android:listSelector="@color/lucencyColor"
+                        android:scrollbars="none" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+
+            <!--收藏、删除按钮-->
+            <RelativeLayout
+                android:id="@+id/ui_shopcart_operate"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="0"
+                android:background="#ffffff"
+                android:visibility="gone">
+
+                <!--收藏-->
+                <TextView
+                    android:id="@+id/ui_shopcart_collect"
+                    style="@style/base_padding_border"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/margin10"
+                    android:layout_toStartOf="@+id/ui_shopcart_delete"
+                    android:background="@drawable/bk_hui_01"
+                    android:text="@string/to_collection"
+                    android:textColor="#4d4d4d"
+                    android:textSize="14sp" />
+
+                <!--删除-->
+                <TextView
+                    android:id="@+id/ui_shopcart_delete"
+                    style="@style/base_padding_border"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/bk_red_01"
+                    android:text="@string/delete"
+                    android:textColor="#c22222"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <!--总金额和结账按钮-->
+            <RelativeLayout
+                android:id="@+id/ui_shopcart_pay_view"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="0"
+                android:background="#ffffff"
+                android:paddingEnd="@dimen/width15"
+                android:paddingStart="@dimen/width15"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/ui_shopcart_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/height10"
+                    android:text="@string/total_price"
+                    android:textColor="#0f0f0f"
+                    android:textSize="12sp" />
+
+                <!--总金额-->
+                <TextView
+                    android:id="@+id/ui_shopcart_total_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/ui_shopcart_total"
+                    android:layout_toEndOf="@id/ui_shopcart_total"
+                    android:singleLine="true"
+                    android:text="¥ 0.00"
+                    android:textColor="#c22222"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/ui_shopcart_total"
+                    android:layout_below="@+id/ui_shopcart_total"
+                    android:layout_marginTop="@dimen/height5"
+                    android:text="@string/no_contain_send"
+                    android:textColor="#666464"
+                    android:textSize="10sp" />
+
+                <!--去结账-->
+                <TextView
+                    android:id="@+id/ui_shopcart_pay"
+                    style="@style/base_padding_border"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_hui_02"
+                    android:text="@string/to_account"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>
