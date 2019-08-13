@@ -7,7 +7,6 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,7 +17,7 @@ import com.example.applibrary.dialog.MyDialogOneButton;
 import com.example.applibrary.dialog.interfac.DialogOnClick;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.MD5Util;
-import com.example.applibrary.utils.StringUtils;
+import com.example.applibrary.utils.VerifyPhoneUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
 import com.example.haoss.manager.ApiManager;
@@ -55,7 +54,7 @@ public class RegisteredActivity extends BaseActivity {
     TextView regHuoquCode;
     //注册按钮
     @BindView(R.id.reg_btn_reg)
-    Button regBtnReg;
+    TextView regBtnReg;
     private Timer timer;
     private static final int TIMECODE = 0X123;
     private long currentTime = 60 * 1000;
@@ -64,26 +63,11 @@ public class RegisteredActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_reg_page);
+        setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
         reg_input_edit_password = findViewById(R.id.reg_input_edit_password);
         reg_input_edit_password2 = findViewById(R.id.reg_input_edit_password);
-    }
-
-    //号码判断
-    private boolean judgePhone(String phone) {
-        if (phone.length() == 11) {
-            if (StringUtils.validatePhoneNumber(phone)) {
-                return true;
-            } else {
-                tost("请正确输入手机号码！");
-                return false;
-            }
-        } else {
-            tost("请输入11位手机号码！");
-            return false;
-        }
     }
 
     /**
@@ -91,7 +75,7 @@ public class RegisteredActivity extends BaseActivity {
      */
     private void huoquCode() {
         String phone = regInputEditPhone.getText().toString();
-        if (!judgePhone(phone)) {
+        if (!VerifyPhoneUtils.judgePhone(RegisteredActivity.this, phone)) {
             return;
         }
         String url = Netconfig.registerGetCode;
@@ -123,7 +107,7 @@ public class RegisteredActivity extends BaseActivity {
     private void startRegister() {
         String code = regInputEditCode.getText().toString();
         String phone = regInputEditPhone.getText().toString();
-        if (!judgePhone(phone)) {
+        if (!VerifyPhoneUtils.judgePhone(RegisteredActivity.this, phone)) {
             return;
         }
         if (TextUtils.isEmpty(code)) {

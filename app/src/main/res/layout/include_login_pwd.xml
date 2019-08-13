@@ -2,92 +2,87 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/zhanghao_login_show"
+    android:layout_marginBottom="@dimen/height40"
+    android:layout_marginTop="@dimen/height40"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="40dip"
-        android:background="@drawable/login_item_back"
-        android:orientation="vertical">
+        android:layout_height="40dp">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/icon_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin10"
+            android:contentDescription="@string/input_your_account"
+            android:src="@mipmap/icon_login_account" />
+
+        <EditText
+            android:id="@+id/input_edit_name"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@mipmap/account_img" />
-            <EditText
-                android:id="@+id/input_edit_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="8.35"
-                android:layout_marginLeft="5dip"
-                android:background="#00000000"
-                android:hint="请输入您的账号"
-                android:textColorHint="@color/text_hint"
-                android:textColor="@color/white"
-                android:imeOptions="actionDone"
-                android:padding="5dip"
-                android:textSize="16sp"
-                android:maxLength="11"
-                android:inputType="phone" />
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/height40"
+            android:background="@null"
+            android:hint="@string/input_your_account"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:textColor="#999999"
+            android:textSize="14sp" />
+
+        <View
+            style="@style/ui_line"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/height20">
+
+        <ImageView
+            android:id="@+id/icon_pwd_invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin10"
+            android:contentDescription="@string/input_your_password"
+            android:src="@mipmap/icon_pwd_invisible" />
+
+        <EditText
+            android:id="@+id/input_edit_psw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/height40"
+            android:layout_toStartOf="@+id/forget_psw_text"
+            android:background="@null"
+            android:digits="@string/input_text"
+            android:hint="@string/input_your_password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColor="#999999"
+            android:textSize="14sp" />
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:background="@color/white" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
+            android:id="@+id/forget_psw_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:paddingEnd="@dimen/margin10"
+            android:paddingStart="@dimen/margin10"
+            android:text="@string/forget_password"
+            android:textColor="#f12873"
+            android:textSize="14sp" />
 
-            <ImageView
-                android:id="@+id/psw_yn_no_kejian"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@mipmap/psw_bukejian_img" />
-
-            <EditText
-                android:id="@+id/input_edit_psw"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="8.35"
-                android:layout_marginLeft="5dip"
-                android:background="#00000000"
-                android:hint="请输入您的密码"
-                android:inputType="textPassword"
-                android:textColorHint="@color/text_hint"
-                android:textColor="@color/white"
-                android:padding="5dip"
-                android:textSize="16sp"
-                android:imeOptions="actionDone"
-                android:maxLength="22"
-                android:singleLine="true"
-                android:digits="@string/input_text" />
-
-            <TextView
-                android:id="@+id/forget_psw_text"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="忘记密码"
-                android:textColor="@color/text_hint"
-                android:clickable="true"
-                android:textSize="13sp"
-                android:gravity="right|center" />
-        </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:background="@color/white" />
-    </LinearLayout>
-
+        <View
+            style="@style/ui_line"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
 </LinearLayout>

@@ -8,7 +8,6 @@ import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.dialog.MyDialogTwoButton;
 import com.example.applibrary.dialog.interfac.DialogOnClick;
 import com.example.applibrary.utils.SharedPreferenceUtils;
-import com.mob.MobSDK;
 import com.pgyersdk.crash.PgyCrashManager;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
@@ -29,7 +28,6 @@ public class AppLibLication extends Application {
         appLibLication = this;
         Thread.setDefaultUncaughtExceptionHandler(onBlooey);
         PgyCrashManager.register(this);
-        MobSDK.init(this);
         MultiDex.install(this);
         wechatLogin();
         RongIM.init(this);

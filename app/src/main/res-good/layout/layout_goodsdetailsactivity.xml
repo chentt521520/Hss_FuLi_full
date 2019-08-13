@@ -89,8 +89,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/goodsdetailsactivity_originalprice"
                     android:layout_marginTop="10dp"
+                    android:ellipsize="end"
                     android:maxLines="2"
-                    android:singleLine="true"
                     android:text="@string/null_text"
                     android:textColor="@color/blackColor4d"
                     android:textSize="14sp"
@@ -256,7 +256,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/width15"
-                    android:text="假一赔十|不支持7天无理由退货"
+                    android:text="正品保障|不支持7天无理由退货"
                     android:textColor="@color/blackColor0f"
                     android:textSize="12sp" />
 

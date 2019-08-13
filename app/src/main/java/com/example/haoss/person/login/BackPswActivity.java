@@ -19,6 +19,7 @@ import com.example.applibrary.dialog.interfac.DialogOnClick;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.MD5Util;
 import com.example.applibrary.utils.StringUtils;
+import com.example.applibrary.utils.VerifyPhoneUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
 import com.example.haoss.manager.ApiManager;
@@ -61,7 +62,7 @@ public class BackPswActivity extends BaseActivity {
     EditText backInputEditEnterPsw;
     //完成
     @BindView(R.id.back_btn_fins)
-    Button backBtnFins;
+    TextView backBtnFins;
     private Timer timer;
     private static final int TIMECODE = 0X123;
     private long currentTime = 60 * 1000;
@@ -69,7 +70,7 @@ public class BackPswActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_login_back_psw_page);
+        setContentView(R.layout.activity_find_password);
         ButterKnife.bind(this);
     }
 
@@ -95,28 +96,12 @@ public class BackPswActivity extends BaseActivity {
         }
     }
 
-
-    //号码判断
-    private boolean judgePhone(String phone) {
-        if (phone.length() == 11) {
-            if (StringUtils.validatePhoneNumber(phone)) {
-                return true;
-            } else {
-                tost("请正确输入手机号码！");
-                return false;
-            }
-        } else {
-            tost("请输入11位手机号码！");
-            return false;
-        }
-    }
-
     /**
      * 获取验证码
      */
     private void huoquCode() {
         String phone = backInputEditPhone.getText().toString();
-        if (!judgePhone(phone)) {
+        if (!VerifyPhoneUtils.judgePhone(BackPswActivity.this, phone)) {
             return;
         }
         String url = Netconfig.getForgetCode;
@@ -173,22 +158,23 @@ public class BackPswActivity extends BaseActivity {
         String code = backInputEditCode.getText().toString();
         String pwd = backInputEditNewPsw.getText().toString();
         String pwd2 = backInputEditEnterPsw.getText().toString();
-        if (!judgePhone(phone))
+        if (!VerifyPhoneUtils.judgePhone(BackPswActivity.this, phone))
             return;
         if (TextUtils.isEmpty(code)) {
             tost("验证码不能为空！");
             return;
         }
         if (TextUtils.isEmpty(pwd)) {
-            tost("设置密码不能为空！");
+            tost("密码不能为空！");
             return;
         } else if (pwd.length() < 6) {
             tost("密码长度不能低于6位！");
             return;
-        } else if (!StringUtils.containLetterAndNumber(pwd)) {
-            tost("密码由字母和数字组成，必须以字母开头！");
-            return;
         }
+//        else if (!StringUtils.containLetterAndNumber(pwd)) {
+//            tost("密码由字母和数字组成，必须以字母开头！");
+//            return;
+//        }
         if (!pwd2.equals(pwd)) {
             tost("2次密码输入不一致！");
             return;

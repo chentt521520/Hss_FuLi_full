@@ -8,23 +8,22 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.applibrary.base.ConfigHttpReqFields;
 import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
-import com.example.applibrary.custom.ToastUtils;
 import com.example.applibrary.entity.LoginInfo;
 import com.example.applibrary.entity.PassCheck;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.IntentUtils;
 import com.example.applibrary.utils.MD5Util;
 import com.example.applibrary.utils.StringUtils;
+import com.example.applibrary.utils.VerifyPhoneUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.AppLibLication;
 import com.example.haoss.base.BaseActivity;
@@ -60,7 +59,7 @@ public class LoginActivity extends BaseActivity {
     @BindView(R.id.page_back)
     ImageView page_back;
     //密码隐藏
-    @BindView(R.id.psw_yn_no_kejian)
+    @BindView(R.id.icon_pwd_invisible)
     ImageView pswYnNoKejian;
     //密码
     @BindView(R.id.input_edit_psw)
@@ -68,9 +67,6 @@ public class LoginActivity extends BaseActivity {
     //忘记密码
     @BindView(R.id.forget_psw_text)
     TextView forgetPswText;
-    //
-    @BindView(R.id.zhanghao_login_show)
-    LinearLayout zhanghaoLoginShow;
     //账号/手机号输入
     @BindView(R.id.input_edit_phoneNum)
     EditText inputEditPhoneNum;
@@ -80,26 +76,21 @@ public class LoginActivity extends BaseActivity {
     //获取验证码
     @BindView(R.id.obtain_code)
     TextView obtainCode;
-    //
-    @BindView(R.id.phone_login_show)
-    LinearLayout phoneLoginShow;
     //登录
     @BindView(R.id.login_button)
-    Button loginButton;
+    TextView loginButton;
     //验证码登录按钮
     @BindView(R.id.login_code_btn)
     TextView loginCodeBtn;
-    @BindView(R.id.login_psw_btn)
-    TextView loginPswBtn;
     //注册
     @BindView(R.id.login_registered)
     TextView loginRegistered;
     //微信登录
     @BindView(R.id.btn_wechat_login)
-    Button btnWechatLogin;
+    ImageView btnWechatLogin;
     //qq登录
     @BindView(R.id.btn_qq_login)
-    Button btnQqLogin;
+    ImageView btnQqLogin;
 
     private Context mContext;
     private Timer timer;
@@ -107,14 +98,18 @@ public class LoginActivity extends BaseActivity {
     private long currentTime = 60 * 1000;
     boolean isCodeLogin = false;    //是否验证码登录 ==true：是
     String account, password; //账号/密码
+    private int flag;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_login);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         mContext = this;
-
+        flag = getIntent().getIntExtra(IntentUtils.intentActivityFlag, 0);
+        if (flag == 1) {
+            page_back.setVisibility(View.GONE);
+        }
         account = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.sPdbAccount, "S");
         password = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.sPdbPassword, "S");
         inputEditName.setText(account);
@@ -129,58 +124,36 @@ public class LoginActivity extends BaseActivity {
         super.onDestroy();
     }
 
-    @OnClick({R.id.page_back, R.id.input_edit_name, R.id.input_edit_psw, R.id.forget_psw_text, R.id.zhanghao_login_show,
-            R.id.input_edit_phoneNum, R.id.input_edit_code, R.id.obtain_code, R.id.phone_login_show, R.id.login_button, R.id.login_code_btn,
-            R.id.login_psw_btn, R.id.login_registered, R.id.btn_wechat_login, R.id.btn_qq_login, R.id.psw_yn_no_kejian})
+    @OnClick({R.id.page_back, R.id.forget_psw_text, R.id.obtain_code, R.id.login_button, R.id.login_code_btn,
+            R.id.login_registered, R.id.btn_wechat_login, R.id.btn_qq_login, R.id.icon_pwd_invisible})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.page_back:
                 finish();
                 break;
-            case R.id.input_edit_name:
-                break;
-            case R.id.psw_yn_no_kejian:
+            case R.id.icon_pwd_invisible:
                 if (inputEditPsw.getInputType() == 128) {
                     inputEditPsw.setInputType(129); //隐藏密码
-                    pswYnNoKejian.setImageResource(R.mipmap.psw_bukejian_img);
+                    pswYnNoKejian.setImageResource(R.mipmap.icon_pwd_invisible);
                 } else {
-                    pswYnNoKejian.setImageResource(R.mipmap.psw_kejian_img);
+                    pswYnNoKejian.setImageResource(R.mipmap.icon_pwd_visible);
                     inputEditPsw.setInputType(128); //显示密码
-                    pswYnNoKejian.setVisibility(View.GONE);
                 }
-                break;
-            case R.id.input_edit_psw:
                 break;
             case R.id.forget_psw_text://忘记密码
                 IntentUtils.startIntent(mContext, BackPswActivity.class);
                 break;
-            case R.id.zhanghao_login_show:
-                break;
-            case R.id.input_edit_phoneNum:
-                break;
-            case R.id.input_edit_code:
-                break;
             case R.id.obtain_code:  //获取验证码
                 huoquCode();
-                break;
-            case R.id.phone_login_show:
                 break;
             case R.id.login_button: //登录
                 startLogin();
                 break;
             case R.id.login_code_btn://验证码登录
-                isCodeLogin = true;
-                phoneLoginShow.setVisibility(View.VISIBLE);
-                zhanghaoLoginShow.setVisibility(View.GONE);
-                loginPswBtn.setVisibility(View.VISIBLE);
-                loginCodeBtn.setVisibility(View.GONE);
-                break;
-            case R.id.login_psw_btn://密码登录
-                isCodeLogin = false;
-                phoneLoginShow.setVisibility(View.GONE);
-                zhanghaoLoginShow.setVisibility(View.VISIBLE);
-                loginPswBtn.setVisibility(View.GONE);
-                loginCodeBtn.setVisibility(View.VISIBLE);
+                isCodeLogin = !isCodeLogin;
+                loginCodeBtn.setText(getResources().getString(isCodeLogin ? R.string.password_login : R.string.verification_code_login));
+                findViewById(R.id.password_view).setVisibility(isCodeLogin ? View.GONE : View.VISIBLE);
+                findViewById(R.id.verification_code_view).setVisibility(isCodeLogin ? View.VISIBLE : View.GONE);
                 break;
             case R.id.login_registered://注册 (线同意条款)
                 IntentUtils.startIntent(1, mContext, TermsOfService.class);
@@ -199,28 +172,12 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-
-    //号码判断
-    private boolean judgePhone(String phone) {
-        if (phone.length() == 11) {
-            if (StringUtils.validatePhoneNumber(phone)) {
-                return true;
-            } else {
-                showToast("请正确输入手机号码！");
-                return false;
-            }
-        } else {
-            showToast("请输入11位手机号码！");
-            return false;
-        }
-    }
-
     /**
      * 获取验证码
      */
     private void huoquCode() {
         String phone = inputEditPhoneNum.getText().toString();
-        if (!judgePhone(phone)) {
+        if (!VerifyPhoneUtils.judgePhone(LoginActivity.this, phone)) {
             return;
         }
 
@@ -276,7 +233,7 @@ public class LoginActivity extends BaseActivity {
         if (isCodeLogin) {    //验证码登录
             String phone = inputEditPhoneNum.getText().toString();
             String code = inputEditCode.getText().toString();
-            if (!judgePhone(phone)) {
+            if (!VerifyPhoneUtils.judgePhone(LoginActivity.this, phone)) {
                 return;
             }
             if (TextUtils.isEmpty(code)) {
@@ -288,7 +245,7 @@ public class LoginActivity extends BaseActivity {
         } else {  //账号登录
             account = inputEditName.getText().toString();
             password = inputEditPsw.getText().toString();
-            if (!judgePhone(account))
+            if (!VerifyPhoneUtils.judgePhone(LoginActivity.this, account))
                 return;
             if (TextUtils.isEmpty(password)) {
                 showToast("密码输入不能为空！");
@@ -369,5 +326,17 @@ public class LoginActivity extends BaseActivity {
                 toast(code, msg);
             }
         });
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (flag == 1) {
+                toast("请登录您的账号!");
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

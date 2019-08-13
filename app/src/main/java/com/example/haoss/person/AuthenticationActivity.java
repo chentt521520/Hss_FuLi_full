@@ -14,15 +14,14 @@ import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.ImageUtils;
 import com.example.applibrary.utils.SharedPreferenceUtils;
-import com.example.applibrary.utils.StringUtils;
 import com.example.applibrary.utils.UpLoadPicCallback;
 import com.example.applibrary.utils.UploadPicUtil;
+import com.example.applibrary.utils.VerifyPhoneUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.AppLibLication;
 import com.example.haoss.base.BaseActivity;
 import com.example.haoss.manager.ApiManager;
 import com.example.haoss.person.other.PictureSelectorConfig;
-import com.google.gson.Gson;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.entity.LocalMedia;
@@ -110,11 +109,8 @@ public class AuthenticationActivity extends BaseActivity {
             tost("请输入身份证号");
             return;
         }
-        if (TextUtils.isEmpty(auther_phone.getText().toString())) {
-            if (!judgePhone(auther_phone.getText().toString())) {
 
-            }
-            tost("请输入有效手机号");
+        if (!VerifyPhoneUtils.judgePhone(AuthenticationActivity.this, auther_phone.getText().toString())) {
             return;
         }
         Map<String, Object> map = new HashMap<>();
@@ -179,21 +175,6 @@ public class AuthenticationActivity extends BaseActivity {
             });
         } else {
             tost("获取token失败");
-        }
-    }
-
-    //号码判断
-    private boolean judgePhone(String phone) {
-        if (phone.length() == 11) {
-            if (StringUtils.validatePhoneNumber(phone)) {
-                return true;
-            } else {
-                showToast("请正确输入手机号码！");
-                return false;
-            }
-        } else {
-            showToast("请输入11位手机号码！");
-            return false;
         }
     }
 }

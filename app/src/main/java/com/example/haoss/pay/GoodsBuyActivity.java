@@ -604,7 +604,7 @@ public class GoodsBuyActivity extends BaseActivity {
             map.put("seckill_id", cartInfoList.get(0).getProductInfo().getId());
         }
 
-        ApiManager.getResultStatus(url, map, new OnHttpCallback<String>() {
+        ApiManager.getResultString(url, map, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
                 new PayAliPay(GoodsBuyActivity.this).PayZFB(result);

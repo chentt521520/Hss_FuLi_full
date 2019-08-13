@@ -215,6 +215,11 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="_333333_18">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="_333333_14_bold">
         <item name="android:textColor">#333333</item>
         <item name="android:textSize">14sp</item>
@@ -229,6 +234,11 @@
     <style name="_666666_14">
         <item name="android:textColor">#666666</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="_666666_16">
+        <item name="android:textColor">#666666</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="_333333_12">

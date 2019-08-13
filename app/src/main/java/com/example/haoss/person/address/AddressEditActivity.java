@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.applibrary.entity.AddreInfo;
 import com.example.applibrary.httpUtils.OnHttpCallback;
+import com.example.applibrary.utils.VerifyPhoneUtils;
 import com.example.applibrary.widget.CustomTitleView;
 import com.example.haoss.base.AppLibLication;
 import com.example.applibrary.base.ConfigHttpReqFields;
@@ -152,8 +153,7 @@ public class AddressEditActivity extends BaseActivity {
             toast(getResources().getString(R.string.input_receiver_name));
             return;
         }
-        if (!StringUtils.validatePhoneNumber(phone)) {
-            toast(getResources().getString(R.string.input_correct_phone));
+        if (!VerifyPhoneUtils.judgePhone(AddressEditActivity.this, phone)) {
             return;
         }
         if (TextUtils.isEmpty(site)) {

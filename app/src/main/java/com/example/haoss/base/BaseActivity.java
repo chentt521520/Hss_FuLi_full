@@ -172,14 +172,14 @@ public class BaseActivity extends AppCompatActivity {
             appLibLication.logout();
             //登录已过期
             ToastUtils.getToastUtils().showToast(getApplicationContext(), "登录过期，请重新登录！");
-            IntentUtils.startIntentForResult(0, BaseActivity.this, LoginActivity.class, null, 4);
+            IntentUtils.startIntentForResult(1, BaseActivity.this, LoginActivity.class, null, 4);
             return;
         }
         if (code == 401 || code == 402) {
             appLibLication.logout();
             //登录已过期
             ToastUtils.getToastUtils().showToast(getApplicationContext(), "登录过期，请重新登录！");
-            IntentUtils.startIntentForResult(0, BaseActivity.this, LoginActivity.class, null, 4);
+            IntentUtils.startIntentForResult(1, BaseActivity.this, LoginActivity.class, null, 4);
         } else {
             ToastUtils.getToastUtils().showToast(getApplicationContext(), code + "," + text);
         }

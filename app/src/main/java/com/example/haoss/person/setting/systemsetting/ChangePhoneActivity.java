@@ -12,6 +12,7 @@ import com.example.applibrary.base.ConfigHttpReqFields;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.httpUtils.HttpHander;
 import com.example.applibrary.utils.StringUtils;
+import com.example.applibrary.utils.VerifyPhoneUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
 
@@ -80,7 +81,7 @@ public class ChangePhoneActivity extends BaseActivity {
     //获取验证码
     private void huoquCode() {
         String phone = action_phone_input.getText().toString();
-        if (!judgePhone(phone)) {
+        if (!VerifyPhoneUtils.judgePhone(ChangePhoneActivity.this, phone)) {
             return;
         }
         countTimer.start();
@@ -90,20 +91,6 @@ public class ChangePhoneActivity extends BaseActivity {
 //            httpHander.okHttpMapPost(this, url, map, 1);
     }
 
-    //号码判断
-    private boolean judgePhone(String phone) {
-        if (phone.length() == 11) {
-            if (StringUtils.validatePhoneNumber(phone)) {
-                return true;
-            } else {
-                tost("请正确输入手机号码！");
-                return false;
-            }
-        } else {
-            tost("请输入11位手机号码！");
-            return false;
-        }
-    }
 
     HttpHander httpHander = new HttpHander() {
         @Override

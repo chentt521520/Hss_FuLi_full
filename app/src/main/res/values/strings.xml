@@ -4,8 +4,27 @@
     <string name="no_data">暂无数据</string>
     <string name="more">加载中&#8230;</string>
     <color name="colorhit">#cccccc</color>
+
+    <!--登录-->
+    <string name="welcome_login">欢迎登录</string>
+    <string name="input_your_account">请输入您的账号</string>
+    <string name="input_your_password">请输入您的密码</string>
+    <string name="input_your_verification_code">请输入验证码</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="get_verification_code">获取验证码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="verification_code_login">短信验证码登录</string>
+    <string name="password_login">密码登录</string>
     <string name="fast_login">第三方登录</string>
 
+    <!--注册-->
+    <string name="welcome_register">注册</string>
+    <string name="input_your_phone">请输入您的手机号</string>
+    <string name="set_your_password">请设置您的密码</string>
+    <string name="confirm_your_password">请确认您的密码</string>
+
+    <string name="find_password">找回密码</string>
 
     <string name="null_text">--</string>
 

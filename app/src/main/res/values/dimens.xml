@@ -26,6 +26,7 @@
     <dimen name="height32">32dp</dimen>
     <dimen name="height35">35dp</dimen>
     <dimen name="height40">40dp</dimen>
+    <dimen name="height45">45dp</dimen>
     <dimen name="height48">48dp</dimen>
     <dimen name="height50">50dp</dimen>
     <dimen name="height60">60dp</dimen>

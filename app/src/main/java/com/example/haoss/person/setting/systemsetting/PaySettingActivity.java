@@ -18,6 +18,7 @@ import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.MD5Util;
 import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.applibrary.utils.StringUtils;
+import com.example.applibrary.utils.VerifyPhoneUtils;
 import com.example.applibrary.widget.CustomTitleView;
 import com.example.haoss.R;
 import com.example.haoss.base.AppLibLication;
@@ -208,7 +209,7 @@ public class PaySettingActivity extends BaseActivity {
      */
     private void huoquCode() {
         String phone = action_phone_input.getText().toString();
-        if (!judgePhone(phone)) {
+        if (!VerifyPhoneUtils.judgePhone(PaySettingActivity.this, phone)) {
             return;
         }
         String url = Netconfig.payPassCode;
@@ -227,21 +228,6 @@ public class PaySettingActivity extends BaseActivity {
                 toast(code, msg);
             }
         });
-    }
-
-    //号码判断
-    private boolean judgePhone(String phone) {
-        if (phone.length() == 11) {
-            if (StringUtils.validatePhoneNumber(phone)) {
-                return true;
-            } else {
-                tost("请正确输入手机号码！");
-                return false;
-            }
-        } else {
-            tost("请输入11位手机号码！");
-            return false;
-        }
     }
 
     private void setPwd() {
