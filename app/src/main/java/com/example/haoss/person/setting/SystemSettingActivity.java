@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.applibrary.base.ConfigVariate;
+import com.example.applibrary.utils.PackageUtils;
+import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.haoss.base.AppLibLication;
 import com.example.applibrary.dialog.MyDialogTwoButton;
 import com.example.applibrary.dialog.interfac.DialogOnClick;
@@ -20,8 +23,9 @@ import com.example.haoss.person.setting.systemsetting.PaySettingActivity;
 //系统设置
 public class SystemSettingActivity extends BaseActivity {
 
-    TextView systemsettingactivity_phone, systemsettingactivity_cache;   //手机号码，清除缓存
+    TextView phone, cache;   //手机号码，清除缓存
     MyDialogTwoButton myDialogExitLogin, myDialogClearCache;    //退出登录和清除缓存对话框
+    private TextView version;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,16 +37,20 @@ public class SystemSettingActivity extends BaseActivity {
     //初始化
     private void init() {
         this.getTitleView().setTitleText("系统设置");
-        systemsettingactivity_phone = findViewById(R.id.systemsettingactivity_phone);
-        systemsettingactivity_cache = findViewById(R.id.systemsettingactivity_cache);
+        phone = findViewById(R.id.ui_sys_set_phone);
+        cache = findViewById(R.id.ui_sys_set_cache);
+        version = findViewById(R.id.ui_sys_set_versions);
 
-        systemsettingactivity_phone.setOnClickListener(onClickListener);
-        systemsettingactivity_cache.setOnClickListener(onClickListener);
-        findViewById(R.id.systemsettingactivity_pay).setOnClickListener(onClickListener);   //支付设置
-        findViewById(R.id.systemsettingactivity_password).setOnClickListener(onClickListener);   //账号密码
-        findViewById(R.id.systemsettingactivity_guanyu).setOnClickListener(onClickListener);    //关于我
-        findViewById(R.id.systemsettingactivity_versions).setOnClickListener(onClickListener);  //版本说明
-        findViewById(R.id.systemsettingactivity_exitlogin).setOnClickListener(onClickListener); //退出登录
+        phone.setOnClickListener(onClickListener);
+        cache.setOnClickListener(onClickListener);
+        findViewById(R.id.ui_sys_set_pay).setOnClickListener(onClickListener);   //支付设置
+        findViewById(R.id.ui_sys_set_password).setOnClickListener(onClickListener);   //账号密码
+        findViewById(R.id.ui_sys_set_about).setOnClickListener(onClickListener);    //关于我
+        findViewById(R.id.ui_sys_set_versions).setOnClickListener(onClickListener);  //版本说明
+        findViewById(R.id.ui_sys_set_exit_login).setOnClickListener(onClickListener); //退出登录
+
+        version.setText("v" + PackageUtils.getVersionName(SystemSettingActivity.this));
+        phone.setText((String) SharedPreferenceUtils.getPreference(SystemSettingActivity.this, ConfigVariate.sPdbAccount, "S"));
     }
 
     //点击事件
@@ -50,26 +58,24 @@ public class SystemSettingActivity extends BaseActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.systemsettingactivity_pay:  //支付设置
+                case R.id.ui_sys_set_pay:  //支付设置
                     IntentUtils.startIntent(SystemSettingActivity.this, PaySettingActivity.class);
                     break;
-                case R.id.systemsettingactivity_password:  //账号密码
+                case R.id.ui_sys_set_password:  //账号密码
                     IntentUtils.startIntent(SystemSettingActivity.this, ChangePasswardActivity.class);
                     break;
-                case R.id.systemsettingactivity_guanyu:  //关于我们
-                    tost("关于我们");
+                case R.id.ui_sys_set_about:  //关于我们
                     break;
-                case R.id.systemsettingactivity_versions:  //版本说明
-                    tost("版本说明");
+                case R.id.ui_sys_set_versions:  //版本说明
                     break;
-                case R.id.systemsettingactivity_exitlogin:  //退出登录
+                case R.id.ui_sys_set_exit_login:  //退出登录
                     dialogExitLogin();
                     break;
-                case R.id.systemsettingactivity_phone:  //电话号码
+                case R.id.ui_sys_set_phone:  //电话号码
                     IntentUtils.startIntent(SystemSettingActivity.this, ChangePhoneActivity.class);
                     break;
-                case R.id.systemsettingactivity_cache:  //清除缓存
-                    dialogClearCache();
+                case R.id.ui_sys_set_cache:  //清除缓存
+//                    dialogClearCache();
                     break;
             }
         }
