@@ -8,7 +8,7 @@
     <RelativeLayout
         style="@style/base_padding_border"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content">
 
         <!--选中按钮-->
         <ImageView
@@ -21,31 +21,33 @@
             android:scaleType="fitCenter"
             android:src="@mipmap/checked_false"
             android:visibility="gone" />
+
         <!--图片-->
         <ImageView
             android:id="@+id/item_collect_image"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/item_collect_check"
             android:scaleType="fitCenter"
             android:src="@drawable/big_image01" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height100"
-            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin10"
-            android:layout_toEndOf="@+id/item_collect_image">
+            android:layout_toEndOf="@+id/item_collect_image"
+            android:paddingBottom="@dimen/height5"
+            android:paddingTop="@dimen/height5">
             <!--名称，规格-->
             <TextView
                 android:id="@+id/item_collect_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/width5"
                 android:ellipsize="end"
                 android:lineSpacingExtra="@dimen/width5"
                 android:maxLines="2"
-                android:text="商品"
+                android:text="@string/null_text"
                 android:textColor="@color/blackColor0f"
                 android:textSize="12sp" />
             <!--价格-->
@@ -54,9 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/item_collect_name"
-                android:layout_marginTop="@dimen/height5"
-                android:layout_marginBottom="@dimen/height5"
-                android:text="¥ 100"
+                android:layout_marginTop="@dimen/height8"
+                android:text="@string/null_text"
                 android:textColor="@color/baseRedColor"
                 android:textSize="14sp" />
 
@@ -65,15 +66,12 @@
                 android:id="@+id/item_collect_similarity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:background="@mipmap/collect_huan"
+                android:layout_below="@+id/item_collect_price"
+                android:layout_marginTop="@dimen/height8"
+                android:background="@mipmap/collect_lose"
                 android:gravity="center"
-                android:paddingLeft="8dp"
-                android:paddingTop="@dimen/height3"
-                android:paddingRight="8dp"
-                android:paddingBottom="@dimen/height3"
                 android:text="失效"
-                android:textColor="@color/blackColor4d"
+                android:textColor="#ffffff"
                 android:textSize="10sp" />
 
         </RelativeLayout>

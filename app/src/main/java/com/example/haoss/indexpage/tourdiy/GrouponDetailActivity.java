@@ -131,9 +131,9 @@ public class GrouponDetailActivity extends BaseActivity {
         userHead = findViewById(R.id.user_head);
         user_name = findViewById(R.id.user_name);
 
+        findViewById(R.id.good_estimate_layout).setOnClickListener(onClickListener);
         findViewById(R.id.look_more).setOnClickListener(onClickListener);
         findViewById(R.id.button_service).setOnClickListener(onClickListener);
-        findViewById(R.id.good_estimate_layout).setOnClickListener(onClickListener);
         btnCollect.setOnClickListener(onClickListener);
         btnSingleBuy.setOnClickListener(onClickListener);
         btnGrouponBuy.setOnClickListener(onClickListener);
@@ -185,12 +185,13 @@ public class GrouponDetailActivity extends BaseActivity {
                             toast(ErrorEnum.ERROR_10003.getCode(), ErrorEnum.ERROR_10003.getMsg());
                         } else {
                             if (map.containsKey("code")) {
-                                if (Double.parseDouble(map.get("code") + "") == 200) {
+                                double code = Double.parseDouble(map.get("code") + "");
+                                if (code == 200) {
                                     Map<String, Object> ret = (Map<String, Object>) map.get("data");
                                     analysisJson(ret);
 
                                 } else {
-                                    toast(Integer.parseInt(map.get("code") + ""), TextUtils.isEmpty(map.get("msg") + "") ? ErrorEnum.ERROR_10006.getMsg() : map.get("msg") + "");
+                                    toast((int) code, TextUtils.isEmpty(map.get("msg") + "") ? ErrorEnum.ERROR_10006.getMsg() : map.get("msg") + "");
                                 }
                             } else {
                                 toast(ErrorEnum.ERROR_10005.getCode(), ErrorEnum.ERROR_10005.getMsg());
@@ -343,6 +344,7 @@ public class GrouponDetailActivity extends BaseActivity {
 
         btnSingleBuy.setText(goodInfo.getProduct_price() + "\n单独购买");
         btnGrouponBuy.setText(goodInfo.getPrice() + "\n拼团购买");
+
         isCollect = goodInfo.isUserCollect();
         setCollect();
         if (grouponGood.getReply() == null) {

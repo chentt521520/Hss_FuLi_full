@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.applibrary.entity.Nav;
+import com.example.applibrary.utils.DensityUtil;
 import com.example.applibrary.utils.ImageUtils;
 import com.example.haoss.R;
 
@@ -58,7 +59,10 @@ public class GridSortNavAdapter extends BaseAdapter {
         }
         info = (Info) view.getTag();
         Nav nav = list.get(position);
-        ImageUtils.imageLoad(context, nav.getPic(), info.image);
+//        ImageUtils.imageLoad(context, nav.getPic(), info.image);
+        int width = (DensityUtil.getScreenWidth(context) - DensityUtil.dip2px(context, 60)) / 4;
+        int w = width - DensityUtil.dip2px(context, 20);
+        ImageUtils.loadSizePic(context, nav.getPic(), w, w, info.image);
         info.text.setText(nav.getCate_name());
         return view;
     }

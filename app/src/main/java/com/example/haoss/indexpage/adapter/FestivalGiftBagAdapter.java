@@ -76,7 +76,7 @@ public class FestivalGiftBagAdapter extends RecyclerView.Adapter<FestivalGiftBag
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
         ImageUtils.imageLoad(context, strings.get(i).getImage(), myViewHolder.image);
         myViewHolder.descript.setText(strings.get(i).getStore_name());
-        myViewHolder.price.setText(strings.get(i).getPrice());
+        myViewHolder.price.setText(String.format(context.getString(R.string.price_unit), strings.get(i).getPrice()));
         /*
          * 接口回调方式实现监听事件
          * */

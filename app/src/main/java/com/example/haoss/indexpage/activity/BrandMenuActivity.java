@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MakeUpActivity extends BaseActivity {
+public class BrandMenuActivity extends BaseActivity {
 
     private FragmentView carousel;  //轮播
 
@@ -102,13 +102,13 @@ public class MakeUpActivity extends BaseActivity {
         //设置RecyclerView 布局
         gridBrandRecommad.setLayoutManager(layoutmanager);
 
-        brandRecommondAdapter = new BrandRecommondAdapter(MakeUpActivity.this, listBrandRecommad);
+        brandRecommondAdapter = new BrandRecommondAdapter(BrandMenuActivity.this, listBrandRecommad);
         gridBrandRecommad.setAdapter(brandRecommondAdapter);
 
         brandRecommondAdapter.setOnViewClickListener(new BrandRecommondAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(int position) {
-                Intent intent = new Intent(MakeUpActivity.this, GoodsListActivity.class);
+                Intent intent = new Intent(BrandMenuActivity.this, GoodsListActivity.class);
                 intent.putExtra("searchType", listBrandRecommad.get(position).getId());
                 intent.putExtra("searchName", listBrandRecommad.get(position).getCate_name());
                 startActivity(intent);
@@ -199,7 +199,7 @@ public class MakeUpActivity extends BaseActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.action_search_ss:  //搜索
-                    IntentUtils.startIntent(MakeUpActivity.this, GoodsSearchActivity.class);
+                    IntentUtils.startIntent(BrandMenuActivity.this, GoodsSearchActivity.class);
                     break;
             }
         }
@@ -209,7 +209,7 @@ public class MakeUpActivity extends BaseActivity {
     AdapterView.OnItemClickListener onNavClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Intent intent = new Intent(MakeUpActivity.this, GoodsListActivity.class);
+            Intent intent = new Intent(BrandMenuActivity.this, GoodsListActivity.class);
             intent.putExtra("searchType", listNav.get(position).getId());
             startActivity(intent);
         }
@@ -219,9 +219,8 @@ public class MakeUpActivity extends BaseActivity {
     AdapterView.OnItemClickListener onFavorClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            IntentUtils.startIntent(listFavor.get(position).getId(), MakeUpActivity.this, GoodsDetailsActivity.class);
+            IntentUtils.startIntent(listFavor.get(position).getId(), BrandMenuActivity.this, GoodsDetailsActivity.class);
         }
     };
 
 }
-

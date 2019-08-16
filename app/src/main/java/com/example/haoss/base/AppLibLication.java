@@ -90,8 +90,8 @@ public class AppLibLication extends Application {
 
     public void logout() {
         SharedPreferenceUtils.setPreference(this, ConfigVariate.login, false, "B");
-        SharedPreferenceUtils.setPreference(this, ConfigVariate.sPdbAccount, "", "S");
-        SharedPreferenceUtils.setPreference(this, ConfigVariate.sPdbPassword, "", "S");
+//        SharedPreferenceUtils.setPreference(this, ConfigVariate.sPdbAccount, "", "S");
+//        SharedPreferenceUtils.setPreference(this, ConfigVariate.sPdbPassword, "", "S");
         SharedPreferenceUtils.setPreference(this, ConfigVariate.sPdbToken, "", "S");
         SharedPreferenceUtils.setPreference(this, ConfigVariate.nickname, "", "S");
         SharedPreferenceUtils.setPreference(this, ConfigVariate.avatar, "", "S");

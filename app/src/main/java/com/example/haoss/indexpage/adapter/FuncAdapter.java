@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.applibrary.entity.IndexInfo;
+import com.example.applibrary.utils.DensityUtil;
+import com.example.applibrary.utils.ImageUtils;
 import com.example.haoss.R;
 
 import java.util.List;
@@ -58,7 +60,10 @@ public class FuncAdapter extends BaseAdapter {
         }
         info = (Info) view.getTag();
         IndexInfo funcInfo = list.get(position);
-        Glide.with(context).load(funcInfo.getPic()).into(info.image);
+        int width = (DensityUtil.getScreenWidth(context) - DensityUtil.dip2px(context, 60)) / 5;
+        int w = width - DensityUtil.dip2px(context, 20);
+        ImageUtils.loadSizePic(context, funcInfo.getPic(), w, w, info.image);
+//        Glide.with(context).load(funcInfo.getPic()).into(info.image);
         info.text.setText(funcInfo.getCate_name());
         return view;
     }

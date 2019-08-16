@@ -39,12 +39,10 @@ import com.example.haoss.base.BaseFragment;
 import com.example.haoss.goods.details.GoodsDetailsActivity;
 import com.example.haoss.goods.goodslist.GoodsListActivity;
 import com.example.haoss.goods.search.GoodsSearchActivity;
+import com.example.haoss.indexpage.activity.BrandMenuActivity;
+import com.example.haoss.indexpage.activity.DefaultMenuActivity;
 import com.example.haoss.indexpage.activity.ExcellentBrandActivity;
-import com.example.haoss.indexpage.activity.ExcellentLifeActivity;
 import com.example.haoss.indexpage.activity.FestivalGiftActivity;
-import com.example.haoss.indexpage.activity.HealthLifeActivity;
-import com.example.haoss.indexpage.activity.MakeUpActivity;
-import com.example.haoss.indexpage.activity.BabyProductsActivity;
 import com.example.haoss.indexpage.adapter.BrandAdapter;
 import com.example.haoss.indexpage.adapter.CarouselAdapter;
 import com.example.haoss.indexpage.adapter.FuncAdapter;
@@ -397,23 +395,15 @@ public class IndexPageFragment extends BaseFragment {
             bundle.putString("title", title);
             bundle.putInt("id", recommondId);
             switch (recommondId) {
-                case 34://优选生活
-                    IntentUtils.startIntent(mContext, ExcellentLifeActivity.class, bundle);
-                    break;
-                case 43://健康
-                    IntentUtils.startIntent(mContext, HealthLifeActivity.class, bundle);
-                    break;
                 case 48://美妆护肤
-                    IntentUtils.startIntent(mContext, MakeUpActivity.class, bundle);
-                    break;
                 case 53://母婴用品
-                    IntentUtils.startIntent(mContext, BabyProductsActivity.class, bundle);
+                    IntentUtils.startIntent(mContext, BrandMenuActivity.class, bundle);
                     break;
                 case 59://节日礼包
                     IntentUtils.startIntent(mContext, FestivalGiftActivity.class, bundle);
                     break;
                 default:
-                    IntentUtils.startIntent(mContext, FestivalGiftActivity.class, bundle);
+                    IntentUtils.startIntent(mContext, DefaultMenuActivity.class, bundle);
                     break;
             }
         }

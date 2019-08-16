@@ -1,7 +1,6 @@
 package com.example.haoss.person.collect.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,12 +67,11 @@ public class CollectAdapter extends BaseAdapter {
 
         if (collectInfo.getIs_show() == 0) {   //失效
             info.item_collect_similarity.setVisibility(View.VISIBLE);
-            info.item_collect_similarity.setText("失效");
-            info.item_collect_similarity.setBackgroundResource(R.mipmap.collect_lose);
-            info.item_collect_money.setTextColor(Color.parseColor("#666666"));
+            info.item_collect_money.setVisibility(View.GONE);
         } else {
             info.item_collect_similarity.setVisibility(View.GONE);
-            info.item_collect_money.setTextColor(Color.parseColor("#c22222"));
+            info.item_collect_money.setVisibility(View.VISIBLE);
+            info.item_collect_money.setText(String.format(context.getResources().getString(R.string.price_unit), collectInfo.getPrice()));
         }
         return view;
     }

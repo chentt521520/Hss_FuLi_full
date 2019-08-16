@@ -11,6 +11,7 @@ import com.example.applibrary.utils.ImageUtils;
 import com.example.haoss.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ImageAdapter extends BaseAdapter {
@@ -21,9 +22,7 @@ public class ImageAdapter extends BaseAdapter {
     public ImageAdapter(Context context, String[] imageList) {
         this.context = context;
         this.imageList = new ArrayList<>();
-        for (String image : imageList) {
-            this.imageList.add(image);
-        }
+        this.imageList.addAll(Arrays.asList(imageList));
     }
 
     public ImageAdapter(Context context, List<Object> imageList) {

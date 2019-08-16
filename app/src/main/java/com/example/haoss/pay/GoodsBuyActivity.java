@@ -677,6 +677,7 @@ public class GoodsBuyActivity extends BaseActivity {
                                 intent.putExtra("orderId", jsonObject.getString("msg"));
                                 intent.putExtra("id", cartInfoList.get(0).getProductInfo().getId());
                                 startActivity(intent);
+                                finish();
                             } else {
                                 toOrderList(1);
                             }
