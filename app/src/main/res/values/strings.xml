@@ -164,4 +164,17 @@
     <string name="apply_agree">同意</string>
     <string name="apply_review">转审</string>
 
+    <!--积分商城-->
+    <string name="convert_record">兑换记录</string>
+    <string name="convert_directly">立即兑换</string>
+    <string name="used_integral">可用积分</string>
+    <string name="input_approval_reason">请输入申请理由</string>
+    <string name="input_approval_amount">请输入金额</string>
+    <string name="input_approval_remark">请添加备注</string>
+    <string name="add_approval">添加审批</string>
+    <string name="delete_approval">删除</string>
+    <string name="approval_user">审批人</string>
+    <string name="review_user">抄送人</string>
+    <string name="approval_submit">提交</string>
+
 </resources>

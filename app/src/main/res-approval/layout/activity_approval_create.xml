@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f0f0f0"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            style="@style/padding_left_right_15"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:id="@+id/ui_detail_apply_reason_view"
+                style="@style/_333333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/apply_reason" />
+
+            <EditText
+                android:id="@+id/ui_detail_apply_reason"
+                style="@style/_333333_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/ui_detail_apply_reason_view"
+                android:background="@null"
+                android:hint="@string/input_approval_reason"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+            <View
+                style="@style/ui_line"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ui_approval_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--<include layout="@layout/include_approval" />-->
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ui_approval_add"
+            style="@style/base_padding_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/margin10"
+            android:drawableStart="@mipmap/icon_add"
+            android:text="@string/add_approval"
+            android:textColor="#c22222"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            style="@style/padding_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/_333333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/approval_user" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin10"
+                android:src="@mipmap/approval_user_select" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/padding_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin10"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/_333333_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/review_user" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin10"
+                android:src="@mipmap/approval_user_select" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/ui_approval_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@mipmap/bg_approval_submit"
+            android:text="@string/approval_submit"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+</ScrollView>

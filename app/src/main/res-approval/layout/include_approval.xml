@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/ui_approval_delete"
+        style="@style/base_padding_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:background="#f0f0f0"
+        android:text="@string/delete_approval"
+        android:textColor="#c22222"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:id="@+id/ui_detail_apply_type_view"
+        android:layout_width="match_parent"
+        style="@style/padding_left_right_15"
+        android:layout_height="40dp">
+
+        <TextView
+            style="@style/_333333_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/margin10"
+            android:text="@string/apply_type" />
+
+        <TextView
+            android:id="@+id/item_approval_type"
+            style="@style/_333333_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:drawableEnd="@mipmap/right_arrow_black_m"
+            android:drawablePadding="@dimen/margin10" />
+
+        <View
+            style="@style/ui_line"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ui_detail_happen_time_view"
+        android:layout_width="match_parent"
+        style="@style/padding_left_right_15"
+        android:layout_height="40dp">
+
+        <TextView
+            style="@style/_333333_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/margin10"
+            android:text="@string/happen_time" />
+
+        <TextView
+            android:id="@+id/ui_detail_happen_time"
+            style="@style/_333333_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:drawableEnd="@mipmap/right_arrow_black_m"
+            android:drawablePadding="@dimen/margin10" />
+
+        <View
+            style="@style/ui_line"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/padding_left_right_15"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/ui_detail_apply_amount_view"
+            style="@style/_333333_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/margin10"
+            android:text="@string/apply_amount" />
+
+        <EditText
+            android:id="@+id/ui_detail_apply_amount"
+            style="@style/_333333_12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/ui_detail_apply_amount_view"
+            android:background="@null"
+            android:hint="@string/input_approval_amount"
+            android:singleLine="true" />
+
+        <View
+            style="@style/ui_line"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/padding_left_right_15"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/ui_detail_apply_attention_view"
+            style="@style/_333333_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/margin10"
+            android:text="@string/apply_attention" />
+
+        <EditText
+            android:id="@+id/ui_detail_apply_attention"
+            style="@style/_333333_12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/ui_detail_apply_attention_view"
+            android:background="@null"
+            android:hint="@string/input_approval_remark"
+            android:singleLine="true" />
+
+        <View
+            style="@style/ui_line"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+</LinearLayout>

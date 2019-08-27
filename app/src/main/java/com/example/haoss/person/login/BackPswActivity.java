@@ -111,7 +111,7 @@ public class BackPswActivity extends BaseActivity {
         ApiManager.getResultStatus(url, map, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
-                tost("已发送");
+                toast("已发送");
                 backHuoquCode.setEnabled(false);
                 timer = new Timer();
                 timer.schedule(new TimerTask() {
@@ -124,7 +124,7 @@ public class BackPswActivity extends BaseActivity {
 
             @Override
             public void error(int code, String msg) {
-                tost(code + "," + msg);
+                toast(code + "," + msg);
             }
         });
     }
@@ -161,22 +161,22 @@ public class BackPswActivity extends BaseActivity {
         if (!VerifyPhoneUtils.judgePhone(BackPswActivity.this, phone))
             return;
         if (TextUtils.isEmpty(code)) {
-            tost("验证码不能为空！");
+            toast("验证码不能为空！");
             return;
         }
         if (TextUtils.isEmpty(pwd)) {
-            tost("密码不能为空！");
+            toast("密码不能为空！");
             return;
         } else if (pwd.length() < 6) {
-            tost("密码长度不能低于6位！");
+            toast("密码长度不能低于6位！");
             return;
         }
 //        else if (!StringUtils.containLetterAndNumber(pwd)) {
-//            tost("密码由字母和数字组成，必须以字母开头！");
+//            toast("密码由字母和数字组成，必须以字母开头！");
 //            return;
 //        }
         if (!pwd2.equals(pwd)) {
-            tost("2次密码输入不一致！");
+            toast("2次密码输入不一致！");
             return;
         }
 
@@ -194,7 +194,7 @@ public class BackPswActivity extends BaseActivity {
 
             @Override
             public void error(int code, String msg) {
-                tost(code + "," + msg);
+                toast(code + "," + msg);
             }
         });
     }

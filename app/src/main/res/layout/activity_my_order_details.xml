@@ -81,7 +81,7 @@
                             android:layout_width="18dp"
                             android:layout_height="18dp"
                             android:layout_alignParentEnd="true"
-                            android:src="@mipmap/right_dingdan_img" />
+                            android:src="@mipmap/right_arrow_grey_s" />
 
                         <View
                             style="@style/ui_line"

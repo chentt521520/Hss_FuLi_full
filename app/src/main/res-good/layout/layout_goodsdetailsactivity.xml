@@ -191,7 +191,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/width15"
-                    android:drawableEnd="@mipmap/right_arrow_img"
+                    android:drawableEnd="@mipmap/right_arrow_grey_l"
                     android:drawablePadding="@dimen/width15"
                     android:singleLine="true"
                     android:text="净含量"
@@ -252,7 +252,6 @@
 
                 <!--假一赔十-->
                 <TextView
-                    android:id="@+id/goodsdetailsactivity_loss"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/width15"
@@ -277,7 +276,7 @@
 
     <!--操作栏-->
     <include
-        layout="@layout/action_goodschecked"
+        layout="@layout/include_good_operation"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="1dp" />

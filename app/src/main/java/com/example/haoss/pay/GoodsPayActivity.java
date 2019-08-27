@@ -202,13 +202,13 @@ public class GoodsPayActivity extends BaseActivity {
             if (TextUtils.equals(action, IntentUtils.pay)) {//微信
                 finish();
                 if (TextUtils.equals(status, "0")) {
-                    tost(getResources().getString(R.string.pay_success));
+                    toast(getResources().getString(R.string.pay_success));
                     toOrderList();
                 } else {
                     if (TextUtils.equals(status, "-1")) {
-                        tost(getResources().getString(R.string.not_install_weixin));
+                        toast(getResources().getString(R.string.not_install_weixin));
                     } else {
-                        tost(getResources().getString(R.string.pay_fail));
+                        toast(getResources().getString(R.string.pay_fail));
                     }
                 }
             }

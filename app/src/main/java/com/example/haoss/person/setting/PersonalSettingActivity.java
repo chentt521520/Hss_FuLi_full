@@ -88,7 +88,7 @@ public class PersonalSettingActivity extends BaseActivity {
 
             @Override
             public void error(int code, String msg) {
-                toast(code, msg);
+                toast(code + "," + msg);
             }
         });
     }
@@ -132,7 +132,7 @@ public class PersonalSettingActivity extends BaseActivity {
                     break;
                 case R.id.ui_person_setting_birthday:   //生日
                     if (isSetBirthday) {
-                        tost("生日只能设置一次！");
+                        toast("生日只能设置一次！");
                     } else {
                         showDatePop();
                     }
@@ -144,12 +144,12 @@ public class PersonalSettingActivity extends BaseActivity {
     private void saveData() {
 
         if (TextUtils.isEmpty(nickname.getText().toString())) {
-            tost("请输入用户名");
+            toast("请输入用户名");
             return;
         }
 
         if (TextUtils.isEmpty(birthday.getText().toString())) {
-            tost("请选择生日");
+            toast("请选择生日");
             return;
         }
 
@@ -163,7 +163,7 @@ public class PersonalSettingActivity extends BaseActivity {
         ApiManager.getResultStatus(url, map, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
-                tost("设置成功！");
+                toast("设置成功！");
                 finish();
             }
 
@@ -231,7 +231,7 @@ public class PersonalSettingActivity extends BaseActivity {
                 }
             });
         } else {
-            tost("获取token失败");
+            toast("获取token失败");
         }
     }
 }

@@ -25,7 +25,6 @@ public class SystemSettingActivity extends BaseActivity {
 
     TextView phone, cache;   //手机号码，清除缓存
     MyDialogTwoButton myDialogExitLogin, myDialogClearCache;    //退出登录和清除缓存对话框
-    private TextView version;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +38,7 @@ public class SystemSettingActivity extends BaseActivity {
         this.getTitleView().setTitleText("系统设置");
         phone = findViewById(R.id.ui_sys_set_phone);
         cache = findViewById(R.id.ui_sys_set_cache);
-        version = findViewById(R.id.ui_sys_set_versions);
+        TextView version = findViewById(R.id.ui_sys_set_versions);
 
         phone.setOnClickListener(onClickListener);
         cache.setOnClickListener(onClickListener);
@@ -87,7 +86,7 @@ public class SystemSettingActivity extends BaseActivity {
             myDialogExitLogin = new MyDialogTwoButton(this, "您是否确定退出当前登录？", new DialogOnClick() {
                 @Override
                 public void operate() {
-                    tost("退出成功");
+                    toast("退出成功");
                     IntentUtils.startIntentFrist(SystemSettingActivity.this, MainActivity.class);
                     AppLibLication.getInstance().logout();
                 }
@@ -108,7 +107,7 @@ public class SystemSettingActivity extends BaseActivity {
                 @Override
                 public void operate() {
                     if (FileUtils.delAllFile(""))
-                        tost("清除成功");
+                        toast("清除成功");
                 }
 
                 @Override

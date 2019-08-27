@@ -96,7 +96,7 @@
                         android:layout_width="@dimen/width10"
                         android:layout_height="@dimen/width10"
                         android:layout_gravity="center_vertical"
-                        android:src="@mipmap/right_arrow_img" />
+                        android:src="@mipmap/right_arrow_grey_l" />
                 </LinearLayout>
             </RelativeLayout>
 

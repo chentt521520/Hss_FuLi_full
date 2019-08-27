@@ -231,7 +231,7 @@ public class OrderListActivity extends BaseActivity {
                         if (statusOrder == 0) {//待付款
                             toPayOrder();
                         } else if (statusOrder == 1) {//催单
-                            tost("提醒成功");
+                            toast("提醒成功");
                         } else if (statusOrder == 2) {//确认收货
                             handleOrder(Netconfig.orderConfirmReceipt, orderId, 1);
                         } else if (statusOrder == 3) {//已评价
@@ -246,7 +246,7 @@ public class OrderListActivity extends BaseActivity {
                         break;
 
                     case 1://催单
-                        tost("提醒成功");
+                        toast("提醒成功");
                         break;
 
                     case 2://确认收货
@@ -347,9 +347,9 @@ public class OrderListActivity extends BaseActivity {
                 orderList.remove(pos);
                 adapter.refresh(orderList);
                 if (flag == 2) {
-                    tost("已取消");
+                    toast("已取消");
                 } else if (flag == 3) {
-                    tost("已删除");
+                    toast("已删除");
                 }
             }
 

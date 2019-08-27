@@ -208,7 +208,7 @@ public class FootprintActivity extends BaseActivity {
         ApiManager.getResultStatus(url, map, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
-                tost("已删除");
+                toast("已删除");
                 for (int i = 0; i < id.length; i++) {
                     for (int j = 0; j < listFootprint.size(); j++) {
                         if (listFootprint.get(j).getId() == Integer.parseInt(id[i])) {
@@ -235,7 +235,7 @@ public class FootprintActivity extends BaseActivity {
         ApiManager.getResultStatus(url, map, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
-                tost("已清空");
+                toast("已清空");
                 listFootprint.clear();
                 footprintAdapter.setRefresh(listFootprint, false);
             }

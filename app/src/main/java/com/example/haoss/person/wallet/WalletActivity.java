@@ -217,11 +217,11 @@ public class WalletActivity extends BaseActivity {
     //去付款
     private void goPay() {
         if (getMoney() == 0) {
-            tost("请选择充值金额");
+            toast("请选择充值金额");
             return;
         }
         if (choosePay == 0) {
-            tost("请选择支付方式");
+            toast("请选择支付方式");
             return;
         }
 
@@ -234,13 +234,13 @@ public class WalletActivity extends BaseActivity {
 
     //支付宝支付
     private void zfbPay() {
-        tost("支付宝支付 " + getMoney() + " 元");
+        toast("支付宝支付 " + getMoney() + " 元");
         pay(Constants.ALI);
     }
 
     //微信支付
     private void wxPay() {
-        tost("微信支付 " + getMoney() + " 元");
+        toast("微信支付 " + getMoney() + " 元");
         pay(Constants.WEIXIN);
     }
 
@@ -263,7 +263,7 @@ public class WalletActivity extends BaseActivity {
                     Map<String, Object> map = ObjectMapperUtils.getUtils().jsonToMap(msg.obj.toString());
                     if (map != null) {
                         if (ObjectMapperUtils.getUtils().mapToInt(map, "code") != 200) {
-                            tost(map.get("msg") + "");
+                            toast(map.get("msg") + "");
                             return;
                         }
                         //1：微信支付，2：支付宝支付
@@ -272,7 +272,7 @@ public class WalletActivity extends BaseActivity {
                             if (mapWX != null)
                                 wxGetOrder(mapWX);
                             else
-                                tost("请求失败，重新尝试");
+                                toast("请求失败，重新尝试");
                         } else
                             aliGetOrder(map.get("data") + "");
                     }
@@ -300,7 +300,7 @@ public class WalletActivity extends BaseActivity {
         if (sAli != null)
             new PayAliPay(this).PayZFB(sAli);
         else
-            tost("请求失败，重新尝试");
+            toast("请求失败，重新尝试");
     }
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -315,12 +315,12 @@ public class WalletActivity extends BaseActivity {
             if (action.equals(IntentUtils.pay)) {//微信广播
                 if (TextUtils.equals(status, "0")) {
                     getCurrentBalance();
-                    tost("支付成功");
+                    toast("支付成功");
                 } else {
                     if (TextUtils.equals(status, "-1")) {
-                        tost("检测到您没有安装微信");
+                        toast("检测到您没有安装微信");
                     } else {
-                        tost("支付失败");
+                        toast("支付失败");
                     }
                 }
             }

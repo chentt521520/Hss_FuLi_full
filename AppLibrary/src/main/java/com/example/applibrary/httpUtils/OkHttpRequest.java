@@ -67,7 +67,7 @@ public class OkHttpRequest {
                         String jsonStr = new String(response.body().bytes());//把原始数据转为字符串
                         requestResult(jsonStr, callback, requestCallBack, true);
                     } else {
-                        OkHttpRequest.delivery.postError(10002, "请求失败", callback);
+                        OkHttpRequest.delivery.postError(response.code(), response.message(), callback);
                     }
                 }
             }
@@ -109,7 +109,7 @@ public class OkHttpRequest {
                         String jsonStr = new String(response.body().bytes());//把原始数据转为字符串
                         requestResult(jsonStr, callback, requestCallBack, true);
                     } else {
-                        OkHttpRequest.delivery.postError(response.code(), ErrorEnum.ERROR_10001.getMsg(), callback);
+                        OkHttpRequest.delivery.postError(response.code(), response.message(), callback);
                     }
                 }
             }
@@ -146,7 +146,7 @@ public class OkHttpRequest {
                         String jsonStr = new String(response.body().bytes());//把原始数据转为字符串
                         requestResult(jsonStr, callback, null, false);
                     } else {
-                        OkHttpRequest.delivery.postError(ErrorEnum.ERROR_10001.getCode(), ErrorEnum.ERROR_10001.getMsg(), callback);
+                        OkHttpRequest.delivery.postError(response.code(), response.message(), callback);
                     }
                 }
             }

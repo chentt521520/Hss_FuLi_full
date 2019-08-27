@@ -102,11 +102,11 @@ public class AuthenticationActivity extends BaseActivity {
 
     private void identyInfomation() {
         if (TextUtils.isEmpty(user_name.getText().toString())) {
-            tost("请输入真实姓名");
+            toast("请输入真实姓名");
             return;
         }
         if (TextUtils.isEmpty(identy_number.getText().toString())) {
-            tost("请输入身份证号");
+            toast("请输入身份证号");
             return;
         }
 
@@ -124,7 +124,7 @@ public class AuthenticationActivity extends BaseActivity {
         ApiManager.getResultStatus(Netconfig.Authentic, map, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
-                tost("保存成功");
+                toast("保存成功");
                 SharedPreferenceUtils.setPreference(AuthenticationActivity.this, ConfigVariate.isRealName, 1, "I");
                 finish();
             }
@@ -174,7 +174,7 @@ public class AuthenticationActivity extends BaseActivity {
                 }
             });
         } else {
-            tost("获取token失败");
+            toast("获取token失败");
         }
     }
 }

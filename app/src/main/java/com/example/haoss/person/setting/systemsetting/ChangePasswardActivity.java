@@ -55,7 +55,6 @@ public class ChangePasswardActivity extends BaseActivity {
                 case R.id.changepasswardactivity_sure:  //确定
                     String psw = newpassword.getText().toString();   //密码
                     psw = MD5Util.getMD5String(psw);
-                    tost("确定按钮");
                     break;
             }
         }

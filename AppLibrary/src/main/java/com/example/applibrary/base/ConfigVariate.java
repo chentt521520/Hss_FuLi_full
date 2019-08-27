@@ -49,5 +49,7 @@ public class ConfigVariate {
     public static final int flagGrouponIntent = 0x704;
     //特价
     public static final int flagSalesIntent = 0x705;
+    //积分兑换商品
+    public static final int flagIntegralIntent = 0x706;
 }
 

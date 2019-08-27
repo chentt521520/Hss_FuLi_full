@@ -1,190 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="#35383f"
+    android:orientation="vertical"
+    tools:context=".person.integral.IntegralShopActivity">
     <!--积分/金币-->
 
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/huiColorf0" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+        <View style="@style/ui_line" />
+
+        <!--积分信息-->
+        <RelativeLayout
+            style="@style/base_margin_border"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_my_integral"
+            android:descendantFocusability="blocksDescendants"
+            android:padding="@dimen/height25">
+
+            <RelativeLayout
+                android:id="@+id/ui_integral_my_head_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ui_integral_my_head"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/person_user_head_img" />
+
+                <TextView
+                    android:id="@+id/ui_integral_my_name"
+                    style="@style/_333333_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/width15"
+                    android:layout_toEndOf="@+id/ui_integral_my_head"
+                    android:text="@string/null_text" />
+
+                <TextView
+                    style="@style/_333333_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/used_integral" />
+            </RelativeLayout>
+
+
+            <!--当前积分数-->
+            <TextView
+                android:id="@+id/ui_integral_convert_record"
+                style="@style/_333333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/ui_integral_my_head_view"
+                android:layout_below="@+id/ui_integral_my_head_view"
+                android:layout_marginTop="@dimen/height20"
+                android:drawableEnd="@mipmap/more_image"
+                android:drawablePadding="5dp"
+                android:padding="@dimen/margin10"
+                android:text="@string/convert_record" />
+
+
+            <!--抵扣说明-->
+            <TextView
+                android:id="@+id/ui_integral_integral_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/ui_integral_convert_record"
+                android:layout_alignEnd="@+id/ui_integral_my_head_view"
+                android:padding="@dimen/margin10"
+                android:text="@string/null_text"
+                android:textColor="#333333"
+                android:textSize="24sp" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp">
-            <!--积分信息-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:padding="15dp"
-                android:background="@mipmap/integral_bg">
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
 
-                <!--当前积分数-->
-                <TextView
-                    android:id="@+id/integralactivity_now"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="100"
-                    android:textSize="35sp"
-                    android:textColor="@color/whiteColor"
-                    android:drawableLeft="@mipmap/integral_image"
-                    android:drawablePadding="3dp" />
-
-                <!--积分规则-->
-                <TextView
-                    android:id="@+id/integralactivity_rule"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="积分规则"
-                    android:textSize="10sp"
-                    android:textColor="@color/whiteColor"
-                    android:layout_alignParentRight="true" />
-
-                <!--当前可用积分-->
-                <TextView
-                    android:id="@+id/integralactivity_usable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="当前可用积分"
-                    android:textSize="12sp"
-                    android:textColor="@color/whiteColor"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="25dp"
-                    android:gravity="center" />
-
-                <!--抵扣说明-->
-                <TextView
-                    android:id="@+id/integralactivity_explain"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="抵扣说明"
-                    android:textSize="12sp"
-                    android:textColor="@color/whiteColor"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="25dp"
-                    android:gravity="center" />
-            </RelativeLayout>
-
-            <!--线-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/huiColorf0"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp" />
-
-            <!--积分明细-->
-            <TextView
-                android:id="@+id/integralactivity_detail"
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tablayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="积分明细"
-                android:textSize="12sp"
-                android:textColor="@color/blackColor4d"
-                android:textStyle="bold" />
+                app:tabGravity="center"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="#ebbe65"
+                app:tabTextColor="#333333" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
-                <!--全部-->
-                <TextView
-                    android:id="@+id/integralactivity_all"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="全部"
-                    android:textSize="12sp"
-                    android:textColor="@color/yellowColoreb"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="10dp" />
-                <!--收入-->
-                <TextView
-                    android:id="@+id/integralactivity_income"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="收入"
-                    android:textSize="12sp"
-                    android:textColor="@color/blackColor0f"
-                    android:gravity="center"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="10dp" />
-                <!--支出-->
-                <TextView
-                    android:id="@+id/integralactivity_expend"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="支出"
-                    android:textSize="12sp"
-                    android:textColor="@color/blackColor0f"
-                    android:gravity="center"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="10dp" />
-            </LinearLayout>
-
-            <!--线-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_marginBottom="5dp">
-                <!--1-->
-                <ImageView
-                    android:id="@+id/integralactivity_allline"
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_weight="1"
-                    android:src="@mipmap/integral_line"
-                    android:scaleType="fitCenter" />
-                <!--2-->
-                <ImageView
-                    android:id="@+id/integralactivity_incomeline"
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_weight="1"
-                    android:src="@mipmap/integral_line"
-                    android:scaleType="fitCenter"
-                    android:visibility="invisible" />
-                <!--3-->
-                <ImageView
-                    android:id="@+id/integralactivity_expendline"
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_weight="1"
-                    android:src="@mipmap/integral_line"
-                    android:scaleType="fitCenter"
-                    android:visibility="invisible" />
-            </LinearLayout>
-
-            <!--数据-->
-            <com.example.applibrary.custom.MyListView
-                android:id="@+id/integralactivity_mylistview"
+            <com.example.applibrary.custom.MyViewPager
+                android:id="@+id/viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="none"
-                android:padding="10dp"
-                android:divider="@color/huiColorf0"
-                android:dividerHeight="1dp"></com.example.applibrary.custom.MyListView>
-        </LinearLayout>
-    </ScrollView>
+                android:orientation="vertical" />
 
-</LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

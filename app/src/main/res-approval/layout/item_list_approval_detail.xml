@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#f0f0f0">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/item_approval_stream_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -16,37 +17,37 @@
         android:layout_height="80dp"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="@dimen/width15"
-        android:layout_toEndOf="@+id/image"
+        android:layout_toEndOf="@+id/item_approval_stream_image"
         android:background="@mipmap/frame"
         android:paddingStart="@dimen/height40">
 
         <TextView
-            android:id="@+id/leader_position"
+            android:id="@+id/item_approval_stream_leader"
             style="@style/_333333_14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/agree_time"
+            android:id="@+id/item_approval_stream_agree_time"
             style="@style/_666666_12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true" />
 
         <TextView
-            android:id="@+id/leader_suggest"
+            android:id="@+id/item_approval_stream_suggest"
             style="@style/_333333_14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/leader_position"
+            android:layout_below="@+id/item_approval_stream_leader"
             android:layout_marginTop="@dimen/width15" />
 
         <TextView
-            android:id="@+id/approval_status"
+            android:id="@+id/item_approval_stream_result"
             style="@style/_666666_12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/leader_suggest"
+            android:layout_alignBottom="@+id/item_approval_stream_suggest"
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>

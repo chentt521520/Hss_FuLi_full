@@ -385,7 +385,7 @@ public class DialogGoodsPayOrAddCar extends Dialog {
 
     //吐司
     private void toast(String text) {
-        ((GoodsDetailsActivity) context).tost(text);
+        ((GoodsDetailsActivity) context).toast(text);
     }
 
 

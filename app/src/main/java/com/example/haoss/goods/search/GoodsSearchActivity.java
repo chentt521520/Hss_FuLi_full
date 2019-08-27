@@ -2,11 +2,8 @@ package com.example.haoss.goods.search;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.annotation.Nullable;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -19,7 +16,6 @@ import android.widget.TextView;
 import com.example.applibrary.base.ConfigHttpReqFields;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.entity.GoodList;
-import com.example.applibrary.httpUtils.HttpHander;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.DensityUtil;
 import com.example.applibrary.utils.IntentUtils;
@@ -53,10 +49,6 @@ public class GoodsSearchActivity extends BaseActivity {
         init();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-    }
-
     private void init() {
         goodssearchactivity_go = findViewById(R.id.goodslistactivity_go);
         goodssearchactivity_input = findViewById(R.id.goodslistactivity_input);
@@ -79,7 +71,7 @@ public class GoodsSearchActivity extends BaseActivity {
             }
         });
         showAndHide(0);
-//        setSearchTag();
+        setSearchTag();
     }
 
     private void setSearchTag() {
@@ -108,9 +100,13 @@ public class GoodsSearchActivity extends BaseActivity {
 
     //flag==1：无数据，==2：显示数据
     private void showAndHide(int flag) {
+        //0 未搜索
+        findViewById(R.id.search_good_tag_view).setVisibility(flag == 0 ? View.VISIBLE : View.GONE);
+        //1 无数据
         goodssearchactivity_hint.setVisibility(flag == 1 ? View.VISIBLE : View.GONE);
+        //2 搜索到数据
         goodssearchactivity_list.setVisibility(flag == 2 ? View.VISIBLE : View.GONE);
-        wordWrapView.setVisibility(flag == 0 ? View.VISIBLE : View.GONE);
+
     }
 
     //点击事件
@@ -133,9 +129,10 @@ public class GoodsSearchActivity extends BaseActivity {
     private void startSearch() {
         searchText = goodssearchactivity_input.getText().toString();
         if (TextUtils.isEmpty(searchText)) {
-            tost("请输入要搜索的内容");
+            toast("请输入要搜索的内容");
             goodssearchactivity_go.setEnabled(false);
         } else {
+            SharedPreferenceUtils.setPreference(GoodsSearchActivity.this, "SearchTag", searchText, "S");
             goodssearchactivity_go.setEnabled(true);
             goSearch();
         }
@@ -151,18 +148,13 @@ public class GoodsSearchActivity extends BaseActivity {
 
     //开始搜索
     private void goSearch() {
-//        String SearchTag = (String) SharedPreferenceUtils.getPreference(GoodsSearchActivity.this, "SearchTag", "S");
-//        if (!searchText.contains(searchText)){
-//            SharedPreferenceUtils.setPreference(this, "SearchTag", searchText, "S");
-//        }
-
-        String url = Netconfig.commoditySearch + Netconfig.assemble(true, ConfigHttpReqFields.sendKeyword, searchText);
+        String url = Netconfig.commoditySearch + Netconfig.assemble(false, ConfigHttpReqFields.sendKeyword, searchText);
         ApiManager.searchGoodList(url, new OnHttpCallback<List<GoodList>>() {
             @Override
             public void success(List<GoodList> result) {
                 if (StringUtils.listIsEmpty(result)) {
                     showAndHide(1);
-                }else {
+                } else {
                     showAndHide(2);
                 }
                 listGoods = result;

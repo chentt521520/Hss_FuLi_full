@@ -20,13 +20,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.applibrary.custom.CustomerScrollView;
+import com.example.applibrary.entity.ApprovalList;
 import com.example.applibrary.entity.BannerInfo;
 import com.example.applibrary.entity.IndexInfo;
 import com.example.applibrary.entity.IndexResult;
 import com.example.applibrary.entity.Recommond;
 import com.example.applibrary.httpUtils.OnHttpCallback;
+import com.example.applibrary.utils.DensityUtil;
 import com.example.applibrary.utils.StringUtils;
 import com.example.applibrary.widget.CustomerCornerBg;
+import com.example.haoss.approval.ApprovalCenterActivity;
 import com.example.haoss.base.AppLibLication;
 import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
@@ -186,6 +189,7 @@ public class IndexPageFragment extends BaseFragment {
 
         searchView.setOnClickListener(onClickListener);   //搜索
         searchView.setBackground(new CustomerCornerBg(getContext(), 15f, 35f));
+        searchView.setPadding(DensityUtil.dip2px(getContext(), 30f), 0, DensityUtil.dip2px(getContext(), 15f), 0);
 
         fistpage_func.setOnItemClickListener(onItemClickListener);
         fistpage_sift.setOnItemClickListener(onsiftClickListener);
@@ -365,9 +369,10 @@ public class IndexPageFragment extends BaseFragment {
                     IntentUtils.startIntent(mContext, GoodsSearchActivity.class);
                     break;
                 case R.id.ui_index_brand_excellent_image: //商品精选列表
-                    Intent intent = new Intent(mContext, ExcellentBrandActivity.class);
-                    intent.putExtra("image", brandUrl.get(0).getImgUrl());
-                    startActivity(intent);
+//                    Intent intent = new Intent(mContext, ExcellentBrandActivity.class);
+//                    intent.putExtra("image", brandUrl.get(0).getImgUrl());
+//                    startActivity(intent);
+                    IntentUtils.startIntent(mContext, ApprovalCenterActivity.class);
                     break;
                 case R.id.ui_index_coupon_center:  //活动精选大图(优惠劵)
                     if (login())

@@ -20,24 +20,10 @@ import java.util.List;
 //商品购买或者加入购物车
 public class DialogGrouponList extends Dialog {
 
-    public DialogGrouponList(Context context) {
-        super(context);
-    }
-
-    public DialogGrouponList(Context context, int themeResId) {
-        super(context, themeResId);
-    }
-
-    protected DialogGrouponList(Context context, boolean cancelable, OnCancelListener cancelListener) {
-        super(context, cancelable, cancelListener);
-    }
-
     private Context context;
     private ListView listView;    //商品规格
     private GrouponDetailActivity activity;
     private List<GrouponUser> userList;
-    private GrouponPartnerAdapter adapter;
-    private GrouponGoodDetail grouponGood;
 
     public DialogGrouponList(Context context, List<GrouponUser> userList, GrouponGoodDetail grouponGood, OnItenClickListener listener) {
         super(context, com.example.applibrary.R.style.BottomDialog);
@@ -45,7 +31,6 @@ public class DialogGrouponList extends Dialog {
         this.context = context;
         this.userList = userList;
         this.listener = listener;
-        this.grouponGood = grouponGood;
     }
 
     @Override
@@ -79,7 +64,7 @@ public class DialogGrouponList extends Dialog {
 
     private void setData() {
 
-        adapter = new GrouponPartnerAdapter(context, userList);
+        GrouponPartnerAdapter adapter = new GrouponPartnerAdapter(context, userList);
         listView.setAdapter(adapter);
 
         adapter.setListener(new GrouponPartnerAdapter.onClickLinstener() {
@@ -93,7 +78,7 @@ public class DialogGrouponList extends Dialog {
 
     //吐司
     private void toast(String text) {
-        activity.tost(text);
+        activity.toast(text);
     }
 
     private OnItenClickListener listener;

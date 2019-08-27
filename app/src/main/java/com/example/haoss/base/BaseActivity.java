@@ -1,5 +1,6 @@
 package com.example.haoss.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -9,7 +10,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.example.applibrary.custom.ToastUtils;
 import com.example.applibrary.utils.DensityUtil;
@@ -45,11 +45,6 @@ public class BaseActivity extends AppCompatActivity {
     public LinearLayout.LayoutParams layoutParamsWW = null;
 
     private CustomTitleView titleView;
-    private LinearLayout linearBar;
-    /**
-     * 水印显示的文本
-     */
-    public String waterText = "";
     private AppLibLication appLibLication;
 
     @Override
@@ -148,70 +143,29 @@ public class BaseActivity extends AppCompatActivity {
     /**
      * 弹出Toast
      *
-     * @param message 提示信息
-     */
-    public void showToast(CharSequence message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    /**
-     * 弹出Toast
-     *
      * @param text 提示信息
      */
-    public void tost(String text) {
-        ToastUtils.getToastUtils().showToast(getApplicationContext(), text);
-    }
-
     public void toast(String text) {
         ToastUtils.getToastUtils().showToast(getApplicationContext(), text);
     }
 
     public void toast(int code, String text) {
         if (TextUtils.equals(text, "请传入token验证您的身份信息")) {
-            appLibLication.logout();
-            //登录已过期
-            ToastUtils.getToastUtils().showToast(getApplicationContext(), "登录过期，请重新登录！");
-            IntentUtils.startIntentForResult(1, BaseActivity.this, LoginActivity.class, null, 4);
+            toLoginActivity();
             return;
         }
         if (code == 401 || code == 402) {
-            appLibLication.logout();
-            //登录已过期
-            ToastUtils.getToastUtils().showToast(getApplicationContext(), "登录过期，请重新登录！");
-            IntentUtils.startIntentForResult(1, BaseActivity.this, LoginActivity.class, null, 4);
+            toLoginActivity();
         } else {
             ToastUtils.getToastUtils().showToast(getApplicationContext(), code + "," + text);
         }
     }
 
-    /**
-     * 弹出Toast
-     *
-     * @param message  提示信息
-     * @param duration Toast显示多长时间
-     */
-    public void showToast(CharSequence message, int duration) {
-        Toast.makeText(this, message, duration).show();
-    }
-
-    /**
-     * 弹出Toast
-     *
-     * @param resId 提示信息的资源id
-     */
-    public void showToast(int resId) {
-        Toast.makeText(this, "" + this.getResources().getText(resId), Toast.LENGTH_SHORT).show();
-    }
-
-    /**
-     * 弹出Toast
-     *
-     * @param resId    提示信息的资源id
-     * @param duration Toast显示多长时间
-     */
-    public void showToast(int resId, int duration) {
-        Toast.makeText(this, "" + this.getResources().getText(resId), duration).show();
+    private void toLoginActivity() {
+        appLibLication.logout();
+        toast("登录过期，请重新登录！");
+        // token越权返回到登录页面
+        IntentUtils.startIntent(1, getApplicationContext(), LoginActivity.class);
     }
 
     public void showInput(EditText et, boolean flag) {

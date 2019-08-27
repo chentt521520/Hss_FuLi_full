@@ -4,6 +4,8 @@ package com.example.haoss.manager;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.applibrary.entity.AddreInfo;
+import com.example.applibrary.entity.ApprovalDetail;
+import com.example.applibrary.entity.ApprovalList;
 import com.example.applibrary.entity.CardRecord;
 import com.example.applibrary.entity.CollectionInfo;
 import com.example.applibrary.entity.CouponInfo;
@@ -36,6 +38,8 @@ import com.example.applibrary.entity.UserInfo;
 import com.example.applibrary.entity.WeiXinPayResult;
 import com.example.applibrary.httpUtils.OkHttpRequest;
 import com.example.applibrary.httpUtils.OnHttpCallback;
+import com.example.haoss.person.integral.IntegralInfo;
+import com.example.haoss.person.integral.IntegralRecord;
 import com.example.haoss.person.wallet.BalanceRecord;
 
 import java.util.List;
@@ -447,6 +451,56 @@ public class ApiManager {
             }
         });
     }
+
+
+    /**
+     * 获取积分商品列表
+     */
+    public static void getIntegralGoodList(String url, Map<String, Object> map, OnHttpCallback<List<IntegralInfo>> callback) {
+        OkHttpRequest.okHttpMapPost(url, map, callback, new OkHttpRequest.IRequestCallBack<List<IntegralInfo>>() {
+            @Override
+            public List<IntegralInfo> success(String responseStr) throws Exception {
+                return JSONArray.parseArray(responseStr, IntegralInfo.class);
+            }
+        });
+    }
+
+    /**
+     * 获取审批列表
+     */
+    public static void getApprovalList(String url, Map<String, Object> map, OnHttpCallback<List<ApprovalList>> callback) {
+        OkHttpRequest.okHttpMapPost(url, map, callback, new OkHttpRequest.IRequestCallBack<List<ApprovalList>>() {
+            @Override
+            public List<ApprovalList> success(String responseStr) throws Exception {
+                return JSONArray.parseArray(responseStr, ApprovalList.class);
+            }
+        });
+    }
+
+    /**
+     * 获取审批详情
+     */
+    public static void getApprovalDetail(String url, Map<String, Object> map, OnHttpCallback<ApprovalDetail> callback) {
+        OkHttpRequest.okHttpMapPost(url, map, callback, new OkHttpRequest.IRequestCallBack<ApprovalDetail>() {
+            @Override
+            public ApprovalDetail success(String responseStr) throws Exception {
+                return JSONObject.parseObject(responseStr, ApprovalDetail.class);
+            }
+        });
+    }
+
+    /**
+     * 获取卡券兑换记录
+     */
+    public static void getIntegralConvertRecord(String url, Map<String, Object> map, OnHttpCallback<List<IntegralRecord>> callback) {
+        OkHttpRequest.okHttpMapPost(url, map, callback, new OkHttpRequest.IRequestCallBack<List<IntegralRecord>>() {
+            @Override
+            public List<IntegralRecord> success(String responseStr) throws Exception {
+                return JSONArray.parseArray(responseStr, IntegralRecord.class);
+            }
+        });
+    }
+
 
     /**
      * 接口返回成功与失败

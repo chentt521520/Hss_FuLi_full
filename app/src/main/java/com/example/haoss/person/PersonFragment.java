@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.applibrary.base.ConfigVariate;
-import com.example.applibrary.custom.ToastUtils;
 import com.example.applibrary.dialog.NoticeDialog;
 import com.example.applibrary.entity.OrderCount;
 import com.example.applibrary.entity.UserInfo;
@@ -28,7 +27,6 @@ import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseFragment;
 import com.example.haoss.conversation.ServerOnlineActivity;
-import com.example.haoss.integralshop.IntegralShopActivity;
 import com.example.haoss.manager.ApiManager;
 import com.example.haoss.person.address.AddressShowActivity;
 import com.example.haoss.person.adpter.SelfGvadapter;
@@ -38,7 +36,7 @@ import com.example.haoss.person.collect.CollectListActivity;
 import com.example.haoss.person.coupon.CouponActivity;
 import com.example.haoss.person.dingdan.OrderListActivity;
 import com.example.haoss.person.footprint.FootprintActivity;
-import com.example.haoss.person.integral.IntegralActivity;
+import com.example.haoss.person.integral.IntegralShopActivity;
 import com.example.haoss.person.login.LoginActivity;
 import com.example.haoss.person.msg.PersonMsgActivity;
 import com.example.haoss.person.opinion.OpinionActivity;
@@ -313,8 +311,7 @@ public class PersonFragment extends BaseFragment {
                     IntentUtils.startIntent(mContext, CouponActivity.class);
                     break;
                 case R.id.person_integral_linear:   //积分
-//                    String integral = info.getIntegral();
-                    IntentUtils.startIntent(mContext, IntegralActivity.class, "0");
+                    IntentUtils.startIntent(mContext, IntegralShopActivity.class, "0");
                     break;
                 case R.id.person_foot_linear:   //足迹
                     IntentUtils.startIntent(mContext, FootprintActivity.class);

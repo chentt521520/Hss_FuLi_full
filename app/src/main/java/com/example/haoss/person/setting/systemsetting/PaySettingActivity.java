@@ -130,12 +130,12 @@ public class PaySettingActivity extends BaseActivity {
                     showInput(action_phone_code, false);
 
                     if (TextUtils.isEmpty(action_phone_input.getText())) {
-                        tost("请输入手机号");
+                        toast("请输入手机号");
                         return;
                     }
                     code = action_phone_code.getText().toString();
                     if (TextUtils.isEmpty(code)) {
-                        tost("验证码为空");
+                        toast("验证码为空");
                         return;
                     }
                     flagActivity = 1;
@@ -220,7 +220,7 @@ public class PaySettingActivity extends BaseActivity {
             @Override
             public void success(String result) {
                 countTimer.start();
-                tost("验证码已发送");
+                toast("验证码已发送");
             }
 
             @Override

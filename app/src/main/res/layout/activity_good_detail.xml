@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--商品详情-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/huiColorf0"
+            android:orientation="vertical">
+
+            <!--轮播-->
+            <com.example.applibrary.custom.viewfragment.FragmentView
+                android:id="@+id/ui_good_detail_carousel"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:background="@color/whiteColor"
+                android:scaleType="centerCrop" />
+
+            <RelativeLayout
+                style="@style/base_padding_border"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whiteColor"
+                android:visibility="visible">
+                <!--新区间价格-->
+                <TextView
+                    android:id="@+id/ui_good_detail_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/null_text"
+                    android:textColor="@color/baseRedColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!--月销量-->
+                <TextView
+                    android:id="@+id/ui_good_detail_sales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/ui_good_detail_price"
+                    android:layout_alignParentEnd="true"
+                    android:singleLine="true"
+                    android:text="@string/null_text"
+                    android:textColor="@color/blackColor0f"
+                    android:textSize="12sp" />
+
+                <!--原区间价-->
+                <TextView
+                    android:id="@+id/ui_good_detail_org_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ui_good_detail_price"
+                    android:layout_marginTop="@dimen/margin5"
+                    android:text="@string/null_text"
+                    android:textColor="@color/blackColor4d"
+                    android:textSize="12sp" />
+
+                <!--商品简介-->
+                <TextView
+                    android:id="@+id/ui_good_detail_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ui_good_detail_org_price"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@string/null_text"
+                    android:textColor="@color/blackColor4d"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <include layout="@layout/include_good_detail_introduce" />
+
+            <include layout="@layout/include_good_estimate" />
+
+            <!--嵌套网页-->
+            <com.example.applibrary.custom.webview.NoScrollWebView
+                android:id="@+id/ui_good_detail_webview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp" />
+
+            <include layout="@layout/include_bottom_tip" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!--操作栏-->
+    <include
+        layout="@layout/include_good_operation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+</LinearLayout>

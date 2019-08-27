@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.entity.SalesGoodInfo;
 import com.example.applibrary.utils.IntentUtils;
 import com.example.applibrary.utils.TextViewUtils;
@@ -82,7 +83,7 @@ public class NowSpecialOfferAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent(context, GoodsDetailsActivity.class);
                 intent.putExtra(IntentUtils.intentActivityFlag, list.get(position).getId());
-                intent.putExtra("flag", 1);
+                intent.putExtra("flag", ConfigVariate.flagSalesIntent);
                 context.startActivity(intent);
             }
         });

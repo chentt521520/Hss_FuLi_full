@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/whiteColor"
+    android:orientation="vertical"
+    android:paddingEnd="@dimen/width15"
+    android:paddingStart="@dimen/width15"
+    android:paddingTop="@dimen/margin10">
+
+    <TextView
+        android:id="@+id/item_integral_record_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="@dimen/margin10"
+        android:layout_marginTop="@dimen/margin10">
+
+        <ImageView
+            android:id="@+id/item_integral_good_image"
+            android:layout_width="@dimen/width60"
+            android:layout_height="@dimen/width60"
+            android:src="@mipmap/person_user_head_img" />
+
+        <TextView
+            android:id="@+id/item_integral_good_name"
+            style="@style/_333333_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin10"
+            android:layout_toEndOf="@+id/item_integral_good_image"
+            android:lineSpacingExtra="@dimen/height3" />
+
+        <TextView
+            android:id="@+id/item_integral_good_count"
+            style="@style/_999999_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin10"
+            android:layout_toEndOf="@+id/item_integral_good_image" />
+
+        <TextView
+            android:id="@+id/item_card_record_price"
+            style="@style/_666666_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/ui_line"
+        style="@style/ui_line" />
+</LinearLayout>

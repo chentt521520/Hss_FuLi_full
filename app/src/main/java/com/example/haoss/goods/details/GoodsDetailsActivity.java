@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.applibrary.entity.GoodsDetailsInfo;
-import com.example.applibrary.entity.GoodsMold;
 import com.example.applibrary.entity.ProductAttr;
 import com.example.applibrary.entity.ReplyInfo;
 import com.example.applibrary.entity.ShopCart;
@@ -57,12 +56,9 @@ public class GoodsDetailsActivity extends BaseActivity {
     FragmentView carousel;  //轮播
     ArrayList<FragmentDataInfo> listBanner = new ArrayList<>(); //轮播
     NoScrollWebView webView;    //webview
-
-    TextView goodsdetailsactivity_newmoney, goodsdetailsactivity_shopprice, goodsdetailsactivity_monthlysales; //新区间价格、商家优惠、月销量
-    TextView goodsdetailsactivity_originalprice, goodsdetailsactivity_intro;    //元区间价格、商品简单说明(商品名称)
-    TextView goodsdetailsactivity_shipmentsland, goodsdetailsactivity_newbag, goodsdetailsactivity_juan;    //发货地、新人礼包、领劵
-    TextView goodsdetailsactivity_content, goodsdetailsactivity_exempt, goodsdetailsactivity_loss;  //净含量、免运费、说明
-    TextView good_estimate_num, good_favorable_rate, user_name, estmate_content;   //评价数量、满意度
+    TextView goodPrice, goodOrgPrice, goodSales, goodName; //新区间价格、商家优惠、月销量
+    TextView sendCity, goodSuk, goodPostage;    //发货地、新人礼包、领劵
+    TextView goodEstimateCount, goodFavorableRate, userName, estimateContent;   //评价数量、满意度
     ImageView userHead;
     RelativeLayout good_estimate_layout;   //评价列表
 
@@ -75,13 +71,13 @@ public class GoodsDetailsActivity extends BaseActivity {
     ShareWeChar shareWeChar;    //分享对话框
     private AppLibLication application;
     private GoodsDetailsInfo detailsInfo;
-    private int flag;
+    private int flag;//正常商品，特价商品，积分兑换商品
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitleContentView(R.layout.layout_goodsdetailsactivity);
+        setTitleContentView(R.layout.activity_good_detail);
         application = AppLibLication.getInstance();
         init();
         initTitle();
@@ -127,27 +123,23 @@ public class GoodsDetailsActivity extends BaseActivity {
 
     //初始化
     public void init() {
-        webView = findViewById(R.id.goodsdetailsactivity_webview);
+        webView = findViewById(R.id.ui_good_detail_webview);
         webView.initWebview(webView);
 
-        carousel = findViewById(R.id.goodsdetailsactivity__carousel);
-        goodsdetailsactivity_newmoney = findViewById(R.id.goodsdetailsactivity_newmoney);
-        goodsdetailsactivity_shopprice = findViewById(R.id.goodsdetailsactivity_shopprice);
-        goodsdetailsactivity_monthlysales = findViewById(R.id.goodsdetailsactivity_monthlysales);
-        goodsdetailsactivity_originalprice = findViewById(R.id.goodsdetailsactivity_originalprice);
-        goodsdetailsactivity_intro = findViewById(R.id.goodsdetailsactivity_intro);
-        goodsdetailsactivity_shipmentsland = findViewById(R.id.goodsdetailsactivity_shipmentsland);
-        goodsdetailsactivity_newbag = findViewById(R.id.goodsdetailsactivity_newbag);
-        goodsdetailsactivity_juan = findViewById(R.id.goodsdetailsactivity_juan);
-        goodsdetailsactivity_content = findViewById(R.id.goodsdetailsactivity_content);
-        goodsdetailsactivity_exempt = findViewById(R.id.goodsdetailsactivity_exempt);
-        goodsdetailsactivity_loss = findViewById(R.id.goodsdetailsactivity_loss);
-        good_estimate_num = findViewById(R.id.good_estimate_num);
-        good_favorable_rate = findViewById(R.id.good_favorable_rate);
+        carousel = findViewById(R.id.ui_good_detail_carousel);
+        goodPrice = findViewById(R.id.ui_good_detail_price);
+        goodSales = findViewById(R.id.ui_good_detail_sales);
+        goodOrgPrice = findViewById(R.id.ui_good_detail_org_price);
+        goodName = findViewById(R.id.ui_good_detail_name);
+        sendCity = findViewById(R.id.ui_good_detail_send_city);
+        goodSuk = findViewById(R.id.ui_good_detail_suk);
+        goodPostage = findViewById(R.id.ui_good_detail_postage);
+        goodEstimateCount = findViewById(R.id.good_estimate_num);
+        goodFavorableRate = findViewById(R.id.good_favorable_rate);
         good_estimate_layout = findViewById(R.id.good_estimate_layout);
-        estmate_content = findViewById(R.id.estmate_content);
+        estimateContent = findViewById(R.id.estmate_content);
         userHead = findViewById(R.id.user_head);
-        user_name = findViewById(R.id.user_name);
+        userName = findViewById(R.id.user_name);
 
         //下5操作按钮
         action_button_kefu = findViewById(R.id.action_button_kefu);
@@ -166,8 +158,6 @@ public class GoodsDetailsActivity extends BaseActivity {
         action_button_car_number = findViewById(R.id.action_button_car_number);
 
         //监听
-        goodsdetailsactivity_juan.setOnClickListener(onClickListener);
-        goodsdetailsactivity_content.setOnClickListener(onClickListener);
         action_button_kefu.setOnClickListener(onClickListener);
         action_button_collect.setOnClickListener(onClickListener);
         action_button_car.setOnClickListener(onClickListener);
@@ -175,7 +165,7 @@ public class GoodsDetailsActivity extends BaseActivity {
         action_button_pay.setOnClickListener(onClickListener);
         good_estimate_layout.setOnClickListener(onClickListener);
 
-        goodsdetailsactivity_originalprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        goodOrgPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 
         goodsId = getIntent().getIntExtra(IntentUtils.intentActivityFlag, 0);
         flag = getIntent().getIntExtra("flag", 0);
@@ -203,13 +193,16 @@ public class GoodsDetailsActivity extends BaseActivity {
     }
 
     public void getShopCarNumber() {
+        if (TextUtils.isEmpty(application.getToken())) {
+            action_button_car_number.setVisibility(View.GONE);
+            return;
+        }
         Map<String, Object> map = new HashMap<>();
         map.put("token", AppLibLication.getInstance().getToken());
 
         ApiManager.getShopCart(Netconfig.shoppingCarList, map, new OnHttpCallback<ShopCart>() {
             @Override
             public void success(ShopCart result) {
-                result.getValid().size();
                 if (!StringUtils.listIsEmpty(result.getValid())) {//有数据
                     action_button_car_number.setVisibility(View.VISIBLE);
                     action_button_car_number.setText(result.getValid().size() + "");
@@ -233,7 +226,7 @@ public class GoodsDetailsActivity extends BaseActivity {
             try {
                 Map<String, Object> map = new Gson().fromJson(msg.obj.toString(), HashMap.class);
                 if (map == null) {
-                    toast(ErrorEnum.ERROR_10003.getCode(), ErrorEnum.ERROR_10003.getMsg());
+                    toast(ErrorEnum.ERROR_10003.getCode() + "," + ErrorEnum.ERROR_10003.getMsg());
                 } else {
                     if (map.containsKey("code")) {
                         double code = Double.parseDouble((map.get("code") + ""));
@@ -241,14 +234,14 @@ public class GoodsDetailsActivity extends BaseActivity {
                             Map<String, Object> ret = (Map<String, Object>) map.get("data");
                             analysisJson(ret);
                         } else {
-                            toast((int) code, TextUtils.isEmpty(map.get("msg") + "") ? ErrorEnum.ERROR_10006.getMsg() : map.get("msg") + "");
+                            toast((int) code + "," + (TextUtils.isEmpty(map.get("msg") + "") ? ErrorEnum.ERROR_10006.getMsg() : map.get("msg") + ""));
                         }
                     } else {
-                        toast(ErrorEnum.ERROR_10005.getCode(), ErrorEnum.ERROR_10005.getMsg());
+                        toast(ErrorEnum.ERROR_10005.getCode() + "," + ErrorEnum.ERROR_10005.getMsg());
                     }
                 }
             } catch (Exception e) {
-                toast(ErrorEnum.ERROR_10004.getCode(), e.getMessage());
+                toast(ErrorEnum.ERROR_10004.getCode() + "," + e.getMessage());
             }
         }
     };
@@ -371,16 +364,25 @@ public class GoodsDetailsActivity extends BaseActivity {
     private void setData() {
         setCarousel();
         webView.loadUrl(detailsInfo.getDetails_url());
-        String priceName = TextUtils.isEmpty(detailsInfo.getPriceName()) ? detailsInfo.getStoreInfo().getPrice() : detailsInfo.getPriceName();
-        goodsdetailsactivity_newmoney.setText("¥ " + priceName);
-        goodsdetailsactivity_originalprice.setText("¥ " + detailsInfo.getStoreInfo().getOt_price());
-        goodsdetailsactivity_exempt.setText("¥ " + detailsInfo.getStoreInfo().getPostage());
-        goodsdetailsactivity_monthlysales.setText("月销 " + detailsInfo.getStoreInfo().getFicti());
-        if (flag == ConfigVariate.flagSalesIntent) {
-            goodsdetailsactivity_intro.setText(detailsInfo.getStoreInfo().getTitle());
+
+        if (flag == ConfigVariate.flagSalesIntent) {//特价商品
+            goodName.setText(detailsInfo.getStoreInfo().getTitle());
         } else {
-            goodsdetailsactivity_intro.setText(detailsInfo.getStoreInfo().getStore_name());
+            goodName.setText(detailsInfo.getStoreInfo().getStore_name());
         }
+
+        if (flag == ConfigVariate.flagIntegralIntent) {//积分换购商品
+            goodPrice.setText("1000积分");
+            goodSales.setText("已兑" + detailsInfo.getStoreInfo().getFicti());
+            goodOrgPrice.setVisibility(View.GONE);
+        } else {
+            String priceName = TextUtils.isEmpty(detailsInfo.getPriceName()) ? detailsInfo.getStoreInfo().getPrice() : detailsInfo.getPriceName();
+            goodPrice.setText(String.format(getResources().getString(R.string.price_unit), priceName));
+            goodOrgPrice.setText(String.format(getResources().getString(R.string.price_unit), detailsInfo.getStoreInfo().getOt_price()));
+            goodOrgPrice.setVisibility(View.VISIBLE);
+            goodSales.setText("月销 " + detailsInfo.getStoreInfo().getFicti());
+        }
+        goodPostage.setText(String.format(getResources().getString(R.string.price_unit), detailsInfo.getStoreInfo().getPostage()));
         isCollect = !detailsInfo.getStoreInfo().isUserCollect();
         collectUpdata();
         if (detailsInfo.getReply() == null) {
@@ -390,11 +392,11 @@ public class GoodsDetailsActivity extends BaseActivity {
         } else {
             findViewById(R.id.no_estmate_item).setVisibility(View.GONE);
             findViewById(R.id.estmate_item).setVisibility(View.VISIBLE);
-            good_estimate_num.setText("(" + detailsInfo.getReplyCount() + ")");
-            good_favorable_rate.setText("满意度" + detailsInfo.getReplyChance() + "%");
-            user_name.setText(detailsInfo.getReply().getNickname());
+            goodEstimateCount.setText("(" + detailsInfo.getReplyCount() + ")");
+            goodFavorableRate.setText("满意度" + detailsInfo.getReplyChance() + "%");
+            userName.setText(detailsInfo.getReply().getNickname());
             ImageUtils.loadCirclePic(this, detailsInfo.getReply().getAvatar(), userHead);
-            estmate_content.setText(detailsInfo.getReply().getComment());
+            estimateContent.setText(detailsInfo.getReply().getComment());
         }
     }
 
@@ -413,29 +415,38 @@ public class GoodsDetailsActivity extends BaseActivity {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.good_estimate_layout:
+                    if (flag == ConfigVariate.flagSalesIntent) {
+                        IntentUtils.startIntent(detailsInfo.getStoreInfo().getId(), GoodsDetailsActivity.this, EstimateListActivity.class);
+                    } else {
+                        IntentUtils.startIntent(detailsInfo.getStoreInfo().getId(), GoodsDetailsActivity.this, EstimateListActivity.class);
+                    }
+                    break;
 
-            if (v.getId() == R.id.good_estimate_layout) {  //查看评论列表
-                if (flag == ConfigVariate.flagSalesIntent) {
-                    IntentUtils.startIntent(detailsInfo.getStoreInfo().getId(), GoodsDetailsActivity.this, EstimateListActivity.class);
-                } else {
-                    IntentUtils.startIntent(detailsInfo.getStoreInfo().getId(), GoodsDetailsActivity.this, EstimateListActivity.class);
-                }
-            }
+                case R.id.action_button_kefu:
+                    startActivity(new Intent(GoodsDetailsActivity.this, ServerOnlineActivity.class));
+                    break;
 
-            if (login())
-                return;
-            if (v.getId() == R.id.goodsdetailsactivity_content) {//净含量
-                dialogPayAndCar();
-            } else if (v.getId() == R.id.action_button_kefu) {//客服
-                startActivity(new Intent(GoodsDetailsActivity.this, ServerOnlineActivity.class));
-            } else if (v.getId() == R.id.action_button_collect) {//收藏
-                addOrCancelCollect();
-            } else if (v.getId() == R.id.action_button_car) {//购物车
-                IntentUtils.startIntentRepeatedly(1, GoodsDetailsActivity.this,
-                        IntentUtils.getIntent(GoodsDetailsActivity.this, ConfigVariate.packShopCat));
-            } else if (v.getId() == R.id.action_button_add || //加入购物车
-                    v.getId() == R.id.action_button_pay) {   //立即购买
-                dialogPayAndCar();
+                case R.id.action_button_collect:
+                    if (login())
+                        return;
+                    addOrCancelCollect();
+                    break;
+                case R.id.action_button_car:
+                    if (login())
+                        return;
+                    IntentUtils.startIntentRepeatedly(1, GoodsDetailsActivity.this,
+                            IntentUtils.getIntent(GoodsDetailsActivity.this, ConfigVariate.packShopCat));
+                    break;
+
+                case R.id.ui_good_detail_suk://查看净含量
+                case R.id.action_button_add://加入购物车
+                case R.id.action_button_pay://立即购买
+                    if (login())
+                        return;
+                    dialogPayAndCar();
+                    break;
             }
         }
     };
@@ -469,7 +480,7 @@ public class GoodsDetailsActivity extends BaseActivity {
             url = Netconfig.addShoppingCollect;
         else    //取消收藏
             url = Netconfig.cancleShoppingCollect;
-        HashMap<String, Object> map = new HashMap<>();
+        final HashMap<String, Object> map = new HashMap<>();
         map.put(ConfigHttpReqFields.sendToken, application.getToken());
         map.put(ConfigHttpReqFields.sendProductId, goodsId);
 
@@ -477,7 +488,7 @@ public class GoodsDetailsActivity extends BaseActivity {
             @Override
             public void success(String result) {
                 if (flag == ConfigVariate.flagSalesIntent) {
-                    tost("特价商品不支持收藏");
+                    toast("特价商品不支持收藏");
                 } else {
                     collectUpdata();
                 }
@@ -485,7 +496,7 @@ public class GoodsDetailsActivity extends BaseActivity {
 
             @Override
             public void error(int code, String msg) {
-
+                toast(code + "," + msg);
             }
         });
     }
@@ -514,7 +525,7 @@ public class GoodsDetailsActivity extends BaseActivity {
                 dialogGoodsPayOrAddCar.setRefresh(detailsInfo);
             dialogGoodsPayOrAddCar.show();
         } else {
-            tost("未获取到商品信息");
+            toast("未获取到商品信息");
         }
 
     }

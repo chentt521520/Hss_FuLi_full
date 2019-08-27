@@ -134,11 +134,11 @@ public class CouponCentreActivity extends BaseActivity {
                 if (residue > 0) {//计算剩余数量
                     gainCoupon(info.getId());
                 } else {
-                    tost("去逛逛");//你来晚了
+                    toast("去逛逛");//你来晚了
                 }
             }
         } else
-            tost("去使用");
+            toast("去使用");
     }
 
     private void gainCoupon(int id) {
@@ -149,13 +149,13 @@ public class CouponCentreActivity extends BaseActivity {
         ApiManager.getResultStatus(url, map, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
-                tost("领取成功");//领取成功
+                toast("领取成功");//领取成功
                 setList();
             }
 
             @Override
             public void error(int code, String msg) {
-                tost(code + "," + msg);
+                toast(code + "," + msg);
             }
         });
     }

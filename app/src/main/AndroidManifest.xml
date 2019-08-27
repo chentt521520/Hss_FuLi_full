@@ -170,19 +170,27 @@
             android:screenOrientation="portrait" />
         <!--积分/金币界面-->
         <activity
-            android:name=".person.integral.IntegralActivity"
+            android:name=".person.integral.IntegralShopActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".person.integral.IntegralConvertRecordAty"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
+
         <!--我的钱包-->
         <activity
             android:name=".person.wallet.WalletActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
+
         <!--售后服务-->
         <activity
             android:name=".person.aftersale.AfterSaleActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
+
         <!--售后服务：申请售后-->
         <activity
             android:name=".person.aftersale.activity.AfterSaleApplyForActivity"
@@ -305,10 +313,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible" />
         <!--积分商城-->
-        <activity
-            android:name=".integralshop.IntegralShopActivity"
-            android:configChanges="orientation|navigation"
-            android:screenOrientation="portrait" />
         <!--商品购买-订单确认页面-->
         <activity
             android:name=".pay.GoodsBuyActivity"
@@ -344,6 +348,12 @@
         <!--实名认证-->
         <activity
             android:name=".person.AuthenticationActivity"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
+
+        <!--审批中心-->
+        <activity
+            android:name=".approval.ApprovalCenterActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
 
@@ -387,6 +397,8 @@
             android:value="x18ywvqfxc9tc" />
 
         <activity android:name=".conversation.ServerOnlineActivity" />
+        <activity android:name=".approval.ApprovalDetailActivity" />
+        <activity android:name=".approval.ApprovalCreateActivity" />
 
 
         <!--蒲公英-->

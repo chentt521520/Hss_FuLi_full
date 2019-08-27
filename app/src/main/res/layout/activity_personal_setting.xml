@@ -150,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/right_dingdan_img" />
+            android:src="@mipmap/right_arrow_grey_s" />
     </RelativeLayout>
     <!--线-->
     <View style="@style/ui_line" />

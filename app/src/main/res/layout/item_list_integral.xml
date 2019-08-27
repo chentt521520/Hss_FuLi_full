@@ -1,54 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:orientation="horizontal">
-    <!--积分/金币item-->
+    android:layout_height="110dp"
+    android:orientation="horizontal"
+    style="@style/base_padding_border"
+    android:id="@+id/item_list_good_view">
 
-    <!--图片-->
+    <!--图片临时-->
     <ImageView
-        android:id="@+id/item_integral_image"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:src="@drawable/big_image01"
-        android:scaleType="fitCenter"
-        android:layout_gravity="center" />
+        android:id="@+id/item_list_good_image"
+        android:layout_width="@dimen/height90"
+        android:layout_height="@dimen/height90"
+        android:src="@mipmap/person_user_head_img" />
 
-    <!--名称、规格、时间、说明-->
     <RelativeLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:padding="10dp">
-        <!--名称-->
-        <TextView
-            android:id="@+id/item_integral_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="3"
-            android:text="测试 750CL"
-            android:textSize="12sp"
-            android:textColor="@color/blackColor33" />
+        android:layout_marginStart="@dimen/margin10"
+        android:paddingTop="@dimen/height5"
+        android:paddingBottom="@dimen/height5">
 
-        <!--时间-->
         <TextView
-            android:id="@+id/item_integral_time"
-            android:layout_width="match_parent"
+            android:id="@+id/item_list_good_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="3"
-            android:text="赠送 2019-09-09 21:21:22"
-            android:textSize="12sp"
-            android:textColor="@color/huiColor99"
+            style="@style/_333333_14" />
+
+        <TextView
+            android:id="@+id/item_list_integral_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#ebbe65"
             android:layout_alignParentBottom="true" />
+
+        <TextView
+            android:id="@+id/item_list_good_sales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/_666666_12"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin10"
+            android:layout_toEndOf="@+id/item_list_integral_count" />
+
+        <TextView
+            android:id="@+id/item_list_convert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/margin10"
+            android:paddingEnd="@dimen/margin10"
+            android:paddingTop="@dimen/height5"
+            android:paddingBottom="@dimen/height5"
+            style="@style/_333333_14"
+            android:text="@string/convert_directly"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bt_integral_convert" />
     </RelativeLayout>
 
-    <!--数量-->
-    <TextView
-        android:id="@+id/item_integral_number"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="+98765"
-        android:textSize="15sp"
-        android:textColor="@color/yellowColoreb"
-        android:gravity="center" />
+
 </LinearLayout>

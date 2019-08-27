@@ -1,0 +1,47 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/btn_agree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:drawableEnd="@mipmap/icon_approval_travel"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:text="差旅申请"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/btn_reject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:drawableEnd="@mipmap/icon_approval_car"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:text="用车申请"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/btn_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:drawableEnd="@mipmap/icon_approval_dining"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:text="用餐申请"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/btn_main_control"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:background="@mipmap/application" />
+
+</FrameLayout>

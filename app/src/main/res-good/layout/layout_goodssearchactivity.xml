@@ -4,16 +4,27 @@
     android:layout_height="match_parent"
     android:background="@color/whiteColor"
     android:orientation="vertical">
-    <!--商品搜索-->
 
+    <!--商品搜索-->
     <include layout="@layout/include_good_search" />
 
-    <com.example.applibrary.widget.WordWrapView
-        android:id="@+id/search_good_tag"
+    <LinearLayout
+        android:id="@+id/search_good_tag_view"
         style="@style/base_padding_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="搜索历史" />
+
+        <com.example.applibrary.widget.WordWrapView
+            android:id="@+id/search_good_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <!--提示-->
     <TextView

@@ -43,19 +43,19 @@ public class CardConvertRecordActivity extends BaseActivity {
         ListView listView = findViewById(R.id.list_view);
         refreshLayout = findViewById(R.id.refresh_layout);
 
-        refreshLayout.setEnableRefresh(false);
-        refreshLayout.setEnableLoadmore(false);
         refreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
                 super.onRefresh(refreshLayout);
                 page = 1;
+                getList();
             }
 
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
                 super.onLoadMore(refreshLayout);
                 page++;
+                getList();
             }
         });
 

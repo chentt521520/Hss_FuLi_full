@@ -331,7 +331,7 @@ public class GoodsBuyActivity extends BaseActivity {
 
             @Override
             public void error(int code, String msg) {
-                toast(code, msg);
+                toast(code + "," + msg);
             }
         });
     }
@@ -671,7 +671,7 @@ public class GoodsBuyActivity extends BaseActivity {
                     if (jsonObject.containsKey("code")) {
                         int code = jsonObject.getInteger("code");
                         if (code == 200) {
-                            tost("支付成功");
+                            toast("支付成功");
                             if (intentFlag == ConfigVariate.flagGrouponIntent) {//开团成功
                                 Intent intent = new Intent(GoodsBuyActivity.this, GouponPayActivity.class);
                                 intent.putExtra("orderId", jsonObject.getString("msg"));
@@ -708,7 +708,7 @@ public class GoodsBuyActivity extends BaseActivity {
             if (TextUtils.equals(action, IntentUtils.pay)) {//微信
                 switch (status) {
                     case "0":
-                        tost("支付成功");
+                        toast("支付成功");
                         if (intentFlag == ConfigVariate.flagGrouponIntent) {
                             //开团成功
                             IntentUtils.startIntent(GoodsBuyActivity.this, GouponPayActivity.class);
@@ -718,19 +718,19 @@ public class GoodsBuyActivity extends BaseActivity {
                         }
                         break;
                     case "-1":
-                        tost("检测到您没有安装微信");
+                        toast("检测到您没有安装微信");
                         flag = 0;
                         break;
                     case "1":
-                        tost("支付失败");
+                        toast("支付失败");
                         flag = 0;
                         break;
                     case "2":
-                        tost("支付取消");
+                        toast("支付取消");
                         flag = 0;
                         break;
                     default:
-                        tost("支付失败");
+                        toast("支付失败");
                         flag = 0;
                         break;
                 }
@@ -774,7 +774,7 @@ public class GoodsBuyActivity extends BaseActivity {
             @Override
             public void success(UserInfo result) {
                 if (Double.parseDouble(result.getNow_money()) < payPrice) {
-                    tost("余额不足" + payPrice);
+                    toast("余额不足" + payPrice);
                 } else {
                     checkPass();
                 }

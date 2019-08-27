@@ -55,7 +55,6 @@ public class ChangePhoneActivity extends BaseActivity {
                     break;
                 case R.id.action_phone_next:  //提交
                     submit();
-                    tost("提交");
                     break;
             }
         }
@@ -98,7 +97,7 @@ public class ChangePhoneActivity extends BaseActivity {
             super.onSucceed(msg);
             switch (msg.arg1) {
                 case 1: //验证码
-                    tost("验证码已发送");
+                    toast("验证码已发送");
                     break;
                 case 2: //修改
                     break;

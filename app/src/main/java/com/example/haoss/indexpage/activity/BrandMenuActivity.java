@@ -178,7 +178,7 @@ public class BrandMenuActivity extends BaseActivity {
 
             @Override
             public void error(int code, String msg) {
-                toast(code, msg);
+                toast(code + "," + msg);
             }
         });
     }

@@ -241,6 +241,11 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="_333333_16">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="_333333_12">
         <item name="android:textColor">#333333</item>
         <item name="android:textSize">12sp</item>
@@ -249,6 +254,21 @@
     <style name="_666666_12">
         <item name="android:textColor">#666666</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="_999999_12">
+        <item name="android:textColor">#999999</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="_999999_14">
+        <item name="android:textColor">#999999</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="_999999_16">
+        <item name="android:textColor">#999999</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="radio_btn">

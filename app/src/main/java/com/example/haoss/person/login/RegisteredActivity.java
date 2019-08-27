@@ -85,7 +85,7 @@ public class RegisteredActivity extends BaseActivity {
         ApiManager.getResultStatus(url, map, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
-                tost("已发送");
+                toast("已发送");
                 regHuoquCode.setEnabled(false);
                 timer = new Timer();
                 timer.schedule(new TimerTask() {
@@ -98,7 +98,7 @@ public class RegisteredActivity extends BaseActivity {
 
             @Override
             public void error(int code, String msg) {
-                tost(code + "," + msg);
+                toast(code + "," + msg);
             }
         });
     }
@@ -111,17 +111,17 @@ public class RegisteredActivity extends BaseActivity {
             return;
         }
         if (TextUtils.isEmpty(code)) {
-            tost("验证码不能为空！");
+            toast("验证码不能为空！");
             return;
         }
         String psw = reg_input_edit_password.getText().toString();
         if (psw.length() < 6) {
-            tost("密码长度不能低于6位");
+            toast("密码长度不能低于6位");
             return;
         }
         String psw2 = reg_input_edit_password2.getText().toString();
         if (!psw2.equals(psw)) {
-            tost("两次密码输入不一致");
+            toast("两次密码输入不一致");
             return;
         }
         String url = Netconfig.register;
@@ -138,7 +138,7 @@ public class RegisteredActivity extends BaseActivity {
 
             @Override
             public void error(int code, String msg) {
-                tost(code + "," + msg);
+                toast(code + "," + msg);
             }
         });
     }

@@ -109,9 +109,9 @@ public class SharedPreferenceUtils {
 
     private static String searchTag(Context context, String key, String value) {
         StringBuilder builder = new StringBuilder();
-        String seachTag = (String) getPreference(context, "SearchTag", "S");
-        if (!TextUtils.isEmpty(seachTag)) {
-            builder.append(seachTag).append(",");
+        String searchTag = (String) getPreference(context, key, "S");
+        if (!TextUtils.isEmpty(searchTag) && !searchTag.contains(value)) {
+            builder.append(searchTag).append(",");
         }
 
         if (!TextUtils.isEmpty(value)) {

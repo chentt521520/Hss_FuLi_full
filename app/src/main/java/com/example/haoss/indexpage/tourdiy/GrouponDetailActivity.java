@@ -438,7 +438,7 @@ public class GrouponDetailActivity extends BaseActivity {
     private void dialogPay(int flag) {
         //未登录则先登录
         if (goodInfo == null) {
-            tost("加载数据失败");
+            toast("加载数据失败");
         } else {
             if (dialog == null)
                 dialog = new DialogGoodsPay(this, goodInfo, productAttr, flag);

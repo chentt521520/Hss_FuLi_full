@@ -216,7 +216,7 @@ public class AddressShowActivity extends BaseActivity {
         ApiManager.getResultStatus(url, map, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
-                tost("已删除");
+                toast("已删除");
                 page = 1;
                 getHttp();
             }

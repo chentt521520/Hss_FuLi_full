@@ -24,6 +24,7 @@ import com.example.applibrary.utils.IntentUtils;
 import com.example.applibrary.utils.MD5Util;
 import com.example.applibrary.utils.StringUtils;
 import com.example.applibrary.utils.VerifyPhoneUtils;
+import com.example.haoss.MainActivity;
 import com.example.haoss.R;
 import com.example.haoss.base.AppLibLication;
 import com.example.haoss.base.BaseActivity;
@@ -107,9 +108,6 @@ public class LoginActivity extends BaseActivity {
         ButterKnife.bind(this);
         mContext = this;
         flag = getIntent().getIntExtra(IntentUtils.intentActivityFlag, 0);
-        if (flag == 1) {
-            page_back.setVisibility(View.GONE);
-        }
         account = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.sPdbAccount, "S");
         password = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.sPdbPassword, "S");
         inputEditName.setText(account);
@@ -129,7 +127,11 @@ public class LoginActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.page_back:
-                finish();
+                if (flag == 1) {
+                    IntentUtils.startIntentFrist(LoginActivity.this, MainActivity.class);
+                } else {
+                    finish();
+                }
                 break;
             case R.id.icon_pwd_invisible:
                 if (inputEditPsw.getInputType() == 128) {
@@ -187,7 +189,7 @@ public class LoginActivity extends BaseActivity {
         ApiManager.getResultStatus(url, map, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
-                tost("已发送");
+                toast("已发送");
                 obtainCode.setEnabled(false);
                 timer = new Timer();
                 timer.schedule(new TimerTask() {
@@ -200,7 +202,7 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void error(int code, String msg) {
-                tost(code + "," + msg);
+                toast(code + "," + msg);
             }
         });
     }
@@ -237,7 +239,7 @@ public class LoginActivity extends BaseActivity {
                 return;
             }
             if (TextUtils.isEmpty(code)) {
-                showToast("验证码不能为空！");
+                toast("验证码不能为空！");
             } else {
                 login(2, phone, code);
             }
@@ -248,7 +250,7 @@ public class LoginActivity extends BaseActivity {
             if (!VerifyPhoneUtils.judgePhone(LoginActivity.this, account))
                 return;
             if (TextUtils.isEmpty(password)) {
-                showToast("密码输入不能为空！");
+                toast("密码输入不能为空！");
             } else {
                 login(1, account, password);
             }
@@ -276,7 +278,7 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void error(int code, String msg) {
-                tost(code + "," + msg);
+                toast(code + "," + msg);
             }
         });
     }
@@ -318,7 +320,11 @@ public class LoginActivity extends BaseActivity {
             public void success(PassCheck result) {
                 boolean is_pass = result.isIs_pass();
                 SharedPreferenceUtils.setPreference(LoginActivity.this, ConfigVariate.isPass, is_pass, "B");
-                finish();
+                if (flag == 1) {
+                    IntentUtils.startIntentFrist(LoginActivity.this, MainActivity.class);
+                } else {
+                    finish();
+                }
             }
 
             @Override
@@ -333,8 +339,7 @@ public class LoginActivity extends BaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (flag == 1) {
-                toast("请登录您的账号!");
-                return true;
+                IntentUtils.startIntentFrist(LoginActivity.this, MainActivity.class);
             }
         }
         return super.onKeyDown(keyCode, event);

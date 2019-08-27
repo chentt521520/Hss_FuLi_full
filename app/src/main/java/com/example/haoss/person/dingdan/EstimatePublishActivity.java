@@ -165,9 +165,9 @@ public class EstimatePublishActivity extends BaseActivity {
             @Override
             public void success(String result) {
                 if (count != 0) {
-                    tost("评价成功！上传" + count + "张图片失败");
+                    toast("评价成功！上传" + count + "张图片失败");
                 } else {
-                    tost("评价成功！");
+                    toast("评价成功！");
                 }
                 finish();
             }
@@ -182,7 +182,7 @@ public class EstimatePublishActivity extends BaseActivity {
     private void updatePic() {
         String comment = comment_text.getText().toString();
         if (TextUtils.isEmpty(comment)) {
-            tost("评价内容不能为空!");
+            toast("评价内容不能为空!");
             return;
         }
 
@@ -210,7 +210,7 @@ public class EstimatePublishActivity extends BaseActivity {
                     }
                 });
             } else {
-                tost("获取token失败");
+                toast("获取token失败");
             }
         }
     }

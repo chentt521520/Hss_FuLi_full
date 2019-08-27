@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.mob.sdk'
+//apply plugin: 'com.mob.sdk'
 
 android {
     compileSdkVersion 28
@@ -7,8 +7,8 @@ android {
         applicationId "com.example.haoss"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 2
-        versionName "1.0.2"
+        versionCode 1
+        versionName "1.0.1"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -32,13 +32,13 @@ android {
     }
     buildToolsVersion '28.0.2'
 }
-MobSDK {
-    appKey "2b1f49d5ff438"
-    appSecret "51967ceadef1eafc24ca51e5fdde2787"
-
-    ShareSDK {}
-
-}
+//MobSDK {
+//    appKey "2b1f49d5ff438"
+//    appSecret "51967ceadef1eafc24ca51e5fdde2787"
+//
+//    ShareSDK {}
+//
+//}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:multidex:1.0.1'

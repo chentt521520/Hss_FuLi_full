@@ -18,11 +18,6 @@ public class CardRecord {
     private String card_num;
     private String add_time;
 
-    public CardRecord(String card_num, String price, String add_time) {
-        this.card_num = card_num;
-        this.price = price;
-        this.add_time = add_time;
-    }
 
     public int getId() {
         return id;

@@ -39,7 +39,7 @@ public class AfterSaleActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == IntentUtils.intentActivityRequestCode && resultCode == RESULT_OK) {
-            tost("回调执行");
+            toast("回调执行");
             getData();
         }
     }
@@ -102,7 +102,7 @@ public class AfterSaleActivity extends BaseActivity {
             afterSaleAdapter = new AfterSaleAdapter(this, list);
             aftersaleactivity_listview.setAdapter(afterSaleAdapter);
         } else if (list == null || list.size() == 0)
-            tost("暂无该类型数据！");
+            toast("暂无该类型数据！");
         afterSaleAdapter.setRefresh(list);
     }
 
