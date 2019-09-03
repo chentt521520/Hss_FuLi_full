@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.applibrary.base.ConfigHttpReqFields;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.entity.UserInfo;
+import com.example.applibrary.entity.WeiXinPayResult;
 import com.example.applibrary.httpUtils.HttpHander;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.IntentUtils;
@@ -29,6 +30,7 @@ import com.example.haoss.base.AppLibLication;
 import com.example.haoss.base.BaseActivity;
 import com.example.haoss.base.Constants;
 import com.example.haoss.manager.ApiManager;
+import com.example.haoss.pay.GoodsBuyActivity;
 import com.example.haoss.pay.aliapi.PayAliPay;
 import com.example.haoss.pay.wxapi.PayWeChar;
 
@@ -206,11 +208,11 @@ public class WalletActivity extends BaseActivity {
     private void setChoosePay(int type) {
         choosePay = type;
         if (type == 1) {
-            TextViewUtils.setImage(this, walletactivity_wechat, R.mipmap.wallet_wechat, 0, R.mipmap.wallet_check_yes, 0);
-            TextViewUtils.setImage(this, walletactivity_alipay, R.mipmap.wallet_alipay, 0, R.mipmap.wallet_check_no, 0);
+            TextViewUtils.setImage(this, walletactivity_wechat, R.mipmap.wallet_wechat, 0, R.mipmap.check_box_true, 0);
+            TextViewUtils.setImage(this, walletactivity_alipay, R.mipmap.wallet_alipay, 0, R.mipmap.check_box_false, 0);
         } else {
-            TextViewUtils.setImage(this, walletactivity_wechat, R.mipmap.wallet_wechat, 0, R.mipmap.wallet_check_no, 0);
-            TextViewUtils.setImage(this, walletactivity_alipay, R.mipmap.wallet_alipay, 0, R.mipmap.wallet_check_yes, 0);
+            TextViewUtils.setImage(this, walletactivity_wechat, R.mipmap.wallet_wechat, 0, R.mipmap.check_box_false, 0);
+            TextViewUtils.setImage(this, walletactivity_alipay, R.mipmap.wallet_alipay, 0, R.mipmap.check_box_true, 0);
         }
     }
 
@@ -251,56 +253,44 @@ public class WalletActivity extends BaseActivity {
         map.put("price", orgPrice);
         map.put("token", AppLibLication.getInstance().getToken());
         map.put("payType", payType);
-        httpHander.okHttpMapPost(this, url, map, 2);
-    }
 
-    HttpHander httpHander = new HttpHander() {
-        @Override
-        public void onSucceed(Message msg) {
-            super.onSucceed(msg);
-            switch (msg.arg1) {
-                case 2:
-                    Map<String, Object> map = ObjectMapperUtils.getUtils().jsonToMap(msg.obj.toString());
-                    if (map != null) {
-                        if (ObjectMapperUtils.getUtils().mapToInt(map, "code") != 200) {
-                            toast(map.get("msg") + "");
-                            return;
-                        }
-                        //1：微信支付，2：支付宝支付
-                        if (choosePay == 1) {
-                            Map<String, Object> mapWX = (Map<String, Object>) map.get("data");
-                            if (mapWX != null)
-                                wxGetOrder(mapWX);
-                            else
-                                toast("请求失败，重新尝试");
-                        } else
-                            aliGetOrder(map.get("data") + "");
+        if (payType.equals(Constants.WEIXIN)) {
+            ApiManager.weiXinPay(url, map, new OnHttpCallback<WeiXinPayResult>() {
+                @Override
+                public void success(WeiXinPayResult result) {
+                    //{"appid":"wxf82e7cb39cd3de8d",
+                    // "partnerid":"1518247781",
+                    // "prepayid":"wx18095633331498268034962f1278636200",
+                    // "package":"Sign=WXPay",
+                    // "noncestr":"rsMBOy1JXFq1jsTTTYlKEGZtH8glMNl8",
+                    // "timestamp":1560822993,
+                    // "sign":"FAC734ABF735CD539635FCA8B7EBBA90"}
+                    new PayWeChar(WalletActivity.this, result.getPartnerid(),
+                            result.getPrepayid(), result.getNoncestr(), result.getTimestamp() + "", result.getSign()).toWXPay();
+                }
+
+                @Override
+                public void error(int code, String msg) {
+                    toast(code, msg);
+                }
+            });
+        } else if (payType.equals(Constants.ALI)) {
+            ApiManager.getResultString(url, map, new OnHttpCallback<String>() {
+                @Override
+                public void success(String result) {
+                    if (!TextUtils.isEmpty(result)) {
+                        new PayAliPay(WalletActivity.this).PayZFB(result);
+                    } else {
+                        toast("请求失败，重新尝试");
                     }
-                    break;
-            }
+                }
 
+                @Override
+                public void error(int code, String msg) {
+                    toast(code, msg);
+                }
+            });
         }
-    };
-
-    //微信获取支付数据
-    private void wxGetOrder(Map<String, Object> map) {
-        //{"appid":"wxf82e7cb39cd3de8d",
-        // "partnerid":"1518247781",
-        // "prepayid":"wx18095633331498268034962f1278636200",
-        // "package":"Sign=WXPay",
-        // "noncestr":"rsMBOy1JXFq1jsTTTYlKEGZtH8glMNl8",
-        // "timestamp":1560822993,
-        // "sign":"FAC734ABF735CD539635FCA8B7EBBA90"}
-        new PayWeChar(this, map.get("partnerid") + "", map.get("prepayid") + "", map.get("noncestr") + "",
-                map.get("timestamp") + "", map.get("sign") + "").toWXPay();
-    }
-
-    //支付宝获取订单
-    private void aliGetOrder(String sAli) {
-        if (sAli != null)
-            new PayAliPay(this).PayZFB(sAli);
-        else
-            toast("请求失败，重新尝试");
     }
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin5"
+    android:paddingTop="@dimen/margin5">
+
+    <ImageView
+        android:id="@+id/item_meal_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/margin10"
+        android:layout_toEndOf="@+id/item_meal_image"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/item_meal_name"
+            style="@style/_333333_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/item_meal_count"
+            style="@style/_333333_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/width15"
+            android:layout_weight="0" />
+
+        <TextView
+            android:id="@+id/item_meal_price"
+            style="@style/_333333_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/height25"
+            android:layout_weight="0" />
+    </LinearLayout>
+
+
+</RelativeLayout>

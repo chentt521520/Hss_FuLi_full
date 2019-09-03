@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/btn_border"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        style="@style/base_padding_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_corner_12"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/item_group_meal_user_name"
+                style="@style/_333333_14_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/item_group_meal_user_phone"
+                style="@style/_333333_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/width15"
+                android:layout_toEndOf="@+id/item_group_meal_user_name" />
+
+            <TextView
+                android:id="@+id/item_group_meal_address"
+                style="@style/_333333_14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_group_meal_user_name"
+                android:layout_marginTop="@dimen/padding8"
+                android:layout_toStartOf="@+id/item_group_meal_call" />
+
+            <ImageView
+                android:id="@+id/item_group_meal_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/width15"
+                android:src="@mipmap/icon_phone" />
+
+        </RelativeLayout>
+
+        <View
+            style="@style/ui_line"
+            android:layout_marginBottom="@dimen/margin10"
+            android:layout_marginTop="@dimen/margin10" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/item_group_meal_good_count"
+                style="@style/_333333_14_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品（1）" />
+
+            <TextView
+                android:id="@+id/item_group_meal_look_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:drawableEnd="@mipmap/icon_down"
+                android:drawablePadding="@dimen/margin5"
+                android:text="查看"
+                android:textColor="#c22222"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/item_group_meal_good_remark"
+                style="@style/_333333_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_group_meal_good_count"
+                android:layout_marginBottom="@dimen/margin5"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="备注" />
+
+            <LinearLayout
+                android:id="@+id/item_group_meal_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_group_meal_good_remark"
+                android:orientation="vertical" />
+
+        </RelativeLayout>
+
+        <View
+            style="@style/ui_line"
+            android:layout_marginBottom="@dimen/margin5"
+            android:layout_marginTop="@dimen/margin5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/item_group_meal_order_price"
+                style="@style/_333333_14_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="订单金额：" />
+
+            <TextView
+                android:id="@+id/item_group_meal_order_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@mipmap/button_confirm"
+                android:gravity="center"
+                android:text="确认送达"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>

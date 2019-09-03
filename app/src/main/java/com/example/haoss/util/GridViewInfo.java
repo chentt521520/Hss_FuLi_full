@@ -11,6 +11,14 @@ public class GridViewInfo {
     private String name; //名称
     private String imgUrl; //图片地址
 
+    public GridViewInfo() {
+    }
+
+    public GridViewInfo(int image, String name) {
+        this.image = image;
+        this.name = name;
+    }
+
     public int getImage() {
         return image;
     }

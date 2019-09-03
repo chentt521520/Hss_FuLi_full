@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.dialog.MyDialogTwoButton;
 import com.example.applibrary.dialog.interfac.DialogOnClick;
 import com.example.applibrary.entity.OrderDetail;
@@ -46,6 +47,7 @@ public class MyOrderDetails extends BaseActivity {
     private String orderId; //订单号
     private OrderDetail orderDetailsInfo;  //订单信息
     private int status;
+    private int flag;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class MyOrderDetails extends BaseActivity {
         setTitleContentView(R.layout.activity_my_order_details);
 
         orderId = getIntent().getStringExtra("orderId");
+        flag = getIntent().getIntExtra("flag", 0);
         init();
     }
 
@@ -257,28 +260,39 @@ public class MyOrderDetails extends BaseActivity {
     }
 
     private void setView() {
-        switch (status) {
-            case 0://0 待付款
-                setButton(null, getResources().getString(R.string.order_cancel), getResources().getString(R.string.pay_now));
-                findViewById(R.id.ui_order_send_time_view).setVisibility(View.GONE);
-                break;
-            case 1://1 待发货
-                setButton(null, null, getResources().getString(R.string.attention_send));
-                findViewById(R.id.ui_order_send_time_view).setVisibility(View.GONE);
-                break;
-            case 2://2 待收货；
-                setButton(null, getResources().getString(R.string.look_express), getResources().getString(R.string.confirm_receive));
-                findViewById(R.id.ui_order_send_time_view).setVisibility(View.VISIBLE);
-                break;
-            case 3://3：待评价；
-                setButton(getResources().getString(R.string.order_delete), getResources().getString(R.string.apply_after_sales), getResources().getString(R.string.order_prise));
-                findViewById(R.id.ui_order_send_time_view).setVisibility(View.VISIBLE);
-                break;
-            case 4://4：已完成;
+        if (flag == ConfigVariate.flagGroupMealIntent) {
+            if (status == 4) {
                 setButton(getResources().getString(R.string.order_delete), getResources().getString(R.string.apply_after_sales), getResources().getString(R.string.buy_again));
                 findViewById(R.id.ui_order_send_time_view).setVisibility(View.VISIBLE);
-                break;
+            } else {
+                setButton(null, null, getResources().getString(R.string.confirm_send));
+                findViewById(R.id.ui_order_send_time_view).setVisibility(View.VISIBLE);
+            }
+        } else {
+            switch (status) {
+                case 0://0 待付款
+                    setButton(null, getResources().getString(R.string.order_cancel), getResources().getString(R.string.pay_now));
+                    findViewById(R.id.ui_order_send_time_view).setVisibility(View.GONE);
+                    break;
+                case 1://1 待发货
+                    setButton(null, null, getResources().getString(R.string.attention_send));
+                    findViewById(R.id.ui_order_send_time_view).setVisibility(View.GONE);
+                    break;
+                case 2://2 待收货；
+                    setButton(null, getResources().getString(R.string.look_express), getResources().getString(R.string.confirm_receive));
+                    findViewById(R.id.ui_order_send_time_view).setVisibility(View.VISIBLE);
+                    break;
+                case 3://3：待评价；
+                    setButton(getResources().getString(R.string.order_delete), getResources().getString(R.string.apply_after_sales), getResources().getString(R.string.order_prise));
+                    findViewById(R.id.ui_order_send_time_view).setVisibility(View.VISIBLE);
+                    break;
+                case 4://4：已完成;
+                    setButton(getResources().getString(R.string.order_delete), getResources().getString(R.string.apply_after_sales), getResources().getString(R.string.buy_again));
+                    findViewById(R.id.ui_order_send_time_view).setVisibility(View.VISIBLE);
+                    break;
+            }
         }
+
     }
 
     //设置按钮数据

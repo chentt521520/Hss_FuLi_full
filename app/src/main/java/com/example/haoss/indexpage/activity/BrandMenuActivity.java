@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.custom.CustomerScrollView;
@@ -18,6 +20,7 @@ import com.example.applibrary.entity.MenuCategory;
 import com.example.applibrary.entity.Nav;
 import com.example.applibrary.entity.Recommond;
 import com.example.applibrary.httpUtils.OnHttpCallback;
+import com.example.applibrary.utils.ImageUtils;
 import com.example.applibrary.utils.IntentUtils;
 import com.example.applibrary.utils.StringUtils;
 import com.example.haoss.R;
@@ -30,6 +33,8 @@ import com.example.haoss.indexpage.adapter.GridFavorAdapter;
 import com.example.haoss.indexpage.adapter.GridSortNavAdapter;
 import com.example.haoss.manager.ApiManager;
 import com.example.haoss.views.MyGridView;
+import com.example.haoss.views.banner.BannerViewPager;
+import com.example.haoss.views.banner.CreateView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,11 +42,11 @@ import java.util.List;
 
 public class BrandMenuActivity extends BaseActivity {
 
-    private FragmentView carousel;  //轮播
+    private BannerViewPager banner;  //轮播
 
-    private ArrayList<FragmentDataInfo> listBanner; //轮播
     private List<Nav> listNav, listBrandRecommad;
     private List<Recommond> listFavor;    //导航，礼包
+    private List<BannerInfo> listBanner;
 
     /**
      * 商品分类适配器
@@ -85,7 +90,7 @@ public class BrandMenuActivity extends BaseActivity {
         this.getTitleView().setTitleText(title);
 
         CustomerScrollView scrollView = findViewById(R.id.scroll_view);
-        carousel = findViewById(R.id.ui_bannar);
+        banner = findViewById(R.id.ui_menu_banner);
         MyGridView gridNav = findViewById(R.id.ui_grid_nav);
         RecyclerView gridBrandRecommad = findViewById(R.id.ui_grid_brand_recommad);
         MyGridView gridFavor = findViewById(R.id.ui_grid_favor);
@@ -138,16 +143,12 @@ public class BrandMenuActivity extends BaseActivity {
         ApiManager.getMenuCategory(url, map, new OnHttpCallback<MenuCategory>() {
             @Override
             public void success(MenuCategory result) {
-                List<BannerInfo> banner = result.getBanner();
-                for (BannerInfo info : banner) {
-                    FragmentDataInfo fragmentDataInfo = new FragmentDataInfo();
-                    fragmentDataInfo.setId(info.getId());
-                    fragmentDataInfo.setImageUrl(info.getImgUrl());
-                    fragmentDataInfo.setOrder(info.getOrder());
-                    listBanner.add(fragmentDataInfo);
+                if (!StringUtils.listIsEmpty(result.getBanner())) {
+                    listBanner = result.getBanner();
+                    createBanner();
+                } else {
+                    banner.setVisibility(View.GONE);
                 }
-                setCarousel();
-
                 listNav = result.getNav();
                 listBrandRecommad = result.getBrand_recommendation();
                 gideNavAdapter.refresh(result.getNav());
@@ -183,14 +184,25 @@ public class BrandMenuActivity extends BaseActivity {
         });
     }
 
-    //设置轮播数据
-    private void setCarousel() {
-        carousel.addFragment(getSupportFragmentManager(), listBanner, 3000, new OnclickFragmentView() {
+    private void createBanner() {
+
+        banner.setData(BrandMenuActivity.this, listBanner, new CreateView() {
             @Override
-            public void onItemclick(int id, String url) {
-                //轮播图点击操作
+            public View createView(int position) {
+                return LayoutInflater.from(BrandMenuActivity.this).inflate(R.layout.banner_image, null);
+            }
+
+            @Override
+            public void updateView(View view, int position, Object item) {
+                ImageView imageView = view.findViewById(R.id.banner_view);
+                ImageUtils.imageLoad(BrandMenuActivity.this, listBanner.get(position).getImgUrl(), imageView);
+            }
+
+            @Override
+            public void deleteView(int position) {
             }
         });
+        banner.startBanner();
     }
 
     //点击监听

@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.applibrary.base.Netconfig;
@@ -17,7 +19,9 @@ import com.example.applibrary.entity.BannerInfo;
 import com.example.applibrary.entity.FestivalGift;
 import com.example.applibrary.entity.Recommond;
 import com.example.applibrary.httpUtils.OnHttpCallback;
+import com.example.applibrary.utils.ImageUtils;
 import com.example.applibrary.utils.IntentUtils;
+import com.example.applibrary.utils.StringUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
 import com.example.haoss.goods.details.GoodsDetailsActivity;
@@ -25,6 +29,8 @@ import com.example.haoss.goods.search.GoodsSearchActivity;
 import com.example.haoss.indexpage.adapter.ListViewGiftCardAdapter;
 import com.example.haoss.indexpage.adapter.FestivalGiftBagAdapter;
 import com.example.haoss.manager.ApiManager;
+import com.example.haoss.views.banner.BannerViewPager;
+import com.example.haoss.views.banner.CreateView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,12 +39,12 @@ import java.util.List;
 //年节礼包
 public class FestivalGiftActivity extends BaseActivity {
 
-    FragmentView carousel;  //轮播
+    private BannerViewPager banner;  //轮播
 
     FestivalGiftBagAdapter giftPackageAdapter;    //生日汇-优选数据适配器
     ListViewGiftCardAdapter giftCardAdapter;    //生日汇-优选数据适配器
 
-    ArrayList<FragmentDataInfo> listBanner = new ArrayList<>(); //轮播
+    List<BannerInfo> listBanner = new ArrayList<>(); //轮播
     List<Recommond> giftPackageList = new ArrayList<>();  //生日汇-优选数据
     List<Recommond> giftCardList = new ArrayList<>(); //8选项
     private String title;
@@ -58,7 +64,6 @@ public class FestivalGiftActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        carousel.cancel();
     }
 
 
@@ -66,7 +71,7 @@ public class FestivalGiftActivity extends BaseActivity {
     private void init() {
         this.getTitleView().setTitleText(title);
 
-        carousel = findViewById(R.id.ui_bannar);
+        banner = findViewById(R.id.ui_menu_banner);
         findViewById(R.id.ui_grid_nav).setVisibility(View.GONE);
         ((TextView) findViewById(R.id.ui_brand_recommad_title)).setText("节日礼包");
 
@@ -100,15 +105,12 @@ public class FestivalGiftActivity extends BaseActivity {
         ApiManager.getFestivalGift(url, map, new OnHttpCallback<FestivalGift>() {
             @Override
             public void success(FestivalGift result) {
-                List<BannerInfo> banner = result.getBanner();
-                for (BannerInfo info : banner) {
-                    FragmentDataInfo fragmentDataInfo = new FragmentDataInfo();
-                    fragmentDataInfo.setId(info.getId());
-                    fragmentDataInfo.setImageUrl(info.getImgUrl());
-                    fragmentDataInfo.setOrder(info.getOrder());
-                    listBanner.add(fragmentDataInfo);
+                if (!StringUtils.listIsEmpty(result.getBanner())) {
+                    listBanner = result.getBanner();
+                    createBanner();
+                } else {
+                    banner.setVisibility(View.GONE);
                 }
-                setCarousel();
                 giftPackageList = result.getNav();
                 giftCardList = result.getRecommend();
                 giftPackageAdapter.freshList(result.getNav());
@@ -122,14 +124,25 @@ public class FestivalGiftActivity extends BaseActivity {
         });
     }
 
-    //设置轮播数据
-    private void setCarousel() {
-        carousel.addFragment(getSupportFragmentManager(), listBanner, 3000, new OnclickFragmentView() {
+    private void createBanner() {
+
+        banner.setData(FestivalGiftActivity.this, listBanner, new CreateView() {
             @Override
-            public void onItemclick(int id, String url) {
-                //轮播图点击操作
+            public View createView(int position) {
+                return LayoutInflater.from(FestivalGiftActivity.this).inflate(R.layout.banner_image, null);
+            }
+
+            @Override
+            public void updateView(View view, int position, Object item) {
+                ImageView imageView = view.findViewById(R.id.banner_view);
+                ImageUtils.imageLoad(FestivalGiftActivity.this, listBanner.get(position).getImgUrl(), imageView);
+            }
+
+            @Override
+            public void deleteView(int position) {
             }
         });
+        banner.startBanner();
     }
 
 

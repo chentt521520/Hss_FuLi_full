@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.applibrary.entity.BalanceRecord;
 import com.example.haoss.R;
 
 import java.util.List;

@@ -171,12 +171,25 @@
     </RelativeLayout>
 
     <!--账户验证页-->
-    <include
+
+    <LinearLayout
         android:id="@+id/paysettingactivity_acc"
-        layout="@layout/action_phone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone" />
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/action_phone_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="为了确保您的账户安全，请设置支付密码！"
+            android:textSize="9sp"
+            android:textColor="@color/baseRedColor" />
+
+        <include layout="@layout/action_phone" />
+
+    </LinearLayout>
 
     <!--设置成功页-->
     <LinearLayout

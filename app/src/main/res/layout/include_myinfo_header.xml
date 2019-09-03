@@ -1,53 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/person_info"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:layout_marginEnd="@dimen/margin10"
-    android:layout_marginStart="@dimen/margin10"
-    android:background="@drawable/person_head_bg"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#ffffff">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal">
+        android:background="@mipmap/bg_mine"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/person_user_head"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="@dimen/margin30"
-            android:src="@mipmap/person_user_head_img" />
+        <RelativeLayout
+            android:id="@+id/action_title_bg"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/action_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="个人中心"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/action_title_add"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:scaleType="fitCenter"
+                android:padding="12dp"
+                android:src="@mipmap/icon_setting" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin10"
+            android:layout_marginStart="@dimen/width15"
+            android:layout_marginTop="@dimen/margin10">
+
+            <ImageView
+                android:id="@+id/person_user_head"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:src="@mipmap/person_user_head_img" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/person_user_head"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/person_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:drawableEnd="@mipmap/right_arrow_white_s"
+                    android:drawablePadding="@dimen/margin10"
+                    android:text="请登录"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/person_user_name"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:text="欢迎来到蜀猪猪~~"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/person_sign_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/icon_checkin" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/person_user_name"
-            android:layout_width="0dp"
+            android:id="@+id/person_user_company"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15dp"
-            android:layout_weight="1"
-            android:text="请登录"
-            android:textColor="@color/white"
+            android:padding="@dimen/width15"
+            android:layout_marginStart="@dimen/width15"
+            android:drawableEnd="@mipmap/white_right_arrow"
+            android:text="@string/null_text"
+            android:textColor="#ffffff"
             android:textSize="14sp" />
-
-        <ImageView
-            android:id="@+id/person_user_name_riht"
-            android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="20dp"
-            android:src="@mipmap/white_right_arrow" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="0dp"
+        android:layout_marginEnd="@dimen/width15"
+        android:layout_marginStart="@dimen/width15"
+        android:layout_marginTop="-30dp"
+        android:background="@mipmap/bg_my_info"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
         <!--收藏-->
         <LinearLayout
@@ -60,18 +123,17 @@
 
             <TextView
                 android:id="@+id/person_collection_num"
+                style="@style/_333333_14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:text="0" />
 
             <TextView
+                style="@style/_333333_14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="收藏"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:layout_marginTop="@dimen/margin5"
+                android:text="收藏" />
         </LinearLayout>
         <!--足迹-->
         <LinearLayout
@@ -84,18 +146,17 @@
 
             <TextView
                 android:id="@+id/person_foot_num"
+                style="@style/_333333_14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:text="0" />
 
             <TextView
+                style="@style/_333333_14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="足迹"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:layout_marginTop="@dimen/margin5"
+                android:text="足迹" />
         </LinearLayout>
         <!--优惠劵-->
         <LinearLayout
@@ -108,42 +169,17 @@
 
             <TextView
                 android:id="@+id/person_coupons_num"
+                style="@style/_333333_14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:text="0" />
 
             <TextView
+                style="@style/_333333_14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="优惠券"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-        </LinearLayout>
-        <!--积分-->
-        <LinearLayout
-            android:id="@+id/person_integral_linear"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/person_integral_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="金币"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:layout_marginTop="@dimen/margin5"
+                android:text="优惠券" />
         </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.widget.ListView;
 
 import com.example.applibrary.base.Netconfig;
+import com.example.applibrary.entity.BalanceRecord;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.StringUtils;
 import com.example.applibrary.widget.freshLoadView.RefreshLayout;

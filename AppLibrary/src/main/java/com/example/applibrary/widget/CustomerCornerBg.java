@@ -1,57 +1,82 @@
 package com.example.applibrary.widget;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RadioButton;
 
+import com.example.applibrary.R;
 import com.example.applibrary.utils.DensityUtil;
 
-public class CustomerCornerBg extends Drawable {
+public class CustomerCornerBg extends View {
 
     private Context context;
     private Paint paint;
-    private float height;
-    private float width;
+    private Paint paint2;
+    private int padding;
+    private int height;
 
-    public CustomerCornerBg(Context context, float width, float height) {
+    public CustomerCornerBg(Context context) {
+        this(context, null);
+    }
+
+    public CustomerCornerBg(Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, 1);
+    }
+
+    public CustomerCornerBg(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         this.context = context;
-        this.height = height;
-        this.width = width;
+        this.padding = DensityUtil.dip2px(context, 20f);
+        this.height = DensityUtil.getScreenHeight(context);
         paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setAntiAlias(true);
+        paint2 = new Paint();
+        paint2.setColor(Color.GRAY);
+        paint2.setTextSize(DensityUtil.sp2px(context, 12f));
+    }
+
+    public void setSize(int padding, int height) {
+        this.padding = padding;
+        this.height = height;
     }
 
     @Override
-    public void draw(@NonNull Canvas canvas) {
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
 
-        int paddingLeft = DensityUtil.dip2px(context, width);
-        int right = DensityUtil.getScreenWidth(context) - paddingLeft;
-        int h = DensityUtil.dip2px(context, height);
-        RectF rect = new RectF(paddingLeft, 0, right, h);
-        canvas.drawRoundRect(rect, h / 2, h / 2, paint);
-    }
+        int width = DensityUtil.getScreenWidth(context) - 2 * padding;
+        RectF rect = new RectF(padding, 0, width + padding, height);
+        canvas.drawRoundRect(rect, height / 2, height / 2, paint);
 
-    @Override
-    public void setAlpha(int alpha) {
 
-    }
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_search);
 
-    @Override
-    public void setColorFilter(@Nullable ColorFilter colorFilter) {
+        Matrix matrix = new Matrix();
+        matrix.postScale(1f, 1f);
+        matrix.postTranslate(padding * 2f, (height - bitmap.getHeight()) / 2);
+        canvas.drawBitmap(bitmap, matrix, paint);
 
-    }
-
-    @Override
-    public int getOpacity() {
-        return 0;
+        Paint.FontMetrics fm = paint2.getFontMetrics();
+        int textHeight = (int) (fm.descent - fm.ascent);
+        int baseLine = height - textHeight;
+        Path path = new Path();
+        path.moveTo(padding, baseLine);
+        path.lineTo(width + padding, baseLine);
+        canvas.drawTextOnPath("搜索水果，蛋糕", path, bitmap.getWidth() + DensityUtil.dip2px(getContext(), 25f), 0, paint2);
     }
 }

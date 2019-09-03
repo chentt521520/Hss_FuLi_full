@@ -8,8 +8,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.applibrary.base.ConfigVariate;
@@ -17,7 +15,6 @@ import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.MD5Util;
 import com.example.applibrary.utils.SharedPreferenceUtils;
-import com.example.applibrary.utils.StringUtils;
 import com.example.applibrary.utils.VerifyPhoneUtils;
 import com.example.applibrary.widget.CustomTitleView;
 import com.example.haoss.R;
@@ -27,11 +24,10 @@ import com.example.haoss.manager.ApiManager;
 
 import java.util.HashMap;
 
+
 //支付设置
 public class PaySettingActivity extends BaseActivity {
     int flagActivity;   //0：支付设置主页，1：设置支付密码，2：验证账号，3：设置成功
-    LinearLayout paysettingactivity_payset, paysettingactivity_ok; //支付密码设置主页、设置成功页
-    RelativeLayout paysettingactivity_paysetpass, paysettingactivity_acc;   //设置支付密码页、账户设置页
     //设置支付密码
     TextView paysettingactivity_paysetpass_one, paysettingactivity_paysetpass_two, paysettingactivity_paysetpass_three,
             paysettingactivity_paysetpass_four, paysettingactivity_paysetpass_five, paysettingactivity_paysetpass_six; //1~6
@@ -74,7 +70,6 @@ public class PaySettingActivity extends BaseActivity {
         });
 
         boolean hasPwd = (boolean) SharedPreferenceUtils.getPreference(this, "PASSWORD", "B");
-        paysettingactivity_payset = findViewById(R.id.paysettingactivity_payset);
         setPwd = findViewById(R.id.paysettingactivity_setpaypas);
         setPwd.setOnClickListener(onClickListener);    //设置支付密码
         if (hasPwd) {
@@ -85,7 +80,6 @@ public class PaySettingActivity extends BaseActivity {
 
 
         //flag == 1
-        paysettingactivity_paysetpass = findViewById(R.id.paysettingactivity_paysetpass);
         paysettingactivity_paysetpass_one = findViewById(R.id.paysettingactivity_paysetpass_one);
         paysettingactivity_paysetpass_two = findViewById(R.id.paysettingactivity_paysetpass_two);
         paysettingactivity_paysetpass_three = findViewById(R.id.paysettingactivity_paysetpass_three);
@@ -96,15 +90,16 @@ public class PaySettingActivity extends BaseActivity {
         findViewById(R.id.paysettingactivity_paysetpass_sure).setOnClickListener(onClickListener);    //提交密码设置
 
         //flag == 2
-        paysettingactivity_acc = findViewById(R.id.paysettingactivity_acc);
         action_phone_input = findViewById(R.id.action_phone_input);
         action_phone_code = findViewById(R.id.action_phone_code);
         action_phone_getcode = findViewById(R.id.action_phone_getcode);
         action_phone_getcode.setOnClickListener(onClickListener); //获取验证码
         findViewById(R.id.action_phone_next).setOnClickListener(onClickListener);    //提交账户验证
 
-        //FLAG == 3
-        paysettingactivity_ok = findViewById(R.id.paysettingactivity_ok);
+        String phoneNum = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.sPdbAccount, "S");
+        action_phone_input.setText(phoneNum);
+        action_phone_input.setFocusable(false);
+
         linearShowAndHide();
         payPasswordInput();
     }
@@ -129,10 +124,6 @@ public class PaySettingActivity extends BaseActivity {
                 case R.id.action_phone_next:  //提交账户验证，下一步
                     showInput(action_phone_code, false);
 
-                    if (TextUtils.isEmpty(action_phone_input.getText())) {
-                        toast("请输入手机号");
-                        return;
-                    }
                     code = action_phone_code.getText().toString();
                     if (TextUtils.isEmpty(code)) {
                         toast("验证码为空");
@@ -151,10 +142,10 @@ public class PaySettingActivity extends BaseActivity {
 
     //界面显示和隐藏
     private void linearShowAndHide() {
-        paysettingactivity_payset.setVisibility(flagActivity == 0 ? View.VISIBLE : View.GONE);
-        paysettingactivity_paysetpass.setVisibility(flagActivity == 1 ? View.VISIBLE : View.GONE);
-        paysettingactivity_acc.setVisibility(flagActivity == 2 ? View.VISIBLE : View.GONE);
-        paysettingactivity_ok.setVisibility(flagActivity == 3 ? View.VISIBLE : View.GONE);
+        findViewById(R.id.paysettingactivity_payset).setVisibility(flagActivity == 0 ? View.VISIBLE : View.GONE);
+        findViewById(R.id.paysettingactivity_paysetpass).setVisibility(flagActivity == 1 ? View.VISIBLE : View.GONE);
+        findViewById(R.id.paysettingactivity_acc).setVisibility(flagActivity == 2 ? View.VISIBLE : View.GONE);
+        findViewById(R.id.paysettingactivity_ok).setVisibility(flagActivity == 3 ? View.VISIBLE : View.GONE);
     }
 
     /**

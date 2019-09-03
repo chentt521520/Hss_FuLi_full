@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/padding_left_right_10"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <!--左-->
+    <RelativeLayout
+        android:id="@+id/ui_index_today_sales"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height120"
+        android:layout_marginEnd="@dimen/height8"
+        android:layout_weight="1"
+        android:background="@drawable/bg_bai01"
+        android:padding="@dimen/margin10">
+
+        <TextView
+            android:id="@+id/ui_index_flash_sale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/flash_sale"
+            style="@style/_333333_18_bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/ui_index_flash_sale">
+
+            <TextView
+                android:id="@+id/ui_index_flash_sale_countdown_h"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="@dimen/height5"
+                android:background="@mipmap/icon_countdown"
+                style="@style/_333333_18_bold" />
+
+            <TextView
+                android:id="@+id/ui_index_flash_sale_countdown_m"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="@dimen/height5"
+                android:background="@mipmap/icon_countdown"
+                style="@style/_333333_18_bold" />
+
+            <TextView
+                android:id="@+id/ui_index_flash_sale_countdown_s"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/icon_countdown"
+                style="@style/_333333_18_bold" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/height5"
+            android:layout_below="@id/ui_index_flash_sale"
+            android:text="@string/flash_sale_tip"
+            style="@style/_666666_12" />
+
+        <!--立即疯抢按钮-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/margin10"
+            android:src="@mipmap/icon_buy" />
+
+        <!--图片-->
+        <ImageView
+            android:id="@+id/ui_index_today_sales_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentEnd="true"
+            android:scaleType="centerCrop"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/big_image01" />
+    </RelativeLayout>
+
+    <!--右-->
+    <RelativeLayout
+        android:id="@+id/ui_index_group_buying"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height120"
+        android:layout_marginStart="@dimen/height8"
+        android:layout_weight="1"
+        android:background="@drawable/bg_bai01"
+        android:padding="@dimen/margin10">
+        <!--图片-->
+        <ImageView
+            android:id="@+id/ui_index_group_buying_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="1dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/big_image01" />
+
+        <TextView
+            android:id="@+id/ui_index_group_buying_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/special_groupon"
+            style="@style/_333333_18_bold" />
+
+        <ImageView
+            android:id="@+id/ui_index_group_buying_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/height5"
+            android:layout_below="@id/ui_index_group_buying_title"
+            android:src="@mipmap/icon_shipping" />
+
+        <!--进入专区按钮-->
+        <TextView
+            android:id="@+id/ui_index_group_buying_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ui_index_group_buying_btn"
+            android:layout_marginTop="@dimen/width15"
+            style="@style/_c22222_16_bold" />
+    </RelativeLayout>
+</LinearLayout>

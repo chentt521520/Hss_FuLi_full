@@ -99,7 +99,7 @@ public class OrderDetail {
     private String mark;
     private int is_del;
     private String unique;
-    private Object remark;
+    private String remark;
     private int mer_id;
     private int is_mer_check;
     private int combination_id;
@@ -419,11 +419,11 @@ public class OrderDetail {
         this.unique = unique;
     }
 
-    public Object getRemark() {
+    public String getRemark() {
         return remark;
     }
 
-    public void setRemark(Object remark) {
+    public void setRemark(String remark) {
         this.remark = remark;
     }
 

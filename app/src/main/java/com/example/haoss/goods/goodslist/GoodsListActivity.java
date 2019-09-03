@@ -45,7 +45,6 @@ public class GoodsListActivity extends BaseActivity {
     private List<GoodList> listGoods; //商品数据
     private GoodsSearchAdapter goodsSearchAdapter;  //商品促销适配器
     private int searchType = -1;  //商品类型标记(分类ID)
-    private String searchText = "";  //要搜索的内容
     private int page = 1;
     private String priceOrder = "";//asc正序；desc倒序
     private String saleOrder = "";

@@ -26,9 +26,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/walletactivity_money"
-            android:layout_marginRight="5dp"
             android:layout_marginBottom="3dp"
-            android:layout_toLeftOf="@id/walletactivity_money"
+            android:layout_marginEnd="5dp"
+            android:layout_toStartOf="@id/walletactivity_money"
             android:text="¥"
             android:textColor="@color/whiteColor"
             android:textSize="24sp" />
@@ -38,207 +38,195 @@
             android:id="@+id/walletactivity_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:padding="10dp"
-            android:text="充值记录"
+            android:text="消费记录"
             android:textColor="@color/whiteColor"
             android:textSize="10sp" />
     </RelativeLayout>
 
-    <!--线-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/huiColorf0" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:text="账户充值"
-        android:textColor="@color/blackColor4d"
-        android:textSize="12sp"
-        android:textStyle="bold" />
-
-    <!--充值金额-->
     <LinearLayout
-        style="@style/base_padding_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="@dimen/margin10">
 
-        <!--100-->
-        <RelativeLayout
-            android:id="@+id/walletactivity_topup100"
-            android:layout_width="0dp"
-            android:layout_height="65dp"
-            android:layout_margin="@dimen/margin5"
-            android:layout_weight="1"
-            android:background="@mipmap/wallet_red_nk"
-            android:padding="12sp">
+        <View style="@style/ui_line" />
 
-            <TextView
-                android:id="@+id/sale_price1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="100元"
-                android:textColor="@color/baseRedColor"
-                android:textSize="18sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/width15"
+            android:text="账户充值"
+            android:textColor="@color/blackColor4d"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/real_price1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="售价98元"
-                android:textColor="@color/baseRedColor"
-                android:textSize="12sp" />
-        </RelativeLayout>
+        <!--充值金额-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin10"
+            android:paddingTop="@dimen/margin10">
 
-        <!--300-->
-        <RelativeLayout
-            android:id="@+id/walletactivity_topup300"
-            android:layout_width="0dp"
-            android:layout_height="65dp"
-            android:layout_margin="@dimen/margin5"
-            android:layout_weight="1"
-            android:background="@mipmap/wallet_red_nk"
-            android:padding="12sp">
+            <!--100-->
+            <RelativeLayout
+                android:id="@+id/walletactivity_topup100"
+                android:layout_width="0dp"
+                android:layout_height="65dp"
+                android:layout_margin="@dimen/margin5"
+                android:layout_weight="1"
+                android:background="@mipmap/wallet_red_nk"
+                android:padding="12sp">
 
-            <TextView
-                android:id="@+id/sale_price2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="300元"
-                android:textColor="@color/baseRedColor"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/sale_price1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="100元"
+                    android:textColor="@color/baseRedColor"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/real_price2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="售价288元"
-                android:textColor="@color/baseRedColor"
-                android:textSize="12sp" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/real_price1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="售价98元"
+                    android:textColor="@color/baseRedColor"
+                    android:textSize="12sp" />
+            </RelativeLayout>
 
-        <!--500-->
-        <RelativeLayout
-            android:id="@+id/walletactivity_topup500"
-            android:layout_width="0dp"
-            android:layout_height="65dp"
-            android:layout_margin="@dimen/margin5"
-            android:layout_weight="1"
-            android:background="@mipmap/wallet_red_nk"
-            android:padding="12sp">
+            <!--300-->
+            <RelativeLayout
+                android:id="@+id/walletactivity_topup300"
+                android:layout_width="0dp"
+                android:layout_height="65dp"
+                android:layout_margin="@dimen/margin5"
+                android:layout_weight="1"
+                android:background="@mipmap/wallet_red_nk"
+                android:padding="12sp">
 
-            <TextView
-                android:id="@+id/sale_price3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="500元"
-                android:textColor="@color/baseRedColor"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/sale_price2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="300元"
+                    android:textColor="@color/baseRedColor"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/real_price3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="售价475元"
-                android:textColor="@color/baseRedColor"
-                android:textSize="12sp" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/real_price2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="售价288元"
+                    android:textColor="@color/baseRedColor"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <!--500-->
+            <RelativeLayout
+                android:id="@+id/walletactivity_topup500"
+                android:layout_width="0dp"
+                android:layout_height="65dp"
+                android:layout_margin="@dimen/margin5"
+                android:layout_weight="1"
+                android:background="@mipmap/wallet_red_nk"
+                android:padding="12sp">
+
+                <TextView
+                    android:id="@+id/sale_price3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="500元"
+                    android:textColor="@color/baseRedColor"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/real_price3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="售价475元"
+                    android:textColor="@color/baseRedColor"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/walletactivity_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="其他金额"
+            android:paddingTop="@dimen/margin5"
+            android:paddingBottom="@dimen/margin5"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:textSize="12sp" />
+
+        <!--说明-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="@dimen/margin10"
+            android:text="充值余额仅用于该平台内消费"
+            android:textColor="@color/huiColor80"
+            android:textSize="10dp" />
+
+        <!--微信支付-->
+        <TextView
+            android:id="@+id/walletactivity_wechat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin5"
+            android:drawableStart="@mipmap/wallet_wechat"
+            android:drawablePadding="15dp"
+            android:drawableEnd="@mipmap/check_box_false"
+            android:gravity="center_vertical"
+            android:text="微信支付"
+            android:textColor="@color/blackColor0f"
+            android:textSize="12sp" />
+
+        <View style="@style/ui_line" />
+
+        <!--支付宝支付-->
+        <TextView
+            android:id="@+id/walletactivity_alipay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin5"
+            android:drawableStart="@mipmap/wallet_alipay"
+            android:drawablePadding="15dp"
+            android:drawableEnd="@mipmap/check_box_false"
+            android:gravity="center_vertical"
+            android:text="支付宝支付"
+            android:textColor="@color/blackColor0f"
+            android:textSize="12sp" />
+
+
+        <!--立即支付-->
+        <TextView
+            android:id="@+id/walletactivity_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin30"
+            android:background="@mipmap/bg_estimate_btn"
+            android:gravity="center"
+            android:text="立即充值"
+            android:textColor="@color/whiteColor"
+            android:textSize="14sp" />
+
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/walletactivity_other"
-        style="@style/base_padding_border"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:inputType="number"
-        android:hint="其他金额"
-        android:textSize="12sp" />
-
-    <!--说明-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin10"
-        android:layout_marginBottom="20dp"
-        android:paddingLeft="15dp"
-        android:text="充值余额仅用于该平台内消费"
-        android:textColor="@color/huiColor80"
-        android:textSize="10dp" />
-
-    <!--微信支付-->
-    <TextView
-        android:id="@+id/walletactivity_wechat"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:drawableLeft="@mipmap/wallet_wechat"
-        android:drawableRight="@mipmap/wallet_check_no"
-        android:drawablePadding="15dp"
-        android:padding="15dp"
-        android:text="微信支付"
-        android:textColor="@color/blackColor0f"
-        android:textSize="12sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/huiColorf0" />
-
-    <!--支付宝支付-->
-    <TextView
-        android:id="@+id/walletactivity_alipay"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:drawableLeft="@mipmap/wallet_alipay"
-        android:drawableRight="@mipmap/wallet_check_no"
-        android:drawablePadding="15dp"
-        android:padding="15dp"
-        android:text="支付宝支付"
-        android:textColor="@color/blackColor0f"
-        android:textSize="12sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/huiColorf0" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <!--立即支付-->
-    <TextView
-        android:id="@+id/walletactivity_submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:background="@drawable/bg_red_02"
-        android:gravity="center"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="立即充值"
-        android:textColor="@color/whiteColor"
-        android:textSize="14sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3" />
 </LinearLayout>

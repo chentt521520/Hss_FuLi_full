@@ -123,6 +123,7 @@
     <string name="good_coupon">优惠券</string>
     <string name="good_coin">金币</string>
     <string name="order_total_price">订单总价</string>
+    <string name="order_total_price1">订单金额：</string>
     <string name="order_information">订单信息</string>
     <string name="order_number">订单编号</string>
     <string name="copy">复制</string>
@@ -141,6 +142,10 @@
     <string name="order_prise">评价</string>
     <string name="order_prised">已评价</string>
     <string name="copy_success">复制成功！</string>
+    <string name="confirm_send">确认送达</string>
+    <string name="pay_type">支付方式</string>
+    <string name="complete_time">完成时间</string>
+    <string name="confirm_send_over">确认已经送达？</string>
 
     <!--物流信息-->
     <string name="express_detail">物流详情</string>
@@ -176,5 +181,17 @@
     <string name="approval_user">审批人</string>
     <string name="review_user">抄送人</string>
     <string name="approval_submit">提交</string>
+
+
+    <string name="flash_sale">限时特价</string>
+    <string name="flash_sale_tip">爆款天天抢</string>
+    <string name="special_groupon">别样拼团</string>
+    <string name="wonderful_activity">精彩活动</string>
+    <string name="more_activity">超多活动等你来</string>
+    <string name="my_icon">我的金币</string>
+    <string name="sign_notice">签到提醒</string>
+    <string name="my_icon_task">金币任务</string>
+    <string name="my_icon_task_tip">做任务领金币</string>
+    <string name="sign_in">签到</string>
 
 </resources>

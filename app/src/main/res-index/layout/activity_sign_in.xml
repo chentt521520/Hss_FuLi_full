@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/background_checkin_on" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/background_checkin_under"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/margin10"
+            android:paddingStart="@dimen/margin10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_white_corner_12"
+                android:paddingBottom="@dimen/height20"
+                android:paddingEnd="@dimen/width15"
+                android:paddingStart="@dimen/width15"
+                android:paddingTop="@dimen/height20">
+
+                <TextView
+                    android:id="@+id/my_icon_view"
+                    style="@style/_333333_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_icon" />
+
+                <TextView
+                    android:id="@+id/my_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/my_icon_view"
+                    android:layout_marginStart="@dimen/padding8"
+                    android:layout_toEndOf="@+id/my_icon_view"
+                    android:text="@string/my_icon"
+                    android:textColor="#ffc211"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/ui_sign_in"
+                    style="@style/_666666_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:drawableEnd="@mipmap/button_open"
+                    android:drawablePadding="@dimen/padding8"
+                    android:gravity="center_vertical"
+                    android:text="@string/sign_notice" />
+
+                <!--<com.example.haoss.views.SignInCalendar-->
+                <!--android:id="@+id/ui_sign_in_calendar"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/my_icon_view"-->
+                <!--android:layout_marginTop="@dimen/margin30"-->
+                <!--android:layout_marginBottom="@dimen/margin30"-->
+                <!--android:layout_centerHorizontal="true"/>-->
+
+                <include
+                    android:id="@+id/ui_sign_in_calendar"
+                    layout="@layout/include_sign_in_calendar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/my_icon_view"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/margin30"
+                    android:layout_marginTop="@dimen/margin30" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ui_sign_in_calendar"
+                    android:layout_centerHorizontal="true"
+                    android:background="@mipmap/button_checkin"
+                    android:gravity="center"
+                    android:text="@string/sign_in"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin10"
+                android:background="@drawable/bg_white_corner_12"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/width15"
+                android:paddingEnd="@dimen/margin10"
+                android:paddingStart="@dimen/margin10"
+                android:paddingTop="@dimen/width15">
+
+                <TextView
+                    style="@style/_333333_18_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/height5"
+                    android:text="@string/my_icon_task" />
+
+                <TextView
+                    style="@style/_999999_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/height5"
+                    android:layout_marginTop="@dimen/padding8"
+                    android:text="@string/my_icon_task_tip" />
+
+                <com.example.applibrary.custom.MyListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/width15"
+                    android:scrollbars="none" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

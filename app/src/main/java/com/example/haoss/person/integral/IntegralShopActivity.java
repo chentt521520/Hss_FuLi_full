@@ -122,7 +122,7 @@ public class IntegralShopActivity extends BaseActivity {
             public void success(UserInfo result) {
                 ImageUtils.loadCirclePic(IntegralShopActivity.this, result.getAvatar(), header);
                 nickname.setText(result.getNickname());
-                integralCount.setText(result.getIntegral_shop_money() + "");
+//                integralCount.setText(result.getIntegral_shop_money() + "");
             }
 
             @Override

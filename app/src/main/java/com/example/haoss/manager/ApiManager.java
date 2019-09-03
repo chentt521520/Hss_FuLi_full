@@ -18,6 +18,7 @@ import com.example.applibrary.entity.GoodDetail;
 import com.example.applibrary.entity.GoodInfo;
 import com.example.applibrary.entity.GoodList;
 import com.example.applibrary.entity.GoodSort;
+import com.example.applibrary.entity.GroupMeal;
 import com.example.applibrary.entity.GrouponGoodInfo;
 import com.example.applibrary.entity.GrouponResult;
 import com.example.applibrary.entity.IndexResult;
@@ -40,7 +41,7 @@ import com.example.applibrary.httpUtils.OkHttpRequest;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.haoss.person.integral.IntegralInfo;
 import com.example.haoss.person.integral.IntegralRecord;
-import com.example.haoss.person.wallet.BalanceRecord;
+import com.example.applibrary.entity.BalanceRecord;
 
 import java.util.List;
 import java.util.Map;
@@ -295,7 +296,7 @@ public class ApiManager {
         });
     }
 
- /**
+    /**
      * 我的优惠券
      */
     public static void getMyCoupon(String url, Map<String, Object> map, OnHttpCallback<List<MyCoupon>> callback) {
@@ -311,12 +312,12 @@ public class ApiManager {
      * 获取收藏列表
      */
     public static void getCollectionList(String url, Map<String, Object> map, OnHttpCallback<List<CollectionInfo>> callback) {
-            OkHttpRequest.okHttpMapPost(url, map, callback, new OkHttpRequest.IRequestCallBack<List<CollectionInfo>>() {
-                @Override
-                public List<CollectionInfo> success(String responseStr) throws Exception {
-                    return JSONArray.parseArray(responseStr, CollectionInfo.class);
-                }
-            });
+        OkHttpRequest.okHttpMapPost(url, map, callback, new OkHttpRequest.IRequestCallBack<List<CollectionInfo>>() {
+            @Override
+            public List<CollectionInfo> success(String responseStr) throws Exception {
+                return JSONArray.parseArray(responseStr, CollectionInfo.class);
+            }
+        });
     }
 
     /**
@@ -501,6 +502,17 @@ public class ApiManager {
         });
     }
 
+    /**
+     * 获取团餐订单
+     */
+    public static void getGroupMeal(String url, Map<String, Object> map, OnHttpCallback<List<GroupMeal>> callback) {
+        OkHttpRequest.okHttpMapPost(url, map, callback, new OkHttpRequest.IRequestCallBack<List<GroupMeal>>() {
+            @Override
+            public List<GroupMeal> success(String responseStr) throws Exception {
+                return JSONObject.parseArray(responseStr, GroupMeal.class);
+            }
+        });
+    }
 
     /**
      * 接口返回成功与失败

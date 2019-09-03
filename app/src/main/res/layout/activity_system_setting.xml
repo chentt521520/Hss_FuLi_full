@@ -10,41 +10,47 @@
         android:id="@+id/ui_sys_set_line1"
         style="@style/ui_line" />
 
-    <!--手机号码-->
-    <TextView
-        android:layout_width="120dp"
+    <RelativeLayout
+        android:id="@+id/ui_sys_set_phone_view"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/ui_sys_set_line1"
-        android:gravity="center_vertical"
-        android:text="手机号码"
-        android:textColor="@color/blackColor0f"
-        android:textSize="12sp" />
+        android:layout_below="@id/ui_sys_set_line1">
 
-    <TextView
-        android:id="@+id/ui_sys_set_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/ui_sys_set_line1"
-        android:drawablePadding="8dp"
-        android:drawableEnd="@mipmap/right_arrow_grey_s"
-        android:gravity="end|center_vertical"
-        android:textColor="@color/huiColor80"
-        android:textColorHint="@color/huiColor80"
-        android:textSize="12sp" />
+        <!--手机号码-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="手机号码"
+            android:textColor="@color/blackColor0f"
+            android:textSize="12sp" />
 
-    <!--线-->
-    <TextView
-        android:id="@+id/ui_sys_set_line2"
-        android:layout_below="@id/ui_sys_set_phone"
-        style="@style/ui_line" />
+        <TextView
+            android:id="@+id/ui_sys_set_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:drawableEnd="@mipmap/right_arrow_grey_s"
+            android:drawablePadding="8dp"
+            android:gravity="end"
+            android:textColor="@color/huiColor80"
+            android:textColorHint="@color/huiColor80"
+            android:textSize="12sp" />
+
+        <!--线-->
+        <TextView
+            android:id="@+id/ui_sys_set_line2"
+            style="@style/ui_line"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
 
     <!--支付设置-->
     <TextView
         android:id="@+id/ui_sys_set_pay"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/ui_sys_set_line2"
+        android:layout_below="@id/ui_sys_set_phone_view"
         android:drawableEnd="@mipmap/right_arrow_grey_s"
         android:gravity="center_vertical"
         android:text="支付设置"
@@ -54,8 +60,8 @@
     <!--线-->
     <TextView
         android:id="@+id/ui_sys_set_line3"
-        android:layout_below="@id/ui_sys_set_pay"
-        style="@style/ui_line" />
+        style="@style/ui_line"
+        android:layout_below="@id/ui_sys_set_pay" />
 
     <!--账号密码-->
     <TextView
@@ -72,8 +78,8 @@
     <!--线-->
     <TextView
         android:id="@+id/ui_sys_set_line4"
-        android:layout_below="@id/ui_sys_set_password"
-        style="@style/ui_line" />
+        style="@style/ui_line"
+        android:layout_below="@id/ui_sys_set_password" />
 
     <!--清除缓存-->
     <TextView
@@ -91,8 +97,8 @@
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/ui_sys_set_line4"
-        android:drawablePadding="8dp"
         android:drawableEnd="@mipmap/right_arrow_grey_s"
+        android:drawablePadding="8dp"
         android:gravity="end|center_vertical"
         android:textColor="@color/huiColor80"
         android:textSize="12sp" />
@@ -100,8 +106,8 @@
     <!--线-->
     <TextView
         android:id="@+id/ui_sys_set_line5"
-        android:layout_below="@id/ui_sys_set_cache"
-        style="@style/ui_line" />
+        style="@style/ui_line"
+        android:layout_below="@id/ui_sys_set_cache" />
 
     <!--关于我们-->
     <TextView
@@ -119,8 +125,8 @@
     <!--线-->
     <TextView
         android:id="@+id/ui_sys_set_line6"
-        android:layout_below="@id/ui_sys_set_about"
-        style="@style/ui_line" />
+        style="@style/ui_line"
+        android:layout_below="@id/ui_sys_set_about" />
 
     <!--版本说明-->
     <TextView
@@ -137,19 +143,19 @@
         android:id="@+id/ui_sys_set_versions"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
         android:layout_below="@id/ui_sys_set_line6"
         android:drawableEnd="@mipmap/right_arrow_grey_s"
-        android:gravity="center_vertical"
-        android:layout_alignParentEnd="true"
         android:drawablePadding="@dimen/padding8"
+        android:gravity="center_vertical"
         android:textColor="@color/blackColor0f"
         android:textSize="12sp" />
 
     <!--线-->
     <TextView
         android:id="@+id/ui_sys_set_line7"
-        android:layout_below="@id/ui_sys_set_versions"
-        style="@style/ui_line" />
+        style="@style/ui_line"
+        android:layout_below="@id/ui_sys_set_versions" />
 
     <!--退出登录-->
     <TextView
@@ -157,11 +163,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ui_sys_set_line7"
+        android:layout_marginTop="@dimen/height35"
         android:background="@drawable/bg_red_01"
         android:gravity="center"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:layout_marginTop="@dimen/height35"
         android:text="退出登录"
         android:textColor="@color/whiteColor"
         android:textSize="15sp" />

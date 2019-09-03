@@ -93,6 +93,7 @@ public class OkhttpTool {
         request = new Request.Builder()
                 .url(url)
                 .post(formBody.build())
+                .header("Content-Type", "application/x-www-form-urlencoded")
                 .build();
 
         okHttpClient.newCall(request).enqueue(callback);
@@ -121,7 +122,6 @@ public class OkhttpTool {
                 .build();
 
         okHttpClient.newCall(request).enqueue(callback);
-
 
     }
 

@@ -1,121 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/padding_left_right_15"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="@dimen/margin5"
+    android:paddingBottom="@dimen/margin5">
 
-    <TextView
-        android:id="@+id/person_my_money_pg"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:drawableEnd="@mipmap/more_image"
-        android:drawablePadding="@dimen/margin10"
-        android:drawableStart="@mipmap/person_my_money_img"
-        android:gravity="center_vertical"
-        android:text="我的钱包"
-        android:textColor="@color/text_black"
-        android:textSize="14sp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/margin10"
+        android:paddingTop="@dimen/margin10">
 
-    <View style="@style/ui_line" />
+        <TextView
+            android:id="@+id/person_my_money_pg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_wallet"
+            android:gravity="center"
+            android:text="我的钱包"
+            style="@style/_666666_12" />
 
-    <TextView
-        android:id="@+id/person_my_shouhuo_address"
+        <TextView
+            android:id="@+id/person_my_shouhuo_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_address"
+            android:gravity="center"
+            android:text="收货地址"
+            style="@style/_666666_12" />
+
+        <TextView
+            android:id="@+id/person_my_card_convert"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_exchange"
+            android:gravity="center"
+            android:text="礼卡兑换"
+            style="@style/_666666_12" />
+
+        <TextView
+            android:id="@+id/person_indenty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_certification"
+            android:gravity="center"
+            android:text="实名认证"
+            style="@style/_666666_12" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:drawableEnd="@mipmap/more_image"
-        android:drawablePadding="@dimen/margin10"
-        android:drawableStart="@mipmap/person_shouhuo_addr"
-        android:gravity="center_vertical"
-        android:text="收货地址"
-        android:textColor="@color/text_black"
-        android:textSize="14sp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/margin10"
+        android:paddingTop="@dimen/margin10">
 
-    <View style="@style/ui_line" />
+        <TextView
+            android:id="@+id/person_my_shouhuo_myservice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_service"
+            android:gravity="center"
+            android:text="我的客服"
+            style="@style/_666666_12" />
 
-    <TextView
-        android:id="@+id/person_my_shouhuo_integralshop"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:drawableEnd="@mipmap/more_image"
-        android:drawablePadding="@dimen/margin10"
-        android:drawableStart="@mipmap/icon_integral_shop"
-        android:gravity="center_vertical"
-        android:text="积分商城"
-        android:textColor="@color/text_black"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/person_my_fuwu_tiaok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_terms"
+            android:gravity="center"
+            android:text="服务条款"
+            style="@style/_666666_12" />
 
-    <View style="@style/ui_line" />
+        <TextView
+            android:id="@+id/person_my_shouhuo_integralshop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_integral"
+            android:gravity="center"
+            android:text="积分商城"
+            style="@style/_666666_12" />
 
-    <TextView
-        android:id="@+id/person_my_card_convert"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:drawableEnd="@mipmap/more_image"
-        android:drawablePadding="@dimen/margin10"
-        android:drawableStart="@mipmap/icon_card_convert"
-        android:gravity="center_vertical"
-        android:text="礼卡兑换"
-        android:textColor="@color/text_black"
-        android:textSize="14sp"
-        android:visibility="visible" />
+        <TextView
+            android:id="@+id/person_my_yijian_fankui"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/icon_feedback"
+            android:gravity="center"
+            android:text="意见反馈"
+            style="@style/_666666_12" />
+    </LinearLayout>
 
-    <View style="@style/ui_line" />
-
-    <TextView
-        android:id="@+id/person_my_shouhuo_myservice"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:drawableEnd="@mipmap/more_image"
-        android:drawablePadding="@dimen/margin10"
-        android:drawableStart="@mipmap/service"
-        android:gravity="center_vertical"
-        android:text="我的客服"
-        android:textColor="@color/text_black"
-        android:textSize="14sp" />
-
-    <View style="@style/ui_line" />
-
-    <TextView
-        android:id="@+id/person_indenty"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:drawableEnd="@mipmap/more_image"
-        android:drawablePadding="@dimen/margin10"
-        android:drawableStart="@mipmap/icon_authentication"
-        android:gravity="center_vertical"
-        android:text="实名认证"
-        android:textColor="@color/text_black"
-        android:textSize="14sp" />
-
-    <View style="@style/ui_line" />
-
-    <TextView
-        android:id="@+id/person_my_fuwu_tiaok"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:drawableEnd="@mipmap/more_image"
-        android:drawablePadding="@dimen/margin10"
-        android:drawableStart="@mipmap/person_fuw_tiaok"
-        android:gravity="center_vertical"
-        android:text="服务条款"
-        android:textColor="@color/text_black"
-        android:textSize="14sp" />
-
-
-    <TextView
-        android:id="@+id/person_my_yijian_fankui"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:drawableEnd="@mipmap/more_image"
-        android:drawablePadding="@dimen/margin10"
-        android:drawableStart="@mipmap/feedback"
-        android:gravity="center_vertical"
-        android:text="意见反馈"
-        android:textColor="@color/text_black"
-        android:textSize="14sp"
-        android:visibility="gone" />
-
-    <!--<View style="@style/ui_line" />-->
 </LinearLayout>

@@ -14,154 +14,125 @@
         android:textSize="12sp"
         android:textStyle="bold" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp">
-
-        <View style="@style/ui_line" />
+        android:layout_height="20dp"
+        android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/ui_order_number_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:text="@string/order_number"
             android:textColor="@color/huiColor66"
-            android:textSize="11sp" />
+            android:layout_weight="0"
+            android:textSize="10sp" />
 
         <!--订单编号-->
         <TextView
             android:id="@+id/ui_order_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_weight="1"
             android:layout_marginStart="@dimen/margin10"
-            android:layout_toEndOf="@+id/ui_order_number_view"
+            android:layout_marginEnd="@dimen/margin10"
             android:singleLine="true"
             android:textColor="@color/huiColor66"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
-        <!--总价-->
         <TextView
             android:id="@+id/ui_order_number_copy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/margin10"
+            android:layout_weight="0"
             android:text="@string/copy"
             android:textColor="@color/baseRedColor"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:visibility="gone">
-
-        <View style="@style/ui_line" />
-
+        android:layout_height="20dp"
+        android:visibility="gone"
+        android:gravity="center_vertical">
         <TextView
-            android:id="@+id/ui_order_deal_number_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:text="@string/order_deal_number"
             android:textColor="@color/huiColor66"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/ui_order_deal_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin10"
-            android:layout_toEndOf="@+id/ui_order_deal_number_view"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp">
-
-        <View style="@style/ui_line" />
+        android:layout_height="20dp"
+        android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/ui_order_create_time_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:text="@string/order_create_time"
             android:textColor="@color/huiColor66"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
         <!--优惠劵-->
         <TextView
             android:id="@+id/ui_order_create_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin10"
-            android:layout_toEndOf="@+id/ui_order_create_time_view"
-            android:gravity="end"
-            android:textSize="11sp" />
-    </RelativeLayout>
+            android:textSize="10sp" />
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp">
-
-        <View style="@style/ui_line" />
+        android:layout_height="20dp"
+        android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/ui_order_pay_time_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:text="@string/order_pay_time"
             android:textColor="@color/huiColor66"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/ui_order_pay_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin10"
-            android:layout_toEndOf="@+id/ui_order_pay_time_view"
-            android:gravity="end"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/ui_order_send_time_view"
         android:layout_width="match_parent"
-        android:layout_height="25dp">
-
-        <View style="@style/ui_line" />
+        android:layout_height="20dp"
+        android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/ui_order_send_time_view1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:text="@string/order_send_time"
             android:textColor="@color/huiColor66"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/ui_order_send_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin10"
-            android:layout_toEndOf="@+id/ui_order_send_time_view1"
-            android:gravity="end"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

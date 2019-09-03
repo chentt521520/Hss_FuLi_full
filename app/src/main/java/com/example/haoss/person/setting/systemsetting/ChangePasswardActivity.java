@@ -2,13 +2,16 @@ package com.example.haoss.person.setting.systemsetting;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.utils.MD5Util;
+import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.applibrary.utils.ViewUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
@@ -45,7 +48,7 @@ public class ChangePasswardActivity extends BaseActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.changepasswardactivity_oldpasswordsh: //显示旧密码
-                    isOldShow=!isOldShow;
+                    isOldShow = !isOldShow;
                     showAndHidePassword(isOldShow, oldpassword, oldpasswordsh);
                     break;
                 case R.id.changepasswardactivity_newpasswordsh: //显示新密码
@@ -53,12 +56,29 @@ public class ChangePasswardActivity extends BaseActivity {
                     showAndHidePassword(isNewShow, newpassword, newpasswordsh);
                     break;
                 case R.id.changepasswardactivity_sure:  //确定
-                    String psw = newpassword.getText().toString();   //密码
-                    psw = MD5Util.getMD5String(psw);
+                    confirmPwd();
                     break;
             }
         }
     };
+
+    private void confirmPwd() {
+        String orgPas = (String) SharedPreferenceUtils.getPreference(ChangePasswardActivity.this, ConfigVariate.sPdbPassword, "S");
+
+        String oldPas = oldpassword.getText().toString();
+        String newPas = newpassword.getText().toString();
+        if (!TextUtils.equals(orgPas, oldPas)) {
+            toast("旧密码错误");
+            return;
+        }
+
+        if (!TextUtils.equals(newPas, oldPas)) {
+            toast("新密码与旧密码一致");
+            return;
+        }
+
+
+    }
 
     //隐藏和显示密码
     private void showAndHidePassword(boolean isChecked, EditText editText, ImageView imageView) {

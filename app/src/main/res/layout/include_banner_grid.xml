@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -9,10 +10,13 @@
         android:layout_height="200dp"
         android:background="@color/whiteColor">
         <!--轮播-->
-        <com.example.applibrary.custom.viewfragment.FragmentView
-            android:id="@+id/ui_bannar"
+        <com.example.haoss.views.banner.BannerViewPager
+            android:id="@+id/ui_menu_banner"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="match_parent"
+            app:loop_now_indicator_img="@mipmap/ic_origin"
+            app:loop_indicator_img="@mipmap/ic_un_origin"
+            app:loop_gravity="center" />
 
         <!--搜索-->
         <include

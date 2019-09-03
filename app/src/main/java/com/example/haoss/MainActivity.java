@@ -13,7 +13,7 @@ import android.widget.RadioGroup;
 import com.example.applibrary.custom.ToastUtils;
 import com.example.haoss.base.BaseActivity;
 import com.example.haoss.classification.GoodClassifyFragment;
-import com.example.haoss.indexpage.IndexPageFragment;
+import com.example.haoss.indexpage.ExcellentShopActivity;
 import com.example.haoss.person.PersonFragment;
 import com.example.haoss.shopcat.ShopCatFragment;
 import com.example.haoss.views.NoScrollViewPager;
@@ -89,12 +89,16 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        setBtnSelect();
+    }
+
+    private void setBtnSelect() {
+        mainVp.setCurrentItem(flag);
+
         guzhuRb.setChecked(flag == 0);
         fuwushangRb.setChecked(flag == 1);
         xiaoxiRb.setChecked(flag == 2);
         wodeRb.setChecked(flag == 3);
-
-        mainVp.setCurrentItem(flag);
     }
 
     /**
@@ -104,24 +108,22 @@ public class MainActivity extends BaseActivity {
         guzhuRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int x = 0;
                 switch (checkedId) {
 
                     case R.id.guzhu_rb:
-                        x = 0;
+                        flag = 0;
                         break;
                     case R.id.fuwushang_rb:
-                        x = 1;
+                        flag = 1;
                         break;
                     case R.id.xiaoxi_rb:
-                        x = 2;
+                        flag = 2;
                         break;
                     case R.id.wode_rb:
-                        x = 3;
+                        flag = 3;
                         break;
-
                 }
-                mainVp.setCurrentItem(x);
+                mainVp.setCurrentItem(flag);
             }
         });
     }
@@ -130,7 +132,7 @@ public class MainActivity extends BaseActivity {
      * 主页fragment
      */
     private void fragmentList() {
-        fraList.add(new IndexPageFragment());
+        fraList.add(new ExcellentShopActivity());
         fraList.add(new GoodClassifyFragment());
         fraList.add(new ShopCatFragment());
         fraList.add(new PersonFragment());
@@ -146,13 +148,17 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-        if (keyCode == KeyEvent.KEYCODE_BACK
-                && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if ((System.currentTimeMillis() - exitTime) > 2000) {
-                ToastUtils.getToastUtils().showToast(getApplicationContext(), "再按一次退出程序");
-                exitTime = System.currentTimeMillis();
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (flag == 0) {
+                if ((System.currentTimeMillis() - exitTime) > 2000) {
+                    ToastUtils.getToastUtils().showToast(getApplicationContext(), "再按一次退出程序");
+                    exitTime = System.currentTimeMillis();
+                } else {
+                    finish();
+                }
             } else {
-                finish();
+                flag = 0;
+                setBtnSelect();
             }
             return true;
         }

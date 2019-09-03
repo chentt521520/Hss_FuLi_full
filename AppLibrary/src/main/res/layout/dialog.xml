@@ -1,37 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_bai01"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:padding="25dp"
+    android:background="@drawable/bk_hui01">
 
+    <!--普通对话框界面-->
     <TextView
-        android:id="@+id/dialog_title"
-        android:layout_width="wrap_content"
+        android:id="@+id/dialog_buttontwo_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
+        android:text="对话框内容"
+        android:textSize="14sp"
+        android:textColor="#0f0f0f"
+        android:gravity="center" />
+
+    <EditText
+        android:id="@+id/dialog_buttontwo_input"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:text="msg"
+        android:textCursorDrawable="@null"
+        android:hint="请输入登录密码"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:textSize="14sp"
         android:textColor="#333333"
-        android:textSize="16sp" />
+        android:inputType="textPassword"
+        android:layout_below="@+id/dialog_buttontwo_text" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/dialog_buttontwo_sure"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dialog_title"
-        android:text="cancel"
-        android:textColor="#333333"
-        android:textSize="16sp" />
+        android:layout_below="@id/dialog_buttontwo_input"
+        android:text="确定"
+        android:textSize="14sp"
+        android:textColor="#ffffff"
+        android:background="@drawable/bg_red01"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="center" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/dialog_buttontwo_cancel"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_buttontwo_input"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/dialog_title"
-        android:text="confirm"
-        android:textColor="#333333"
-        android:textSize="16sp" />
-
-
+        android:text="取消"
+        android:textSize="14sp"
+        android:textColor="@color/baseRedColor"
+        android:background="@drawable/bk_red01"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="center" />
 </RelativeLayout>

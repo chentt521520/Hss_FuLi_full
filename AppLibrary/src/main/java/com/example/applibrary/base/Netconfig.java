@@ -9,6 +9,7 @@ public class Netconfig {
     //地址
 //    public static final String httpHost = "http://demo.haoshusi.com/";
     public static final String httpHost = "http://api.haoshusi.com/";
+//    public static final String httpHost = "http://192.168.68.214/";
 
     //子级地址
     private static final String subHost = "api/";
@@ -72,7 +73,6 @@ public class Netconfig {
     public static final String seckillShopList = subHost + "seckill/seckill_list" + endSite;
     //秒杀商品详情
     public static final String seckillShopDetails = subHost + "seckill/seckill_detail" + endSite;
-
     //分类列表
     public static final String categoryList = subHost + "store/get_product_list" + endSite;
     //分类导航
@@ -98,6 +98,12 @@ public class Netconfig {
     public static final String getForgetPwd = subHost + "login/getForgetPwd" + endSite;
     //微信登录
     public static final String wechatLogin = subHost + "login/wxLogin" + endSite;
+
+    public static final String newPhoneCode = subHost + "/login/getChangePhoneCode" + endSite;
+
+    public static final String newPhone = subHost + "/login/getChangePhone" + endSite;
+
+
 
 
     //添加/修改地址
@@ -214,6 +220,10 @@ public class Netconfig {
     public static final String addPayPass = subHost + "user/addPayPass" + endSite;
     public static final String express = subHost + "user/express" + endSite;
     public static final String Authentic = subHost + "user/realName" + endSite;
+    //团餐订单列表
+    public static final String groupMealOrder = subHost + "user/get_company_order_list" + endSite;
+
+    public static final String recharge = subHost + "companyRecharge/recharge" + endSite;
 
     public static final String PIC_URL = "http://qiniu.haoshusi.com/";
     public static final String PIC_PATH = "Android/";

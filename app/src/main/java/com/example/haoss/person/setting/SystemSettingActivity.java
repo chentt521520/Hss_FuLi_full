@@ -40,8 +40,8 @@ public class SystemSettingActivity extends BaseActivity {
         cache = findViewById(R.id.ui_sys_set_cache);
         TextView version = findViewById(R.id.ui_sys_set_versions);
 
-        phone.setOnClickListener(onClickListener);
         cache.setOnClickListener(onClickListener);
+        findViewById(R.id.ui_sys_set_phone_view).setOnClickListener(onClickListener);   //支付设置
         findViewById(R.id.ui_sys_set_pay).setOnClickListener(onClickListener);   //支付设置
         findViewById(R.id.ui_sys_set_password).setOnClickListener(onClickListener);   //账号密码
         findViewById(R.id.ui_sys_set_about).setOnClickListener(onClickListener);    //关于我
@@ -70,7 +70,7 @@ public class SystemSettingActivity extends BaseActivity {
                 case R.id.ui_sys_set_exit_login:  //退出登录
                     dialogExitLogin();
                     break;
-                case R.id.ui_sys_set_phone:  //电话号码
+                case R.id.ui_sys_set_phone_view:  //电话号码
                     IntentUtils.startIntent(SystemSettingActivity.this, ChangePhoneActivity.class);
                     break;
                 case R.id.ui_sys_set_cache:  //清除缓存

@@ -37,19 +37,26 @@ public class ConfigVariate {
     public static final String packOrderForm = "com.example.haoss.person.dingdan.MyOrderForm";
 
 
+    /*页面跳转参数*/
     //支付页面进行跳转到商品详情
     public static final int flagPayIntent = 0x701;
     //商品详情跳转到支付页面
     public static final int flagGoodsToPayIntent = 0x702;
     //购物车跳转到支付页面
     public static final int flagCarToPayIntent = 0x703;
-    //正常购买
-    public static final int flagIntent = 0x706;
     //平团详情
     public static final int flagGrouponIntent = 0x704;
     //特价
     public static final int flagSalesIntent = 0x705;
+    //正常购买
+    public static final int flagIntent = 0x706;
     //积分兑换商品
-    public static final int flagIntegralIntent = 0x706;
+    public static final int flagIntegralIntent = 0x707;
+    //团餐商品
+    public static final int flagGroupMealIntent = 0x708;
+
+
+    /*请求回调参数*/
+    public static final int cartFragment = 1;
 }
 

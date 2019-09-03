@@ -54,15 +54,11 @@ public class SelfGvadapter extends BaseAdapter {
         return 0;
     }
 
-    private ID id;
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-        if (convertView == null || convertView.getTag() == null) {
-            if (context != null) {
-                convertView = LayoutInflater.from(context).inflate(R.layout.my_grid_itme_item, null);
-            }
+        ID id;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.my_grid_itme_item, null);
             id = new ID();
             id.num = convertView.findViewById(R.id.gv_num);
             id.image = convertView.findViewById(R.id.gv_iv);
@@ -71,6 +67,7 @@ public class SelfGvadapter extends BaseAdapter {
         } else {
             id = (ID) convertView.getTag();
         }
+
         id.image.setImageResource(list.get(position).getImage());
         id.name.setText(list.get(position).getName());
         id.num.setText(list.get(position).getNum() + "");

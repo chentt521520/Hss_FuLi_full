@@ -1,226 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/bg_login_top" />
-
-        <include layout="@layout/action_title_view" />
-
-    </FrameLayout>
-
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin10"
-        android:layout_marginEnd="@dimen/margin10"
-        android:layout_marginStart="@dimen/margin10"
-        android:layout_marginTop="-30dp"
-        android:background="@mipmap/bg_login"
-        android:orientation="vertical"
-        android:padding="@dimen/margin30">
+        android:background="#ffffff"
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/icon_decorate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/icon_decorate" />
+                android:contentDescription="@string/login"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/bg_login_top" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/width15"
-                android:layout_marginTop="@dimen/margin10"
-                android:layout_toEndOf="@+id/icon_decorate"
-                android:text="@string/welcome_register"
-                android:textColor="#333333"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+            <include layout="@layout/action_title_view" />
 
-        </RelativeLayout>
+        </FrameLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginBottom="@dimen/margin10"
+            android:layout_marginEnd="@dimen/margin10"
+            android:layout_marginStart="@dimen/margin10"
+            android:layout_marginTop="-30dp"
+            android:background="@mipmap/bg_login"
+            android:orientation="vertical"
+            android:padding="@dimen/margin30">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="@dimen/width40">
+                android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/icon_phone"
+                    android:id="@+id/icon_decorate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/margin10"
-                    android:contentDescription="@string/input_your_phone"
-                    android:src="@mipmap/icon_login_phone" />
-
-                <EditText
-                    android:id="@+id/reg_input_edit_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/height40"
-                    android:background="@null"
-                    android:hint="@string/input_your_phone"
-                    android:imeOptions="actionNext"
-                    android:inputType="phone"
-                    android:textColor="#999999"
-                    android:textSize="14sp" />
-
-                <View
-                    style="@style/ui_line"
-                    android:layout_height="2dp"
-                    android:layout_alignParentBottom="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="@dimen/margin20">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/margin10"
-                    android:contentDescription="@string/input_your_verification_code"
-                    android:src="@mipmap/icon_verification_code" />
-
-                <EditText
-                    android:id="@+id/reg_input_edit_code"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/height40"
-                    android:layout_toStartOf="@+id/reg_huoqu_code"
-                    android:background="@null"
-                    android:digits="@string/input_text"
-                    android:hint="@string/input_your_verification_code"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-                    android:singleLine="true"
-                    android:textColor="#999999"
-                    android:textSize="14sp" />
+                    android:contentDescription="@string/login"
+                    android:src="@mipmap/icon_decorate" />
 
                 <TextView
-                    android:id="@+id/reg_huoqu_code"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:gravity="center_vertical"
-                    android:paddingEnd="@dimen/margin10"
-                    android:paddingStart="@dimen/margin10"
-                    android:text="@string/get_verification_code"
-                    android:textColor="#f12873"
-                    android:textSize="14sp" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/width15"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:layout_toEndOf="@+id/icon_decorate"
+                    android:text="@string/welcome_register"
+                    android:textColor="#333333"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
-                <View
-                    style="@style/ui_line"
-                    android:layout_height="2dp"
-                    android:layout_alignParentBottom="true" />
             </RelativeLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="@dimen/margin20">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/margin10"
-                    android:contentDescription="@string/set_your_password"
-                    android:src="@mipmap/icon_pwd_visible" />
-
-                <EditText
-                    android:id="@+id/reg_input_edit_password"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/height40"
-                    android:background="@null"
-                    android:digits="@string/input_text"
-                    android:hint="@string/set_your_password"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-                    android:singleLine="true"
-                    android:textColor="#999999"
-                    android:textSize="14sp" />
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/width40">
 
-                <View
-                    style="@style/ui_line"
-                    android:layout_height="2dp"
-                    android:layout_alignParentBottom="true" />
-            </RelativeLayout>
+                    <ImageView
+                        android:id="@+id/icon_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin10"
+                        android:contentDescription="@string/input_your_phone"
+                        android:src="@mipmap/icon_login_phone" />
 
-            <RelativeLayout
+                    <EditText
+                        android:id="@+id/reg_input_edit_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/height40"
+                        android:background="@null"
+                        android:hint="@string/input_your_phone"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:textColor="#999999"
+                        android:textSize="14sp" />
+
+                    <View
+                        style="@style/ui_line"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/margin20">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin10"
+                        android:contentDescription="@string/input_your_verification_code"
+                        android:src="@mipmap/icon_verification_code" />
+
+                    <EditText
+                        android:id="@+id/reg_input_edit_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/height40"
+                        android:layout_toStartOf="@+id/reg_huoqu_code"
+                        android:background="@null"
+                        android:digits="@string/input_text"
+                        android:hint="@string/input_your_verification_code"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:textColor="#999999"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/reg_huoqu_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center_vertical"
+                        android:paddingEnd="@dimen/margin10"
+                        android:paddingStart="@dimen/margin10"
+                        android:text="@string/get_verification_code"
+                        android:textColor="#f12873"
+                        android:textSize="14sp" />
+
+                    <View
+                        style="@style/ui_line"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/margin20">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin10"
+                        android:contentDescription="@string/set_your_password"
+                        android:src="@mipmap/icon_pwd_visible" />
+
+                    <EditText
+                        android:id="@+id/reg_input_edit_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/height40"
+                        android:background="@null"
+                        android:digits="@string/input_text"
+                        android:hint="@string/set_your_password"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:textColor="#999999"
+                        android:textSize="14sp" />
+
+                    <View
+                        style="@style/ui_line"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/margin20">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin10"
+                        android:contentDescription="@string/confirm_your_password"
+                        android:src="@mipmap/icon_pwd_visible" />
+
+                    <EditText
+                        android:id="@+id/reg_input_edit_password2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/height40"
+                        android:background="@null"
+                        android:digits="@string/input_text"
+                        android:hint="@string/confirm_your_password"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:textColor="#999999"
+                        android:textSize="14sp" />
+
+                    <View
+                        style="@style/ui_line"
+                        android:layout_height="2dp"
+                        android:layout_alignParentBottom="true" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/reg_btn_reg"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="@dimen/margin20">
+                android:layout_height="@dimen/height35"
+                android:layout_marginBottom="@dimen/height20"
+                android:layout_marginTop="@dimen/height40"
+                android:background="@mipmap/bg_login_btn"
+                android:gravity="center"
+                android:text="@string/welcome_register"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/margin10"
-                    android:contentDescription="@string/confirm_your_password"
-                    android:src="@mipmap/icon_pwd_visible" />
-
-                <EditText
-                    android:id="@+id/reg_input_edit_password2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/height40"
-                    android:background="@null"
-                    android:digits="@string/input_text"
-                    android:hint="@string/confirm_your_password"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-                    android:singleLine="true"
-                    android:textColor="#999999"
-                    android:textSize="14sp" />
-
-                <View
-                    style="@style/ui_line"
-                    android:layout_height="2dp"
-                    android:layout_alignParentBottom="true" />
-            </RelativeLayout>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/reg_btn_reg"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height35"
-            android:layout_marginBottom="@dimen/height20"
-            android:layout_marginTop="@dimen/height40"
-            android:background="@mipmap/bg_login_btn"
-            android:gravity="center"
-            android:text="@string/welcome_register"
-            android:textColor="#ffffff"
-            android:textSize="18sp" />
-
     </LinearLayout>
 
-
-</LinearLayout>
+</ScrollView>

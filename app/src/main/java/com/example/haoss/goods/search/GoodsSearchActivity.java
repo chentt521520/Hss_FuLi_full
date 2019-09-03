@@ -161,8 +161,10 @@ public class GoodsSearchActivity extends BaseActivity {
                 if (goodsSearchAdapter == null) {
                     goodsSearchAdapter = new GoodsSearchAdapter(GoodsSearchActivity.this, listGoods);
                     goodssearchactivity_list.setAdapter(goodsSearchAdapter);
-                } else
+                } else {
                     goodsSearchAdapter.setRefresh(listGoods);
+                    goodssearchactivity_list.setSelection(0);
+                }
             }
 
             @Override

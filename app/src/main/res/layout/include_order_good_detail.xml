@@ -6,17 +6,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp">
-
-        <View style="@style/ui_line" />
+        android:layout_height="20dp"
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:text="@string/good_total_price"
             android:textColor="@color/huiColor66"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
         <!--订单编号-->
         <TextView
@@ -24,54 +22,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:gravity="end"
             android:singleLine="true"
             android:textColor="@color/huiColor66"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:visibility="visible">
-
-        <View style="@style/ui_line" />
+        android:layout_height="20dp"
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:text="@string/good_postage"
             android:textColor="@color/huiColor66"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/ui_order_total_express"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin10"
             android:gravity="end"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp">
-
-        <View style="@style/ui_line" />
+        android:layout_height="20dp"
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:text="@string/good_coupon"
             android:textColor="@color/huiColor66"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
         <!--优惠劵-->
         <TextView
@@ -79,49 +70,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin10"
             android:gravity="end"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="20dp"
+        android:gravity="center_vertical"
         android:visibility="gone">
-
-        <View style="@style/ui_line" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:text="@string/good_coin"
             android:textColor="@color/huiColor66"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/ui_order_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin10"
             android:gravity="end"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp">
-
-        <View style="@style/ui_line" />
+        android:layout_height="20dp"
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:text="@string/order_total_price"
             android:textColor="#0f0f0f"
             android:textSize="12sp" />
@@ -131,7 +116,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin10"
             android:gravity="end"
             android:textColor="#c22222"

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.example.applibrary.custom.CustomerScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/scroll_view"
-    android:background="#761810">
+    android:background="#f0f0f0">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,117 +11,106 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
-        <!--轮播-->
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="210dp"
-            android:visibility="visible">
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/ui_index_view_pager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical" />
-
-            <!--小点-->
-            <RadioGroup
-                android:id="@+id/fistpage_dot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="#7d64e2"
+            android:orientation="vertical">
 
             <include layout="@layout/include_index_search" />
-        </RelativeLayout>
+
+            <!--轮播-->
+            <com.example.haoss.views.banner.BannerViewPager
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_margin="@dimen/margin10" />
+        </LinearLayout>
 
         <!--5选项-->
         <com.example.haoss.views.MyGridView
             android:id="@+id/ui_index_grid_nav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/whiteColor"
             android:listSelector="#00000000"
             android:numColumns="5"
             android:scrollbars="none" />
 
-        <TextView
-            style="@style/fisrPageText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableStart="@mipmap/fistactivity_dot_left"
-            android:drawablePadding="10dp"
-            android:drawableEnd="@mipmap/fistactivity_dot_right"
-            android:text="精选活动"
-            android:textColor="@color/whiteColor"
-            android:textSize="16sp" />
-
         <!--活动精选大图-->
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/ui_index_coupon_center"
-            style="@style/margin_left_right_15"
+            style="@style/base_margin_border"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@mipmap/coupon" />
+            android:src="@mipmap/banner_home_coupon" />
 
-        <include layout="@layout/include_index_good_sale" />
+        <include layout="@layout/include_good_sale" />
 
-        <TextView
-            style="@style/fisrPageText"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableEnd="@mipmap/fistactivity_dot_right"
-            android:drawablePadding="10dp"
-            android:drawableStart="@mipmap/fistactivity_dot_left"
-            android:text="品牌精选"
-            android:textColor="@color/whiteColor"
-            android:textSize="16sp" />
+            android:padding="@dimen/margin10">
+
+            <TextView
+                style="@style/_333333_16_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wonderful_activity" />
+
+            <TextView
+                style="@style/_666666_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin10"
+                android:text="@string/more_activity" />
+        </LinearLayout>
 
         <ImageView
-            android:id="@+id/ui_index_brand_excellent_image"
-            style="@style/margin_left_right_15"
+            android:id="@+id/ui_index_brand_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"/>
+            android:scaleType="centerCrop"
+            android:src="@mipmap/banner_home1" />
 
-        <!--品牌精选内容-->
-        <com.example.haoss.views.MyGridView
-            android:id="@+id/ui_index_grid_brand"
-            style="@style/margin_left_right_15"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ui_grid_brand_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-25dp"
+            android:background="@color/whiteColor"
+            android:listSelector="@color/lucencyColor"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:scrollbars="none" />
+
+        <ImageView
+            android:id="@+id/ui_index_brand_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin10"
-            android:horizontalSpacing="15dp"
-            android:listSelector="#00000000"
-            android:numColumns="3"
-            android:scrollbars="none" />
+            android:scaleType="centerCrop"
+            android:src="@mipmap/banner_home2" />
 
-        <TextView
-            style="@style/fisrPageText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableLeft="@mipmap/fistactivity_dot_left"
-            android:drawablePadding="10dp"
-            android:drawableRight="@mipmap/fistactivity_dot_right"
-            android:text="猜您喜欢"
-            android:textColor="@color/whiteColor"
-            android:textSize="16sp" />
-
-        <com.example.haoss.views.MyGridView
-            android:id="@+id/ui_index_grid_favor"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ui_grid_brand_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@null"
-            android:horizontalSpacing="@dimen/margin10"
-            android:numColumns="2"
-            android:scrollbars="none"
-            android:verticalSpacing="@dimen/width5"
-            style="@style/base_padding_border" />
+            android:layout_marginTop="-25dp"
+            android:background="@color/whiteColor"
+            android:listSelector="@color/lucencyColor"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:scrollbars="none" />
+
+        <com.example.haoss.views.SlidingTabLayout
+            android:id="@+id/slide_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </com.example.applibrary.custom.CustomerScrollView>

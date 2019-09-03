@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/huiColorf0"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/baseRedColor">
+
+                <TextView
+                    android:id="@+id/ui_group_meal_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="40dp"
+                    android:padding="20dp"
+                    android:text="@string/null_text"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/base_padding_border"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/width15"
+                android:layout_marginStart="@dimen/width15"
+                android:layout_marginTop="-30dp"
+                android:background="@drawable/bg_white_corner_12"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <!--物流收货人-->
+                    <TextView
+                        android:id="@+id/ui_group_meal_name"
+                        style="@style/_333333_14_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/null_text" />
+
+                    <!--收货人电话-->
+                    <TextView
+                        android:id="@+id/ui_group_meal_phone"
+                        style="@style/_333333_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin10"
+                        android:layout_toEndOf="@+id/ui_group_meal_name"
+                        android:text="@string/null_text" />
+
+                    <!--收货人详细地址-->
+                    <TextView
+                        android:id="@+id/ui_group_meal_address"
+                        style="@style/_333333_14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@id/ui_order_user_name"
+                        android:layout_marginTop="@dimen/margin10"
+                        android:layout_toStartOf="@+id/item_group_meal_call"
+                        android:maxLines="2"
+                        android:text="@string/null_text" />
+
+                    <ImageView
+                        android:id="@+id/item_group_meal_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/margin10"
+                        android:src="@mipmap/icon_phone" />
+
+                </RelativeLayout>
+
+                <View
+                    style="@style/ui_line"
+                    android:layout_marginBottom="@dimen/margin10"
+                    android:layout_marginTop="@dimen/margin10" />
+
+                <TextView
+                    android:id="@+id/ui_group_meal_count"
+                    style="@style/_333333_14_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="商品" />
+
+                <TextView
+                    android:id="@+id/ui_group_meal_remark"
+                    style="@style/_333333_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:text="备注" />
+
+                <LinearLayout
+                    android:id="@+id/ui_group_meal_item_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/height5" />
+
+                <View style="@style/ui_line" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end">
+
+                    <TextView
+                        style="@style/_333333_14_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/height5"
+                        android:paddingTop="@dimen/height5"
+                        android:text="@string/order_total_price1" />
+
+                    <TextView
+                        android:id="@+id/ui_group_meal_total_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/height5"
+                        android:paddingTop="@dimen/height5"
+                        android:textColor="#c22222"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/base_padding_border"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin10"
+                android:layout_marginEnd="@dimen/width15"
+                android:layout_marginStart="@dimen/width15"
+                android:layout_marginTop="@dimen/margin10"
+                android:background="@drawable/bg_white_corner_12"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/_333333_14_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/margin10"
+                    android:paddingTop="@dimen/height5"
+                    android:text="@string/order_information" />
+
+                <View style="@style/ui_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="@dimen/margin5"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/_666666_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="@string/order_number" />
+
+                    <!--订单编号-->
+                    <TextView
+                        android:id="@+id/ui_group_meal_number"
+                        style="@style/_666666_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin10"
+                        android:layout_marginStart="@dimen/margin10"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:id="@+id/ui_group_meal_number_copy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="@string/copy"
+                        android:textColor="@color/baseRedColor"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/_666666_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pay_type" />
+
+                    <TextView
+                        android:id="@+id/ui_group_meal_pay_type"
+                        style="@style/_666666_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/margin10" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/_666666_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_pay_time" />
+
+                    <TextView
+                        android:id="@+id/ui_group_meal_pay_time"
+                        style="@style/_666666_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/margin10" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ui_group_meal_send_time_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/_666666_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/complete_time" />
+
+                    <TextView
+                        android:id="@+id/ui_group_meal_send_time"
+                        style="@style/_666666_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/margin10" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--操作栏-->
+    <RelativeLayout
+        style="@style/padding_left_right_15"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/whiteColor"
+        android:orientation="horizontal">
+
+        <!--购买-->
+        <TextView
+            android:id="@+id/ui_group_meal_send_over"
+            style="@style/btn_border"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/bg_red_02"
+            android:text="@string/confirm_send"
+            android:textColor="@color/whiteColor"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</LinearLayout>

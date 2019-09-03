@@ -60,9 +60,9 @@ public class ListViewAddressAdapter extends BaseAdapter {
         }
         final AddreInfo info = list.get(position);
         if (info.isChecked()) {    //选中
-            myViewHolder.check.setBackgroundResource(R.mipmap.addre_xuan_img);
+            myViewHolder.check.setBackgroundResource(R.mipmap.checked_true);
         } else
-            myViewHolder.check.setBackgroundResource(R.mipmap.addre_no_xuan_img);
+            myViewHolder.check.setBackgroundResource(R.mipmap.checked_false);
         if (info.getIs_default() == 1)  //默认
             myViewHolder.moren.setVisibility(View.VISIBLE);
         else

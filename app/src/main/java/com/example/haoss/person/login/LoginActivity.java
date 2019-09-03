@@ -1,6 +1,7 @@
 package com.example.haoss.person.login;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +23,6 @@ import com.example.applibrary.entity.PassCheck;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.IntentUtils;
 import com.example.applibrary.utils.MD5Util;
-import com.example.applibrary.utils.StringUtils;
 import com.example.applibrary.utils.VerifyPhoneUtils;
 import com.example.haoss.MainActivity;
 import com.example.haoss.R;
@@ -323,6 +323,7 @@ public class LoginActivity extends BaseActivity {
                 if (flag == 1) {
                     IntentUtils.startIntentFrist(LoginActivity.this, MainActivity.class);
                 } else {
+                    setResult(Activity.RESULT_OK);
                     finish();
                 }
             }

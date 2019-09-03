@@ -90,7 +90,7 @@ public class OkHttpRequest {
         if (map != null) {
             json = mapToJson(map);
         }
-        OkhttpTool.getOkhttpTool().uploadJson(url, json, new okhttp3.Callback() {
+        OkhttpTool.getOkhttpTool().post(url, map, new okhttp3.Callback() {
             @Override
             public void onFailure(okhttp3.Call call, IOException e) {
                 if (callback != null) {
@@ -106,7 +106,7 @@ public class OkHttpRequest {
                     Log.e("OkHttpCall", "callback is null");
                 } else {
                     if (response.isSuccessful()) {
-                        String jsonStr = new String(response.body().bytes());//把原始数据转为字符串
+                        String jsonStr = response.body().string();//把原始数据转为字符串
                         requestResult(jsonStr, callback, requestCallBack, true);
                     } else {
                         OkHttpRequest.delivery.postError(response.code(), response.message(), callback);
