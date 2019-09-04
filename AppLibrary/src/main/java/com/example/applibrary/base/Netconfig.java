@@ -221,9 +221,11 @@ public class Netconfig {
     public static final String express = subHost + "user/express" + endSite;
     public static final String Authentic = subHost + "user/realName" + endSite;
     //团餐订单列表
+    public static final String storeMealOrder = subHost + "user/get_store_order_list" + endSite;
     public static final String groupMealOrder = subHost + "user/get_company_order_list" + endSite;
 
     public static final String recharge = subHost + "companyRecharge/recharge" + endSite;
+    public static final String companyInfo = subHost + "company/info" + endSite;
 
     public static final String PIC_URL = "http://qiniu.haoshusi.com/";
     public static final String PIC_PATH = "Android/";

@@ -45,6 +45,11 @@ public class UserInfo {
     private int like;
     private String nickname;
     private String now_money;
+    /**
+     * 1:普通用户
+     * 2：商家
+     * 3 公司
+     */
     private int people_type;
     private int sex;
     private int sign_num;

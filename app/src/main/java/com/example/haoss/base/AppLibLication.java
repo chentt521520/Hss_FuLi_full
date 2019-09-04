@@ -1,6 +1,8 @@
 package com.example.haoss.base;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
 import android.support.multidex.MultiDex;
 import android.util.Log;
 
@@ -8,6 +10,8 @@ import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.dialog.MyDialogTwoButton;
 import com.example.applibrary.dialog.interfac.DialogOnClick;
 import com.example.applibrary.utils.SharedPreferenceUtils;
+import com.example.haoss.service.MQTTService;
+import com.example.haoss.service.MyServiceConnection;
 import com.pgyersdk.crash.PgyCrashManager;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
@@ -22,6 +26,9 @@ public class AppLibLication extends Application {
 
     public static AppLibLication appLibLication;
 
+    private MyServiceConnection serviceConnection;
+    private MQTTService mqttService;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -31,6 +38,13 @@ public class AppLibLication extends Application {
         MultiDex.install(this);
         wechatLogin();
         RongIM.init(this);
+
+        serviceConnection = new MyServiceConnection();
+//        serviceConnection.setIGetMessageCallBack(this);
+
+        Intent intent = new Intent(this, MQTTService.class);
+
+        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
     private Thread.UncaughtExceptionHandler onBlooey = new Thread.UncaughtExceptionHandler() {

@@ -168,10 +168,10 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:hint="其他金额"
-            android:paddingTop="@dimen/margin5"
-            android:paddingBottom="@dimen/margin5"
             android:imeOptions="actionDone"
             android:inputType="number"
+            android:paddingBottom="@dimen/margin5"
+            android:paddingTop="@dimen/margin5"
             android:textSize="12sp" />
 
         <!--说明-->
@@ -184,37 +184,29 @@
             android:textColor="@color/huiColor80"
             android:textSize="10dp" />
 
-        <!--微信支付-->
         <TextView
             android:id="@+id/walletactivity_wechat"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin5"
+            android:layout_height="45dp"
+            android:drawableEnd="@mipmap/check_box_true"
+            android:drawablePadding="@dimen/margin10"
             android:drawableStart="@mipmap/wallet_wechat"
-            android:drawablePadding="15dp"
-            android:drawableEnd="@mipmap/check_box_false"
             android:gravity="center_vertical"
             android:text="微信支付"
-            android:textColor="@color/blackColor0f"
-            android:textSize="12sp" />
+            style="@style/_333333_12" />
 
         <View style="@style/ui_line" />
 
-        <!--支付宝支付-->
         <TextView
             android:id="@+id/walletactivity_alipay"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin5"
-            android:drawableStart="@mipmap/wallet_alipay"
-            android:drawablePadding="15dp"
+            android:layout_height="45dp"
             android:drawableEnd="@mipmap/check_box_false"
+            android:drawablePadding="@dimen/margin10"
+            android:drawableStart="@mipmap/wallet_alipay"
             android:gravity="center_vertical"
             android:text="支付宝支付"
-            android:textColor="@color/blackColor0f"
-            android:textSize="12sp" />
-
-
+            style="@style/_333333_12" />
         <!--立即支付-->
         <TextView
             android:id="@+id/walletactivity_submit"

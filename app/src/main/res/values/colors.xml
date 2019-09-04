@@ -16,4 +16,7 @@
     <color name="line2">#dedede</color>
     <color name="line3">#f4f4f4</color>
     <color name="hinttextcolor">#bbbcbf</color>
+
+    <color name="gold_cda970">#cda970</color>
+    <color name="gold_d8bf88">#d8bf88</color>
 </resources>

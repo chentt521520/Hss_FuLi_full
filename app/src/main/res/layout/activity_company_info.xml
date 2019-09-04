@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/ui_company_name_view"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="@dimen/margin10"
@@ -25,11 +26,12 @@
             style="@style/_333333_14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/height20" />
+            android:layout_marginStart="@dimen/width15" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ui_company_account_view"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="@dimen/margin10"
@@ -49,7 +51,8 @@
             style="@style/_333333_14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/height20"
+            android:layout_marginStart="@dimen/width15"
+            android:drawablePadding="@dimen/width15"
             android:drawableEnd="@mipmap/right_arrow_grey_l" />
 
     </LinearLayout>

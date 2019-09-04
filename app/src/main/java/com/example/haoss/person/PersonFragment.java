@@ -263,11 +263,11 @@ public class PersonFragment extends BaseFragment {
                 case R.id.person_user_company:   //公司信息
                     int type = userInfo.getPeople_type();
                     if (type == 1) {//普通用户不可点
-                    } else if (type == 2) {//公司员工
-                        IntentUtils.startIntent(userInfo.getIs_manager(), mContext, CompanyInfoActivity.class);
-                    } else if (type == 3) {//商家
-                        //显示商家订单
+                    } else if (type == 2) {//商家
                         IntentUtils.startIntent(mContext, GroupMealOrder.class);
+                        //显示商家订单
+                    } else if (type == 3) {//公司员工
+                        IntentUtils.startIntent(userInfo.getIs_manager(), mContext, CompanyInfoActivity.class);
                     }
                     break;
                 case R.id.person_user_head:   //头像

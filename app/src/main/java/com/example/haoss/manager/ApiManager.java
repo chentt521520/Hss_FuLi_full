@@ -8,6 +8,7 @@ import com.example.applibrary.entity.ApprovalDetail;
 import com.example.applibrary.entity.ApprovalList;
 import com.example.applibrary.entity.CardRecord;
 import com.example.applibrary.entity.CollectionInfo;
+import com.example.applibrary.entity.CompanyInfo;
 import com.example.applibrary.entity.CouponInfo;
 import com.example.applibrary.entity.EstimateList;
 import com.example.applibrary.entity.ExpressInfo;
@@ -510,6 +511,18 @@ public class ApiManager {
             @Override
             public List<GroupMeal> success(String responseStr) throws Exception {
                 return JSONObject.parseArray(responseStr, GroupMeal.class);
+            }
+        });
+    }
+
+    /**
+     * 接口返回成功与失败
+     */
+    public static void getCompanyInfo(String url, Map<String, Object> map, OnHttpCallback<CompanyInfo> callback) {
+        OkHttpRequest.okHttpMapPost(url, map, callback, new OkHttpRequest.IRequestCallBack<CompanyInfo>() {
+            @Override
+            public CompanyInfo success(String responseStr) throws Exception {
+                return JSONObject.parseObject(responseStr, CompanyInfo.class);
             }
         });
     }

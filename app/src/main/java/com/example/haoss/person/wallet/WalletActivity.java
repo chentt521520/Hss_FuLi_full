@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -19,10 +18,8 @@ import com.example.applibrary.base.ConfigHttpReqFields;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.entity.UserInfo;
 import com.example.applibrary.entity.WeiXinPayResult;
-import com.example.applibrary.httpUtils.HttpHander;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.IntentUtils;
-import com.example.applibrary.utils.ObjectMapperUtils;
 import com.example.applibrary.utils.TextViewUtils;
 import com.example.haoss.MainActivity;
 import com.example.haoss.R;
@@ -30,7 +27,6 @@ import com.example.haoss.base.AppLibLication;
 import com.example.haoss.base.BaseActivity;
 import com.example.haoss.base.Constants;
 import com.example.haoss.manager.ApiManager;
-import com.example.haoss.pay.GoodsBuyActivity;
 import com.example.haoss.pay.aliapi.PayAliPay;
 import com.example.haoss.pay.wxapi.PayWeChar;
 
@@ -45,7 +41,7 @@ public class WalletActivity extends BaseActivity {
     RelativeLayout walletactivity_topup100, walletactivity_topup300, walletactivity_topup500; //充值金额
     TextView walletactivity_wechat, walletactivity_alipay; //充值选择：微信、支付宝
     float orgPrice = 0;    //充值金额
-    int choosePay = 0;  //0：未选择，1：微信支付，2：支付宝支付
+    String choosePay = Constants.WEIXIN;
     TextView salePrice1, realPrice1, salePrice2, realPrice2, salePrice3, realPrice3;
 
 
@@ -169,10 +165,14 @@ public class WalletActivity extends BaseActivity {
                     setCheck(0);
                     break;
                 case R.id.walletactivity_wechat:  //微信支付
-                    setChoosePay(1);
+                    choosePay = Constants.WEIXIN;
+                    TextViewUtils.setImage(WalletActivity.this, walletactivity_wechat, R.mipmap.wallet_wechat, 0, R.mipmap.check_box_true, 0);
+                    TextViewUtils.setImage(WalletActivity.this, walletactivity_alipay, R.mipmap.wallet_alipay, 0, R.mipmap.check_box_false, 0);
                     break;
                 case R.id.walletactivity_alipay:  //支付宝支付
-                    setChoosePay(2);
+                    choosePay = Constants.ALI;
+                    TextViewUtils.setImage(WalletActivity.this, walletactivity_wechat, R.mipmap.wallet_wechat, 0, R.mipmap.check_box_true, 0);
+                    TextViewUtils.setImage(WalletActivity.this, walletactivity_alipay, R.mipmap.wallet_alipay, 0, R.mipmap.check_box_false, 0);
                     break;
             }
         }
@@ -200,21 +200,6 @@ public class WalletActivity extends BaseActivity {
         }
     }
 
-    /**
-     * 选择支付类型
-     *
-     * @param type 类型 0：未选择，1：微信支付，2：支付宝支付
-     */
-    private void setChoosePay(int type) {
-        choosePay = type;
-        if (type == 1) {
-            TextViewUtils.setImage(this, walletactivity_wechat, R.mipmap.wallet_wechat, 0, R.mipmap.check_box_true, 0);
-            TextViewUtils.setImage(this, walletactivity_alipay, R.mipmap.wallet_alipay, 0, R.mipmap.check_box_false, 0);
-        } else {
-            TextViewUtils.setImage(this, walletactivity_wechat, R.mipmap.wallet_wechat, 0, R.mipmap.check_box_false, 0);
-            TextViewUtils.setImage(this, walletactivity_alipay, R.mipmap.wallet_alipay, 0, R.mipmap.check_box_true, 0);
-        }
-    }
 
     //去付款
     private void goPay() {
@@ -222,28 +207,15 @@ public class WalletActivity extends BaseActivity {
             toast("请选择充值金额");
             return;
         }
-        if (choosePay == 0) {
-            toast("请选择支付方式");
-            return;
-        }
 
         //1：微信支付，2：支付宝支付
-        if (choosePay == 1)
-            wxPay();
-        else
-            zfbPay();
-    }
-
-    //支付宝支付
-    private void zfbPay() {
-        toast("支付宝支付 " + getMoney() + " 元");
-        pay(Constants.ALI);
-    }
-
-    //微信支付
-    private void wxPay() {
-        toast("微信支付 " + getMoney() + " 元");
-        pay(Constants.WEIXIN);
+        if (TextUtils.equals(choosePay, Constants.WEIXIN)) {
+            toast("微信支付 " + getMoney() + " 元");
+            pay(Constants.WEIXIN);
+        } else if (TextUtils.equals(choosePay, Constants.ALI)) {
+            toast("支付宝支付 " + getMoney() + " 元");
+            pay(Constants.ALI);
+        }
     }
 
     //payType == weixin：微信 ==ali：支付宝

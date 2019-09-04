@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -141,5 +142,21 @@ public class StringUtils {
             return builder.toString().substring(0, builder.toString().length() - 1);
         }
         return builder.toString();
+    }
+
+    public static String commaFormat(String number) {
+        if (TextUtils.isEmpty(number)) {
+            return number;
+        }
+        float value = Float.valueOf(number);
+        if (number.contains(".")) {
+            DecimalFormat df = new DecimalFormat("#,###.00");
+            return df.format(value);
+        } else {
+            DecimalFormat df = new DecimalFormat("#,###.00");
+            String str = df.format(value);
+            return str.split(".")[0];
+        }
+
     }
 }

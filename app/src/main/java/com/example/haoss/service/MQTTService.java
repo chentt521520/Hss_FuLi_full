@@ -30,10 +30,10 @@ public class MQTTService extends Service {
     private static MqttAndroidClient client;
     private MqttConnectOptions options;
 
-    private String host = "tcp://192.168.68.214:1883";
+    private String host = "tcp://47.92.212.114:1883";
     private String userName = "admin";
     private String password = "password";
-    private static String myTopic = "home/garden/fountain";
+    private static String myTopic = "2/11/msg/#";
     private String clientId = "android";
     private IGetMessageCallBack callback;
 
@@ -41,21 +41,6 @@ public class MQTTService extends Service {
     public void onCreate() {
         super.onCreate();
         init();
-    }
-
-
-    public static void publish(String msg) {
-        String topic = myTopic;
-        Integer qos = 0;
-        Boolean retained = false;
-
-        try {
-            if (client != null) {
-                client.publish(topic, msg.getBytes(), qos.intValue(), retained.booleanValue());
-            }
-        } catch (MqttException e) {
-            e.printStackTrace();
-        }
     }
 
     private void init() {

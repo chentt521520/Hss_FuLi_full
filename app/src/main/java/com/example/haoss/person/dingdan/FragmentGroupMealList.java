@@ -119,7 +119,7 @@ public class FragmentGroupMealList extends BaseFragment {
         map.put("status", id);
         map.put("is_bulk", 1);//是否是团餐 0：否，1：是
 
-        ApiManager.getGroupMeal(Netconfig.groupMealOrder, map, new OnHttpCallback<List<GroupMeal>>() {
+        ApiManager.getGroupMeal(Netconfig.storeMealOrder, map, new OnHttpCallback<List<GroupMeal>>() {
             @Override
             public void success(List<GroupMeal> result) {
                 refreshLayout.finishRefreshing();

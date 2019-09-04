@@ -106,7 +106,7 @@ public class OkHttpRequest {
                     Log.e("OkHttpCall", "callback is null");
                 } else {
                     if (response.isSuccessful()) {
-                        String jsonStr = response.body().string();//把原始数据转为字符串
+                        String jsonStr = response.body().string();//把原始数据转为 字符串
                         requestResult(jsonStr, callback, requestCallBack, true);
                     } else {
                         OkHttpRequest.delivery.postError(response.code(), response.message(), callback);

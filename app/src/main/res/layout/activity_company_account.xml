@@ -1,6 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_company_account"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/title_view"
+            layout="@layout/action_title_view" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/title_view"
+            android:layout_marginEnd="@dimen/margin10"
+            android:padding="@dimen/width15"
+            android:text="余额明细"
+            android:textColor="@color/gold_cda970" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ui_account_current_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/width40"
+                android:text="2000000000"
+                android:textColor="@color/gold_cda970"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin10"
+                android:text="当前余额（元）"
+                android:textColor="@color/gold_cda970"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/ui_company_recharge_price"
+        style="@style/_999999_14"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginEnd="@dimen/height20"
+        android:layout_marginStart="@dimen/height20"
+        android:layout_marginTop="@dimen/margin10"
+        android:hint="请输入充值金额"
+        android:maxLines="1"
+        android:paddingEnd="@dimen/margin10"
+        android:paddingStart="@dimen/margin10"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/ui_company_weixin_pay_view"
+        style="@style/_333333_14"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginEnd="@dimen/height20"
+        android:layout_marginStart="@dimen/height20"
+        android:layout_marginTop="@dimen/width40"
+        android:drawableEnd="@mipmap/icon_selected"
+        android:drawablePadding="@dimen/margin10"
+        android:drawableStart="@mipmap/wallet_wechat"
+        android:gravity="center_vertical"
+        android:text="微信支付" />
+
+    <TextView
+        android:id="@+id/ui_company_ali_pay_view"
+        style="@style/_333333_14"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginEnd="@dimen/height20"
+        android:layout_marginStart="@dimen/height20"
+        android:drawableEnd="@mipmap/icon_unselected"
+        android:drawablePadding="@dimen/margin10"
+        android:drawableStart="@mipmap/wallet_alipay"
+        android:gravity="center_vertical"
+        android:text="支付宝" />
+    <!--立即支付-->
+    <TextView
+        android:id="@+id/ui_company_recharge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin30"
+        android:background="@mipmap/bg_black_btn"
+        android:gravity="center"
+        android:text="立即充值"
+        android:textColor="@color/gold_d8bf88"
+        android:textSize="14sp" />
+</LinearLayout>
