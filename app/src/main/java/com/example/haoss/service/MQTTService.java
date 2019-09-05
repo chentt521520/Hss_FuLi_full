@@ -33,7 +33,7 @@ public class MQTTService extends Service {
     private String host = "tcp://47.92.212.114:1883";
     private String userName = "admin";
     private String password = "password";
-    private static String myTopic = "2/11/msg/#";
+    private static String myTopic = "12/msg";
     private String clientId = "android";
     private IGetMessageCallBack callback;
 

@@ -23,9 +23,10 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_white_corner_12">
+                android:background="#ffffff">
 
                 <TextView
+                    android:id="@+id/person_my_all_order"
                     style="@style/_333333_14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -46,7 +47,7 @@
                 <View
                     android:id="@+id/ui_line"
                     style="@style/ui_line"
-                    android:layout_below="@+id/person_chakan_dingdan" />
+                    android:layout_below="@+id/person_my_all_order" />
 
                 <include
                     layout="@layout/include_my_grid_view"
@@ -63,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin10"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_white_corner_12"
+                android:background="#ffffff"
                 android:orientation="vertical">
 
                 <TextView
@@ -79,13 +80,12 @@
                     android:id="@+id/person_grid_menu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin10"
-                    android:layout_marginTop="@dimen/margin10"
                     android:numColumns="4"
                     android:scrollbars="none"
+                    android:layout_marginTop="@dimen/width15"
+                    android:layout_marginBottom="@dimen/margin10"
                     android:verticalSpacing="3dp" />
 
-                <!--<include layout="@layout/frag_person_last_item" />-->
             </LinearLayout>
 
         </LinearLayout>

@@ -37,9 +37,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/width40"
-                android:text="2000000000"
+                android:text="@string/null_text"
                 android:textColor="@color/gold_cda970"
-                android:textSize="24sp" />
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,10 +61,21 @@
         android:layout_marginStart="@dimen/height20"
         android:layout_marginTop="@dimen/margin10"
         android:hint="请输入充值金额"
+        android:inputType="number"
         android:maxLines="1"
         android:paddingEnd="@dimen/margin10"
         android:paddingStart="@dimen/margin10"
         android:singleLine="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/height25"
+        android:layout_marginStart="@dimen/height25"
+        android:gravity="center_vertical"
+        android:textSize="9sp"
+        android:textColor="#999999"
+        android:text="充值金额10分钟内到账" />
 
     <TextView
         android:id="@+id/ui_company_weixin_pay_view"
@@ -75,7 +87,7 @@
         android:layout_marginTop="@dimen/width40"
         android:drawableEnd="@mipmap/icon_selected"
         android:drawablePadding="@dimen/margin10"
-        android:drawableStart="@mipmap/wallet_wechat"
+        android:drawableStart="@mipmap/icon_wechat"
         android:gravity="center_vertical"
         android:text="微信支付" />
 
@@ -88,7 +100,7 @@
         android:layout_marginStart="@dimen/height20"
         android:drawableEnd="@mipmap/icon_unselected"
         android:drawablePadding="@dimen/margin10"
-        android:drawableStart="@mipmap/wallet_alipay"
+        android:drawableStart="@mipmap/icon_alipay"
         android:gravity="center_vertical"
         android:text="支付宝" />
     <!--立即支付-->

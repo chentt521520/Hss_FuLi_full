@@ -26,9 +26,6 @@ public class AppLibLication extends Application {
 
     public static AppLibLication appLibLication;
 
-    private MyServiceConnection serviceConnection;
-    private MQTTService mqttService;
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -38,13 +35,6 @@ public class AppLibLication extends Application {
         MultiDex.install(this);
         wechatLogin();
         RongIM.init(this);
-
-        serviceConnection = new MyServiceConnection();
-//        serviceConnection.setIGetMessageCallBack(this);
-
-        Intent intent = new Intent(this, MQTTService.class);
-
-        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
     private Thread.UncaughtExceptionHandler onBlooey = new Thread.UncaughtExceptionHandler() {

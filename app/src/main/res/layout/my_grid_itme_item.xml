@@ -8,32 +8,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginTop="@dimen/margin5"
         android:src="@mipmap/person_no_delivery_img" />
 
     <TextView
         android:id="@+id/gv_tv"
+        style="@style/_333333_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/gv_iv"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="@dimen/margin10"
-        android:text="@string/null_text"
-        style="@style/_333333_12" />
+        android:layout_marginBottom="@dimen/margin5"
+        android:layout_marginTop="5dp"
+        android:text="@string/null_text" />
 
     <TextView
         android:id="@+id/gv_num"
         android:layout_width="wrap_content"
-        android:layout_height="13dp"
-        android:layout_above="@+id/gv_iv"
-        android:layout_marginStart="-10dp"
-        android:layout_marginBottom="-20dp"
-        android:layout_toEndOf="@+id/gv_iv"
+        android:layout_height="wrap_content"
         android:background="@mipmap/msg_red_dot"
+        android:layout_toEndOf="@+id/gv_iv"
+        android:layout_marginStart="-5dp"
         android:gravity="center"
         android:text="1"
         android:textColor="#ffffff"
-        android:textSize="8sp" />
+        android:textSize="7sp" />
 
 </RelativeLayout>

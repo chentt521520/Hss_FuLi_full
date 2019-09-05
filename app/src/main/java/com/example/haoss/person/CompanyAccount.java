@@ -16,7 +16,6 @@ import com.example.applibrary.entity.CompanyInfo;
 import com.example.applibrary.entity.WeiXinPayResult;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.IntentUtils;
-import com.example.applibrary.utils.StringUtils;
 import com.example.applibrary.utils.TextViewUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.AppLibLication;
@@ -29,6 +28,9 @@ import com.example.haoss.pay.wxapi.PayWeChar;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 公司账户
+ */
 public class CompanyAccount extends BaseActivity {
 
     private String payType;
@@ -36,7 +38,7 @@ public class CompanyAccount extends BaseActivity {
     private EditText rechargePrice;
     private TextView wexinPay;
     private TextView aliPay;
-    String banlace;
+    private String banlace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class CompanyAccount extends BaseActivity {
         aliPay.setOnClickListener(listener);
         findViewById(R.id.ui_company_recharge).setOnClickListener(listener);
 
-        currentAmount.setText(StringUtils.commaFormat(banlace));
+        currentAmount.setText(banlace);
 
     }
 
@@ -75,13 +77,13 @@ public class CompanyAccount extends BaseActivity {
                     finish();
                     break;
                 case R.id.ui_company_weixin_pay_view:
-                    TextViewUtils.setImage(CompanyAccount.this, wexinPay, R.mipmap.wallet_wechat, 0, R.mipmap.icon_selected, 0);
-                    TextViewUtils.setImage(CompanyAccount.this, aliPay, R.mipmap.wallet_alipay, 0, R.mipmap.icon_unselected, 0);
+                    TextViewUtils.setImage(CompanyAccount.this, wexinPay, R.mipmap.icon_wechat, 0, R.mipmap.icon_selected, 0);
+                    TextViewUtils.setImage(CompanyAccount.this, aliPay, R.mipmap.icon_alipay, 0, R.mipmap.icon_unselected, 0);
                     payType = Constants.WEIXIN;
                     break;
                 case R.id.ui_company_ali_pay_view:
-                    TextViewUtils.setImage(CompanyAccount.this, wexinPay, R.mipmap.wallet_wechat, 0, R.mipmap.icon_unselected, 0);
-                    TextViewUtils.setImage(CompanyAccount.this, aliPay, R.mipmap.wallet_alipay, 0, R.mipmap.icon_selected, 0);
+                    TextViewUtils.setImage(CompanyAccount.this, wexinPay, R.mipmap.icon_wechat, 0, R.mipmap.icon_unselected, 0);
+                    TextViewUtils.setImage(CompanyAccount.this, aliPay, R.mipmap.icon_alipay, 0, R.mipmap.icon_selected, 0);
                     payType = Constants.ALI;
                     break;
                 case R.id.ui_company_recharge:
@@ -163,6 +165,9 @@ public class CompanyAccount extends BaseActivity {
         }
     };
 
+    /**
+     * 获取公司账户余额
+     */
     private void getCompanyInfo() {
 
         Map<String, Object> map = new HashMap<>();
@@ -171,9 +176,8 @@ public class CompanyAccount extends BaseActivity {
             @Override
             public void success(CompanyInfo result) {
                 if (result != null) {
-                    currentAmount.setText(StringUtils.commaFormat(result.getBalance()));
+                    currentAmount.setText(result.getBalance());
                 }
-
             }
 
             @Override

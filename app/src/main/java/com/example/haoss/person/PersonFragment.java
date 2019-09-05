@@ -139,6 +139,7 @@ public class PersonFragment extends BaseFragment {
         personView.findViewById(R.id.person_collection_linear).setOnClickListener(onClickListener);
         personView.findViewById(R.id.person_coupons_linear).setOnClickListener(onClickListener);
         personView.findViewById(R.id.person_foot_linear).setOnClickListener(onClickListener);
+        personView.findViewById(R.id.person_chakan_dingdan).setOnClickListener(onClickListener);
         person_user_head.setOnClickListener(onClickListener);
         person_user_name.setOnClickListener(onClickListener);
         person_user_company.setOnClickListener(onClickListener);

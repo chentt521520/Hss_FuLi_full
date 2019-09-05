@@ -39,14 +39,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin10"
             android:layout_marginStart="@dimen/width15"
-            android:layout_marginTop="@dimen/margin10">
+            android:layout_marginTop="@dimen/width15">
 
             <ImageView
                 android:id="@+id/person_user_head"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:src="@mipmap/person_user_head_img" />
 
             <RelativeLayout
@@ -106,9 +105,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/width15"
-        android:layout_marginStart="@dimen/width15"
-        android:layout_marginTop="-30dp"
+        android:layout_marginEnd="@dimen/margin10"
+        android:layout_marginStart="@dimen/margin10"
+        android:layout_marginTop="-40dp"
         android:background="@mipmap/bg_my_info"
         android:gravity="center_vertical"
         android:orientation="horizontal">

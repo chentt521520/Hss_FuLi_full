@@ -1,5 +1,6 @@
 package com.example.haoss;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +16,8 @@ import com.example.haoss.base.BaseActivity;
 import com.example.haoss.classification.GoodClassifyFragment;
 import com.example.haoss.indexpage.ExcellentShopActivity;
 import com.example.haoss.person.PersonFragment;
+import com.example.haoss.service.MQTTService;
+import com.example.haoss.service.MyServiceConnection;
 import com.example.haoss.shopcat.ShopCatFragment;
 import com.example.haoss.views.NoScrollViewPager;
 
@@ -45,6 +48,9 @@ public class MainActivity extends BaseActivity {
     private long exitTime = 0;
     private int flag = 0;
 
+    private MyServiceConnection serviceConnection;
+    private MQTTService mqttService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +62,11 @@ public class MainActivity extends BaseActivity {
         fragmentList();
         setView();
         viewListener();
+
+        serviceConnection = new MyServiceConnection();
+        Intent intent = new Intent(this, MQTTService.class);
+        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+
     }
 
     @Override
