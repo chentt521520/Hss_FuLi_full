@@ -63,6 +63,8 @@
                 style="@style/_333333_14_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin5"
+                android:layout_marginBottom="@dimen/margin5"
                 android:text="商品（1）" />
 
             <TextView
@@ -72,6 +74,7 @@
                 android:layout_alignParentEnd="true"
                 android:drawableEnd="@mipmap/icon_down"
                 android:drawablePadding="@dimen/margin5"
+                android:padding="@dimen/margin5"
                 android:text="查看"
                 android:textColor="#c22222"
                 android:textSize="12sp" />
@@ -97,8 +100,8 @@
 
         <View
             style="@style/ui_line"
-            android:layout_marginBottom="@dimen/margin5"
-            android:layout_marginTop="@dimen/margin5" />
+            android:layout_marginBottom="@dimen/margin10"
+            android:layout_marginTop="@dimen/margin10" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -119,6 +122,8 @@
                 android:layout_alignParentEnd="true"
                 android:background="@mipmap/button_confirm"
                 android:gravity="center"
+                android:paddingEnd="@dimen/margin10"
+                android:paddingStart="@dimen/margin10"
                 android:text="确认送达"
                 android:textColor="#ffffff"
                 android:textSize="14sp" />

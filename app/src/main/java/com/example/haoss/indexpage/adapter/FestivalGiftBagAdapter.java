@@ -63,7 +63,7 @@ public class FestivalGiftBagAdapter extends RecyclerView.Adapter<FestivalGiftBag
      * */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_gift_car_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_list_gift_package, parent, false);
         return new MyViewHolder(view);
     }
 

@@ -35,7 +35,7 @@ public class CartInfo implements Serializable {
     private int product_id;
     private String product_attr_unique;
     private int cart_num;
-    private long add_time;
+    //    private long add_time;
     private int is_pay;
     private int is_del;
     private int is_new;
@@ -49,7 +49,7 @@ public class CartInfo implements Serializable {
     private String costPrice;
     private ProductInfo productInfo;
     private String unique;
-    private int is_reply;
+//    private int is_reply;
 
     private boolean isCheck;
 
@@ -101,13 +101,13 @@ public class CartInfo implements Serializable {
         this.cart_num = cart_num;
     }
 
-    public long getAdd_time() {
-        return add_time;
-    }
+//    public long getAdd_time() {
+//        return add_time;
+//    }
 
-    public void setAdd_time(long add_time) {
-        this.add_time = add_time;
-    }
+//    public void setAdd_time(long add_time) {
+//        this.add_time = add_time;
+//    }
 
     public int getIs_pay() {
         return is_pay;
@@ -213,13 +213,13 @@ public class CartInfo implements Serializable {
         this.unique = unique;
     }
 
-    public int getIs_reply() {
-        return is_reply;
-    }
+//    public int getIs_reply() {
+//        return is_reply;
+//    }
 
-    public void setIs_reply(int is_reply) {
-        this.is_reply = is_reply;
-    }
+//    public void setIs_reply(int is_reply) {
+//        this.is_reply = is_reply;
+//    }
 
     public boolean isCheck() {
         return isCheck;

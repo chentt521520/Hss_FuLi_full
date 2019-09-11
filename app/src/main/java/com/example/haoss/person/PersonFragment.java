@@ -214,6 +214,8 @@ public class PersonFragment extends BaseFragment {
                     if (result != null) {
                         userInfo = result;
                         setUserInfo();
+                    } else {
+                        person_user_company.setEnabled(false);
                     }
                 }
 
@@ -227,7 +229,16 @@ public class PersonFragment extends BaseFragment {
 
 
     private void setUserInfo() {
+
         SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.isRealName, userInfo.getIs_realName(), "I");
+        SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.companyId, userInfo.getCompany_id(), "I");
+        SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.peopleType, userInfo.getPeople_type(), "I");
+        SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.companyRoleId, userInfo.getCompany_role_id(), "I");
+        SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.isManager, userInfo.getIs_manager(), "I");
+        SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.companyName, userInfo.getCompany_name(), "S");
+        SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.companyAddress, userInfo.getCompany_address(), "S");
+        SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.nickname, userInfo.getNickname(), "S");
+
         ((TextView) personView.findViewById(R.id.person_foot_num)).setText(userInfo.getFootprintCount() + "");
         ((TextView) personView.findViewById(R.id.person_collection_num)).setText(userInfo.getLike() + "");
         ((TextView) personView.findViewById(R.id.person_coupons_num)).setText(userInfo.getCouponCount() + "");
@@ -236,6 +247,8 @@ public class PersonFragment extends BaseFragment {
         TextViewUtils.setImage(getContext(), person_user_name, R.mipmap.icon_edit, 3);
         person_user_company.setText(userInfo.getCompany_name());
         ImageUtils.loadCirclePic(mContext, userInfo.getAvatar(), person_user_head);
+
+
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -262,13 +275,15 @@ public class PersonFragment extends BaseFragment {
                     IntentUtils.startIntent(mContext, FootprintActivity.class);
                     break;
                 case R.id.person_user_company:   //公司信息
-                    int type = userInfo.getPeople_type();
+                    int type = (int) SharedPreferenceUtils.getPreference(getContext(), ConfigVariate.peopleType, "I");
+                    int manager = (int) SharedPreferenceUtils.getPreference(getContext(), ConfigVariate.isManager, "I");
+
                     if (type == 1) {//普通用户不可点
                     } else if (type == 2) {//商家
                         IntentUtils.startIntent(mContext, GroupMealOrder.class);
                         //显示商家订单
                     } else if (type == 3) {//公司员工
-                        IntentUtils.startIntent(userInfo.getIs_manager(), mContext, CompanyInfoActivity.class);
+                        IntentUtils.startIntent(manager, mContext, CompanyInfoActivity.class);
                     }
                     break;
                 case R.id.person_user_head:   //头像
@@ -278,7 +293,6 @@ public class PersonFragment extends BaseFragment {
                 case R.id.person_chakan_dingdan://我的全部订单
                     IntentUtils.startIntent(-1, mContext, OrderListActivity.class);
                     break;
-
             }
         }
     };

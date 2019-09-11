@@ -15,6 +15,7 @@ import com.example.applibrary.base.ConfigHttpReqFields;
 import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.dialog.MyDialogTwoButton;
 import com.example.applibrary.dialog.interfac.DialogOnClick;
+import com.example.applibrary.entity.CompanyInfo;
 import com.example.applibrary.entity.UserInfo;
 import com.example.applibrary.entity.WeiXinPayResult;
 import com.example.applibrary.httpUtils.OnHttpCallback;
@@ -32,6 +33,7 @@ import com.example.haoss.base.Constants;
 import com.example.haoss.manager.ApiManager;
 import com.example.haoss.pay.aliapi.PayAliPay;
 import com.example.haoss.pay.wxapi.PayWeChar;
+import com.example.haoss.person.dingdan.OrderListActivity;
 import com.example.haoss.person.setting.systemsetting.PaySettingActivity;
 
 import java.util.HashMap;
@@ -41,7 +43,7 @@ import java.util.Map;
 public class GoodsPayActivity extends BaseActivity {
 
     //微信支付图片、支付宝支付图片、余额支付图片
-    ImageView weixin, aliPay, balance;
+    ImageView weixin, aliPay, balance, company;
     String payType = "";
     String money = "";  //金额
     private AppLibLication application;
@@ -73,6 +75,8 @@ public class GoodsPayActivity extends BaseActivity {
         weixin = findViewById(R.id.goodspayactivity_wechatimage);
         aliPay = findViewById(R.id.goodspayactivity_alipayimage);
         balance = findViewById(R.id.goodspayactivity_balanceimage);
+        company = findViewById(R.id.company_pay_check);
+
         ((TextView) findViewById(R.id.goodspayactivity_money)).setText(money);
         setType();
 
@@ -97,6 +101,13 @@ public class GoodsPayActivity extends BaseActivity {
                 setType();
             }
         });
+        company.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                payType = Constants.COM;
+                setType();
+            }
+        });
 
         findViewById(R.id.goodspayactivity_pay).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +122,7 @@ public class GoodsPayActivity extends BaseActivity {
         weixin.setImageResource(TextUtils.equals(payType, Constants.WEIXIN) ? R.mipmap.checked_true : R.mipmap.checked_false);
         aliPay.setImageResource(TextUtils.equals(payType, Constants.ALI) ? R.mipmap.checked_true : R.mipmap.checked_false);
         balance.setImageResource(TextUtils.equals(payType, Constants.YUE) ? R.mipmap.checked_true : R.mipmap.checked_false);
+        company.setImageResource(TextUtils.equals(payType, Constants.COM) ? R.mipmap.checked_true : R.mipmap.checked_false);
     }
 
     //立即支付
@@ -120,7 +132,10 @@ public class GoodsPayActivity extends BaseActivity {
         switch (payType) {
             case Constants.YUE:
                 getCurrentBalance();
-                return;
+                break;
+            case Constants.COM:
+                getCompanyBalance();
+                break;
             case Constants.WEIXIN:
                 ApiManager.weiXinPay(Netconfig.payWeChat, map, new OnHttpCallback<WeiXinPayResult>() {
                     @Override
@@ -155,6 +170,26 @@ public class GoodsPayActivity extends BaseActivity {
         }
     }
 
+    private void getCompanyBalance() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("token", AppLibLication.getInstance().getToken());
+        ApiManager.getCompanyInfo(Netconfig.companyInfo, map, new OnHttpCallback<CompanyInfo>() {
+            @Override
+            public void success(CompanyInfo result) {
+                if (Double.parseDouble(result.getBalance()) < Double.parseDouble(money)) {
+                    toast(getResources().getString(R.string.balance_not_enough) + money);
+                } else {
+                    yuEPayOrder("");
+                }
+            }
+
+            @Override
+            public void error(int code, String msg) {
+                toast(code, msg);
+            }
+        });
+    }
+
     /**
      * 设置支付密码
      */
@@ -178,7 +213,7 @@ public class GoodsPayActivity extends BaseActivity {
 //        Timer timer = new Timer();
 //        TimerTask task = new TimerTask() {
 //            public void run() {
-        Intent intent = new Intent();
+        Intent intent = new Intent(GoodsPayActivity.this, OrderListActivity.class);
         intent.putExtra(IntentUtils.intentActivityFlag, 1);
         startActivityForResult(intent, IntentUtils.intent_pay_success);
 
@@ -259,11 +294,17 @@ public class GoodsPayActivity extends BaseActivity {
 
     private void yuEPayOrder(String psw) {
         Map<String, Object> map = new HashMap<>();
-        map.put("payPass", MD5Util.getMD5String(psw));
+        String url = "";
+        if (TextUtils.equals(payType, Constants.YUE)) {
+            url = Netconfig.yuePay;
+            map.put("payPass", MD5Util.getMD5String(psw));
+        } else if (TextUtils.equals(payType, Constants.COM)) {
+            url = Netconfig.companyPay;
+        }
         map.put("orderId", orderId);
         map.put("token", application.getToken());
 
-        ApiManager.getResultStatus(Netconfig.yuePay, map, new OnHttpCallback<String>() {
+        ApiManager.getResultStatus(url, map, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
                 toast(getResources().getString(R.string.pay_success));

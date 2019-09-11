@@ -4,18 +4,22 @@ import java.util.List;
 
 public class GroupMeal {
 
-
     /**
-     * orderId : wx2019072316361710007
-     * userName : 陈婷婷
-     * phone : 15667074017
-     * address : 四川省 成都市 青羊区 府南街道
-     * totalPrice : 0.01
-     * goodsList : [{"name":"欧芭-A14洗发水","info":{"count":1,"price":0.01}}]
+     * id : 301
+     * orderId : wx2019090916505410001
+     * userName : 彭俊
+     * phone : 15090444910
+     * address : 四川省 成都市 双流区 华阳大道
+     * totalPrice : 15.00
+     * goodsList : [{"name":"番茄炒鸡蛋盖饭","info":{"count":1,"price":15}}]
      * remark :
-     * add_time : 1563870977
+     * add_time : 1568019061
+     * pay_type : appWxPay
+     * arrive_time : 0
+     * totalNum : 1
      */
 
+    private int id;
     private String orderId;
     private String userName;
     private String phone;
@@ -23,7 +27,27 @@ public class GroupMeal {
     private String totalPrice;
     private String remark;
     private int add_time;
+    private String pay_type;
+    private int arrive_time;
+    private int totalNum;
+    private boolean status;
     private List<GoodsListBean> goodsList;
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getOrderId() {
         return orderId;
@@ -81,6 +105,30 @@ public class GroupMeal {
         this.add_time = add_time;
     }
 
+    public String getPay_type() {
+        return pay_type;
+    }
+
+    public void setPay_type(String pay_type) {
+        this.pay_type = pay_type;
+    }
+
+    public int getArrive_time() {
+        return arrive_time;
+    }
+
+    public void setArrive_time(int arrive_time) {
+        this.arrive_time = arrive_time;
+    }
+
+    public int getTotalNum() {
+        return totalNum;
+    }
+
+    public void setTotalNum(int totalNum) {
+        this.totalNum = totalNum;
+    }
+
     public List<GoodsListBean> getGoodsList() {
         return goodsList;
     }
@@ -91,8 +139,8 @@ public class GroupMeal {
 
     public static class GoodsListBean {
         /**
-         * name : 欧芭-A14洗发水
-         * info : {"count":1,"price":0.01}
+         * name : 番茄炒鸡蛋盖饭
+         * info : {"count":1,"price":15}
          */
 
         private String name;
@@ -117,11 +165,11 @@ public class GroupMeal {
         public static class InfoBean {
             /**
              * count : 1
-             * price : 0.01
+             * price : 15
              */
 
             private int count;
-            private double price;
+            private int price;
 
             public int getCount() {
                 return count;
@@ -131,11 +179,11 @@ public class GroupMeal {
                 this.count = count;
             }
 
-            public double getPrice() {
+            public int getPrice() {
                 return price;
             }
 
-            public void setPrice(double price) {
+            public void setPrice(int price) {
                 this.price = price;
             }
         }

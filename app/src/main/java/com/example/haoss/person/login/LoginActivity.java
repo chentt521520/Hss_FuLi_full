@@ -20,6 +20,7 @@ import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.entity.LoginInfo;
 import com.example.applibrary.entity.PassCheck;
+import com.example.applibrary.entity.UserInfo;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.IntentUtils;
 import com.example.applibrary.utils.MD5Util;
@@ -109,9 +110,9 @@ public class LoginActivity extends BaseActivity {
         mContext = this;
         flag = getIntent().getIntExtra(IntentUtils.intentActivityFlag, 0);
         account = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.sPdbAccount, "S");
-        password = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.sPdbPassword, "S");
+//        password = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.sPdbPassword, "S");
         inputEditName.setText(account);
-        inputEditPsw.setText(password);
+//        inputEditPsw.setText(password);
     }
 
     @Override
@@ -290,15 +291,11 @@ public class LoginActivity extends BaseActivity {
             SharedPreferenceUtils.setPreference(this, ConfigVariate.sPdbAccount, account, "S");
             SharedPreferenceUtils.setPreference(this, ConfigVariate.sPdbPassword, password, "S");
             SharedPreferenceUtils.setPreference(this, ConfigVariate.sPdbToken, result.getToken(), "S");
-            SharedPreferenceUtils.setPreference(this, ConfigVariate.nickname, result.getNickname(), "S");
-            SharedPreferenceUtils.setPreference(this, ConfigVariate.avatar, result.getAvatar(), "S");
             SharedPreferenceUtils.setPreference(this, ConfigVariate.uid, result.getUid(), "I");
             SharedPreferenceUtils.setPreference(this, ConfigVariate.status, result.getStatus(), "I");
-            SharedPreferenceUtils.setPreference(this, ConfigVariate.level, result.getLevel(), "I");
-            SharedPreferenceUtils.setPreference(this, ConfigVariate.now_money, result.getNow_money(), "S");
-            SharedPreferenceUtils.setPreference(this, ConfigVariate.integral, result.getIntegral(), "S");
             SharedPreferenceUtils.setPreference(this, ConfigVariate.login, true, "B");
 
+            getUserInfo(result.getToken());
             CheckPwd();
 
             toast("登录成功！");
@@ -306,6 +303,39 @@ public class LoginActivity extends BaseActivity {
             setResult(RESULT_OK, intent);
         } else
             toast("登录失败！");
+    }
+
+
+    private void getUserInfo(String token) {
+        String url = Netconfig.personalCenter;
+        final HashMap<String, Object> map = new HashMap<>();
+        map.put(ConfigHttpReqFields.sendToken, token);
+
+        ApiManager.getUserInfo(url, map, new OnHttpCallback<UserInfo>() {
+            @Override
+            public void success(UserInfo result) {
+                if (result != null) {
+                    saveUserInfo(result);
+                }
+            }
+
+            @Override
+            public void error(int code, String msg) {
+                toast(code, msg);
+            }
+        });
+    }
+
+    public void saveUserInfo(UserInfo result) {
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.isRealName, result.getIs_realName(), "I");
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.companyId, result.getCompany_id(), "I");
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.peopleType, result.getPeople_type(), "I");
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.companyRoleId, result.getCompany_role_id(), "I");
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.isManager, result.getIs_manager(), "I");
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.companyName, result.getCompany_name(), "S");
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.companyAddress, result.getCompany_address(), "S");
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.nickname, result.getNickname(), "S");
+
     }
 
     /**

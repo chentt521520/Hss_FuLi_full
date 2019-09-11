@@ -1,6 +1,5 @@
 package com.example.applibrary.base;
 
-import org.json.JSONObject;
 
 import java.util.Map;
 
@@ -103,9 +102,6 @@ public class Netconfig {
 
     public static final String newPhone = subHost + "/login/getChangePhone" + endSite;
 
-
-
-
     //添加/修改地址
     public static final String addAndEditAddress = subHost + "user/edit_user_address" + endSite;
     //用户地址列表
@@ -151,6 +147,7 @@ public class Netconfig {
     public static final String payWeChat = subHost + "pay/wxPay" + endSite;
     //余额支付
     public static final String yuePay = subHost + "auth/yuePay" + endSite;
+    public static final String companyPay = subHost + "auth/companyPay" + endSite;
 
     //收藏商品列表
     public static final String collectShoppingList = subHost + "user/get_user_collect_product" + endSite;
@@ -222,10 +219,12 @@ public class Netconfig {
     public static final String Authentic = subHost + "user/realName" + endSite;
     //团餐订单列表
     public static final String storeMealOrder = subHost + "user/get_store_order_list" + endSite;
+    public static final String orderComplete = subHost + "store_order/arrive" + endSite;
     public static final String groupMealOrder = subHost + "user/get_company_order_list" + endSite;
 
     public static final String recharge = subHost + "companyRecharge/recharge" + endSite;
     public static final String companyInfo = subHost + "company/info" + endSite;
+    public static final String companyEdit = subHost + "company/edit" + endSite;
 
     public static final String PIC_URL = "http://qiniu.haoshusi.com/";
     public static final String PIC_PATH = "Android/";

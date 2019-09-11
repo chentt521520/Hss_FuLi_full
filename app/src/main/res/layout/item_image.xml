@@ -8,7 +8,7 @@
         android:id="@+id/brand_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="@drawable/bg_corner_border_grey"
+        android:background="@drawable/bk_border_grey"
         android:padding="1dp"
         android:scaleType="centerCrop" />
 

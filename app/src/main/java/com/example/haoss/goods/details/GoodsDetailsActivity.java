@@ -169,6 +169,13 @@ public class GoodsDetailsActivity extends BaseActivity {
 
         goodsId = getIntent().getIntExtra(IntentUtils.intentActivityFlag, 0);
         flag = getIntent().getIntExtra("flag", 0);
+
+        if (flag == ConfigVariate.flagGroupMealIntent) {
+            findViewById(R.id.ui_good_detail_descript).setVisibility(View.GONE);
+        } else {
+            findViewById(R.id.ui_good_detail_descript).setVisibility(View.VISIBLE);
+        }
+
         getGoodDetail();
     }
 

@@ -2,59 +2,57 @@ package com.example.applibrary.entity;
 
 public class UserInfo {
 
-
     /**
      * account : 15667074017
-     * alert : 1
-     * alertInfo : {"coin":"2"}
+     * nickname : 清子
+     * uid : 37
      * avatar : http://qiniu.haoshusi.com/Android/15653427746940YBOBHHCAG.jpg
+     * status : 1
+     * phone : null
+     * sex : 1
      * birthday : 2019-07-18
-     * company_id : 11
-     * company_name : 属猪猪
-     * company_role_id : 1
-     * couponCount : 8
-     * footprintCount : 174
-     * integral : 0.00
+     * now_money : 0.00
      * is_birthday : 1
-     * is_manager : 1
+     * integral : 0.00
+     * sign_num : 0
+     * company_id : 11
+     * company_name : null
+     * company_role_id : 1
+     * is_manager : 0
+     * people_type : 3
      * is_realName : 1
      * like : 28
-     * nickname : 清子
-     * now_money : 0.00
-     * people_type : 2
-     * sex : 1
-     * sign_num : 0
-     * status : 1
-     * uid : 37
+     * couponCount : 12
+     * footprintCount : 177
+     * alert : 1
+     * alertInfo : {"coin":"2"}
+     * company_address :
      */
 
     private String account;
-    private int alert;
-    private AlertInfoBean alertInfo;
+    private String nickname;
+    private int uid;
     private String avatar;
+    private int status;
+    private String phone;
+    private int sex;
     private String birthday;
+    private String now_money;
+    private int is_birthday;
+    private String integral;
+    private int sign_num;
     private int company_id;
     private String company_name;
+    private String company_address;
     private int company_role_id;
-    private int couponCount;
-    private int footprintCount;
-    private String integral;
-    private int is_birthday;
     private int is_manager;
+    private int people_type;
     private int is_realName;
     private int like;
-    private String nickname;
-    private String now_money;
-    /**
-     * 1: 普通用户
-     * 2：商家
-     * 3: 公司
-     */
-    private int people_type;
-    private int sex;
-    private int sign_num;
-    private int status;
-    private int uid;
+    private int couponCount;
+    private int footprintCount;
+    private int alert;
+    private AlertInfoBean alertInfo;
 
     public String getAccount() {
         return account;
@@ -64,20 +62,20 @@ public class UserInfo {
         this.account = account;
     }
 
-    public int getAlert() {
-        return alert;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setAlert(int alert) {
-        this.alert = alert;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public AlertInfoBean getAlertInfo() {
-        return alertInfo;
+    public int getUid() {
+        return uid;
     }
 
-    public void setAlertInfo(AlertInfoBean alertInfo) {
-        this.alertInfo = alertInfo;
+    public void setUid(int uid) {
+        this.uid = uid;
     }
 
     public String getAvatar() {
@@ -88,12 +86,68 @@ public class UserInfo {
         this.avatar = avatar;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
     public String getBirthday() {
         return birthday;
     }
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public String getNow_money() {
+        return now_money;
+    }
+
+    public void setNow_money(String now_money) {
+        this.now_money = now_money;
+    }
+
+    public int getIs_birthday() {
+        return is_birthday;
+    }
+
+    public void setIs_birthday(int is_birthday) {
+        this.is_birthday = is_birthday;
+    }
+
+    public String getIntegral() {
+        return integral;
+    }
+
+    public void setIntegral(String integral) {
+        this.integral = integral;
+    }
+
+    public int getSign_num() {
+        return sign_num;
+    }
+
+    public void setSign_num(int sign_num) {
+        this.sign_num = sign_num;
     }
 
     public int getCompany_id() {
@@ -120,44 +174,20 @@ public class UserInfo {
         this.company_role_id = company_role_id;
     }
 
-    public int getCouponCount() {
-        return couponCount;
-    }
-
-    public void setCouponCount(int couponCount) {
-        this.couponCount = couponCount;
-    }
-
-    public int getFootprintCount() {
-        return footprintCount;
-    }
-
-    public void setFootprintCount(int footprintCount) {
-        this.footprintCount = footprintCount;
-    }
-
-    public String getIntegral() {
-        return integral;
-    }
-
-    public void setIntegral(String integral) {
-        this.integral = integral;
-    }
-
-    public int getIs_birthday() {
-        return is_birthday;
-    }
-
-    public void setIs_birthday(int is_birthday) {
-        this.is_birthday = is_birthday;
-    }
-
     public int getIs_manager() {
         return is_manager;
     }
 
     public void setIs_manager(int is_manager) {
         this.is_manager = is_manager;
+    }
+
+    public int getPeople_type() {
+        return people_type;
+    }
+
+    public void setPeople_type(int people_type) {
+        this.people_type = people_type;
     }
 
     public int getIs_realName() {
@@ -176,60 +206,44 @@ public class UserInfo {
         this.like = like;
     }
 
-    public String getNickname() {
-        return nickname;
+    public int getCouponCount() {
+        return couponCount;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setCouponCount(int couponCount) {
+        this.couponCount = couponCount;
     }
 
-    public String getNow_money() {
-        return now_money;
+    public int getFootprintCount() {
+        return footprintCount;
     }
 
-    public void setNow_money(String now_money) {
-        this.now_money = now_money;
+    public void setFootprintCount(int footprintCount) {
+        this.footprintCount = footprintCount;
     }
 
-    public int getPeople_type() {
-        return people_type;
+    public int getAlert() {
+        return alert;
     }
 
-    public void setPeople_type(int people_type) {
-        this.people_type = people_type;
+    public void setAlert(int alert) {
+        this.alert = alert;
     }
 
-    public int getSex() {
-        return sex;
+    public AlertInfoBean getAlertInfo() {
+        return alertInfo;
     }
 
-    public void setSex(int sex) {
-        this.sex = sex;
+    public void setAlertInfo(AlertInfoBean alertInfo) {
+        this.alertInfo = alertInfo;
     }
 
-    public int getSign_num() {
-        return sign_num;
+    public String getCompany_address() {
+        return company_address;
     }
 
-    public void setSign_num(int sign_num) {
-        this.sign_num = sign_num;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public int getUid() {
-        return uid;
-    }
-
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setCompany_address(String company_address) {
+        this.company_address = company_address;
     }
 
     public static class AlertInfoBean {

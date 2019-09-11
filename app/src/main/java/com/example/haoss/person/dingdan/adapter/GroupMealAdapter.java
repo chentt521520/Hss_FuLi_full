@@ -12,12 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.entity.GroupMeal;
 import com.example.applibrary.utils.TextViewUtils;
 import com.example.haoss.R;
-import com.example.haoss.person.dingdan.GroupMealDetails;
-import com.example.haoss.person.dingdan.MyOrderDetails;
 
 import java.util.List;
 
@@ -78,7 +75,7 @@ public class GroupMealAdapter extends BaseAdapter {
         holder.userName.setText(meal.getUserName());
         holder.phone.setText(meal.getPhone());
         holder.address.setText(meal.getAddress());
-        holder.goodCount.setText("商品（" + meal.getGoodsList().size() + "）");
+        holder.goodCount.setText("商品（" + meal.getTotalNum() + "）");
 
         String price1 = "订单金额：¥ " + "<font color = \"#c22222\">" + meal.getTotalPrice() + "</font>";
         holder.price.setText(Html.fromHtml(price1));
@@ -91,6 +88,11 @@ public class GroupMealAdapter extends BaseAdapter {
             holder.remark.setText(Html.fromHtml(mark));
         }
 
+        if (meal.isStatus()) {
+            holder.confirm.setVisibility(View.GONE);
+        } else {
+            holder.confirm.setVisibility(View.VISIBLE);
+        }
 
         holder.container.removeAllViews();
         for (int i = 0; i < meal.getGoodsList().size(); i++) {
@@ -108,13 +110,15 @@ public class GroupMealAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (isFold) {
-                    holder.more.setText("查看");
-                    TextViewUtils.setImage(context, holder.more, R.mipmap.icon_down, 3);
-                    holder.container.setVisibility(View.VISIBLE);
-                    holder.remark.setVisibility(View.VISIBLE);
-                } else {
                     holder.more.setText("收起");
                     TextViewUtils.setImage(context, holder.more, R.mipmap.icon_subscript, 3);
+
+                    holder.container.setVisibility(View.VISIBLE);
+                    holder.remark.setVisibility(TextUtils.isEmpty(meal.getRemark()) ? View.GONE : View.VISIBLE);
+                } else {
+                    holder.more.setText("查看");
+                    TextViewUtils.setImage(context, holder.more, R.mipmap.icon_down, 3);
+
                     holder.container.setVisibility(View.GONE);
                     holder.remark.setVisibility(View.GONE);
                 }
@@ -125,10 +129,7 @@ public class GroupMealAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, GroupMealDetails.class);
-                String orderId = meal.getOrderId();
-                intent.putExtra("orderId", orderId);
-                context.startActivity(intent);
+                listener.onItemListener(position);
             }
         });
 
@@ -165,6 +166,8 @@ public class GroupMealAdapter extends BaseAdapter {
 
 
     public interface onItemClickListener {
+        void onItemListener(int pos);
+
         void onConfirmListener(int pos);
 
         void onCallListener(int pos);

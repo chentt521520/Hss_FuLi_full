@@ -11,7 +11,7 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:padding="1dp"
-        android:background="@drawable/bg_corner_border_grey"
+        android:background="@drawable/bk_border_grey"
         android:src="@drawable/big_image01" />
 
     <TextView

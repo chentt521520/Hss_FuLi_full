@@ -1,5 +1,6 @@
 package com.example.haoss.person;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -38,14 +39,12 @@ public class CompanyAccount extends BaseActivity {
     private EditText rechargePrice;
     private TextView wexinPay;
     private TextView aliPay;
-    private String banlace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_account);
         registerReceiver(mReceiver, new IntentFilter(IntentUtils.pay));
-        banlace = getIntent().getStringExtra(IntentUtils.intentActivityString);
         initView();
     }
 
@@ -65,8 +64,7 @@ public class CompanyAccount extends BaseActivity {
         aliPay.setOnClickListener(listener);
         findViewById(R.id.ui_company_recharge).setOnClickListener(listener);
 
-        currentAmount.setText(banlace);
-
+        getCompanyInfo();
     }
 
     private View.OnClickListener listener = new View.OnClickListener() {
@@ -150,7 +148,7 @@ public class CompanyAccount extends BaseActivity {
             if (TextUtils.isEmpty(status)) {
                 return;
             }
-            if (action.equals(IntentUtils.pay)) {//微信广播
+            if (action.equals(IntentUtils.pay)) {
                 if (TextUtils.equals(status, "0")) {
                     getCompanyInfo();
                     toast("支付成功");

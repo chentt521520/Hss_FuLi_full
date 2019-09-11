@@ -7,5 +7,6 @@ public class Constants {
     public final static String WEIXIN = "weixin";
     public final static String ALI = "ali";
     public final static String YUE = "yue";
+    public final static String COM = "company";
 
 }

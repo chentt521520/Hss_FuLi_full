@@ -3,20 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="@dimen/margin10"
-    android:paddingEnd="@dimen/width15"
-    android:paddingStart="@dimen/width15">
+    android:paddingEnd="12dp"
+    android:paddingStart="12dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_bai01">
+        android:background="@drawable/bk_border_grey">
 
         <RelativeLayout
             android:id="@+id/item_address_check_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:padding="@dimen/width15">
+            android:padding="@dimen/margin10">
 
             <ImageView
                 android:id="@+id/item_address_check"
@@ -29,7 +29,9 @@
             android:id="@+id/user_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin10"
+            android:layout_marginEnd="@dimen/margin10"
+            android:layout_marginStart="@dimen/margin10"
+            android:layout_marginTop="@dimen/width15"
             android:layout_toEndOf="@+id/item_address_check_view"
             android:layout_toStartOf="@+id/item_address_edit">
 
@@ -58,8 +60,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/user_info"
-            android:layout_marginBottom="@dimen/margin10"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="@dimen/width15"
+            android:layout_marginEnd="@dimen/margin10"
+            android:layout_marginStart="@dimen/margin10"
+            android:layout_marginTop="@dimen/margin10"
             android:layout_toEndOf="@+id/item_address_check_view"
             android:layout_toStartOf="@+id/item_address_edit">
 
@@ -90,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:padding="@dimen/width15"
+            android:padding="@dimen/margin10"
             android:src="@mipmap/addre_editor_img" />
     </RelativeLayout>
 

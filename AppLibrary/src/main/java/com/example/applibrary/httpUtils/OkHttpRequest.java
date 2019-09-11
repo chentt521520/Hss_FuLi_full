@@ -90,7 +90,7 @@ public class OkHttpRequest {
         if (map != null) {
             json = mapToJson(map);
         }
-        OkhttpTool.getOkhttpTool().post(url, map, new okhttp3.Callback() {
+        OkhttpTool.getOkhttpTool().uploadJson(url, json, new okhttp3.Callback() {
             @Override
             public void onFailure(okhttp3.Call call, IOException e) {
                 if (callback != null) {
@@ -114,7 +114,6 @@ public class OkHttpRequest {
                 }
             }
         });
-
     }
 
 

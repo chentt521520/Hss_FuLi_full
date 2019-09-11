@@ -60,13 +60,13 @@ public class OrderInfo {
     private String status_pic;
     private List<CartInfo> cartInfo;
 
-//        public int getAdd_time() {
-//            return add_time;
-//        }
-//
-//        public void setAdd_time(int add_time) {
-//            this.add_time = add_time;
-//        }
+    public int getAdd_time() {
+        return add_time;
+    }
+
+    public void setAdd_time(int add_time) {
+        this.add_time = add_time;
+    }
 
     public int getSeckill_id() {
         return seckill_id;
@@ -228,11 +228,11 @@ public class OrderInfo {
         this.pay_time = pay_time;
     }
 
-    public String getAdd_time() {
+    public String getAdds_time() {
         return adds_time;
     }
 
-    public void setAdd_time(String _add_time) {
+    public void setAdds_time(String _add_time) {
         this.adds_time = _add_time;
     }
 

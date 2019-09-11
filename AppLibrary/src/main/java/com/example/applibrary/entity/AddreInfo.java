@@ -1,5 +1,7 @@
 package com.example.applibrary.entity;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
 
 //地址信息（保护编辑）
@@ -35,7 +37,7 @@ public class AddreInfo implements Serializable {
     }
 
     public String getReal_name() {
-        return real_name;
+        return TextUtils.isEmpty(real_name) ? "" : real_name;
     }
 
     public void setReal_name(String real_name) {
@@ -43,7 +45,7 @@ public class AddreInfo implements Serializable {
     }
 
     public String getPhone() {
-        return phone;
+        return TextUtils.isEmpty(phone) ? "" : phone;
     }
 
     public void setPhone(String phone) {
@@ -51,7 +53,7 @@ public class AddreInfo implements Serializable {
     }
 
     public String getProvince() {
-        return province;
+        return TextUtils.isEmpty(province) ? "" : province;
     }
 
     public void setProvince(String province) {
@@ -59,7 +61,7 @@ public class AddreInfo implements Serializable {
     }
 
     public String getCity() {
-        return city;
+        return TextUtils.isEmpty(city) ? "" : city;
     }
 
     public void setCity(String city) {
@@ -67,7 +69,7 @@ public class AddreInfo implements Serializable {
     }
 
     public String getDistrict() {
-        return district;
+        return TextUtils.isEmpty(district) ? "" : district;
     }
 
     public void setDistrict(String district) {
@@ -75,7 +77,7 @@ public class AddreInfo implements Serializable {
     }
 
     public String getDetail() {
-        return detail;
+        return TextUtils.isEmpty(detail) ? "" : detail;
     }
 
     public void setDetail(String detail) {

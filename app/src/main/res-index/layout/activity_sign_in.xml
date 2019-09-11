@@ -39,7 +39,7 @@
                     android:text="@string/my_icon" />
 
                 <TextView
-                    android:id="@+id/my_icon"
+                    android:id="@+id/ui_sign_in_my_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/my_icon_view"
@@ -80,6 +80,7 @@
                     android:layout_marginTop="@dimen/margin30" />
 
                 <TextView
+                    android:id="@+id/ui_sign_in_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ui_sign_in_calendar"

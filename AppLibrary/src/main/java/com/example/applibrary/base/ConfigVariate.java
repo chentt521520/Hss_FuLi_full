@@ -24,6 +24,12 @@ public class ConfigVariate {
     public static final String goldCoin = "goldcoin";//金币
     public static final String isRealName = "isRealName";//金币
     public static final String isPass = "PASSWORD";//是否设置过密码
+    public static final String companyName = "companyName";//公司名称
+    public static final String isManager = "isManager";//是否为管理员
+    public static final String companyRoleId = "companyRoleId";//公司角色id
+    public static final String peopleType = "peopleType";//用户类型
+    public static final String companyId = "companyId";//公司Id
+    public static final String companyAddress = "companyAddress";//公司Id
 
     //登录包名
     public static final String packLogin = "com.example.haoss.person.login.LoginActivity";
@@ -58,5 +64,9 @@ public class ConfigVariate {
 
     /*请求回调参数*/
     public static final int cartFragment = 1;
+    public static final int orderListFresh = 2;
+
+    public static final int REQUEST_CODE_ASK_CALL_PHONE = 0x0001;
+    public static final int REQUEST_CODE_UPDATE_COMPANY = 0x0002;
 }
 

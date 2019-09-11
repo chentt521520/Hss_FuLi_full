@@ -14,7 +14,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,6 +26,7 @@ import com.example.applibrary.dialog.MyDialogTwoButton;
 import com.example.applibrary.dialog.interfac.DialogOnClick;
 import com.example.applibrary.entity.AddreInfo;
 import com.example.applibrary.entity.CartInfo;
+import com.example.applibrary.entity.CompanyInfo;
 import com.example.applibrary.entity.MyCoupon;
 import com.example.applibrary.entity.OrderCommit;
 import com.example.applibrary.entity.UserInfo;
@@ -50,7 +50,6 @@ import com.example.applibrary.utils.IntentUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
 import com.example.haoss.base.Constants;
-import com.example.haoss.goods.details.GoodsDetailsActivity;
 import com.example.haoss.indexpage.tourdiy.GouponPayActivity;
 import com.example.haoss.manager.ApiManager;
 import com.example.haoss.pay.aliapi.PayAliPay;
@@ -90,6 +89,7 @@ public class GoodsBuyActivity extends BaseActivity {
     private TextView totalCountView;    //未优惠的金额、小计数量
     private TextView coupon;    //优惠券价格
     private TextView submitBtn, totalPriceText;//  提交订单、总金额、总数量、优惠金额
+    private TextView tip;
 
     private LinearLayout siteView;   //收货地址信息
     private TextView noReceiver; //无收货人信息时显示
@@ -107,6 +107,7 @@ public class GoodsBuyActivity extends BaseActivity {
     private ImageView wexinCheck;
     private ImageView aliCheck;
     private ImageView banlenceCheck;
+    private ImageView companyCheck;
     private CouponAdapter couponAdapter;
     private List<MyCoupon> listCoupon;
     private int intentFlag;
@@ -115,8 +116,12 @@ public class GoodsBuyActivity extends BaseActivity {
     private int selectIndex = -1;
     private int couponIndex = -1;
     private double payPrice;
-    private double totalPrice;
     private MyDialogTwoButton dialog;
+    private Map<String, Object> params;
+    private OrderCommit orderResult;
+    private boolean isBulk;
+    private int siteId = -1;
+    private boolean free = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -125,7 +130,6 @@ public class GoodsBuyActivity extends BaseActivity {
         application = AppLibLication.getInstance();
         registerReceiver(mReceiver, new IntentFilter(IntentUtils.pay));
         init();
-        getDefaultSite();
         getData();
     }
 
@@ -163,6 +167,7 @@ public class GoodsBuyActivity extends BaseActivity {
         sendWay = findViewById(R.id.ui_good_pay_send_way);
         //买家备注
         remark = findViewById(R.id.ui_good_pay_remark);
+        tip = findViewById(R.id.ui_good_pay_tip);
 
 //        gold_icon_text = findViewById(R.id.ui_good_pay_gold_icon_text);
         //小计
@@ -175,6 +180,7 @@ public class GoodsBuyActivity extends BaseActivity {
         wexinCheck = findViewById(R.id.wechart_pay_check);
         aliCheck = findViewById(R.id.alipay_pay_check);
         banlenceCheck = findViewById(R.id.banlence_pay_check);
+        companyCheck = findViewById(R.id.company_pay_check);
 
         //地址选择
         siteView.setOnClickListener(onClickListener);
@@ -185,17 +191,22 @@ public class GoodsBuyActivity extends BaseActivity {
         wexinCheck.setOnClickListener(onClickListener);
         aliCheck.setOnClickListener(onClickListener);
         banlenceCheck.setOnClickListener(onClickListener);
+        companyCheck.setOnClickListener(onClickListener);
 
+        wexinCheck.setEnabled(false);
+        aliCheck.setEnabled(false);
+        banlenceCheck.setEnabled(false);
+        companyCheck.setEnabled(false);
         submitBtn.setEnabled(false);
 
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                CartInfo item = (CartInfo) goodsBuyAdapter.getItem(position);
-                int product_id = item.getProduct_id();
-                IntentUtils.startIntent(product_id, GoodsBuyActivity.this, GoodsDetailsActivity.class);
-            }
-        });
+//        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                CartInfo item = (CartInfo) goodsBuyAdapter.getItem(position);
+//                int product_id = item.getProduct_id();
+//                IntentUtils.startIntent(product_id, GoodsBuyActivity.this, GoodsDetailsActivity.class);
+//            }
+//        });
     }
 
     //点击事件
@@ -220,13 +231,30 @@ public class GoodsBuyActivity extends BaseActivity {
                     submit();
                     break;
                 case R.id.wechart_pay_check://微信支付
+                    if (isBulk) {
+                        tip.setText(orderResult.getPriceGroup().getBulkMsg());
+                        totalPriceText.setText(String.format(getResources().getString(R.string.price_unit), orderResult.getPriceGroup().getTotalPay()));
+                    }
                     setChoose(1);
                     break;
                 case R.id.alipay_pay_check://支付宝支付
+                    if (isBulk) {
+                        tip.setText(orderResult.getPriceGroup().getBulkMsg());
+                        totalPriceText.setText(String.format(getResources().getString(R.string.price_unit), orderResult.getPriceGroup().getTotalPay()));
+                    }
                     setChoose(2);
                     break;
                 case R.id.banlence_pay_check://余额支付
+                    if (isBulk) {
+                        tip.setText(orderResult.getPriceGroup().getBulkMsg());
+                        totalPriceText.setText(String.format(getResources().getString(R.string.price_unit), orderResult.getPriceGroup().getTotalPay()));
+                    }
                     setChoose(3);
+                    break;
+                case R.id.company_pay_check://企业支付
+                    setChoose(4);
+                    totalPriceText.setText(String.format(getResources().getString(R.string.price_unit), orderResult.getPriceGroup().getTotalPrice()));
+                    tip.setText("");
                     break;
             }
         }
@@ -237,12 +265,15 @@ public class GoodsBuyActivity extends BaseActivity {
         wexinCheck.setImageResource(type == 1 ? R.mipmap.check_box_true : R.mipmap.check_box_false);
         aliCheck.setImageResource(type == 2 ? R.mipmap.check_box_true : R.mipmap.check_box_false);
         banlenceCheck.setImageResource(type == 3 ? R.mipmap.check_box_true : R.mipmap.check_box_false);
+        companyCheck.setImageResource(type == 4 ? R.mipmap.check_box_true : R.mipmap.check_box_false);
         if (type == 1) {
             payType = Constants.WEIXIN;
         } else if (type == 2) {
             payType = Constants.ALI;
         } else if (type == 3) {
             payType = Constants.YUE;
+        } else if (type == 4) {
+            payType = Constants.COM;
         }
     }
 
@@ -264,6 +295,47 @@ public class GoodsBuyActivity extends BaseActivity {
         submitFromShopCar();
     }
 
+    //确认订单
+    private void submitFromShopCar() {
+        String url = Netconfig.confirmOrder;
+        Map<String, Object> map = new HashMap<>();
+        map.put("cartId", carId);
+        map.put("token", application.getToken());
+
+        ApiManager.getOrderCommit(url, map, new OnHttpCallback<OrderCommit>() {
+            @Override
+            public void success(OrderCommit result) {
+                if (result != null) {
+                    orderResult = result;
+                    getCouponList();
+                    getOrderDetail();
+                    setData();
+
+                    if (result.getPriceGroup().isIsBulk()) {
+                        siteId = -1;
+                        String address = (String) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.companyAddress, "S");
+                        String name = (String) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.nickname, "S");
+                        String phoneNum = (String) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.sPdbAccount, "S");
+                        personName.setText(name);
+                        phone.setText(phoneNum);
+                        site.setText(address);
+
+                        siteView.setEnabled(false);
+                    } else {
+                        siteView.setEnabled(true);
+                        getDefaultSite();
+                    }
+                }
+            }
+
+            @Override
+            public void error(int code, String msg) {
+                toast(code + "," + msg);
+            }
+        });
+    }
+
+
     //获取默认地址
     private void getDefaultSite() {
         String url = Netconfig.getDefaultAddress;
@@ -277,6 +349,7 @@ public class GoodsBuyActivity extends BaseActivity {
                     siteView.setVisibility(View.GONE);
                     noReceiver.setVisibility(View.VISIBLE);
                 } else {
+                    siteId = result.getId();
                     siteView.setVisibility(View.VISIBLE);
                     noReceiver.setVisibility(View.GONE);
                     siteInfo = result;
@@ -293,60 +366,20 @@ public class GoodsBuyActivity extends BaseActivity {
             public void error(int code, String msg) {
                 siteView.setVisibility(View.GONE);
                 noReceiver.setVisibility(View.VISIBLE);
-                toast(code, msg);
-            }
-        });
-    }
-
-    //确认订单
-    private void submitFromShopCar() {
-        String url = Netconfig.confirmOrder;
-        Map<String, Object> map = new HashMap<>();
-        map.put("cartId", carId);
-        map.put("token", application.getToken());
-
-        ApiManager.getOrderCommit(url, map, new OnHttpCallback<OrderCommit>() {
-            @Override
-            public void success(OrderCommit result) {
-                orderKey = result.getOrderKey();
-                String storePostage = result.getPriceGroup().getStorePostage();
-                totalPrice = Double.parseDouble(result.getPriceGroup().getTotalPrice());
-
-                if (intentFlag == ConfigVariate.flagGrouponIntent || intentFlag == ConfigVariate.flagSalesIntent) {
-                    payPrice = totalPrice;
-                    sendWay.setText(getResources().getString(R.string.express_free));
-                } else {
-                    if (totalPrice >= 99) {
-                        payPrice = totalPrice;
-                        sendWay.setText(getResources().getString(R.string.express_free));
-                    } else {
-                        payPrice = totalPrice + Double.parseDouble(storePostage);
-                        sendWay.setText(String.format(getResources().getString(R.string.express_spend), storePostage));
-                    }
-                }
-                getCouponList(result.getUsableCoupon());
-                getOrderDetail(result.getCartInfo());
-                setData();
-            }
-
-            @Override
-            public void error(int code, String msg) {
-                toast(code + "," + msg);
+//                toast(code, msg);
             }
         });
     }
 
     /**
      * 获取优惠券
-     *
-     * @param myCoupon 优惠券
      */
-    private void getCouponList(List<MyCoupon> myCoupon) {
+    private void getCouponList() {
         listUseCoupon = new ArrayList<>();
         listUnuseCoupon = new ArrayList<>();
 
-        if (!StringUtils.listIsEmpty(myCoupon)) {
-            for (MyCoupon coupon : myCoupon) {
+        if (!StringUtils.listIsEmpty(orderResult.getUsableCoupon())) {
+            for (MyCoupon coupon : orderResult.getUsableCoupon()) {
                 if (coupon.getIs_available() == 0) {//不可使用
                     listUnuseCoupon.add(coupon);
                 } else {
@@ -363,13 +396,59 @@ public class GoodsBuyActivity extends BaseActivity {
         }
     }
 
-    public void getOrderDetail(List<CartInfo> list) {
-        if (list != null) {
-            for (CartInfo cartInfo : list) {
+    public void getOrderDetail() {
+        OrderCommit.PriceGroupBean priceGroup = orderResult.getPriceGroup();
+        isBulk = priceGroup.isIsBulk();
+        orderKey = orderResult.getOrderKey();
+
+        String storePostage = priceGroup.getStorePostage();
+        double totalPrice = Double.parseDouble(priceGroup.getTotalPay());
+
+        if (intentFlag == ConfigVariate.flagGrouponIntent || intentFlag == ConfigVariate.flagSalesIntent) {
+            payPrice = totalPrice;
+            sendWay.setText(getResources().getString(R.string.express_free));
+        } else {
+            if (totalPrice >= 99) {
+                payPrice = totalPrice;
+                sendWay.setText(getResources().getString(R.string.express_free));
+            } else {
+                payPrice = totalPrice + Double.parseDouble(storePostage);
+                sendWay.setText(String.format(getResources().getString(R.string.express_spend), storePostage));
+            }
+        }
+
+        if (payPrice == 0) {//实付价格==0
+            findViewById(R.id.pay_view).setVisibility(View.GONE);
+            payType = Constants.COM;
+            free = true;
+        } else {
+            free = false;
+            findViewById(R.id.pay_view).setVisibility(View.VISIBLE);
+        }
+
+        int type = (int) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.peopleType, "I");
+        int isManager = (int) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.isManager, "I");
+
+        if (type == 3 && isManager == 1) {//管理员
+            if (isBulk) {
+                tip.setText(priceGroup.getBulkMsg());
+                findViewById(R.id.company_pay_view).setVisibility(View.VISIBLE);
+            } else {
+                findViewById(R.id.company_pay_view).setVisibility(View.GONE);
+            }
+        } else {
+            if (isBulk) {
+                tip.setText(priceGroup.getBulkMsg());
+            }
+            findViewById(R.id.company_pay_view).setVisibility(View.GONE);
+        }
+
+        cartInfoList = orderResult.getCartInfo();
+        if (cartInfoList != null) {
+            for (CartInfo cartInfo : cartInfoList) {
                 totalCount += cartInfo.getCart_num();
             }
         }
-        cartInfoList = list;
         if (goodsBuyAdapter == null) {
             goodsBuyAdapter = new GoodsBuyAdapter(this, cartInfoList);
             listview.setAdapter(goodsBuyAdapter);
@@ -377,7 +456,6 @@ public class GoodsBuyActivity extends BaseActivity {
             goodsBuyAdapter.setRefresh(cartInfoList);
 
         totalCountView.setText(String.format(getResources().getString(R.string.total_count), totalCount));
-
     }
 
 
@@ -408,6 +486,10 @@ public class GoodsBuyActivity extends BaseActivity {
         }
 
         submitBtn.setEnabled(true);
+        wexinCheck.setEnabled(true);
+        aliCheck.setEnabled(true);
+        banlenceCheck.setEnabled(true);
+        companyCheck.setEnabled(true);
         submitBtn.setBackgroundColor(getResources().getColor(R.color.baseRedColor));
     }
 
@@ -523,37 +605,25 @@ public class GoodsBuyActivity extends BaseActivity {
 
     //跳转支付界面并传入数据
     private void submit() {
-        if (siteInfo == null) {
-            toast("请选择收货地址！");
-            return;
-        }
+//        if (siteInfo == null) {
+//            toast("请选择收货地址！");
+//            return;
+//        }
 
         if (orderKey.equals("")) {
             toast("确认订单失败，请重新提交！");
             return;
         }
 
-        if (TextUtils.equals(payType, Constants.WEIXIN)) {
-            weixinPay();
-        } else if (TextUtils.equals(payType, Constants.ALI)) {
-            aliPay();
-        } else {
-            getCurrentBalance();
-        }
-    }
-
-
-    private void weixinPay() {
-        String url = Netconfig.submitOrder;
-        Map<String, Object> map = new HashMap<>();
-        map.put("key", orderKey);
-        map.put("addressId", siteInfo.getId());
+        params = new HashMap<>();
+        params.put("key", orderKey);
+        params.put("addressId", siteId);
+        params.put("payType", payType);
         if (couponIndex != -1)
-            map.put("couponId", listUseCoupon.get(couponIndex).getId());
-        map.put("mark", remark.getText().toString());
-        map.put("payType", Constants.WEIXIN);
-        map.put("token", getInstance().getToken());
-        map.put("useIntegral", false);
+            params.put("couponId", listUseCoupon.get(couponIndex).getId());
+        params.put("mark", remark.getText().toString());
+        params.put("token", getInstance().getToken());
+        params.put("useIntegral", false);
         /**拼团产品id 普通商品为空或0
          * combination_id	T文本	是
          * 1
@@ -564,13 +634,29 @@ public class GoodsBuyActivity extends BaseActivity {
          * seckill_id
          */
         if (intentFlag == ConfigVariate.flagGrouponIntent) {
-            map.put("combination_id", cartInfoList.get(0).getProductInfo().getId());
-            map.put("pinkId", pinkId);
+            params.put("combination_id", cartInfoList.get(0).getProductInfo().getId());
+            params.put("pinkId", pinkId);
         } else if (intentFlag == ConfigVariate.flagSalesIntent) {
-            map.put("seckill_id", cartInfoList.get(0).getProductInfo().getId());
+            params.put("seckill_id", cartInfoList.get(0).getProductInfo().getId());
         }
 
-        ApiManager.weiXinPay(url, map, new OnHttpCallback<WeiXinPayResult>() {
+        if (TextUtils.equals(payType, Constants.WEIXIN)) {
+            weixinPay();
+        } else if (TextUtils.equals(payType, Constants.ALI)) {
+            aliPay();
+        } else if (TextUtils.equals(payType, Constants.YUE)) {
+            getUserBalance();
+        } else if (TextUtils.equals(payType, Constants.COM)) {
+            if (free) {
+                commitOrder("");
+            } else {
+                getCompanyBalance();
+            }
+        }
+    }
+
+    private void weixinPay() {
+        ApiManager.weiXinPay(Netconfig.submitOrder, params, new OnHttpCallback<WeiXinPayResult>() {
             @Override
             public void success(WeiXinPayResult result) {
                 new PayWeChar(GoodsBuyActivity.this, result.getPartnerid(),
@@ -586,25 +672,7 @@ public class GoodsBuyActivity extends BaseActivity {
 
 
     private void aliPay() {
-        String url = Netconfig.submitOrder;
-        Map<String, Object> map = new HashMap<>();
-        map.put("key", orderKey);
-        map.put("addressId", siteInfo.getId());
-        map.put("mark", remark.getText().toString());
-        map.put("payType", Constants.ALI);
-        map.put("token", getInstance().getToken());
-        map.put("useIntegral", false);
-
-        if (couponIndex != -1)
-            map.put("couponId", listUseCoupon.get(couponIndex).getId());
-        if (intentFlag == ConfigVariate.flagGrouponIntent) {
-            map.put("combination_id", cartInfoList.get(0).getProductInfo().getId());
-            map.put("pinkId", pinkId);
-        } else if (intentFlag == ConfigVariate.flagSalesIntent) {
-            map.put("seckill_id", cartInfoList.get(0).getProductInfo().getId());
-        }
-
-        ApiManager.getResultString(url, map, new OnHttpCallback<String>() {
+        ApiManager.getResultString(Netconfig.submitOrder, params, new OnHttpCallback<String>() {
             @Override
             public void success(String result) {
                 new PayAliPay(GoodsBuyActivity.this).PayZFB(result);
@@ -637,24 +705,10 @@ public class GoodsBuyActivity extends BaseActivity {
     }
 
     private void commitOrder(String pwd) {
-        String url = Netconfig.submitOrder;
-        Map<String, Object> map = new HashMap<>();
-        map.put("key", orderKey);
-        map.put("addressId", siteInfo.getId());
-        map.put("mark", remark.getText().toString());
-        map.put("payType", payType);
-        map.put("payPass", MD5Util.getMD5String(pwd));
-        map.put("token", getInstance().getToken());
-        map.put("useIntegral", false);
-        if (couponIndex != -1)
-            map.put("couponId", listUseCoupon.get(couponIndex).getId());
-        if (intentFlag == ConfigVariate.flagGrouponIntent) {
-            map.put("combination_id", cartInfoList.get(0).getProductInfo().getId());
-            map.put("pinkId", pinkId);
-        } else if (intentFlag == ConfigVariate.flagSalesIntent) {
-            map.put("seckill_id", cartInfoList.get(0).getProductInfo().getId());
+        if (TextUtils.equals(payType, Constants.YUE)) {
+            params.put("payPass", MD5Util.getMD5String(pwd));
         }
-        httpHander.okHttpMapPost(GoodsBuyActivity.this, url, map, 1);
+        httpHander.okHttpMapPost(GoodsBuyActivity.this, Netconfig.submitOrder, params, 1);
     }
 
 
@@ -689,7 +743,8 @@ public class GoodsBuyActivity extends BaseActivity {
                     }
                 }
             } catch (Exception e) {
-                toast(ErrorEnum.ERROR_10004.getCode(), e.getMessage());
+                toast("支付失败");
+//                toast(ErrorEnum.ERROR_10004.getCode(), e.getMessage());
             }
         }
     };
@@ -765,8 +820,29 @@ public class GoodsBuyActivity extends BaseActivity {
 
     }
 
-    //获取个人中心信息
-    public void getCurrentBalance() {
+    private void getCompanyBalance() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("token", AppLibLication.getInstance().getToken());
+        ApiManager.getCompanyInfo(Netconfig.companyInfo, map, new OnHttpCallback<CompanyInfo>() {
+            @Override
+            public void success(CompanyInfo result) {
+                if (result != null) {
+                    if (Double.parseDouble(result.getBalance()) < payPrice) {
+                        toast("企业余额不足" + payPrice);
+                    } else {
+                        commitOrder("");
+                    }
+                }
+            }
+
+            @Override
+            public void error(int code, String msg) {
+                toast(code, msg);
+            }
+        });
+    }
+
+    private void getUserBalance() {
         String url = Netconfig.personalCenter;
         HashMap<String, Object> map = new HashMap<>();
         map.put(ConfigHttpReqFields.sendToken, AppLibLication.getInstance().getToken());
@@ -801,7 +877,7 @@ public class GoodsBuyActivity extends BaseActivity {
 //        TimerTask task = new TimerTask() {
 //            public void run() {
         IntentUtils.startIntent(flag, GoodsBuyActivity.this, OrderListActivity.class);
-//                finish();
+        finish();
 //            }
 //        };
 //        timer.schedule(task, 2500);

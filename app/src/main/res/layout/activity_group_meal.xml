@@ -1,27 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#f0f0f0">
+    android:background="#f0f0f0"
+    android:orientation="vertical">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tablayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        app:tabIndicatorHeight="0dp"
-        app:tabSelectedTextColor="#c22222"
-        app:tabTextColor="#333333"
-        app:tabTextAppearance="@style/_333333_14_bold" />
+    <View style="@style/ui_line" />
 
-    <com.example.applibrary.custom.MyViewPager
-        android:id="@+id/viewpager"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/margin10"
-        android:layout_marginBottom="@dimen/margin10"
-        android:orientation="vertical" />
+        android:layout_height="50dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/ui_group_meal_processing"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="待处理"
+            android:textColor="#c22222"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ui_group_meal_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="已完成"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <com.example.applibrary.widget.freshLoadView.RefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/mylist_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:scrollbars="none" />
+
+    </com.example.applibrary.widget.freshLoadView.RefreshLayout>
+
+    <!--<android.support.design.widget.TabLayout-->
+    <!--android:id="@+id/tablayout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="#ffffff"-->
+    <!--app:tabIndicatorHeight="0dp"-->
+    <!--app:tabSelectedTextColor="#c22222"-->
+    <!--app:tabTextAppearance="@style/_333333_14_bold"-->
+    <!--app:tabTextColor="#333333" />-->
+
+    <!--<android.support.v4.view.ViewPager-->
+    <!--android:id="@+id/viewpager"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
 
 </LinearLayout>

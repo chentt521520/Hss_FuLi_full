@@ -8,12 +8,11 @@
     <LinearLayout
         android:id="@+id/ui_company_name_view"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin10"
         android:background="#ffffff"
         android:gravity="center_vertical"
-        android:paddingEnd="15dp"
-        android:paddingStart="@dimen/width15">
+        android:padding="15dp">
 
         <TextView
             style="@style/_333333_16"
@@ -33,12 +32,11 @@
     <LinearLayout
         android:id="@+id/ui_company_account_view"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin10"
         android:background="#ffffff"
         android:gravity="center_vertical"
-        android:paddingEnd="15dp"
-        android:paddingStart="@dimen/width15">
+        android:padding="15dp">
 
         <TextView
             style="@style/_333333_16"
@@ -52,8 +50,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/width15"
-            android:drawablePadding="@dimen/width15"
-            android:drawableEnd="@mipmap/right_arrow_grey_l" />
+            android:drawableEnd="@mipmap/right_arrow_grey_l"
+            android:drawablePadding="@dimen/width15" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ui_company_address_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin10"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:padding="15dp">
+
+        <TextView
+            style="@style/_333333_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="企业地址" />
+
+        <TextView
+            android:id="@+id/ui_company_address"
+            style="@style/_333333_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/margin5"
+            android:layout_marginStart="@dimen/width15"
+            android:drawableEnd="@mipmap/right_arrow_grey_l"
+            android:drawablePadding="@dimen/width15" />
 
     </LinearLayout>
 

@@ -171,8 +171,8 @@ public class WalletActivity extends BaseActivity {
                     break;
                 case R.id.walletactivity_alipay:  //支付宝支付
                     choosePay = Constants.ALI;
-                    TextViewUtils.setImage(WalletActivity.this, walletactivity_wechat, R.mipmap.wallet_wechat, 0, R.mipmap.check_box_true, 0);
-                    TextViewUtils.setImage(WalletActivity.this, walletactivity_alipay, R.mipmap.wallet_alipay, 0, R.mipmap.check_box_false, 0);
+                    TextViewUtils.setImage(WalletActivity.this, walletactivity_wechat, R.mipmap.wallet_wechat, 0, R.mipmap.check_box_false, 0);
+                    TextViewUtils.setImage(WalletActivity.this, walletactivity_alipay, R.mipmap.wallet_alipay, 0, R.mipmap.check_box_true, 0);
                     break;
             }
         }

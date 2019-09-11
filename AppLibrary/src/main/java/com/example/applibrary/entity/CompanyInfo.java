@@ -2,20 +2,25 @@ package com.example.applibrary.entity;
 
 public class CompanyInfo {
 
+
     /**
-     * id:11
-     * company_name:蜀猪猪
+     * address : 四川省攀枝花市盐边县You
+     * company_name : 蜀猪猪
+     * id : 11
+     * balance:100
      */
-    private int id;
+
+    private String address;
     private String company_name;
     private String balance;
+    private int id;
 
-    public int getId() {
-        return id;
+    public String getAddress() {
+        return address;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCompany_name() {
@@ -26,11 +31,19 @@ public class CompanyInfo {
         this.company_name = company_name;
     }
 
-    public String getBalance() {
-        return balance;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setBalance(String balance) {
         this.balance = balance;
+    }
+
+    public String getBalance() {
+        return balance;
     }
 }

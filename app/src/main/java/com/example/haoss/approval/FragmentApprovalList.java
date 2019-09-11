@@ -112,7 +112,7 @@ public class FragmentApprovalList extends BaseFragment {
         refreshLayout.finishLoadmore();
 
         List<ApprovalList> result = new ArrayList<>();
-        for (int i = 0; i < (int) (Math.random() * 10); i++) {
+        for (int i = 0; i < (int) (Math.random() * 20); i++) {
             ApprovalList approval = new ApprovalList(i, UploadPicUtil.getRandomString() + "," + id, (int) (Math.random() * 1000) + "", (int) (Math.random() * 10) + "", "2019-08-12", (int) (Math.random() * 10) + "");
             result.add(approval);
         }

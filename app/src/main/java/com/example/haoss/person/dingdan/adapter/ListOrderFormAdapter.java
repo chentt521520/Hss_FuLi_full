@@ -94,7 +94,7 @@ public class ListOrderFormAdapter extends BaseAdapter {
             case 0:
                 holder.item_left_btn.setText(context.getResources().getString(R.string.order_cancel));
                 holder.item_right_btn.setText(context.getResources().getString(R.string.pay_now));
-                holder.time.setText(info.getAdd_time());
+                holder.time.setText(info.getAdds_time());
                 break;
             case 1:
                 holder.item_left_btn.setVisibility(View.GONE);

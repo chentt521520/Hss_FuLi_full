@@ -20,6 +20,7 @@ import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.DensityUtil;
 import com.example.applibrary.utils.StringUtils;
 import com.example.applibrary.widget.CustomerCornerBg;
+import com.example.haoss.approval.ApprovalCenterActivity;
 import com.example.haoss.base.AppLibLication;
 import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
@@ -291,81 +292,6 @@ public class ExcellentShopActivity extends BaseFragment {
 //        viewPager.setAnimation(true, new AccordionTransformer());
     }
 
-//    //添加轮播图
-//    private void addFragment(final List<BannerInfo> listBannerInfo) {
-//        for (BannerInfo bannerInfo : listBannerInfo) {
-//            listCarousel.add(new BannerFragment(bannerInfo.getImgUrl()));
-//            RadioButton radioButton = new RadioButton(mContext);
-//            radioButton.setButtonDrawable(getResources().getDrawable(android.R.color.transparent));
-//            radioButton.setWidth(16);
-//            radioButton.setHeight(16);
-//            radioButton.setBackgroundResource(R.drawable.radiobutton_checked_on_off);
-//            fistpage_dot.addView(radioButton);
-//        }
-//        CarouselAdapter carouselAdapter = new CarouselAdapter(getChildFragmentManager(), listCarousel);
-//        viewPager.setAdapter(carouselAdapter);
-//        if (timerBanner != null)
-//            timerBanner.cancel();
-//        timerBanner = new Timer();
-//        index = 1;
-//        fistpage_dot.check(index);
-//        timerBanner.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                handlerBanner.sendEmptyMessage(index % listCarousel.size());
-//                index++;
-//            }
-//        }, 5000, 5000);
-//        //滑动监听
-//        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int i, float v, int i1) {
-//            }
-//
-//            @Override
-//            public void onPageSelected(int i) {
-//                fistpage_dot.check(i + 1);    //联动
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int i) {
-//
-//            }
-//        });
-//
-//        viewPager.setOnTouchListener(new View.OnTouchListener() {
-//            int flage = 0;
-//
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                switch (event.getAction()) {
-//                    case MotionEvent.ACTION_DOWN:
-//                        flage = 0;
-//                        break;
-//                    case MotionEvent.ACTION_MOVE:
-//                        flage = 1;
-//                        break;
-//                    case MotionEvent.ACTION_UP:
-//                        if (flage == 0) {
-//
-//                        }
-//                        break;
-//                }
-//                return false;
-//            }
-//        });
-//    }
-
-
-//    //换图
-//    int index = 1;    //循环次数
-//    Handler handlerBanner = new Handler() {
-//        @Override
-//        public void handleMessage(Message msg) {
-//            viewPager.setCurrentItem(msg.what);
-//        }
-//    };
-
     //点击监听
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -375,10 +301,10 @@ public class ExcellentShopActivity extends BaseFragment {
                     IntentUtils.startIntent(mContext, GoodsSearchActivity.class);
                     break;
                 case R.id.ui_index_brand_excellent_image: //商品精选列表
-                    Intent intent = new Intent(mContext, ExcellentBrandActivity.class);
-                    intent.putExtra("image", brandUrl.get(0).getImgUrl());
-                    startActivity(intent);
-//                    IntentUtils.startIntent(mContext, ApprovalCenterActivity.class);
+//                    Intent intent = new Intent(mContext, ExcellentBrandActivity.class);
+//                    intent.putExtra("image", brandUrl.get(0).getImgUrl());
+//                    startActivity(intent);
+                    IntentUtils.startIntent(mContext, ApprovalCenterActivity.class);
                     break;
                 case R.id.ui_index_coupon_center:  //活动精选大图(优惠劵)
                     if (login())

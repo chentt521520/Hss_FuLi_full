@@ -1,8 +1,13 @@
 package com.example.haoss.base;
 
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -10,11 +15,18 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.custom.ToastUtils;
 import com.example.applibrary.utils.DensityUtil;
 import com.example.applibrary.utils.IntentUtils;
+import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.applibrary.widget.CustomTitleView;
+import com.example.haoss.R;
+import com.example.haoss.person.dingdan.GroupMealOrder;
 import com.example.haoss.person.login.LoginActivity;
+import com.example.haoss.service.IGetMessageCallBack;
+import com.example.haoss.service.MQTTService;
+import com.example.haoss.service.MyServiceConnection;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -46,9 +58,21 @@ public class BaseActivity extends AppCompatActivity {
     private CustomTitleView titleView;
     private AppLibLication appLibLication;
 
+    private MyServiceConnection serviceConnection;
+    private MQTTService mqttService;
+    /**
+     * 声音池
+     */
+    private SoundPool soundPool;
+    /**
+     * 声音文件id
+     */
+    private int soundId;
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        unbindService(serviceConnection);
         // 结束Activity&从堆栈中移除
         AppManager.getAppManager().finishActivity(this);
     }
@@ -74,7 +98,50 @@ public class BaseActivity extends AppCompatActivity {
 
         titleView = new CustomTitleView(this);
         appLibLication = AppLibLication.getInstance();
+
+        serviceConnection = new MyServiceConnection();
+        serviceConnection.setIGetMessageCallBack(messageCallback);
+        Intent intent = new Intent(this, MQTTService.class);
+        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+
+        initSound();
     }
+
+    private void initSound() {
+        //        soundPool = new SoundPool.Builder().build();//5.0以上，api21以上使用
+//                               数据流个数，数据流类型，声音质量
+        soundPool = new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);//5.0以下使用
+        soundId = soundPool.load(BaseActivity.this, R.raw.order_notice, 1);
+    }
+
+    void playSound() {
+        soundPool.play(soundId,
+                1f, //左声道【0~1】
+                1f, //右声道【0~1】
+                1,//播放优先级 【0表示优先级最低】
+                0,//循环次数 【0为1次，-1为无限次】
+                1);//播放速度 0为正常速度【0~2】
+    }
+
+    private IGetMessageCallBack messageCallback = new IGetMessageCallBack() {
+        @Override
+        public void setMessage(String message) {
+//            mqttService = serviceConnection.getMqttService();
+//            mqttService.toCreateNotification(message);
+
+            Log.d("BaseActivity", "当前启动的Activity名称为: " + getClass().getSimpleName());
+
+            int peopleType = (int) SharedPreferenceUtils.getPreference(BaseActivity.this, ConfigVariate.peopleType, "I");
+            if (peopleType == 1) {//普通用户不可点
+            } else if (peopleType == 2) {//商家
+                playSound();
+                IntentUtils.startIntent(BaseActivity.this, GroupMealOrder.class);
+                //显示商家订单
+            } else if (peopleType == 3) {//公司员工
+
+            }
+        }
+    };
 
     /**
      * 设置界面显示（含标题栏）

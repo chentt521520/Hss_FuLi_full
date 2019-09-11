@@ -1,6 +1,7 @@
 package com.example.applibrary.utils;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.example.applibrary.custom.ToastUtils;
 
@@ -11,7 +12,8 @@ public class VerifyPhoneUtils {
         if (StringUtils.validatePhoneNumber(phone)) {
             return true;
         } else {
-            ToastUtils.getToastUtils().showToast(context, "请输入有效的手机号码！");
+            Toast.makeText(context, "请输入有效的手机号码！", Toast.LENGTH_SHORT).show();
+//            ToastUtils.getToastUtils().showToast();
             return false;
         }
     }

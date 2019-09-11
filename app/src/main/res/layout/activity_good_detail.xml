@@ -75,7 +75,7 @@
                     android:maxLines="2"
                     android:text="@string/null_text"
                     android:textColor="@color/blackColor4d"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 

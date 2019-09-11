@@ -13,6 +13,8 @@ import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.example.applibrary.base.ConfigVariate;
+import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.haoss.R;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
@@ -33,9 +35,10 @@ public class MQTTService extends Service {
     private String host = "tcp://47.92.212.114:1883";
     private String userName = "admin";
     private String password = "password";
-    private static String myTopic = "12/msg";
+    //    private static String myTopic = "msg";//home/garden/fountain
     private String clientId = "android";
     private IGetMessageCallBack callback;
+    private static int id;
 
     @Override
     public void onCreate() {
@@ -65,7 +68,8 @@ public class MQTTService extends Service {
         boolean doConnect = true;
         String message = "{\"terminal_uid\":\"" + clientId + "\"}";
         Log.e(getClass().getName(), "message是:" + message);
-        String topic = myTopic;
+        id = (int) SharedPreferenceUtils.getPreference(this, ConfigVariate.companyId, "I");
+        String topic = id + "/msg";
         Integer qos = 0;
         Boolean retained = false;
         if ((!message.equals("")) || (!topic.equals(""))) {
@@ -73,9 +77,8 @@ public class MQTTService extends Service {
             // MQTT本身就是为信号不稳定的网络设计的，所以难免一些客户端会无故的和Broker断开连接。
             //当客户端连接到Broker时，可以指定LWT，Broker会定期检测客户端是否有异常。
             //当客户端异常掉线时，Broker就往连接时指定的topic里推送当时指定的LWT消息。
-
             try {
-                options.setWill(topic, message.getBytes(), qos.intValue(), retained.booleanValue());
+//                options.setWill(topic, message.getBytes(), qos.intValue(), retained.booleanValue());
             } catch (Exception e) {
                 Log.i(TAG, "Exception Occured", e);
                 doConnect = false;
@@ -99,6 +102,21 @@ public class MQTTService extends Service {
         super.onDestroy();
     }
 
+
+//    public static void publish(String msg) {
+//        String topic = id + "/msg";
+//        Integer qos = 0;
+//        Boolean retained = false;
+//
+//        try {
+//            if (client != null) {
+//                client.publish(topic, msg.getBytes(), qos.intValue(), retained.booleanValue());
+//            }
+//        } catch (MqttException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     /**
      * 连接MQTT服务器
      */
@@ -121,7 +139,7 @@ public class MQTTService extends Service {
             Log.i(TAG, "连接成功 ");
             try {
                 // 订阅myTopic话题
-                client.subscribe(myTopic, 1);
+                client.subscribe(id + "/msg", 1);
             } catch (MqttException e) {
                 e.printStackTrace();
             }
@@ -131,6 +149,7 @@ public class MQTTService extends Service {
         public void onFailure(IMqttToken arg0, Throwable arg1) {
             arg1.printStackTrace();
             // 连接失败，重连
+            Log.i(TAG, "连接失败，重连 ");
         }
     };
 
@@ -143,6 +162,7 @@ public class MQTTService extends Service {
             String str1 = new String(message.getPayload());
             if (callback != null) {
                 callback.setMessage(str1);
+                Log.i(TAG, "messageArrived:" + str1);
             }
         }
 

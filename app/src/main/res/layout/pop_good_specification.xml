@@ -11,15 +11,15 @@
         android:layout_height="85dp"
         android:layout_marginBottom="20dp"
         android:paddingLeft="12dp"
-        android:paddingTop="20dp"
-        android:paddingRight="12dp">
+        android:paddingRight="12dp"
+        android:paddingTop="20dp">
 
         <!--图片-->
         <ImageView
             android:id="@+id/dialog_goodspayoraddcar_image"
             android:layout_width="75dp"
             android:layout_height="match_parent"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:scaleType="fitCenter"
             android:src="@drawable/big_image01" />
 
@@ -28,7 +28,7 @@
             android:id="@+id/dialog_goodspayoraddcar_close"
             android:layout_width="31dp"
             android:layout_height="31dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:padding="9dp"
             android:scaleType="fitCenter"
             android:src="@drawable/goods_close" />
@@ -38,8 +38,8 @@
             android:id="@+id/dialog_goodspayoraddcar_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="60dp"
-            android:layout_toRightOf="@id/dialog_goodspayoraddcar_image"
+            android:layout_marginEnd="60dp"
+            android:layout_toEndOf="@id/dialog_goodspayoraddcar_image"
             android:maxLines="2"
             android:text="商品名称"
             android:textColor="@color/blackColor0f"
@@ -50,10 +50,10 @@
             android:id="@+id/dialog_goodspayoraddcar_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/dialog_goodspayoraddcar_name"
             android:layout_alignParentBottom="true"
+            android:layout_alignStart="@id/dialog_goodspayoraddcar_name"
             android:layout_marginBottom="10dp"
-            android:text="¥ "
+            android:text="@string/null_text"
             android:textColor="@color/baseRedColor"
             android:textSize="14sp" />
 
@@ -62,21 +62,21 @@
             android:id="@+id/dialog_goodspayoraddcar_repertory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="60dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginBottom="10dp"
-            android:text="库存数量：0"
+            android:layout_marginEnd="20dp"
+            android:text="@string/null_text"
             android:textColor="@color/huiColor66"
             android:textSize="14sp" />
     </RelativeLayout>
 
     <!--种类-->
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:paddingLeft="12dp"
+        android:layout_marginStart="12dp"
         android:text="种类"
         android:textColor="@color/blackColor0f"
         android:textSize="12sp" />
@@ -101,80 +101,81 @@
 
     <View style="@style/ui_line" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="20dp">
+        android:layout_marginStart="20dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:text="数量"
             android:textColor="@color/blackColor0f"
             android:textSize="12sp" />
 
-        <!--减少-->
-        <TextView
-            android:id="@+id/dialog_goodspayoraddcar_jian"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="5dp"
-            android:text="-"
-            android:textColor="@color/huiColor99"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            android:orientation="horizontal">
+            <!--减少-->
+            <TextView
+                android:id="@+id/dialog_goodspayoraddcar_jian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:text="-"
+                android:textColor="@color/huiColor99"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <!--数量-->
-        <TextView
-            android:id="@+id/dialog_goodspayoraddcar_number"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="@color/blackColor0f"
-            android:textSize="12sp" />
+            <!--数量-->
+            <TextView
+                android:id="@+id/dialog_goodspayoraddcar_number"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/blackColor0f"
+                android:textSize="12sp" />
 
-        <!--添加-->
-        <TextView
-            android:id="@+id/dialog_goodspayoraddcar_jia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="12dp"
-            android:padding="5dp"
-            android:text="+"
-            android:textColor="@color/blackColor4d"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            <!--添加-->
+            <TextView
+                android:id="@+id/dialog_goodspayoraddcar_jia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:text="+"
+                android:textColor="@color/blackColor4d"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <View style="@style/ui_line" />
 
     <!--加入购物车、立即购买-->
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/dialog_goodspayoraddcar_pay"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/margin10">
-
-
-        <TextView
-            android:id="@+id/dialog_goodspayoraddcar_pay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/bg_invite_groupon"
-            android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:text="立即购买"
-            android:textColor="@color/whiteColor"
-            android:textSize="18sp" />
-    </LinearLayout>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/margin10"
+        android:layout_marginTop="@dimen/margin10"
+        android:background="@mipmap/bg_invite_groupon"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:text="立即购买"
+        android:textColor="@color/whiteColor"
+        android:textSize="18sp" />
 </LinearLayout>

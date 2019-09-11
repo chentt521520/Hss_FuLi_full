@@ -9,11 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.custom.CustomerScrollView;
-import com.example.applibrary.custom.viewfragment.FragmentDataInfo;
-import com.example.applibrary.custom.viewfragment.FragmentView;
-import com.example.applibrary.custom.viewfragment.OnclickFragmentView;
 import com.example.applibrary.entity.BannerInfo;
 import com.example.applibrary.entity.MenuCategory;
 import com.example.applibrary.entity.Nav;
@@ -47,7 +45,7 @@ public class DefaultMenuActivity extends BaseActivity {
     private GridSortNavAdapter navAdapter;  //导航适配器
     private GridFavorAdapter favorAdapter;  //礼包适配器
     private String title;
-    private int id;
+    private int menuId;
     private int page = 1;
 
     @Override
@@ -65,7 +63,7 @@ public class DefaultMenuActivity extends BaseActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             title = bundle.getString("title");
-            id = bundle.getInt("id");
+            menuId = bundle.getInt("id");
         }
     }
 
@@ -84,11 +82,11 @@ public class DefaultMenuActivity extends BaseActivity {
         MyGridView gridFavor = findViewById(R.id.ui_grid_favor);
 
         TextView good_recommond_title = findViewById(R.id.ui_good_favor_title);
-        if (id == 34) {
+        if (menuId == 34) {
             good_recommond_title.setText("每日优选");
         } else {
             good_recommond_title.setText("为你推荐");
-            if (id == 32) {
+            if (menuId == 32) {
                 gridNav.setVisibility(View.GONE);
             }
         }
@@ -117,7 +115,7 @@ public class DefaultMenuActivity extends BaseActivity {
 
     private void getData() {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("id", id + "");
+        map.put("id", menuId + "");
         String url = Netconfig.indexNav + Netconfig.headers;
         ApiManager.getMenuCategory(url, map, new OnHttpCallback<MenuCategory>() {
             @Override
@@ -142,7 +140,7 @@ public class DefaultMenuActivity extends BaseActivity {
     private void getRecommond() {
         String url = Netconfig.recommend;
         HashMap<String, Object> map = new HashMap<>();
-        map.put("id", id);
+        map.put("id", menuId);
         map.put("page", page);
         map.put("limit", 20);
         ApiManager.getFavorList(url, map, new OnHttpCallback<List<Recommond>>() {
@@ -210,11 +208,12 @@ public class DefaultMenuActivity extends BaseActivity {
     AdapterView.OnItemClickListener onRecommendClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//            Intent intent = new Intent(HealthLifeActivity.this, GoodsListActivity.class);
-//            intent.putExtra("searchType", listHot.get(position).getId() + "");
-//            startActivity(intent);
-            IntentUtils.startIntent(listFavor.get(position).getId(), DefaultMenuActivity.this, GoodsDetailsActivity.class);
-
+            Intent intent = new Intent(DefaultMenuActivity.this, GoodsDetailsActivity.class);
+            if (menuId == 32) {
+                intent.putExtra("flag", ConfigVariate.flagGroupMealIntent);
+            }
+            intent.putExtra(IntentUtils.intentActivityFlag, listFavor.get(position).getId());
+            startActivity(intent);
         }
     };
 }
