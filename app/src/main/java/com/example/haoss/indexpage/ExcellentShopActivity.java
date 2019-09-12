@@ -301,10 +301,10 @@ public class ExcellentShopActivity extends BaseFragment {
                     IntentUtils.startIntent(mContext, GoodsSearchActivity.class);
                     break;
                 case R.id.ui_index_brand_excellent_image: //商品精选列表
-//                    Intent intent = new Intent(mContext, ExcellentBrandActivity.class);
-//                    intent.putExtra("image", brandUrl.get(0).getImgUrl());
-//                    startActivity(intent);
-                    IntentUtils.startIntent(mContext, ApprovalCenterActivity.class);
+                    Intent intent = new Intent(mContext, ExcellentBrandActivity.class);
+                    intent.putExtra("image", brandUrl.get(0).getImgUrl());
+                    startActivity(intent);
+//                    IntentUtils.startIntent(mContext, ApprovalCenterActivity.class);
                     break;
                 case R.id.ui_index_coupon_center:  //活动精选大图(优惠劵)
                     if (login())

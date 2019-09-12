@@ -109,7 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin30"
                 android:layout_marginTop="@dimen/margin30"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/fast_login"
