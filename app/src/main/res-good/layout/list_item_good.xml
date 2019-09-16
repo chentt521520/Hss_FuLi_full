@@ -17,7 +17,7 @@
             android:id="@+id/item_goodssearch_lmage"
             android:layout_width="130dp"
             android:layout_height="100dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="15dp"
             android:scaleType="fitCenter"
             android:src="@drawable/big_image01" />
 
@@ -34,6 +34,7 @@
                 android:background="@drawable/item_good_type"
                 android:ellipsize="end"
                 android:gravity="center"
+                android:layout_marginEnd="@dimen/height10"
                 android:padding="@dimen/margin2"
                 android:text="国内"
                 android:textColor="@color/whiteColor"
@@ -45,7 +46,6 @@
                 android:id="@+id/item_goodssearch_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin10"
                 android:layout_toEndOf="@+id/item_good_type"
                 android:ellipsize="end"
                 android:maxLines="2"

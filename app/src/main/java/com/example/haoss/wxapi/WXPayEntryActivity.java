@@ -2,12 +2,11 @@ package com.example.haoss.wxapi;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.applibrary.base.ConfigVariate;
-import com.example.applibrary.utils.IntentUtils;
+import com.example.haoss.helper.IntentUtils;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;

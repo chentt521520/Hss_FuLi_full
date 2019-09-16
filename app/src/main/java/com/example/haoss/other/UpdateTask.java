@@ -12,8 +12,8 @@ import android.os.Looper;
 import android.support.v4.content.FileProvider;
 import android.widget.Toast;
 
-import com.example.haoss.MainActivity;
 import com.example.haoss.base.BaseActivity;
+import com.example.haoss.ui.MainActivity;
 import com.example.haoss.util.LhtTool;
 import com.example.haoss.views.MyProgressDialog;
 

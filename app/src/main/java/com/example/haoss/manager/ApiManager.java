@@ -40,9 +40,9 @@ import com.example.applibrary.entity.UserInfo;
 import com.example.applibrary.entity.WeiXinPayResult;
 import com.example.applibrary.httpUtils.OkHttpRequest;
 import com.example.applibrary.httpUtils.OnHttpCallback;
-import com.example.haoss.person.integral.IntegralInfo;
-import com.example.haoss.person.integral.IntegralRecord;
 import com.example.applibrary.entity.BalanceRecord;
+import com.example.haoss.ui.person.integral.IntegralInfo;
+import com.example.haoss.ui.person.integral.IntegralRecord;
 
 import java.util.List;
 import java.util.Map;

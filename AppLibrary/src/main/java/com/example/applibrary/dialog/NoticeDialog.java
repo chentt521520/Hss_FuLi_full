@@ -3,13 +3,10 @@ package com.example.applibrary.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.applibrary.R;
-import com.example.applibrary.dialog.interfac.DialogOnClick;
-import com.example.applibrary.utils.IntentUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;

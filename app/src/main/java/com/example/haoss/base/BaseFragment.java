@@ -1,13 +1,14 @@
 package com.example.haoss.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import com.example.applibrary.custom.ToastUtils;
-import com.example.applibrary.utils.IntentUtils;
-import com.example.haoss.person.login.LoginActivity;
+import com.example.haoss.helper.IntentUtils;
+import com.example.haoss.ui.person.login.LoginActivity;
 
 public class BaseFragment extends Fragment {
 
@@ -24,19 +25,27 @@ public class BaseFragment extends Fragment {
     //吐司
     public void toast(int code,String text) {
         if (TextUtils.equals(text, "请传入token验证您的身份信息")) {
-            AppLibLication.getInstance().logout();
-            //登录已过期
-            ToastUtils.getToastUtils().showToast(getContext(), "登录过期，请重新登录！");
-            IntentUtils.startIntentForResult(1, getContext(), LoginActivity.class, null, 4);
+            toLoginActivity();
             return;
         }
         if (code == 401 || code == 402) {
-            AppLibLication.getInstance().logout();
-            //登录已过期
-            ToastUtils.getToastUtils().showToast(getContext(), "登录过期，请重新登录！");
-            IntentUtils.startIntentForResult(1, getContext(), LoginActivity.class, null, 4);
+            toLoginActivity();
         } else {
             ToastUtils.getToastUtils().showToast(getContext(), code + "," + text);
         }
+    }
+
+    private void toLoginActivity() {
+        AppLibLication.getInstance().logout();
+        toast("登录过期，请重新登录！");
+        // token越权返回到登录页面
+//        IntentUtils.startLoginActivity(1,getApplicationContext(), LoginActivity.class);
+        Intent intent = new Intent();
+        intent.setClass(getContext(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(IntentUtils.intentActivityFlag, 1);
+        getContext().startActivity(intent);
+
+//        IntentUtils.startIntentForResult(1, getContext(), LoginActivity.class, null, 4);
     }
 }

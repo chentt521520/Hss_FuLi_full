@@ -18,15 +18,15 @@ import android.widget.RelativeLayout;
 import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.custom.ToastUtils;
 import com.example.applibrary.utils.DensityUtil;
-import com.example.applibrary.utils.IntentUtils;
+import com.example.haoss.helper.IntentUtils;
 import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.applibrary.widget.CustomTitleView;
 import com.example.haoss.R;
-import com.example.haoss.person.dingdan.GroupMealOrder;
-import com.example.haoss.person.login.LoginActivity;
 import com.example.haoss.service.IGetMessageCallBack;
 import com.example.haoss.service.MQTTService;
 import com.example.haoss.service.MyServiceConnection;
+import com.example.haoss.ui.person.login.LoginActivity;
+import com.example.haoss.ui.person.order.GroupMealOrder;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -231,7 +231,11 @@ public class BaseActivity extends AppCompatActivity {
         appLibLication.logout();
         toast("登录过期，请重新登录！");
         // token越权返回到登录页面
-        IntentUtils.startIntent(1, getApplicationContext(), LoginActivity.class);
+        Intent intent = new Intent();
+        intent.setClass(getApplicationContext(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(IntentUtils.intentActivityFlag, 1);
+        getApplicationContext().startActivity(intent);
     }
 
     public void showInput(EditText et, boolean flag) {

@@ -62,170 +62,163 @@
 
         <!-- 主界面页 -->
         <activity
-            android:name=".MainActivity"
-            android:configChanges="orientation|navigation"
-            android:screenOrientation="portrait">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
-        <activity
             android:name=".base.BaseActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
 
         <!-- 注册 -->
         <activity
-            android:name=".person.login.RegisteredActivity"
+            android:name=".ui.MainActivity"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
+
+        <!-- 注册 -->
+        <activity
+            android:name=".ui.person.login.RegisteredActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 忘记密码 -->
         <activity
-            android:name=".person.login.BackPswActivity"
+            android:name=".ui.person.login.BackPswActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 意见反馈 -->
         <activity
-            android:name=".person.opinion.OpinionActivity"
+            android:name=".ui.person.opinion.OpinionActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 登录 -->
         <activity
-            android:name=".person.login.LoginActivity"
+            android:name=".ui.person.login.LoginActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 收货地址 -->
         <activity
-            android:name=".person.address.AddressShowActivity"
+            android:name=".ui.person.address.AddressShowActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 收货地址编辑 -->
         <activity
-            android:name=".person.address.AddressEditActivity"
+            android:name=".ui.person.address.AddressEditActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".person.other.PlusImageActivity"
+            android:name=".ui.person.other.PlusImageActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 订单 -->
         <activity
-            android:name=".person.dingdan.OrderListActivity"
+            android:name=".ui.person.order.OrderListActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 订单详情 -->
         <activity
-            android:name=".person.dingdan.MyOrderDetails"
+            android:name=".ui.person.order.MyOrderDetails"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
 
         <!-- 默认显示的Activity -->
         <activity
-            android:name=".indexpage.activity.DefaultMenuActivity"
+            android:name=".ui.index.DefaultMenuActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 美妆，母婴 -->
         <activity
-            android:name=".indexpage.activity.BrandMenuActivity"
+            android:name=".ui.index.BrandMenuActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 年节礼包 -->
         <activity
-            android:name=".indexpage.activity.FestivalGiftActivity"
+            android:name=".ui.index.FestivalGiftActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 独立购物车界面 -->
         <!-- 收藏界面 -->
         <!-- 优惠劵界面 -->
         <activity
-            android:name=".person.coupon.CouponActivity"
+            android:name=".ui.person.coupon.CouponActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 个人设置 -->
         <activity
-            android:name=".person.setting.PersonalSettingActivity"
+            android:name=".ui.person.setting.PersonalSettingActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 系统设置 -->
         <activity
-            android:name=".person.setting.SystemSettingActivity"
+            android:name=".ui.person.setting.SystemSettingActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 修改账号密码 -->
         <activity
-            android:name=".person.setting.systemsetting.ChangePasswardActivity"
+            android:name=".ui.person.setting.systemsetting.ChangePasswardActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 支付设置 -->
         <activity
-            android:name=".person.setting.systemsetting.PaySettingActivity"
+            android:name=".ui.person.setting.systemsetting.PaySettingActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 更换手机号码 -->
         <activity
-            android:name=".person.setting.systemsetting.ChangePhoneActivity"
+            android:name=".ui.person.setting.systemsetting.ChangePhoneActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 足迹 -->
         <activity
-            android:name=".person.footprint.FootprintActivity"
+            android:name=".ui.person.footprint.FootprintActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 积分/金币界面 -->
         <activity
-            android:name=".person.integral.IntegralShopActivity"
+            android:name=".ui.person.integral.IntegralConvertRecordAty"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".person.integral.IntegralConvertRecordAty"
+            android:name=".ui.person.integral.IntegralShopActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
 
         <!-- 我的钱包 -->
         <activity
-            android:name=".person.wallet.WalletActivity"
+            android:name=".ui.person.wallet.WalletActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
 
         <!-- 售后服务 -->
         <activity
-            android:name=".person.aftersale.AfterSaleActivity"
+            android:name=".ui.person.aftersale.activity.AfterSaleApplyForActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
 
         <!-- 售后服务：申请售后 -->
         <activity
-            android:name=".person.aftersale.activity.AfterSaleApplyForActivity"
+            android:name=".ui.person.aftersale.activity.AfterSaleDetailsActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 售后服务：详情界面 -->
         <activity
-            android:name=".person.aftersale.activity.AfterSaleDetailsActivity"
+            android:name=".ui.person.aftersale.AfterSaleActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 购物卡兑换 -->
         <activity
-            android:name=".person.cardConvert.CardNumberConvertActivity"
+            android:name=".ui.person.cardConvert.CardConvertRecordActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 购物卡兑换结果 -->
         <activity
-            android:name=".person.cardConvert.CardConvertResultActivity"
+            android:name=".ui.person.cardConvert.CardConvertResultActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 购物卡兑换记录 -->
         <activity
-            android:name=".person.cardConvert.CardConvertRecordActivity"
+            android:name=".ui.person.cardConvert.CardConvertRuleActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 购物卡兑换规则 -->
         <activity
-            android:name=".person.cardConvert.CardConvertRuleActivity"
+            android:name=".ui.person.cardConvert.CardNumberConvertActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
 
@@ -246,7 +239,7 @@
         </activity>
 
         <!-- 引导页 -->
-        <activity android:name=".main.GuideActivity">
+        <activity android:name=".ui.main.GuideActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -256,52 +249,52 @@
 
         <!-- 服务条款界面 -->
         <activity
-            android:name=".person.other.TermsOfService"
+            android:name=".ui.person.other.TermsOfService"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 消息列表界面 -->
         <activity
-            android:name=".person.msg.PersonMsgActivity"
+            android:name=".ui.person.msg.PersonMsgActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 待评价订单列表 -->
         <!-- 评价发表界面 -->
         <activity
-            android:name=".shopcat.ShopCatActivity"
+            android:name=".ui.shopcat.ShopCatActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".person.dingdan.EstimatePublishActivity"
+            android:name=".ui.goods.estimate.EstimateListActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 领券中心界面 -->
         <activity
-            android:name=".indexpage.getcoupon.CouponCentreActivity"
+            android:name=".ui.index.CouponCentreActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 今日特价界面 -->
         <activity
-            android:name=".indexpage.specialoffer.NowSpecialOfferActivity"
+            android:name=".ui.index.specialoffer.NowSpecialOfferActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 拼团界面 -->
         <activity
-            android:name=".indexpage.tourdiy.GrouponListActivity"
+            android:name=".ui.index.tourdiy.GrouponListActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 拼团详情 -->
         <activity
-            android:name=".indexpage.tourdiy.GrouponDetailActivity"
+            android:name=".ui.index.tourdiy.GrouponDetailActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 拼团结果 -->
         <activity
-            android:name=".indexpage.tourdiy.GrouponNoticeActivity"
+            android:name=".ui.index.tourdiy.GrouponNoticeActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 拼团完成 -->
         <activity
-            android:name=".indexpage.tourdiy.GouponPayActivity"
+            android:name=".ui.index.tourdiy.GouponPayActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 美妆界面 -->
@@ -310,60 +303,56 @@
 
         <!-- 商品详情 -->
         <activity
-            android:name=".goods.goodslist.GoodsListActivity"
+            android:name=".ui.goods.goodslist.GoodsListActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 商品搜索 -->
         <activity
-            android:name=".goods.details.GoodsDetailsActivity"
+            android:name=".ui.goods.details.GoodsDetailsActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 商品列表显示(含搜索) -->
         <activity
-            android:name=".goods.search.GoodsSearchActivity"
+            android:name=".ui.goods.search.GoodsSearchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible" />
         <!-- 积分商城 -->
         <!-- 商品购买-订单确认页面 -->
         <activity
-            android:name=".pay.GoodsBuyActivity"
+            android:name=".ui.pay.GoodsBuyActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 商品支付界面 -->
         <activity
-            android:name=".pay.GoodsPayActivity"
+            android:name=".ui.pay.GoodsPayActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".person.collect.CollectListActivity"
+            android:name=".ui.person.collect.CollectListActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".indexpage.activity.ExcellentBrandActivity"
+            android:name=".ui.index.ExcellentBrandActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".goods.estimate.EstimateListActivity"
-            android:configChanges="orientation|navigation"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".person.dingdan.ExpressActivity"
+            android:name=".ui.person.order.ExpressActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 消费记录 -->
         <activity
-            android:name=".person.wallet.ConsumeRecordActivity"
+            android:name=".ui.person.wallet.ConsumeRecordActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
         <!-- 实名认证 -->
         <activity
-            android:name=".person.AuthenticationActivity"
+            android:name=".ui.person.AuthenticationActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
 
         <!-- 审批中心 -->
         <activity
-            android:name=".approval.ApprovalCenterActivity"
+            android:name=".ui.approval.ApprovalCenterActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
 
@@ -378,10 +367,10 @@
 
         <!-- 支付宝支付 -->
         <activity
-            android:name=".pay.aliapi.AliPayActivity"
+            android:name=".ui.pay.aliapi.AliPayActivity"
             android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar" />
         <activity
-            android:name=".pay.aliapi.H5PayActivity"
+            android:name=".ui.pay.aliapi.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" />
@@ -405,15 +394,42 @@
             android:name="RONG_CLOUD_APP_KEY"
             android:value="x18ywvqfxc9tc" />
 
-        <activity android:name=".conversation.ServerOnlineActivity" />
-        <activity android:name=".approval.ApprovalDetailActivity" />
-        <activity android:name=".approval.ApprovalCreateActivity" />
-        <activity android:name=".ui.index.SignInActivity" />
-        <activity android:name=".person.dingdan.GroupMealOrder" />
-        <activity android:name=".person.icon.IconActivity" />
-        <activity android:name=".person.dingdan.GroupMealDetails" />
-        <activity android:name=".person.CompanyInfoActivity" />
-        <activity android:name=".person.CompanyAccount" />
+        <activity
+            android:name=".conversation.ServerOnlineActivity"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.approval.ApprovalDetailActivity"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.approval.ApprovalCreateActivity"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.index.SignInActivity"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.person.order.GroupMealDetails"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.person.icon.IconActivity"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.person.order.GroupMealOrder"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.person.CompanyInfoActivity"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.person.CompanyAccount"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
 
         <service android:name="org.eclipse.paho.android.service.MqttService" />
         <!-- 蒲公英 -->
