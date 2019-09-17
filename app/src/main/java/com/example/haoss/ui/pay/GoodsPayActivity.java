@@ -142,7 +142,9 @@ public class GoodsPayActivity extends BaseActivity {
                     public void success(WeiXinPayResult result) {
                         //{"code":200,"msg":"微信支付错误返回：JSAPI支付必须传openid","data":{"status":"PAY_ERROR","result":{"orderId":"wx2019061117490710001","key":"9fed043736bede22094d2db29412870e"}},"count":0}
                         //微信{"code":200,"msg":"ok","data":{"appid":"wxf82e7cb39cd3de8d","partnerid":"1518247781","prepayid":"wx12175942121455e67805fb861670962100","package":"Sign=WXPay","noncestr":"6OCZ7jH5cuT46A4iIss1eSP4l1f46ZIf","timestamp":1560333582,"sign":"EACE856A2E57390057F8325D45ADB681"},"count":0}
-
+                        if (result == null) {
+                            return;
+                        }
                         new PayWeChar(GoodsPayActivity.this, result.getPartnerid(),
                                 result.getPrepayid(), result.getNoncestr(), result.getTimestamp() + "", result.getSign()).toWXPay();
                     }
@@ -171,23 +173,14 @@ public class GoodsPayActivity extends BaseActivity {
     }
 
     private void getCompanyBalance() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("token", AppLibLication.getInstance().getToken());
-        ApiManager.getCompanyInfo(Netconfig.companyInfo, map, new OnHttpCallback<CompanyInfo>() {
-            @Override
-            public void success(CompanyInfo result) {
-                if (Double.parseDouble(result.getBalance()) < Double.parseDouble(money)) {
-                    toast(getResources().getString(R.string.balance_not_enough) + money);
-                } else {
-                    yuEPayOrder("");
-                }
+        String balance = (String) SharedPreferenceUtils.getPreference(GoodsPayActivity.this, ConfigVariate.companyBalance, "S");
+        if (!TextUtils.isEmpty(balance)) {
+            if (Double.parseDouble(balance) < Double.parseDouble(money)) {
+                toast("企业余额不足" + money);
+            } else {
+                yuEPayOrder("");
             }
-
-            @Override
-            public void error(int code, String msg) {
-                toast(code, msg);
-            }
-        });
+        }
     }
 
     /**
@@ -321,26 +314,14 @@ public class GoodsPayActivity extends BaseActivity {
 
     //获取个人中心信息
     public void getCurrentBalance() {
-        String url = Netconfig.personalCenter;
-        HashMap<String, Object> map = new HashMap<>();
-        map.put(ConfigHttpReqFields.sendToken, AppLibLication.getInstance().getToken());
-
-        ApiManager.getUserInfo(url, map, new OnHttpCallback<UserInfo>() {
-            @Override
-            public void success(UserInfo result) {
-                if (Double.parseDouble(result.getNow_money()) < Double.parseDouble(money)) {
-                    toast(getResources().getString(R.string.balance_not_enough) + money);
-                } else {
-                    checkYE();
-                }
+        String balance = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.now_money, "S");
+        if (!TextUtils.isEmpty(balance)) {
+            if (Double.parseDouble(balance) < Double.parseDouble(money)) {
+                toast("余额不足" + money);
+            } else {
+                checkYE();
             }
-
-            @Override
-            public void error(int code, String msg) {
-                toast(code, msg);
-            }
-        });
-
+        }
     }
 
     @Override

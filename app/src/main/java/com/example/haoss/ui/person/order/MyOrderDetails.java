@@ -215,9 +215,11 @@ public class MyOrderDetails extends BaseActivity {
         ApiManager.getOrderDetail(url, map, new OnHttpCallback<OrderDetail>() {
             @Override
             public void success(OrderDetail result) {
-                orderDetailsInfo = result;
-                setControlData();
-                setGoodList();
+                if (result != null) {
+                    orderDetailsInfo = result;
+                    setControlData();
+                    setGoodList();
+                }
             }
 
             @Override

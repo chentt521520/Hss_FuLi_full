@@ -57,6 +57,9 @@ public class ExpressActivity extends BaseActivity {
         ApiManager.getExpressInfo(Netconfig.express, map, new OnHttpCallback<ExpressInfo>() {
             @Override
             public void success(ExpressInfo result) {
+                if (result == null) {
+                    return;
+                }
                 traces = result.getTraces();//物流历史
                 company.setText(getResources().getString(R.string.express_company).concat(TextUtils.isEmpty(result.getShipperCode()) ? "" : result.getShipperCode()));
                 order_number.setText(getResources().getString(R.string.express_number).concat(TextUtils.isEmpty(result.getLogisticCode()) ? "" : result.getLogisticCode()));

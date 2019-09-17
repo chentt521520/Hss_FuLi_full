@@ -47,6 +47,7 @@ public class CustomerCornerBg extends View {
         paint.setAntiAlias(true);
         paint2 = new Paint();
         paint2.setColor(Color.GRAY);
+        paint2.setAntiAlias(true);
         paint2.setTextSize(DensityUtil.sp2px(context, 12f));
     }
 

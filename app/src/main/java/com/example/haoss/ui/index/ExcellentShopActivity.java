@@ -197,7 +197,9 @@ public class ExcellentShopActivity extends BaseFragment {
         ApiManager.getIndex(url, null, new OnHttpCallback<IndexResult>() {
             @Override
             public void success(IndexResult result) {
-
+                if (result == null) {
+                    return;
+                }
                 listNav = result.getNav();
                 listBrand = result.getBrand();
                 brandUrl = result.getBrandUrl();

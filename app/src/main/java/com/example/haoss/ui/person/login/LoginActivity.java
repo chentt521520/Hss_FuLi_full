@@ -335,7 +335,9 @@ public class LoginActivity extends BaseActivity {
         SharedPreferenceUtils.setPreference(this, ConfigVariate.companyName, result.getCompany_name(), "S");
         SharedPreferenceUtils.setPreference(this, ConfigVariate.companyAddress, result.getCompany_address(), "S");
         SharedPreferenceUtils.setPreference(this, ConfigVariate.nickname, result.getNickname(), "S");
-
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.now_money, result.getNow_money(), "S");
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.avatar, result.getAvatar(), "S");
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.integral, result.getIntegral(), "S");
     }
 
     /**
@@ -348,6 +350,9 @@ public class LoginActivity extends BaseActivity {
         ApiManager.checkPassSet(Netconfig.checkYuE, map, new OnHttpCallback<PassCheck>() {
             @Override
             public void success(PassCheck result) {
+                if (result == null) {
+                    return;
+                }
                 boolean is_pass = result.isIs_pass();
                 SharedPreferenceUtils.setPreference(LoginActivity.this, ConfigVariate.isPass, is_pass, "B");
                 if (flag == 1) {

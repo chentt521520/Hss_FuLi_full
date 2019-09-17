@@ -101,6 +101,9 @@ public class FestivalGiftActivity extends BaseActivity {
         ApiManager.getFestivalGift(url, map, new OnHttpCallback<FestivalGift>() {
             @Override
             public void success(FestivalGift result) {
+                if (result == null) {
+                    return;
+                }
                 if (!StringUtils.listIsEmpty(result.getBanner())) {
                     listBanner = result.getBanner();
                     createBanner();

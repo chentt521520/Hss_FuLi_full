@@ -6,8 +6,10 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.applibrary.base.Netconfig;
+import com.google.gson.JsonArray;
 
 import org.apache.http.conn.ConnectTimeoutException;
 
@@ -186,7 +188,11 @@ public class OkHttpRequest {
                         int code = jsonObject.getInteger("code");
                         if (code == 200) {
                             String str = JSON.toJSONString(jsonObject.get("data"));
-                            OkHttpRequest.delivery.postSuccess(callback, hasResult ? requestCallBack.success(str) : null);
+                            if (TextUtils.equals("[]", str)) {
+                                OkHttpRequest.delivery.postSuccess(callback, null);
+                            } else {
+                                OkHttpRequest.delivery.postSuccess(callback, hasResult ? requestCallBack.success(str) : null);
+                            }
                         } else {
                             OkHttpRequest.delivery.postError(code, TextUtils.isEmpty(jsonObject.getString("msg")) ? ErrorEnum.ERROR_10006.getMsg() : jsonObject.getString("msg"), callback);
                         }

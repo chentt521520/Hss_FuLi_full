@@ -305,26 +305,27 @@ public class GoodsBuyActivity extends BaseActivity {
         ApiManager.getOrderCommit(url, map, new OnHttpCallback<OrderCommit>() {
             @Override
             public void success(OrderCommit result) {
-                if (result != null) {
-                    orderResult = result;
-                    getCouponList();
-                    getOrderDetail();
-                    setData();
+                if (result == null) {
+                    return;
+                }
+                orderResult = result;
+                getCouponList();
+                getOrderDetail();
+                setData();
 
-                    if (result.getPriceGroup().isIsBulk()) {
-                        siteId = -1;
-                        String address = (String) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.companyAddress, "S");
-                        String name = (String) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.nickname, "S");
-                        String phoneNum = (String) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.sPdbAccount, "S");
-                        personName.setText(name);
-                        phone.setText(phoneNum);
-                        site.setText(address);
+                if (result.getPriceGroup().isIsBulk()) {
+                    siteId = -1;
+                    String address = (String) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.companyAddress, "S");
+                    String name = (String) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.nickname, "S");
+                    String phoneNum = (String) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.sPdbAccount, "S");
+                    personName.setText(name);
+                    phone.setText(phoneNum);
+                    site.setText(address);
 
-                        siteView.setEnabled(false);
-                    } else {
-                        siteView.setEnabled(true);
-                        getDefaultSite();
-                    }
+                    siteView.setEnabled(false);
+                } else {
+                    siteView.setEnabled(true);
+                    getDefaultSite();
                 }
             }
 
@@ -663,6 +664,9 @@ public class GoodsBuyActivity extends BaseActivity {
         ApiManager.weiXinPay(Netconfig.submitOrder, params, new OnHttpCallback<WeiXinPayResult>() {
             @Override
             public void success(WeiXinPayResult result) {
+                if (result == null) {
+                    return;
+                }
                 new PayWeChar(GoodsBuyActivity.this, result.getPartnerid(),
                         result.getPrepayid(), result.getNoncestr(), result.getTimestamp() + "", result.getSign()).toWXPay();
             }
@@ -825,46 +829,25 @@ public class GoodsBuyActivity extends BaseActivity {
     }
 
     private void getCompanyBalance() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("token", AppLibLication.getInstance().getToken());
-        ApiManager.getCompanyInfo(Netconfig.companyInfo, map, new OnHttpCallback<CompanyInfo>() {
-            @Override
-            public void success(CompanyInfo result) {
-                if (result != null) {
-                    if (Double.parseDouble(result.getBalance()) < payPrice) {
-                        toast("企业余额不足" + payPrice);
-                    } else {
-                        commitOrder("");
-                    }
-                }
+        String balance = (String) SharedPreferenceUtils.getPreference(GoodsBuyActivity.this, ConfigVariate.companyBalance, "S");
+        if (!TextUtils.isEmpty(balance)) {
+            if (Double.parseDouble(balance) < payPrice) {
+                toast("企业余额不足" + payPrice);
+            } else {
+                commitOrder("");
             }
-
-            @Override
-            public void error(int code, String msg) {
-                toast(code, msg);
-            }
-        });
+        }
     }
 
     private void getUserBalance() {
-        String url = Netconfig.personalCenter;
-        HashMap<String, Object> map = new HashMap<>();
-        map.put(ConfigHttpReqFields.sendToken, AppLibLication.getInstance().getToken());
-        ApiManager.getUserInfo(url, map, new OnHttpCallback<UserInfo>() {
-            @Override
-            public void success(UserInfo result) {
-                if (Double.parseDouble(result.getNow_money()) < payPrice) {
-                    toast("余额不足" + payPrice);
-                } else {
-                    checkPass();
-                }
+        String balance = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.now_money, "S");
+        if (!TextUtils.isEmpty(balance)) {
+            if (Double.parseDouble(balance) < payPrice) {
+                toast("余额不足" + payPrice);
+            } else {
+                checkPass();
             }
-
-            @Override
-            public void error(int code, String msg) {
-                toast(code, msg);
-            }
-        });
+        }
     }
 
     private void checkPass() {

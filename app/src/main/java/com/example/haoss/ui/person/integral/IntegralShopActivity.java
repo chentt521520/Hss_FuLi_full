@@ -8,11 +8,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.applibrary.base.ConfigHttpReqFields;
+import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.custom.MyViewPager;
 import com.example.applibrary.entity.UserInfo;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.ImageUtils;
+import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.haoss.helper.IntentUtils;
 import com.example.applibrary.utils.StringUtils;
 import com.example.haoss.R;
@@ -114,22 +116,13 @@ public class IntegralShopActivity extends BaseActivity {
 
     //获取个人中心信息
     private void getInfo() {
-        String url = Netconfig.personalCenter;
-        HashMap<String, Object> map = new HashMap<>();
-        map.put(ConfigHttpReqFields.sendToken, AppLibLication.getInstance().getToken());
-        ApiManager.getUserInfo(url, map, new OnHttpCallback<UserInfo>() {
-            @Override
-            public void success(UserInfo result) {
-                ImageUtils.loadCirclePic(IntegralShopActivity.this, result.getAvatar(), header);
-                nickname.setText(result.getNickname());
-//                integralCount.setText(result.getIntegral_shop_money() + "");
-            }
+        String integral = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.integral, "S");
+        String avatar = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.avatar, "S");
+        String name = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.nickname, "S");
 
-            @Override
-            public void error(int code, String msg) {
-                toast(code, msg);
-            }
-        });
+        ImageUtils.loadCirclePic(IntegralShopActivity.this, avatar, header);
+        nickname.setText(name);
+        integralCount.setText(integral + "");
     }
 
 }

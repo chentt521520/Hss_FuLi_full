@@ -307,6 +307,9 @@ public class DialogGoodsPay extends Dialog {
         ApiManager.getOrderConfirm(url, map, new OnHttpCallback<OrderConfirm>() {
             @Override
             public void success(OrderConfirm result) {
+                if (result == null) {
+                    return;
+                }
                 Intent intent = new Intent(context, GoodsBuyActivity.class);
                 intent.putExtra("flag", flag);
                 intent.putExtra("cartId", result.getCartId());

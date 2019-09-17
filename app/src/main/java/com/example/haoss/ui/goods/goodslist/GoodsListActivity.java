@@ -167,17 +167,21 @@ public class GoodsListActivity extends BaseActivity {
             public void success(GoodSort result) {
                 refreshLayout.finishRefreshing();
                 refreshLayout.finishLoadmore();
-                if (page == 1) {
-                    listGoods.clear();
-                }
-                if (!StringUtils.listIsEmpty(result.getList())) {
-                    listGoods.addAll(result.getList());
-                }
-                if (listGoods == null || listGoods.isEmpty()) {
+                if (result == null) {
                     showAndHide(0);
                 } else {
-                    showAndHide(1);
-                    goodsSearchAdapter.setRefresh(listGoods);
+                    if (page == 1) {
+                        listGoods.clear();
+                    }
+                    if (!StringUtils.listIsEmpty(result.getList())) {
+                        listGoods.addAll(result.getList());
+                    }
+                    if (listGoods == null || listGoods.isEmpty()) {
+                        showAndHide(0);
+                    } else {
+                        showAndHide(1);
+                        goodsSearchAdapter.setRefresh(listGoods);
+                    }
                 }
             }
 

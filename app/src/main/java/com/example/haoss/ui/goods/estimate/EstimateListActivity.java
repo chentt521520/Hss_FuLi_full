@@ -140,19 +140,24 @@ public class EstimateListActivity extends BaseActivity {
             public void success(EstimateList result) {
                 refreshLayout.finishRefreshing();
                 refreshLayout.finishLoadmore();
-                if (page == 1) {
-                    replyInfoList.clear();
+
+                if (result != null) {
+
+                    if (page == 1) {
+                        replyInfoList.clear();
+                    }
+                    if (!StringUtils.listIsEmpty(result.getList())) {
+                        replyInfoList.addAll(result.getList());
+                    }
+                    adapter.refresh(replyInfoList);
+                    all_estimate.setText(String.format(getResources().getString(R.string.all_prise), result.getCount().getAll()));
+                    high_estimate.setText(String.format(getResources().getString(R.string.high_prise), result.getCount().getGood()));
+                    middle_estimate.setText(String.format(getResources().getString(R.string.middle_prise), result.getCount().getMiddle()));
+                    low_estimate.setText(String.format(getResources().getString(R.string.low_prise), result.getCount().getBad()));
+                    has_image_estimate.setText(String.format(getResources().getString(R.string.has_pic_prise), result.getCount().getIs_img()));
                 }
-                if (!StringUtils.listIsEmpty(result.getList())) {
-                    replyInfoList.addAll(result.getList());
-                }
-                adapter.refresh(replyInfoList);
-                all_estimate.setText(String.format(getResources().getString(R.string.all_prise), result.getCount().getAll()));
-                high_estimate.setText(String.format(getResources().getString(R.string.high_prise), result.getCount().getGood()));
-                middle_estimate.setText(String.format(getResources().getString(R.string.middle_prise), result.getCount().getMiddle()));
-                low_estimate.setText(String.format(getResources().getString(R.string.low_prise), result.getCount().getBad()));
-                has_image_estimate.setText(String.format(getResources().getString(R.string.has_pic_prise), result.getCount().getIs_img()));
             }
+
 
             @Override
             public void error(int code, String msg) {

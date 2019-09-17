@@ -116,6 +116,9 @@ public class DefaultMenuActivity extends BaseActivity {
         ApiManager.getMenuCategory(url, map, new OnHttpCallback<MenuCategory>() {
             @Override
             public void success(MenuCategory result) {
+                if (result == null) {
+                    return;
+                }
                 if (!StringUtils.listIsEmpty(result.getBanner())) {
                     listBanner = result.getBanner();
                     createBanner();

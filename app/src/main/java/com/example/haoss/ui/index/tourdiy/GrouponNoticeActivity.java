@@ -100,8 +100,10 @@ public class GrouponNoticeActivity extends BaseActivity {
         ApiManager.getGrouponResult(url, map, new OnHttpCallback<GrouponResult>() {
             @Override
             public void success(GrouponResult result) {
-                grouponGood = result;
-                setView();
+                if (result != null) {
+                    grouponGood = result;
+                    setView();
+                }
             }
 
             @Override

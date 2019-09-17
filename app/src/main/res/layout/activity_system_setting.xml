@@ -158,7 +158,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ui_sys_set_line7"
         android:layout_marginTop="@dimen/height35"
-        android:background="@drawable/bg_red_01"
+        android:background="@mipmap/bg_squre_border_red"
         android:gravity="center"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"

@@ -71,7 +71,7 @@ public class ChangePasswardActivity extends BaseActivity {
             return;
         }
 
-        if (!TextUtils.equals(newPas, oldPas)) {
+        if (TextUtils.equals(newPas, oldPas)) {
             toast("新密码与旧密码一致");
             return;
         }

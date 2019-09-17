@@ -15,10 +15,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.applibrary.base.ConfigHttpReqFields;
+import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.entity.UserInfo;
 import com.example.applibrary.entity.WeiXinPayResult;
 import com.example.applibrary.httpUtils.OnHttpCallback;
+import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.haoss.helper.IntentUtils;
 import com.example.applibrary.utils.TextViewUtils;
 import com.example.haoss.R;
@@ -51,7 +53,6 @@ public class WalletActivity extends BaseActivity {
         setTitleContentView(R.layout.activity_wallet);
         registerReceiver(mReceiver, new IntentFilter(IntentUtils.pay));
         init();
-        getCurrentBalance();
     }
 
     private void init() {
@@ -86,13 +87,19 @@ public class WalletActivity extends BaseActivity {
         walletactivity_wechat.setOnClickListener(onClickListener);
         walletactivity_alipay.setOnClickListener(onClickListener);
 
-        walletactivity_money.setText("0");
         salePrice1.setText("100");
         realPrice1.setText("售价" + (100 * 0.98f) + "元");
         salePrice2.setText("300");
         realPrice2.setText("售价" + (300 * 0.95f) + "元");
         salePrice3.setText("500");
         realPrice3.setText("售价" + (500 * 0.95f) + "元");
+
+        String balance = (String) SharedPreferenceUtils.getPreference(this, ConfigVariate.now_money, "S");
+        if (!TextUtils.isEmpty(balance)) {
+            walletactivity_money.setText(balance);
+        } else {
+            walletactivity_money.setText("0");
+        }
 
         walletactivity_other.addTextChangedListener(new TextWatcher() {
             @Override
@@ -125,8 +132,11 @@ public class WalletActivity extends BaseActivity {
         ApiManager.getUserInfo(url, map, new OnHttpCallback<UserInfo>() {
             @Override
             public void success(UserInfo result) {
-                if (!TextUtils.isEmpty(result.getNow_money())) {
-                    walletactivity_money.setText(result.getNow_money());
+                if (result != null) {
+                    if (!TextUtils.isEmpty(result.getNow_money())) {
+                        walletactivity_money.setText(result.getNow_money());
+                        SharedPreferenceUtils.setPreference(WalletActivity.this, ConfigVariate.now_money, result.getNow_money(), "S");
+                    }
                 }
             }
 
@@ -237,6 +247,9 @@ public class WalletActivity extends BaseActivity {
                     // "noncestr":"rsMBOy1JXFq1jsTTTYlKEGZtH8glMNl8",
                     // "timestamp":1560822993,
                     // "sign":"FAC734ABF735CD539635FCA8B7EBBA90"}
+                    if (result == null) {
+                        return;
+                    }
                     new PayWeChar(WalletActivity.this, result.getPartnerid(),
                             result.getPrepayid(), result.getNoncestr(), result.getTimestamp() + "", result.getSign()).toWXPay();
                 }

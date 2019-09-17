@@ -16,8 +16,10 @@ import com.example.haoss.helper.IntentUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
 import com.example.haoss.ui.MainActivity;
+import com.example.haoss.ui.person.login.BackPswActivity;
 import com.example.haoss.ui.person.setting.systemsetting.ChangePasswardActivity;
 import com.example.haoss.ui.person.setting.systemsetting.ChangePhoneActivity;
+import com.example.haoss.ui.person.setting.systemsetting.ModifyPswActivity;
 import com.example.haoss.ui.person.setting.systemsetting.PaySettingActivity;
 
 //系统设置
@@ -61,7 +63,7 @@ public class SystemSettingActivity extends BaseActivity {
                     IntentUtils.startIntent(SystemSettingActivity.this, PaySettingActivity.class);
                     break;
                 case R.id.ui_sys_set_password:  //账号密码
-                    IntentUtils.startIntent(SystemSettingActivity.this, ChangePasswardActivity.class);
+                    IntentUtils.startIntent(SystemSettingActivity.this, ModifyPswActivity.class);
                     break;
                 case R.id.ui_sys_set_about:  //关于我们
                     break;

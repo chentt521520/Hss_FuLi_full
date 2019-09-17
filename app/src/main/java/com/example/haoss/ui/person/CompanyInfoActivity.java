@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.entity.CompanyInfo;
 import com.example.applibrary.httpUtils.OnHttpCallback;
+import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.haoss.helper.IntentUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.AppLibLication;
@@ -21,7 +23,6 @@ import java.util.Map;
 public class CompanyInfoActivity extends BaseActivity {
 
     private int flag;
-    private String banlace;
 
     private TextView companyName;
     private TextView companyAccount;
@@ -52,7 +53,7 @@ public class CompanyInfoActivity extends BaseActivity {
         findViewById(R.id.ui_company_account_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IntentUtils.startIntent(CompanyInfoActivity.this, CompanyAccount.class, banlace);
+                IntentUtils.startIntent(CompanyInfoActivity.this, CompanyAccount.class);
             }
         });
 
@@ -89,7 +90,9 @@ public class CompanyInfoActivity extends BaseActivity {
                     companyName.setText(result.getCompany_name());
                     companyAccount.setText(result.getBalance());
                     companyAddress.setText(result.getAddress());
-                    banlace = result.getBalance();
+                    SharedPreferenceUtils.setPreference(CompanyInfoActivity.this, ConfigVariate.companyBalance, result.getBalance(), "S");
+                    SharedPreferenceUtils.setPreference(CompanyInfoActivity.this, ConfigVariate.companyName, result.getCompany_name(), "S");
+                    SharedPreferenceUtils.setPreference(CompanyInfoActivity.this, ConfigVariate.companyAddress, result.getAddress(), "S");
                 }
             }
 

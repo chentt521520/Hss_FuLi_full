@@ -430,6 +430,10 @@
             android:name=".ui.person.CompanyAccount"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.person.setting.systemsetting.ModifyPswActivity"
+            android:configChanges="orientation|navigation"
+            android:screenOrientation="portrait" />
 
         <service android:name="org.eclipse.paho.android.service.MqttService" />
         <!-- 蒲公英 -->

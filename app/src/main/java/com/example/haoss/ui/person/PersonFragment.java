@@ -175,6 +175,9 @@ public class PersonFragment extends BaseFragment {
         ApiManager.getOrderCount(url, map, new OnHttpCallback<OrderCount>() {
             @Override
             public void success(OrderCount result) {
+                if (result == null) {
+                    return;
+                }
                 orderCount.clear();
                 orderCount.add(result.getPayment_count());
                 orderCount.add(result.getUnpaid_count());
@@ -237,6 +240,9 @@ public class PersonFragment extends BaseFragment {
         SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.companyName, userInfo.getCompany_name(), "S");
         SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.companyAddress, userInfo.getCompany_address(), "S");
         SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.nickname, userInfo.getNickname(), "S");
+        SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.now_money, userInfo.getNow_money(), "S");
+        SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.avatar, userInfo.getAvatar(), "S");
+        SharedPreferenceUtils.setPreference(getContext(), ConfigVariate.integral, userInfo.getIntegral(), "S");
 
         ((TextView) personView.findViewById(R.id.person_foot_num)).setText(userInfo.getFootprintCount() + "");
         ((TextView) personView.findViewById(R.id.person_collection_num)).setText(userInfo.getLike() + "");

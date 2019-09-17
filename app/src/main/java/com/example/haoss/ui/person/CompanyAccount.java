@@ -11,10 +11,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.entity.CompanyInfo;
 import com.example.applibrary.entity.WeiXinPayResult;
 import com.example.applibrary.httpUtils.OnHttpCallback;
+import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.haoss.helper.IntentUtils;
 import com.example.applibrary.utils.TextViewUtils;
 import com.example.haoss.R;
@@ -63,7 +65,8 @@ public class CompanyAccount extends BaseActivity {
         aliPay.setOnClickListener(listener);
         findViewById(R.id.ui_company_recharge).setOnClickListener(listener);
 
-        getCompanyInfo();
+        String balance = (String) SharedPreferenceUtils.getPreference(CompanyAccount.this, ConfigVariate.companyBalance, "S");
+        currentAmount.setText(balance);
     }
 
     private View.OnClickListener listener = new View.OnClickListener() {
@@ -108,6 +111,9 @@ public class CompanyAccount extends BaseActivity {
             ApiManager.weiXinPay(Netconfig.recharge, map, new OnHttpCallback<WeiXinPayResult>() {
                 @Override
                 public void success(WeiXinPayResult result) {
+                    if (result == null) {
+                        return;
+                    }
                     new PayWeChar(CompanyAccount.this, result.getPartnerid(),
                             result.getPrepayid(), result.getNoncestr(), result.getTimestamp() + "", result.getSign()).toWXPay();
                 }
@@ -174,6 +180,7 @@ public class CompanyAccount extends BaseActivity {
             public void success(CompanyInfo result) {
                 if (result != null) {
                     currentAmount.setText(result.getBalance());
+                    SharedPreferenceUtils.setPreference(CompanyAccount.this, ConfigVariate.companyBalance, result.getBalance(), "S");
                 }
             }
 

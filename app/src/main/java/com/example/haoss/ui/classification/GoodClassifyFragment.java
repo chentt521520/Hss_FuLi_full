@@ -76,6 +76,10 @@ public class GoodClassifyFragment extends BaseFragment {
         ApiManager.getClassify(url, null, new OnHttpCallback<List<GoodClassify>>() {
             @Override
             public void success(List<GoodClassify> result) {
+
+                if (StringUtils.listIsEmpty(result)) {
+                    return;
+                }
                 listParent = result;
                 if (classifyParentAdapter == null) {    //左列表适配
                     classifyParentAdapter = new ClassifyParentAdapter(mContext, listParent);
@@ -83,16 +87,13 @@ public class GoodClassifyFragment extends BaseFragment {
                 } else {
                     classifyParentAdapter.refresh(listParent);
                 }
+                listChild = result.get(0).getChild();
 
-                if (!StringUtils.listIsEmpty(result)) {
-                    listChild = result.get(0).getChild();
-
-                    if (classifyChildAdapter == null) {    //左列表适配
-                        classifyChildAdapter = new ClassifyChildAdapter(mContext, listChild);
-                        gridView.setAdapter(classifyChildAdapter);
-                    } else {
-                        classifyChildAdapter.refresh(listChild);
-                    }
+                if (classifyChildAdapter == null) {    //左列表适配
+                    classifyChildAdapter = new ClassifyChildAdapter(mContext, listChild);
+                    gridView.setAdapter(classifyChildAdapter);
+                } else {
+                    classifyChildAdapter.refresh(listChild);
                 }
             }
 
@@ -135,7 +136,7 @@ public class GoodClassifyFragment extends BaseFragment {
     AdapterView.OnItemClickListener onItemClickListenerGridView = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            IntentUtils.toGoodList(mContext,listChild.get(position).getId());
+            IntentUtils.toGoodList(mContext, listChild.get(position).getId());
         }
     };
 }

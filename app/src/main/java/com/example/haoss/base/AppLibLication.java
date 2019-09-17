@@ -102,8 +102,8 @@ public class AppLibLication extends Application {
         SharedPreferenceUtils.setPreference(this, ConfigVariate.uid, 0, "I");
         SharedPreferenceUtils.setPreference(this, ConfigVariate.status, -1, "I");
         SharedPreferenceUtils.setPreference(this, ConfigVariate.level, -1, "I");
-        SharedPreferenceUtils.setPreference(this, ConfigVariate.now_money, 0, "D");
-        SharedPreferenceUtils.setPreference(this, ConfigVariate.integral, 0, "D");
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.now_money, "", "S");
+        SharedPreferenceUtils.setPreference(this, ConfigVariate.integral, "", "S");
     }
 
 }

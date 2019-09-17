@@ -30,17 +30,7 @@ public class ConfigVariate {
     public static final String peopleType = "peopleType";//用户类型
     public static final String companyId = "companyId";//公司Id
     public static final String companyAddress = "companyAddress";//公司Id
-
-    //登录包名
-    public static final String packLogin = "com.example.haoss.person.login.LoginActivity";
-    //购物车包名
-    public static final String packShopCat = "com.example.haoss.shopcat.ShopCatActivity";
-    //商品详情包名
-    public static final String packGoodsDetails = "com.example.goodsdetails.details.GoodsDetailsActivity";
-    //商品购买-订单确认包名
-    public static final String packGoodsBuy = "com.example.paylibrary.GoodsBuyActivity";
-    //我的订单包名
-    public static final String packOrderForm = "com.example.haoss.person.dingdan.MyOrderForm";
+    public static final String companyBalance = "companyBalance";//公司Id
 
 
     /*页面跳转参数*/

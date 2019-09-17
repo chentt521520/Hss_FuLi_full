@@ -113,20 +113,22 @@ public class GouponPayActivity extends BaseActivity {
         ApiManager.getOrderDetail(url, map, new OnHttpCallback<OrderDetail>() {
             @Override
             public void success(OrderDetail result) {
-                ((TextView) findViewById(R.id.order_form_number)).setText(orderId);
-                ((TextView) findViewById(R.id.order_form_time)).setText(result.getPay_time());
-                switch (result.getPay_type()) {
-                    case Constants.WEIXIN:
-                        ((TextView) findViewById(R.id.order_form_pay_mode)).setText("微信");
-                        break;
-                    case Constants.ALI:
-                        ((TextView) findViewById(R.id.order_form_pay_mode)).setText("支付宝");
-                        break;
-                    case Constants.YUE:
-                        ((TextView) findViewById(R.id.order_form_pay_mode)).setText("余额");
-                        break;
+                if (result != null) {
+                    ((TextView) findViewById(R.id.order_form_number)).setText(orderId);
+                    ((TextView) findViewById(R.id.order_form_time)).setText(result.getPay_time());
+                    switch (result.getPay_type()) {
+                        case Constants.WEIXIN:
+                            ((TextView) findViewById(R.id.order_form_pay_mode)).setText("微信");
+                            break;
+                        case Constants.ALI:
+                            ((TextView) findViewById(R.id.order_form_pay_mode)).setText("支付宝");
+                            break;
+                        case Constants.YUE:
+                            ((TextView) findViewById(R.id.order_form_pay_mode)).setText("余额");
+                            break;
+                    }
+                    ((TextView) findViewById(R.id.order_form_price)).setText(result.getPay_price());
                 }
-                ((TextView) findViewById(R.id.order_form_price)).setText(result.getPay_price());
             }
 
             @Override
@@ -153,7 +155,9 @@ public class GouponPayActivity extends BaseActivity {
                  * 创建时间
                  * paid
                  */
-                pinkId = result.getPink_id();
+                if (result == null) {
+                    pinkId = result.getPink_id();
+                }
             }
 
             @Override

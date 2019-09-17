@@ -188,11 +188,15 @@ public class GoodsDetailsActivity extends BaseActivity {
         ApiManager.getShopCart(Netconfig.shoppingCarList, map, new OnHttpCallback<ShopCart>() {
             @Override
             public void success(ShopCart result) {
-                if (!StringUtils.listIsEmpty(result.getValid())) {//有数据
-                    action_button_car_number.setVisibility(View.VISIBLE);
-                    action_button_car_number.setText(result.getValid().size() + "");
-                } else {
+                if (result == null) {
                     action_button_car_number.setVisibility(View.GONE);
+                } else {
+                    if (!StringUtils.listIsEmpty(result.getValid())) {//有数据
+                        action_button_car_number.setVisibility(View.VISIBLE);
+                        action_button_car_number.setText(result.getValid().size() + "");
+                    } else {
+                        action_button_car_number.setVisibility(View.GONE);
+                    }
                 }
             }
 
