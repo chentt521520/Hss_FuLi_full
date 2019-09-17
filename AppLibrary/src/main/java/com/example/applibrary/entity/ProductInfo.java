@@ -42,6 +42,8 @@ public class ProductInfo {
     private String store_info;
     private String unit_name;
     private int is_show;
+    private int store_type;
+    private int goods_type;
     private int is_del;
     private int is_postage;
     private String cost;
@@ -206,5 +208,21 @@ public class ProductInfo {
 
     public void setSlider_image(List<String> slider_image) {
         this.slider_image = slider_image;
+    }
+
+    public int getStore_type() {
+        return store_type;
+    }
+
+    public void setStore_type(int store_type) {
+        this.store_type = store_type;
+    }
+
+    public int getGoods_type() {
+        return goods_type;
+    }
+
+    public void setGoods_type(int goods_type) {
+        this.goods_type = goods_type;
     }
 }

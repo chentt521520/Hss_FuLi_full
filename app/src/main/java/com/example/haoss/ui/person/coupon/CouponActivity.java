@@ -1,6 +1,5 @@
 package com.example.haoss.ui.person.coupon;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -18,7 +17,7 @@ import com.example.applibrary.base.ConfigHttpReqFields;
 import com.example.applibrary.base.Netconfig;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
-import com.example.haoss.ui.goods.goodslist.GoodsListActivity;
+import com.example.haoss.helper.IntentUtils;
 import com.example.haoss.manager.ApiManager;
 
 import java.util.ArrayList;
@@ -68,9 +67,10 @@ public class CouponActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MyCoupon item = (MyCoupon) couponAdapter.getItem(position);
                 if (item.getStatus() == 0) {
-                    Intent intent = new Intent(CouponActivity.this, GoodsListActivity.class);
-                    intent.putExtra("searchType", item.getCategory_id());
-                    startActivity(intent);
+//                    Intent intent = new Intent(CouponActivity.this, GoodsListActivity.class);
+//                    intent.putExtra("searchType", item.getCategory_id());
+//                    startActivity(intent);
+                    IntentUtils.toGoodList(CouponActivity.this, item.getCategory_id());
                 }
             }
         });

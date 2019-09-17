@@ -19,7 +19,6 @@ public class GoodsSearchAdapter extends BaseAdapter {
 
     private Context context;
     private List<GoodList> list;
-    private boolean hasTag;
 
     public GoodsSearchAdapter(Context context, List<GoodList> list) {
         this.context = context;
@@ -27,9 +26,8 @@ public class GoodsSearchAdapter extends BaseAdapter {
     }
 
     //刷新数据
-    public void setRefresh(List<GoodList> list, boolean hasTag) {
+    public void setRefresh(List<GoodList> list) {
         this.list = list;
-        this.hasTag = hasTag;
         notifyDataSetChanged();
     }
 
@@ -72,7 +70,7 @@ public class GoodsSearchAdapter extends BaseAdapter {
         info.item_goodssearch_repertory.setText("库存数量：" + goodsInfo.getStock());
         info.item_goodssearch_name.setText(goodsInfo.getStore_name());
 
-        if (hasTag) {
+        if (goodsInfo.getGoods_type() != 1) {
             info.item_good_type.setVisibility(View.VISIBLE);
             if (goodsInfo.getStore_type() == 1) {
                 info.item_good_type.setText("海外直邮");
@@ -84,8 +82,6 @@ public class GoodsSearchAdapter extends BaseAdapter {
         } else {
             info.item_good_type.setVisibility(View.GONE);
         }
-
-
         return view;
     }
 

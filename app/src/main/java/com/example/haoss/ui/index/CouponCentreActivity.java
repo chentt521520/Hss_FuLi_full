@@ -1,6 +1,5 @@
 package com.example.haoss.ui.index;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.ListView;
@@ -14,7 +13,7 @@ import com.example.applibrary.widget.freshLoadView.RefreshLayout;
 import com.example.applibrary.widget.freshLoadView.RefreshListenerAdapter;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
-import com.example.haoss.ui.goods.goodslist.GoodsListActivity;
+import com.example.haoss.helper.IntentUtils;
 import com.example.haoss.ui.index.adapter.CouponCentreAdapter;
 import com.example.haoss.manager.ApiManager;
 
@@ -68,9 +67,10 @@ public class CouponCentreActivity extends BaseActivity {
             @Override
             public void onClick(CouponInfo info) {
                 if (info.isIs_use()) {//已领取
-                    Intent intent = new Intent(CouponCentreActivity.this, GoodsListActivity.class);
-                    intent.putExtra("searchType", info.getCategory_id());
-                    startActivity(intent);
+//                    Intent intent = new Intent(CouponCentreActivity.this, GoodsListActivity.class);
+//                    intent.putExtra("searchType", info.getCategory_id());
+//                    startActivity(intent);
+                    IntentUtils.toGoodList(CouponCentreActivity.this, info.getCategory_id());
                 } else {//未领取
                     getCoupon(info);
                 }

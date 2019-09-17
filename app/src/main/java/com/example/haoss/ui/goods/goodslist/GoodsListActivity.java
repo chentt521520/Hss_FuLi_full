@@ -1,6 +1,5 @@
 package com.example.haoss.ui.goods.goodslist;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.entity.GoodList;
 import com.example.applibrary.entity.GoodSort;
@@ -24,7 +22,6 @@ import com.example.applibrary.widget.freshLoadView.RefreshListenerAdapter;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
 import com.example.haoss.base.Constants;
-import com.example.haoss.ui.goods.details.GoodsDetailsActivity;
 import com.example.haoss.ui.goods.search.GoodsSearchActivity;
 import com.example.haoss.ui.goods.search.GoodsSearchAdapter;
 import com.example.haoss.manager.ApiManager;
@@ -47,7 +44,6 @@ public class GoodsListActivity extends BaseActivity {
     private List<GoodList> listGoods; //商品数据
     private GoodsSearchAdapter goodsSearchAdapter;  //商品促销适配器
     private int searchType = -1;  //商品类型标记(分类ID)
-    private int flag = -1;  //商品类型标记(分类ID)
     private int page = 1;
     private String priceOrder = "";//asc正序；desc倒序
     private String saleOrder = "";
@@ -59,9 +55,7 @@ public class GoodsListActivity extends BaseActivity {
         init();
 
         listGoods = new ArrayList<>();
-        searchType = getIntent().getIntExtra("searchType", -1);
-        flag = getIntent().getIntExtra("flag", -1);
-
+        searchType = getIntent().getIntExtra(IntentUtils.intentActivityFlag, -1);
         goodList();//初始化列表
     }
 
@@ -154,7 +148,7 @@ public class GoodsListActivity extends BaseActivity {
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            IntentUtils.toGoodDetail(GoodsListActivity.this, listGoods.get(position).getId(), ConfigVariate.flagGroupMealIntent);
+            IntentUtils.toGoodDetail(GoodsListActivity.this, listGoods.get(position).getId());
         }
     };
 
@@ -183,7 +177,7 @@ public class GoodsListActivity extends BaseActivity {
                     showAndHide(0);
                 } else {
                     showAndHide(1);
-                    goodsSearchAdapter.setRefresh(listGoods, flag != ConfigVariate.flagGroupMealIntent);
+                    goodsSearchAdapter.setRefresh(listGoods);
                 }
             }
 

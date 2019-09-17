@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.example.applibrary.entity.AttrInfo;
 import com.example.applibrary.entity.CartInfo;
-import com.example.applibrary.entity.GoodDetail;
 import com.example.applibrary.entity.ProductInfo;
 import com.example.applibrary.httpUtils.ErrorEnum;
 import com.example.applibrary.httpUtils.OnHttpCallback;
@@ -69,7 +68,7 @@ public class ShopCatFragment extends BaseFragment {
     private int isIntentActivity;   //是否跳转独立Activity
 
     private AppLibLication application;
-    private int index;
+    private boolean hasAuth = false;
 
     public ShopCatFragment() {
     }
@@ -242,13 +241,24 @@ public class ShopCatFragment extends BaseFragment {
                 toast("请选择商品！");
             return;
         }
+
+        boolean bulk = hasBulk();
+        boolean abroad = hasAbroad();
+
         if (flag == 3) {
-            int isRealName = (int) SharedPreferenceUtils.getPreference(getContext(), ConfigVariate.isRealName, "I");
-            if (isRealName == 1) {//已认证
+            if (bulk) {
                 goBuy();
+            } else if (abroad) {
+                int isRealName = (int) SharedPreferenceUtils.getPreference(getContext(), ConfigVariate.isRealName, "I");
+                if (isRealName == 1) {//已认证
+                    goBuy();
+                } else {
+                    setAuth();
+                }
             } else {
-                getGoodType();
+                goBuy();
             }
+
             return;
         }
 
@@ -256,6 +266,25 @@ public class ShopCatFragment extends BaseFragment {
         if (flag == 1)
             text = text.replace("**", listQueryShopping.size() + "");
         collectAndDelete(text);
+    }
+
+
+    private boolean hasBulk() {
+        for (CartInfo info : listQueryShopping) {
+            if (info.getProductInfo().getGoods_type() != 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean hasAbroad() {
+        for (CartInfo info : listQueryShopping) {
+            if (info.getProductInfo().getStore_type() != 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -392,15 +421,20 @@ public class ShopCatFragment extends BaseFragment {
                          * 				"is_del": 0,
                          * 				"is_postage": 0,
                          * 				"cost": "0.00",
+                         * 			"store_type": 0,
+                         "goods_type": 1,
                          */
                         int id = (int) httpHander.getDouble(mapProductInfo, "id");
                         Map<String, String> mapString = httpHander.getStringMap(mapProductInfo, "image", "price", "store_name");
+                        Map<String, Integer> mapInteger = httpHander.getIntegerMap(mapProductInfo, "store_type", "goods_type");
 
                         ProductInfo storeInfo = new ProductInfo();
                         storeInfo.setId(id);
                         storeInfo.setImage(mapString.get("image"));
                         storeInfo.setStore_name(mapString.get("store_name"));
                         storeInfo.setPrice(mapString.get("price"));
+                        storeInfo.setGoods_type(mapInteger.get("goods_type"));
+                        storeInfo.setStore_type(mapInteger.get("store_type"));
 
                         Map<String, Object> mapAttrInfo = (Map<String, Object>) mapProductInfo.get("attrInfo");
                         if (mapAttrInfo != null) {
@@ -437,6 +471,7 @@ public class ShopCatFragment extends BaseFragment {
                     }
                 }
             }
+
             updateList();
 
         } else {//没有数据
@@ -539,45 +574,6 @@ public class ShopCatFragment extends BaseFragment {
             return ids.substring(0, ids.length() - 1);
         }
         return ids;
-    }
-
-    private void getGoodType() {
-
-        String url;
-        int goodsId;
-        CartInfo info = listQueryShopping.get(index);
-        int seckill_id = info.getSeckill_id();
-        if (seckill_id == 0) {//正常商品
-            url = Netconfig.commodityDetails;
-            goodsId = info.getProductInfo().getId();
-        } else {
-            url = Netconfig.seckillShopDetails;
-            goodsId = info.getSeckill_id();
-        }
-        final Map<String, Object> map = new HashMap<>();
-        map.put("id", goodsId);
-        map.put("token", application.getToken());
-
-        ApiManager.getGoodDetails(url, map, new OnHttpCallback<GoodDetail>() {
-            @Override
-            public void success(GoodDetail result) {
-                if (result.getStoreInfo().getStore_type() != 0) {//需要认证
-                    setAuth();
-                } else {//不需要，继续搜索
-                    if (index == listQueryShopping.size() - 1) {//全部搜索完，直接支付
-                        goBuy();
-                    } else {
-                        index++;
-                        getGoodType();
-                    }
-                }
-            }
-
-            @Override
-            public void error(int code, String msg) {
-                toast(code, msg);
-            }
-        });
     }
 
     /**

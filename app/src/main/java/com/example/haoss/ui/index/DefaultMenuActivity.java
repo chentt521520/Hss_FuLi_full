@@ -1,6 +1,5 @@
 package com.example.haoss.ui.index;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.custom.CustomerScrollView;
 import com.example.applibrary.entity.BannerInfo;
@@ -23,7 +21,6 @@ import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
 import com.example.haoss.helper.IntentUtils;
 import com.example.haoss.manager.ApiManager;
-import com.example.haoss.ui.goods.goodslist.GoodsListActivity;
 import com.example.haoss.ui.goods.search.GoodsSearchActivity;
 import com.example.haoss.ui.index.adapter.GridFavorAdapter;
 import com.example.haoss.ui.index.adapter.GridSortNavAdapter;
@@ -196,13 +193,10 @@ public class DefaultMenuActivity extends BaseActivity {
     AdapterView.OnItemClickListener onNavClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Intent intent = new Intent(DefaultMenuActivity.this, GoodsListActivity.class);
-            intent.putExtra("searchType", listNav.get(position).getId());
-            if (menuId == 32) {
-                intent.putExtra("flag", ConfigVariate.flagGroupMealIntent);
-            }
-//            intent.putExtra("searchName", listNav.get(position).getCate_name());
-            startActivity(intent);
+            IntentUtils.toGoodList(DefaultMenuActivity.this, listNav.get(position).getId());
+//            Intent intent = new Intent(DefaultMenuActivity.this, GoodsListActivity.class);
+//            intent.putExtra("searchType", listNav.get(position).getId());
+//            startActivity(intent);
         }
     };
 
@@ -210,11 +204,7 @@ public class DefaultMenuActivity extends BaseActivity {
     AdapterView.OnItemClickListener onRecommendClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            if (menuId == 32) {
-                IntentUtils.toGoodDetail(DefaultMenuActivity.this, listFavor.get(position).getId(), ConfigVariate.flagGroupMealIntent);
-            } else {
                 IntentUtils.toGoodDetail(DefaultMenuActivity.this, listFavor.get(position).getId());
-            }
         }
     };
 }

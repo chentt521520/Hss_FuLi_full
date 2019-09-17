@@ -160,7 +160,7 @@ public class GoodsSearchActivity extends BaseActivity {
                     showAndHide(2);
                 }
                 listGoods = result;
-                goodsSearchAdapter.setRefresh(listGoods, true);
+                goodsSearchAdapter.setRefresh(listGoods);
                 goodssearchactivity_list.setSelection(0);
             }
 

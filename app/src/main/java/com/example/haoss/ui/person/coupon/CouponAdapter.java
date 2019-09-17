@@ -1,7 +1,6 @@
 package com.example.haoss.ui.person.coupon;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import com.example.applibrary.entity.MyCoupon;
 import com.example.applibrary.utils.DateTimeUtils;
 import com.example.haoss.R;
-import com.example.haoss.ui.goods.goodslist.GoodsListActivity;
 
 import java.util.List;
 
@@ -116,16 +114,16 @@ public class CouponAdapter extends BaseAdapter {
                 info.item_coupon_receive.setText("已过期");
                 break;
         }
-        info.item_coupon_receive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (couponInfo.getStatus() == 0) {
-                    Intent intent = new Intent(context, GoodsListActivity.class);
-                    intent.putExtra("searchType", couponInfo.getCategory_id());
-                    context.startActivity(intent);
-                }
-            }
-        });
+//        info.item_coupon_receive.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (couponInfo.getStatus() == 0) {
+//                    Intent intent = new Intent(context, GoodsListActivity.class);
+//                    intent.putExtra("searchType", couponInfo.getCategory_id());
+//                    context.startActivity(intent);
+//                }
+//            }
+//        });
 
         if (couponInfo.isCheck()) {
             info.item_coupon_check.setImageResource(R.mipmap.coupon_checked);

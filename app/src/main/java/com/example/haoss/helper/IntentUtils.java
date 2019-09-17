@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.example.applibrary.base.ConfigVariate;
 import com.example.haoss.base.AppLibLication;
 import com.example.haoss.ui.goods.details.GoodsDetailsActivity;
+import com.example.haoss.ui.goods.goodslist.GoodsListActivity;
 import com.example.haoss.ui.person.login.LoginActivity;
 
 //跳转
@@ -378,17 +379,25 @@ public class IntentUtils {
         }
     }
 
+    public static void toGoodList(Activity activity, int goodId) {
+        Intent intent = new Intent(activity, GoodsListActivity.class);
+        intent.putExtra(IntentUtils.intentActivityFlag, goodId);
+        activity.startActivity(intent);
+    }
 
-    public static void toGoodDetail(Activity activity, int goodId, int goodType) {
-        Intent intent = new Intent(activity, GoodsDetailsActivity.class);
-        intent.putExtra("flag", goodType);
+    public static void toGoodList(Context activity, int goodId) {
+        Intent intent = new Intent(activity, GoodsListActivity.class);
         intent.putExtra(IntentUtils.intentActivityFlag, goodId);
         activity.startActivity(intent);
     }
 
     public static void toGoodDetail(Activity activity, int goodId) {
+        toGoodDetail(activity, goodId, -1);
+    }
+
+    public static void toGoodDetail(Activity activity, int goodId, int goodType) {
         Intent intent = new Intent(activity, GoodsDetailsActivity.class);
-        intent.putExtra("flag", -1);
+        intent.putExtra("flag", goodType);
         intent.putExtra(IntentUtils.intentActivityFlag, goodId);
         activity.startActivity(intent);
     }

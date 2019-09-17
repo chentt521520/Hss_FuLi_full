@@ -28,7 +28,6 @@ import com.example.applibrary.utils.ImageUtils;
 import com.example.haoss.helper.IntentUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseFragment;
-import com.example.haoss.ui.goods.goodslist.GoodsListActivity;
 import com.example.haoss.ui.goods.search.GoodsSearchActivity;
 import com.example.haoss.ui.index.adapter.BrandAdapter;
 import com.example.haoss.ui.index.adapter.FuncAdapter;
@@ -259,9 +258,7 @@ public class ExcellentShopActivity extends BaseFragment {
             @Override
             public void onClick(View view, int position) {
                 String category_id = listBanner.get(position).getCategory_id();
-                Intent intent = new Intent(getContext(), GoodsListActivity.class);
-                intent.putExtra("searchType", (int) Double.parseDouble(category_id));
-                startActivity(intent);
+                IntentUtils.toGoodList(getContext(),(int) Double.parseDouble(category_id));
             }
         });
 
@@ -343,10 +340,8 @@ public class ExcellentShopActivity extends BaseFragment {
     AdapterView.OnItemClickListener onsiftClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Intent intent = new Intent(mContext, GoodsListActivity.class);
             String category_id = listBrand.get(position).getCategory_id();
-            intent.putExtra("searchType", (int) Double.parseDouble(category_id));
-            startActivity(intent);
+            IntentUtils.toGoodList(getContext(),(int) Double.parseDouble(category_id));
         }
     };
 

@@ -60,6 +60,11 @@ public class AddressShowActivity extends BaseActivity {
         } else {
             titleView.setRightText(getResources().getString(R.string.btn_confirm));
         }
+        if (StringUtils.listIsEmpty(addressList)) {
+            titleView.setRightBtnEnable(false);
+        } else {
+            titleView.setRightBtnEnable(true);
+        }
         titleView.setRightOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

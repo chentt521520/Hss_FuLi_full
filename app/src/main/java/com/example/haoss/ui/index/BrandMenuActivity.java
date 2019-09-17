@@ -1,6 +1,5 @@
 package com.example.haoss.ui.index;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 
-import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.base.Netconfig;
 import com.example.applibrary.custom.CustomerScrollView;
 import com.example.applibrary.entity.BannerInfo;
@@ -23,7 +21,6 @@ import com.example.haoss.helper.IntentUtils;
 import com.example.applibrary.utils.StringUtils;
 import com.example.haoss.R;
 import com.example.haoss.base.BaseActivity;
-import com.example.haoss.ui.goods.goodslist.GoodsListActivity;
 import com.example.haoss.ui.goods.search.GoodsSearchActivity;
 import com.example.haoss.ui.index.adapter.BrandRecommondAdapter;
 import com.example.haoss.ui.index.adapter.GridFavorAdapter;
@@ -110,10 +107,11 @@ public class BrandMenuActivity extends BaseActivity {
         brandRecommondAdapter.setOnViewClickListener(new BrandRecommondAdapter.OnItemClickListener() {
             @Override
             public void onItemClickListener(int position) {
-                Intent intent = new Intent(BrandMenuActivity.this, GoodsListActivity.class);
-                intent.putExtra("searchType", listBrandRecommad.get(position).getId());
+                IntentUtils.toGoodList(BrandMenuActivity.this, listBrandRecommad.get(position).getId());
+//                Intent intent = new Intent(BrandMenuActivity.this, GoodsListActivity.class);
+//                intent.putExtra("searchType", listBrandRecommad.get(position).getId());
 //                intent.putExtra("searchName", listBrandRecommad.get(position).getCate_name());
-                startActivity(intent);
+//                startActivity(intent);
             }
         });
         gideNavAdapter = new GridSortNavAdapter(this, listNav);
@@ -218,9 +216,10 @@ public class BrandMenuActivity extends BaseActivity {
     AdapterView.OnItemClickListener onNavClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Intent intent = new Intent(BrandMenuActivity.this, GoodsListActivity.class);
-            intent.putExtra("searchType", listNav.get(position).getId());
-            startActivity(intent);
+//            Intent intent = new Intent(BrandMenuActivity.this, GoodsListActivity.class);
+//            intent.putExtra("searchType", listNav.get(position).getId());
+//            startActivity(intent);
+            IntentUtils.toGoodList(BrandMenuActivity.this, listNav.get(position).getId());
         }
     };
 

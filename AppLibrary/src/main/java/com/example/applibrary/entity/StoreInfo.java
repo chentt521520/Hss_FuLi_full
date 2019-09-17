@@ -2,7 +2,6 @@ package com.example.applibrary.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class StoreInfo {
 
@@ -11,6 +10,7 @@ public class StoreInfo {
      * browse : 0
      * cate_id : 207  商品分类
      * store_type : 2
+     * good_type : 2
      * code_path :
      * cost : 0.00
      * ficti : 872
@@ -55,6 +55,7 @@ public class StoreInfo {
     private int browse;
     private String cate_id;
     private int store_type;
+    private int goods_type;
     private String code_path;
     private String cost;
     private int ficti;
@@ -118,6 +119,13 @@ public class StoreInfo {
     private int like_num;
     private List<Object> images;
 
+    public int getGoods_type() {
+        return goods_type;
+    }
+
+    public void setGoods_type(int good_type) {
+        this.goods_type = good_type;
+    }
 
     public int getAdd_time() {
         return add_time;

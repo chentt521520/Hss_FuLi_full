@@ -136,6 +136,9 @@ public class CustomTitleView extends RelativeLayout {
         rightText.setSingleLine();
         rightLayout.addView(rightText, rightViewLayoutParams);
 
+        View view = new View(context);
+        view.setBackgroundColor(context.getResources().getColor(R.color.huiColorf0));
+
 /***********************************设置按钮在titleView中的位置***************************************/
 
         //设置title在父布局中的位置居中
@@ -155,6 +158,12 @@ public class CustomTitleView extends RelativeLayout {
         layoutParamsWW3.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         layoutParamsWW3.addRule(RelativeLayout.CENTER_VERTICAL);
         addView(rightLayout, layoutParamsWW3);
+
+
+        //设置title在父布局中的位置居中
+        LayoutParams layoutParamsWW4 = new LayoutParams(-1, DensityUtil.dip2px(context, 1f));
+        layoutParamsWW4.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        addView(view, layoutParamsWW4);
 
         leftImage.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
@@ -370,6 +379,7 @@ public class CustomTitleView extends RelativeLayout {
     public void setLeftBtnEnable(boolean enable) {
         this.leftImage.setEnabled(enable);
         this.leftText.setEnabled(enable);
+        this.leftLayout.setAlpha(enable ? 1.0f : 0.5f);
     }
 
     public boolean isLeftBtnEnable() {
@@ -379,6 +389,7 @@ public class CustomTitleView extends RelativeLayout {
     public void setRightBtnEnable(boolean enable) {
         this.rightImage.setEnabled(enable);
         this.rightText.setEnabled(enable);
+        this.rightLayout.setAlpha(enable ? 1.0f : 0.5f);
     }
 
     public boolean isRightBtnEnable() {

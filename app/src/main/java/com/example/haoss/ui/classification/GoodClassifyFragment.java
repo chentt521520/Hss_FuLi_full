@@ -1,7 +1,6 @@
 package com.example.haoss.ui.classification;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,7 +20,6 @@ import com.example.haoss.R;
 import com.example.haoss.base.BaseFragment;
 import com.example.haoss.ui.classification.adapter.ClassifyParentAdapter;
 import com.example.haoss.ui.classification.adapter.ClassifyChildAdapter;
-import com.example.haoss.ui.goods.goodslist.GoodsListActivity;
 import com.example.haoss.ui.goods.search.GoodsSearchActivity;
 import com.example.haoss.manager.ApiManager;
 
@@ -137,10 +135,7 @@ public class GoodClassifyFragment extends BaseFragment {
     AdapterView.OnItemClickListener onItemClickListenerGridView = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Intent intent = new Intent(mContext, GoodsListActivity.class);
-            intent.putExtra("searchType", listChild.get(position).getId());
-            intent.putExtra("searchName", listChild.get(position).getCate_name());
-            startActivity(intent);
+            IntentUtils.toGoodList(mContext,listChild.get(position).getId());
         }
     };
 }

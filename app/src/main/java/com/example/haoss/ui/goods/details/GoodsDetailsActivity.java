@@ -162,27 +162,9 @@ public class GoodsDetailsActivity extends BaseActivity {
         goodsId = getIntent().getIntExtra(IntentUtils.intentActivityFlag, 0);
         flag = getIntent().getIntExtra("flag", 0);
 
-        if (flag == ConfigVariate.flagGroupMealIntent) {
-            findViewById(R.id.ui_good_detail_descript).setVisibility(View.GONE);
-        } else {
-            findViewById(R.id.ui_good_detail_descript).setVisibility(View.VISIBLE);
-        }
-
         getGoodDetail();
     }
 
-    private void getGoodDetail() {
-        String url;
-        if (flag == ConfigVariate.flagSalesIntent) {
-            url = Netconfig.seckillShopDetails;
-        } else {
-            url = Netconfig.commodityDetails;
-        }
-        Map<String, Object> map = new HashMap<>();
-        map.put("id", goodsId);
-        map.put("token", application.getToken());
-        httpHander.okHttpMapPost(GoodsDetailsActivity.this, url, map, 1);
-    }
 
     @Override
     protected void onResume() {
@@ -191,6 +173,9 @@ public class GoodsDetailsActivity extends BaseActivity {
         getShopCarNumber();
     }
 
+    /**
+     * 获取购物车商品数量
+     */
     public void getShopCarNumber() {
         if (TextUtils.isEmpty(application.getToken())) {
             action_button_car_number.setVisibility(View.GONE);
@@ -215,6 +200,19 @@ public class GoodsDetailsActivity extends BaseActivity {
                 toast(code, msg);
             }
         });
+    }
+
+    private void getGoodDetail() {
+        String url;
+        if (flag == ConfigVariate.flagSalesIntent) {
+            url = Netconfig.seckillShopDetails;
+        } else {
+            url = Netconfig.commodityDetails;
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", goodsId);
+        map.put("token", application.getToken());
+        httpHander.okHttpMapPost(GoodsDetailsActivity.this, url, map, 1);
     }
 
     HttpHander httpHander = new HttpHander() {
@@ -265,7 +263,7 @@ public class GoodsDetailsActivity extends BaseActivity {
                 Map<String, String> mapString = httpHander.getStringMap(storeInfoMap, "cate_id", "image", "store_info",
                         "store_name", "unit_name", "postage", "ot_price", "price", "vip_price", "priceName", "title");
                 Map<String, Integer> mapInteger = httpHander.getIntegerMap(storeInfoMap, "browse", "ficti", "give_integral",
-                        "sales", "stock", "sort", "id", "product_id", "is_seckill", "store_type");
+                        "sales", "stock", "sort", "id", "product_id", "is_seckill", "store_type", "goods_type");
                 //轮播
                 ArrayList<Object> listImage = httpHander.getList(storeInfoMap, "slider_image");
                 ArrayList<Object> images = httpHander.getList(storeInfoMap, "images");
@@ -298,7 +296,7 @@ public class GoodsDetailsActivity extends BaseActivity {
                 storeInfo.setImages(images);
                 storeInfo.setUserCollect((Boolean) storeInfoMap.get("userCollect"));
                 storeInfo.setStore_type(mapInteger.get("store_type"));
-
+                storeInfo.setGoods_type(mapInteger.get("goods_type"));
 
                 listBanner.clear();
                 if (storeInfo.getSlider_image() != null && storeInfo.getSlider_image().size() > 0) {
@@ -396,6 +394,12 @@ public class GoodsDetailsActivity extends BaseActivity {
             userName.setText(detailsInfo.getReply().getNickname());
             ImageUtils.loadCirclePic(this, detailsInfo.getReply().getAvatar(), userHead);
             estimateContent.setText(detailsInfo.getReply().getComment());
+        }
+
+        if (detailsInfo.getStoreInfo().getGoods_type() == 1) {//团餐商品
+            findViewById(R.id.ui_good_detail_descript).setVisibility(View.GONE);
+        } else {
+            findViewById(R.id.ui_good_detail_descript).setVisibility(View.VISIBLE);
         }
     }
 

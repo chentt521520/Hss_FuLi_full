@@ -25,6 +25,7 @@ public class GoodList implements Serializable {
      * "stock":137,
      * "is_show":1,
      * "is_del":0,
+     * "goods_type": 1,
      * "store_type":0}
      */
 
@@ -39,6 +40,7 @@ public class GoodList implements Serializable {
     private int is_show;
     private int is_del;
     private int store_type;
+    private int goods_type;
 
     public int getId() {
         return id;
@@ -126,6 +128,14 @@ public class GoodList implements Serializable {
 
     public void setStore_type(int store_type) {
         this.store_type = store_type;
+    }
+
+    public int getGoods_type() {
+        return goods_type;
+    }
+
+    public void setGoods_type(int goods_type) {
+        this.goods_type = goods_type;
     }
 }
 
