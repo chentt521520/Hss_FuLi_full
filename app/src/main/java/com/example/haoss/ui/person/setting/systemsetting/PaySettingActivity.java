@@ -50,6 +50,7 @@ public class PaySettingActivity extends BaseActivity {
     private void init() {
         titleView = this.getTitleView();
         titleView.setTitleText("支付设置");
+        titleView.setLineVisible(View.GONE);
 
         titleView.setLeftOnClickListener(new View.OnClickListener() {
             @Override

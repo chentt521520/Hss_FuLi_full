@@ -5,11 +5,6 @@
     android:orientation="vertical">
     <!--积分/金币-->
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/huiColorf0" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

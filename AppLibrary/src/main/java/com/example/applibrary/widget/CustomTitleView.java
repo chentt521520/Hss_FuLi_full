@@ -59,6 +59,7 @@ public class CustomTitleView extends RelativeLayout {
 
     private Context context;
     public int mTitleViewId = 0;
+    private View view;
 
     public CustomTitleView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -136,7 +137,7 @@ public class CustomTitleView extends RelativeLayout {
         rightText.setSingleLine();
         rightLayout.addView(rightText, rightViewLayoutParams);
 
-        View view = new View(context);
+        view = new View(context);
         view.setBackgroundColor(context.getResources().getColor(R.color.huiColorf0));
 
 /***********************************设置按钮在titleView中的位置***************************************/
@@ -329,6 +330,11 @@ public class CustomTitleView extends RelativeLayout {
         leftText.setVisibility(visible);
         leftImage.setVisibility(visible);
         leftLayout.setVisibility(visible);
+    }
+
+    //设置左边按钮是否隐藏
+    public void setLineVisible(int visible) {
+        view.setVisibility(visible);
     }
 
     //设置右边按钮是否隐藏

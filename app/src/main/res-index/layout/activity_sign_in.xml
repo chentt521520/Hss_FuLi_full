@@ -50,7 +50,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/ui_sign_in"
+                    android:id="@+id/ui_sign_in_notice"
                     style="@style/_666666_14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

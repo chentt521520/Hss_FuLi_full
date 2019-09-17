@@ -6,11 +6,6 @@
     android:background="@color/whiteColor">
     <!--售后服务申请界面-->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/huiColorf0" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

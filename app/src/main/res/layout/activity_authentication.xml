@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <View style="@style/ui_line" />
-
     <LinearLayout
         style="@style/padding_left_right_15"
         android:layout_width="match_parent"

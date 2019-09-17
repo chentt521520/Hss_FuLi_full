@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#35383f"
-    android:orientation="vertical"
-    tools:context=".person.integral.IntegralShopActivity">
+    android:orientation="vertical">
     <!--积分/金币-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <View style="@style/ui_line" />
 
         <!--积分信息-->
         <RelativeLayout

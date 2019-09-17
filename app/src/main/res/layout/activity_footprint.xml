@@ -5,7 +5,6 @@
     android:background="@color/whiteColor"
     android:orientation="vertical">
     <!--足迹-->
-    <View style="@style/ui_line" />
     <include
         layout="@layout/include_fresh_list_layout"
         android:layout_width="match_parent"

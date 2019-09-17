@@ -5,15 +5,10 @@
     android:background="@color/whiteColor"
     android:orientation="vertical">
 
-    <View
-        android:id="@+id/ui_line"
-        style="@style/ui_line" />
-
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ui_line"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/width30"
         android:text="@string/please_input_card_code"

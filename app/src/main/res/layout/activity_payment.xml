@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
     <!--商品支付界面-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:paddingLeft="50dp"
+        android:paddingStart="50dp"
         android:paddingTop="20dp"
         android:text="商品支付金额："
         android:textColor="@color/blackColor4d"

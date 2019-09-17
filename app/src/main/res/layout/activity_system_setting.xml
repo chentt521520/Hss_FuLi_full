@@ -5,16 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/whiteColor">
 
-    <!--线-->
-    <TextView
-        android:id="@+id/ui_sys_set_line1"
-        style="@style/ui_line" />
-
     <RelativeLayout
         android:id="@+id/ui_sys_set_phone_view"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@id/ui_sys_set_line1">
+        android:layout_height="40dp">
 
         <!--手机号码-->
         <TextView

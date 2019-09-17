@@ -5,11 +5,6 @@
     android:orientation="vertical">
     <!--售后界面-->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/huiColorf0" />
-
     <!--售后类型选择-->
     <LinearLayout
         android:layout_width="match_parent"

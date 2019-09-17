@@ -87,6 +87,7 @@ public class GoodsDetailsActivity extends BaseActivity {
     private void initTitle() {
         CustomTitleView titleView = this.getTitleView();
         titleView.setTitleText("商品详情");
+        titleView.setLineVisible(View.GONE);
         titleView.setRightImage(R.drawable.goods_share);
         titleView.setRightImageOnClickListener(new View.OnClickListener() {
             @Override

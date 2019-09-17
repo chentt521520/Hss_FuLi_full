@@ -4,9 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <!--收藏-->
-
-    <View style="@style/ui_line" />
-
     <!--选项-->
     <LinearLayout
         android:id="@+id/pop_show_view"

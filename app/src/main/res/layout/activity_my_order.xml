@@ -5,8 +5,6 @@
     android:background="@color/huiColorf0"
     android:orientation="vertical">
 
-    <View style="@style/ui_line" />
-
     <!--选项-->
     <include layout="@layout/action_textbutton" />
 

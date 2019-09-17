@@ -30,6 +30,7 @@ public class ChangePasswardActivity extends BaseActivity {
 
     private void init() {
         this.getTitleView().setTitleText("修改账号密码");
+
         oldpassword = findViewById(R.id.changepasswardactivity_oldpassword);
         newpassword = findViewById(R.id.changepasswardactivity_newpassword);
 

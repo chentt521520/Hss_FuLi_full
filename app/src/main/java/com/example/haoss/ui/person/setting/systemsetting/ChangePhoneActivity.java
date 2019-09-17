@@ -41,6 +41,7 @@ public class ChangePhoneActivity extends BaseActivity {
 
     private void init() {
         this.getTitleView().setTitleText("更换手机号码");
+        this.getTitleView().setLineVisible(View.GONE);
 
         action_phone_input = findViewById(R.id.action_phone_input);
         action_phone_code = findViewById(R.id.action_phone_code);

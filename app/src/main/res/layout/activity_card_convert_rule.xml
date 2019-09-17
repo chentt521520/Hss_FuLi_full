@@ -5,8 +5,6 @@
     android:background="@color/whiteColor"
     android:orientation="vertical">
 
-    <View style="@style/ui_line" />
-
     <TextView
         android:id="@+id/ui_card_convert_rule"
         style="@style/base_padding_border"
