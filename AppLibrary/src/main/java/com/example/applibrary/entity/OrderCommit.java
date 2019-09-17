@@ -21,7 +21,7 @@ public class OrderCommit {
     private String cartId;
     private int seckill_id;
     private PriceGroupBean priceGroup;
-    private BulkBean bulk;
+//    private BulkBean bulk;
     private String orderKey;
     private String offlinePostage;
     private UserInfoBean userInfo;
@@ -51,14 +51,6 @@ public class OrderCommit {
 
     public void setPriceGroup(PriceGroupBean priceGroup) {
         this.priceGroup = priceGroup;
-    }
-
-    public BulkBean getBulk() {
-        return bulk;
-    }
-
-    public void setBulk(BulkBean bulk) {
-        this.bulk = bulk;
     }
 
     public String getOrderKey() {
@@ -192,158 +184,6 @@ public class OrderCommit {
 
         public void setBulkMsg(String bulkMsg) {
             this.bulkMsg = bulkMsg;
-        }
-    }
-
-    public static class BulkBean {
-        /**
-         * msg : 有团餐商品，可使用抵扣券
-         * money : 12
-         * is_bulk : true
-         * use_list : [{"product_id":3193,"cart_id":556,"price":"15.00","number":1,"postage":"0.00","admin_id":15,"is_postage":0,"total_price":15,"use_bulk_money":12}]
-         * rule_id : 25
-         */
-
-        private String msg;
-        private int money;
-        private boolean is_bulk;
-        private int rule_id;
-        private List<UseListBean> use_list;
-
-        public String getMsg() {
-            return msg;
-        }
-
-        public void setMsg(String msg) {
-            this.msg = msg;
-        }
-
-        public int getMoney() {
-            return money;
-        }
-
-        public void setMoney(int money) {
-            this.money = money;
-        }
-
-        public boolean isIs_bulk() {
-            return is_bulk;
-        }
-
-        public void setIs_bulk(boolean is_bulk) {
-            this.is_bulk = is_bulk;
-        }
-
-        public int getRule_id() {
-            return rule_id;
-        }
-
-        public void setRule_id(int rule_id) {
-            this.rule_id = rule_id;
-        }
-
-        public List<UseListBean> getUse_list() {
-            return use_list;
-        }
-
-        public void setUse_list(List<UseListBean> use_list) {
-            this.use_list = use_list;
-        }
-
-        public static class UseListBean {
-            /**
-             * product_id : 3193
-             * cart_id : 556
-             * price : 15.00
-             * number : 1
-             * postage : 0.00
-             * admin_id : 15
-             * is_postage : 0
-             * total_price : 15
-             * use_bulk_money : 12
-             */
-
-            private int product_id;
-            private int cart_id;
-            private String price;
-            private int number;
-            private String postage;
-            private int admin_id;
-            private int is_postage;
-            private int total_price;
-            private int use_bulk_money;
-
-            public int getProduct_id() {
-                return product_id;
-            }
-
-            public void setProduct_id(int product_id) {
-                this.product_id = product_id;
-            }
-
-            public int getCart_id() {
-                return cart_id;
-            }
-
-            public void setCart_id(int cart_id) {
-                this.cart_id = cart_id;
-            }
-
-            public String getPrice() {
-                return price;
-            }
-
-            public void setPrice(String price) {
-                this.price = price;
-            }
-
-            public int getNumber() {
-                return number;
-            }
-
-            public void setNumber(int number) {
-                this.number = number;
-            }
-
-            public String getPostage() {
-                return postage;
-            }
-
-            public void setPostage(String postage) {
-                this.postage = postage;
-            }
-
-            public int getAdmin_id() {
-                return admin_id;
-            }
-
-            public void setAdmin_id(int admin_id) {
-                this.admin_id = admin_id;
-            }
-
-            public int getIs_postage() {
-                return is_postage;
-            }
-
-            public void setIs_postage(int is_postage) {
-                this.is_postage = is_postage;
-            }
-
-            public int getTotal_price() {
-                return total_price;
-            }
-
-            public void setTotal_price(int total_price) {
-                this.total_price = total_price;
-            }
-
-            public int getUse_bulk_money() {
-                return use_bulk_money;
-            }
-
-            public void setUse_bulk_money(int use_bulk_money) {
-                this.use_bulk_money = use_bulk_money;
-            }
         }
     }
 

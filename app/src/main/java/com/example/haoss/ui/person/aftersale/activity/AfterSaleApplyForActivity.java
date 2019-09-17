@@ -41,7 +41,7 @@ public class AfterSaleApplyForActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitleContentView(R.layout.activity_aftersale_detail);
+        setTitleContentView(R.layout.activity_aftersale_apply);
         init();
         getDate();
     }
@@ -109,12 +109,6 @@ public class AfterSaleApplyForActivity extends BaseActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-//                case R.id.action_title_goback:  //返回
-//                    if (flagChoose == 0)
-//                        finish();
-//                    else
-//                        changeType(0);
-//                    break;
                 case R.id.aftersaleapplyforactivity_refund:  //退款（无需退货）
                     changeType(1);
                     break;
