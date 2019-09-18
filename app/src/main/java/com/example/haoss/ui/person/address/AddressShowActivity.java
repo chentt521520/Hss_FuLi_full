@@ -31,15 +31,14 @@ import java.util.Map;
 //收货地址
 public class AddressShowActivity extends BaseActivity {
 
-    //地址列表
-    ListView listview;
-    RefreshLayout refreshLayout;
+    private RefreshLayout refreshLayout;
 
-    List<AddreInfo> addressList = new ArrayList<>();//所有收货地址
+    private List<AddreInfo> addressList = new ArrayList<>();//所有收货地址
     private ListViewAddressAdapter adapter;
-    int flag;
-    int index = -1;
-    int page = 1;
+    private int flag;
+    private int index = -1;
+    private int page = 1;
+    private CustomTitleView titleView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,18 +52,14 @@ public class AddressShowActivity extends BaseActivity {
     private void initTitle() {
         flag = getIntent().getIntExtra(IntentUtils.intentActivityFlag, -1);
 
-        CustomTitleView titleView = this.getTitleView();
+        titleView = this.getTitleView();
         titleView.setTitleText(getResources().getString(R.string.shopping_address));
         if (flag == 1) {
             titleView.setRightImage(R.mipmap.dele_img);
         } else {
             titleView.setRightText(getResources().getString(R.string.btn_confirm));
         }
-        if (StringUtils.listIsEmpty(addressList)) {
-            titleView.setRightBtnEnable(false);
-        } else {
-            titleView.setRightBtnEnable(true);
-        }
+
         titleView.setRightOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +99,7 @@ public class AddressShowActivity extends BaseActivity {
     //控件view
     private void setView() {
 
-        listview = findViewById(R.id.list_view);
+        ListView listview = findViewById(R.id.list_view);
         refreshLayout = findViewById(R.id.refresh_layout);
 
         refreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
@@ -199,6 +194,11 @@ public class AddressShowActivity extends BaseActivity {
                     addressList.addAll(result);
                 }
                 adapter.refresh(addressList);
+                if (StringUtils.listIsEmpty(addressList)) {
+                    titleView.setRightBtnEnable(false);
+                } else {
+                    titleView.setRightBtnEnable(true);
+                }
 
             }
 
