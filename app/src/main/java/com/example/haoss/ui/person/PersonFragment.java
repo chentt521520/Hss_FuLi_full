@@ -320,7 +320,8 @@ public class PersonFragment extends BaseFragment {
                     IntentUtils.startIntent(mContext, CardNumberConvertActivity.class);
                     break;
                 case 3: //身份认证
-                    if (userInfo.getIs_realName() == 1) {//已认证
+                    int realName = (int) SharedPreferenceUtils.getPreference(getContext(), ConfigVariate.isRealName, "I");
+                    if (realName == 1) {//已认证
                         NoticeDialog dialog = new NoticeDialog(getContext(), "您已经完成了实名认证，不能重复认证");
                         dialog.show();
                     } else {
