@@ -85,6 +85,7 @@ public class CompanyUserActivity extends BaseActivity {
             @Override
             public void success(String result) {
                 toast("删除成功！");
+                getUserList();
             }
 
             @Override
