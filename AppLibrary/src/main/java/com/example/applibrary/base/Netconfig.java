@@ -226,6 +226,11 @@ public class Netconfig {
     public static final String companyInfo = subHost + "company/info" + endSite;
     public static final String companyEdit = subHost + "company/edit" + endSite;
 
+    public static final String shopOrderSort = subHost + "order_product/getList" + endSite;
+    public static final String companyUser = subHost + "company/getCompanyUser" + endSite;
+    public static final String addCompanyUser = subHost + "company/addCompanyUser" + endSite;
+    public static final String deleteCompanyUser = subHost + "company/deleteCompanyUser" + endSite;
+
     public static final String PIC_URL = "http://qiniu.haoshusi.com/";
     public static final String PIC_PATH = "Android/";
     public static final String PIC_FORM = ".jpg";

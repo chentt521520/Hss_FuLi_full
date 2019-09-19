@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_meal_name"
+        style="@style/_333333_14_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/width15"
+        android:paddingStart="@dimen/width15"
+        android:paddingTop="@dimen/margin10"
+        android:text="@string/null_text" />
+
+    <LinearLayout
+        android:id="@+id/item_meal_suk_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/margin5"
+        android:paddingEnd="@dimen/width15"
+        android:paddingStart="@dimen/width15"
+        android:paddingTop="@dimen/margin5" />
+
+</LinearLayout>

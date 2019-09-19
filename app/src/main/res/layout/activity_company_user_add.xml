@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/width15"
+        android:paddingStart="@dimen/width15">
+
+        <TextView
+            style="@style/_333333_14"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="员工姓名" />
+
+        <EditText
+            android:id="@+id/ui_company_user_name"
+            style="@style/_333333_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入姓名" />
+
+    </LinearLayout>
+
+    <View style="@style/ui_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/width15"
+        android:paddingStart="@dimen/width15">
+
+        <TextView
+            style="@style/_333333_14"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="手机号码" />
+
+        <EditText
+            android:id="@+id/ui_company_user_phone"
+            style="@style/_333333_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入手机号码" />
+
+    </LinearLayout>
+
+    <View style="@style/ui_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:paddingEnd="@dimen/width15"
+        android:paddingStart="@dimen/width15">
+
+        <TextView
+            style="@style/_333333_14"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="管理员权限" />
+
+        <ImageView
+            android:id="@+id/ui_company_user_manager"
+            android:layout_width="@dimen/margin50"
+            android:layout_height="@dimen/margin30"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/defaultaddress_off" />
+
+    </RelativeLayout>
+
+    <View style="@style/ui_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/width15"
+        android:paddingStart="@dimen/width15">
+
+        <ImageView
+            android:id="@+id/ui_company_user_used"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/check_box_true" />
+
+        <TextView
+            style="@style/_333333_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin10"
+            android:text="享受团餐优惠" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/ui_company_commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/width60"
+        android:background="@mipmap/bg_btn_red_corner"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+</LinearLayout>

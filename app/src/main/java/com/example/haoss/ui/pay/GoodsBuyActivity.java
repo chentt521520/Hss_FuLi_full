@@ -142,6 +142,7 @@ public class GoodsBuyActivity extends BaseActivity {
         } else if (requestCode == 1 && resultCode == RESULT_OK) {
             siteInfo = (AddreInfo) data.getSerializableExtra("addressInfo");
             if (siteInfo != null) {
+                siteId = siteInfo.getId();
                 siteView.setVisibility(View.VISIBLE);
                 noReceiver.setVisibility(View.GONE);
                 personName.setText(siteInfo.getReal_name());

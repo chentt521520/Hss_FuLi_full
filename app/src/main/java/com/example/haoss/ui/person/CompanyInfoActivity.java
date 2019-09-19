@@ -57,6 +57,13 @@ public class CompanyInfoActivity extends BaseActivity {
             }
         });
 
+        findViewById(R.id.ui_company_user).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentUtils.startIntent(CompanyInfoActivity.this, CompanyUserActivity.class);
+            }
+        });
+
         findViewById(R.id.ui_company_address_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,9 +79,11 @@ public class CompanyInfoActivity extends BaseActivity {
         if (flag == 1) {//管理员
             //显示企业账户
             findViewById(R.id.ui_company_account_view).setVisibility(View.VISIBLE);
+            findViewById(R.id.ui_company_user).setVisibility(View.VISIBLE);
             findViewById(R.id.ui_company_address_view).setEnabled(true);
         } else {//员工
             findViewById(R.id.ui_company_account_view).setVisibility(View.GONE);
+            findViewById(R.id.ui_company_user).setVisibility(View.GONE);
             findViewById(R.id.ui_company_address_view).setEnabled(false);
         }
     }

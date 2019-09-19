@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin5"
+    android:paddingTop="@dimen/margin5">
+
+    <TextView
+        android:id="@+id/item_meal_suk"
+        style="@style/_333333_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/width15"
+        android:layout_weight="1"
+        android:text="@string/null_text" />
+
+    <TextView
+        android:id="@+id/item_meal_suk_count"
+        style="@style/_333333_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin10"
+        android:layout_marginStart="@dimen/margin10"
+        android:layout_weight="0"
+        android:text="@string/null_text" />
+</LinearLayout>

@@ -35,7 +35,6 @@ import com.example.haoss.ui.person.aftersale.AfterSaleActivity;
 import com.example.haoss.ui.person.cardConvert.CardNumberConvertActivity;
 import com.example.haoss.ui.person.collect.CollectListActivity;
 import com.example.haoss.ui.person.coupon.CouponActivity;
-import com.example.haoss.ui.person.order.GroupMealOrder;
 import com.example.haoss.ui.person.order.OrderListActivity;
 import com.example.haoss.ui.person.footprint.FootprintActivity;
 import com.example.haoss.ui.person.integral.IntegralShopActivity;
@@ -285,7 +284,7 @@ public class PersonFragment extends BaseFragment {
 
                     if (type == 1) {//普通用户不可点
                     } else if (type == 2) {//商家
-                        IntentUtils.startIntent(mContext, GroupMealOrder.class);
+                        IntentUtils.startIntent(mContext, ShopInfoActivity.class);
                         //显示商家订单
                     } else if (type == 3) {//公司员工
                         IntentUtils.startIntent(manager, mContext, CompanyInfoActivity.class);

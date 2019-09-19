@@ -137,7 +137,7 @@
     <string name="pay_now">付款</string>
     <string name="attention_send">催单</string>
     <string name="look_express">查看物流</string>
-    <string name="confirm_receive">确定收货</string>
+    <string name="confirm_receive">确认收货</string>
     <string name="order_delete">删除订单</string>
     <string name="order_prise">评价</string>
     <string name="order_prised">已评价</string>

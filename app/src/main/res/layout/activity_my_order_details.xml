@@ -66,12 +66,12 @@
                             android:id="@+id/ui_order_express_detail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/image"
+                            android:layout_toStartOf="@+id/right"
                             android:paddingEnd="@dimen/margin10"
                             android:paddingStart="@dimen/margin10"
                             android:singleLine="true"
                             android:text="@string/null_text"
-                            android:layout_toEndOf="@+id/image"
-                            android:layout_toStartOf="@+id/right"
                             android:textColor="@color/blackColor0f"
                             android:textSize="12sp" />
 
@@ -86,8 +86,8 @@
                         <View
                             style="@style/ui_line"
                             android:layout_below="@+id/image"
-                            android:layout_marginTop="@dimen/margin10"
-                            android:layout_marginBottom="@dimen/margin10" />
+                            android:layout_marginBottom="@dimen/margin10"
+                            android:layout_marginTop="@dimen/margin10" />
 
                     </RelativeLayout>
 
@@ -130,7 +130,6 @@
                             android:id="@+id/ui_order_user_address"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
                             android:layout_alignStart="@+id/ui_order_user_name"
                             android:layout_below="@id/ui_order_user_name"
                             android:layout_marginTop="@dimen/margin10"
@@ -147,8 +146,8 @@
                     style="@style/base_padding_border"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bg_white_corner_8"
                     android:layout_marginTop="@dimen/margin10"
+                    android:background="@drawable/bg_white_corner_8"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -200,30 +199,30 @@
         <!--售后-->
         <TextView
             android:id="@+id/ui_order_service"
-            style="@style/btn_border"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/ui_order_again"
-            android:background="@drawable/bk_black01"
-            android:text="@string/apply_after_sales"
+            android:background="@mipmap/bk_half_corner_grey"
+            android:gravity="center"
             android:textColor="@color/blackColor0f"
             android:textSize="14sp"
+            style="@style/btn_border"
             android:visibility="gone" />
 
         <!--购买-->
         <TextView
             android:id="@+id/ui_order_again"
-            style="@style/btn_border"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:background="@drawable/bg_red_02"
-            android:text="@string/buy_again"
+            android:background="@mipmap/bg_half_corner_red"
+            android:gravity="center"
             android:textColor="@color/whiteColor"
             android:textSize="14sp"
+            style="@style/btn_border"
             android:visibility="gone" />
     </RelativeLayout>
 </LinearLayout>

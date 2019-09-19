@@ -434,6 +434,10 @@
             android:name=".ui.person.setting.systemsetting.ModifyPswActivity"
             android:configChanges="orientation|navigation"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.person.CompanyUserAddActivity" />
+        <activity android:name=".ui.person.CompanyUserActivity" />
+        <activity android:name=".ui.person.ShopOrderSortActivity" />
+        <activity android:name=".ui.person.ShopInfoActivity" />
 
         <service android:name="org.eclipse.paho.android.service.MqttService" />
         <!-- 蒲公英 -->

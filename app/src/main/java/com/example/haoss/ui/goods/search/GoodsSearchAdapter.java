@@ -70,8 +70,9 @@ public class GoodsSearchAdapter extends BaseAdapter {
         info.item_goodssearch_repertory.setText("库存数量：" + goodsInfo.getStock());
         info.item_goodssearch_name.setText(goodsInfo.getStore_name());
 
-        if (goodsInfo.getGoods_type() != 1) {
-            info.item_good_type.setVisibility(View.VISIBLE);
+        if (goodsInfo.getGoods_type() == 1) {
+            info.item_good_type.setText("团餐");
+        } else {
             if (goodsInfo.getStore_type() == 1) {
                 info.item_good_type.setText("海外直邮");
             } else if (goodsInfo.getStore_type() == 2) {
@@ -79,8 +80,6 @@ public class GoodsSearchAdapter extends BaseAdapter {
             } else {
                 info.item_good_type.setText("国内");
             }
-        } else {
-            info.item_good_type.setVisibility(View.GONE);
         }
         return view;
     }

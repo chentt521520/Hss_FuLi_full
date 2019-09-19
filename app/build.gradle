@@ -11,6 +11,11 @@ android {
         versionName "1.0.1"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                JPUSH_APPKEY : "0939a959b39963960eab6e52",//值来自开发者平台取得的AppKey
+                JPUSH_CHANNEL: "default_developer",//developer-default
+        ]
     }
     buildTypes {
         release {
@@ -29,6 +34,10 @@ android {
         main.res.srcDirs += 'src/main/res-approval'
         main.res.srcDirs += 'src/main/res-widget'
         main.res.srcDirs += 'src/main/res-index'
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+
     }
     allprojects {
         repositories {
@@ -75,8 +84,8 @@ dependencies {
     implementation project(':IMKit')
     //蒲公英
     implementation 'com.pgyersdk:sdk:2.8.1'
-
-
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1'
+    implementation files('libs/jcore-android-2.1.4.jar')
+    implementation files('libs/jpush-android-3.3.6.jar')
 }

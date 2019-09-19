@@ -37,7 +37,7 @@
             android:layout_alignStart="@+id/ui_order_item_good_name"
             android:layout_marginTop="10dp"
             android:singleLine="true"
-            android:text="数量："
+            android:text="@string/null_text"
             android:textColor="@color/huiColor66"
             android:textSize="10sp" />
 
@@ -50,7 +50,7 @@
             android:layout_marginStart="@dimen/height20"
             android:layout_toEndOf="@+id/ui_order_item_good_count"
             android:singleLine="true"
-            android:text="净含量："
+            android:text="@string/null_text"
             android:textColor="@color/huiColor66"
             android:textSize="10sp" />
 
@@ -74,8 +74,9 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/ui_order_item_good_price"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/bk_hui_01"
+            android:background="@mipmap/bk_half_corner_grey"
             android:text="申请售后"
+            android:gravity="center"
             android:textColor="@color/huiColor66"
             android:textSize="10sp" />
     </RelativeLayout>

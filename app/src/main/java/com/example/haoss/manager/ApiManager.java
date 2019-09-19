@@ -9,6 +9,7 @@ import com.example.applibrary.entity.ApprovalList;
 import com.example.applibrary.entity.CardRecord;
 import com.example.applibrary.entity.CollectionInfo;
 import com.example.applibrary.entity.CompanyInfo;
+import com.example.applibrary.entity.CompanyUser;
 import com.example.applibrary.entity.CouponInfo;
 import com.example.applibrary.entity.EstimateList;
 import com.example.applibrary.entity.ExpressInfo;
@@ -36,6 +37,7 @@ import com.example.applibrary.entity.PassCheck;
 import com.example.applibrary.entity.Recommond;
 import com.example.applibrary.entity.SalesGoodInfo;
 import com.example.applibrary.entity.ShopCart;
+import com.example.applibrary.entity.ShopOrderSort;
 import com.example.applibrary.entity.UserInfo;
 import com.example.applibrary.entity.WeiXinPayResult;
 import com.example.applibrary.httpUtils.OkHttpRequest;
@@ -523,6 +525,31 @@ public class ApiManager {
             @Override
             public CompanyInfo success(String responseStr) throws Exception {
                 return JSONObject.parseObject(responseStr, CompanyInfo.class);
+            }
+        });
+    }
+
+
+    /**
+     * 获取团餐订单
+     */
+    public static void getShopOrderSort(String url, Map<String, Object> map, OnHttpCallback<List<ShopOrderSort>> callback) {
+        OkHttpRequest.okHttpMapPost(url, map, callback, new OkHttpRequest.IRequestCallBack<List<ShopOrderSort>>() {
+            @Override
+            public List<ShopOrderSort> success(String responseStr) throws Exception {
+                return JSONObject.parseArray(responseStr, ShopOrderSort.class);
+            }
+        });
+    }
+
+    /**
+     * 获取团餐订单
+     */
+    public static void getCompanyUserList(String url, Map<String, Object> map, OnHttpCallback<List<CompanyUser>> callback) {
+        OkHttpRequest.okHttpMapPost(url, map, callback, new OkHttpRequest.IRequestCallBack<List<CompanyUser>>() {
+            @Override
+            public List<CompanyUser> success(String responseStr) throws Exception {
+                return JSONObject.parseArray(responseStr, CompanyUser.class);
             }
         });
     }
