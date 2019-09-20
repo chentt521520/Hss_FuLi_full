@@ -14,6 +14,7 @@ public class CompanyUser {
     private String userName;
     private String phone;
     private String isManager;
+    private String sortLetters;  //显示数据拼音的首字母
 
     public int getUid() {
         return uid;
@@ -45,5 +46,13 @@ public class CompanyUser {
 
     public void setIsManager(String isManager) {
         this.isManager = isManager;
+    }
+
+    public String getSortLetters() {
+        return sortLetters;
+    }
+
+    public void setSortLetters(String sortLetters) {
+        this.sortLetters = sortLetters;
     }
 }

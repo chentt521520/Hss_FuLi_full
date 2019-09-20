@@ -105,9 +105,16 @@ public class GroupMealAdapter extends BaseAdapter {
             price.setText(String.format(context.getResources().getString(R.string.price_unit), listBean.getInfo().getPrice() + ""));
             holder.container.addView(view);
         }
+
+        holder.more.setText("收起");
+        TextViewUtils.setImage(context, holder.more, R.mipmap.icon_subscript, 3);
+        holder.container.setVisibility(View.VISIBLE);
+        holder.remark.setVisibility(TextUtils.isEmpty(meal.getRemark()) ? View.GONE : View.VISIBLE);
+
         holder.more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isFold = !isFold;
                 if (isFold) {
                     holder.more.setText("查看");
                     TextViewUtils.setImage(context, holder.more, R.mipmap.icon_down, 3);
@@ -119,7 +126,6 @@ public class GroupMealAdapter extends BaseAdapter {
                     holder.container.setVisibility(View.VISIBLE);
                     holder.remark.setVisibility(TextUtils.isEmpty(meal.getRemark()) ? View.GONE : View.VISIBLE);
                 }
-                isFold = !isFold;
             }
         });
 

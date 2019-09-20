@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ui_company_rule_effect_date_view"
+        style="@style/base_padding_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/_333333_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="团餐时间" />
+
+        <TextView
+            android:id="@+id/ui_company_rule_effect_date"
+            style="@style/_333333_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/width15"
+            android:drawableEnd="@mipmap/right_arrow_grey_l"
+            android:drawablePadding="@dimen/width15" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/base_padding_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0.5dp"
+        android:background="#ffffff">
+
+        <TextView
+            style="@style/_333333_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="补助金额" />
+
+        <EditText
+            android:id="@+id/ui_company_rule_amount"
+            style="@style/_333333_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/width15"
+            android:background="#ffffff"
+            android:drawablePadding="@dimen/width15"
+            android:hint="请输入金额" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0.5dp"
+        android:background="#ffffff"
+        android:paddingStart="@dimen/width15"
+        style="@style/_333333_14"
+        android:text="补助次数"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/width15"
+        android:paddingStart="@dimen/width15">
+
+        <TextView
+            android:id="@+id/ui_company_rule_launch"
+            style="@style/_333333_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/margin10"
+            android:drawableStart="@mipmap/check_box_true"
+            android:gravity="center_vertical"
+            android:text="午餐" />
+
+        <TextView
+            android:id="@+id/ui_company_rule_dinner"
+            style="@style/_333333_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/width15"
+            android:drawablePadding="@dimen/margin10"
+            android:drawableStart="@mipmap/check_box_true"
+            android:gravity="center_vertical"
+            android:text="晚餐" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/ui_company_commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/width60"
+        android:background="@mipmap/bg_btn_red_corner"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+</LinearLayout>

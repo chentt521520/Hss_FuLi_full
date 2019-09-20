@@ -43,6 +43,7 @@ public class DefaultMenuActivity extends BaseActivity {
     private String title;
     private int menuId;
     private int page = 1;
+    private int companyId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,6 +61,7 @@ public class DefaultMenuActivity extends BaseActivity {
         if (bundle != null) {
             title = bundle.getString("title");
             menuId = bundle.getInt("id");
+            companyId = bundle.getInt("companyId");
         }
     }
 
@@ -82,9 +84,6 @@ public class DefaultMenuActivity extends BaseActivity {
             good_recommond_title.setText("每日优选");
         } else {
             good_recommond_title.setText("为你推荐");
-//            if (menuId == 32) {
-//                gridNav.setVisibility(View.GONE);
-//            }
         }
 
         findViewById(R.id.action_search_ss).setOnClickListener(onClickListener);
@@ -111,6 +110,8 @@ public class DefaultMenuActivity extends BaseActivity {
 
     private void getData() {
         HashMap<String, Object> map = new HashMap<>();
+        if (companyId != 0)
+            map.put("company_id", companyId + "");
         map.put("id", menuId + "");
         String url = Netconfig.indexNav + Netconfig.headers;
         ApiManager.getMenuCategory(url, map, new OnHttpCallback<MenuCategory>() {
@@ -139,6 +140,8 @@ public class DefaultMenuActivity extends BaseActivity {
     private void getRecommond() {
         String url = Netconfig.recommend;
         HashMap<String, Object> map = new HashMap<>();
+        if (companyId != 0)
+            map.put("company_id", companyId + "");
         map.put("id", menuId);
         map.put("page", page);
         map.put("limit", 20);
@@ -207,7 +210,7 @@ public class DefaultMenuActivity extends BaseActivity {
     AdapterView.OnItemClickListener onRecommendClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                IntentUtils.toGoodDetail(DefaultMenuActivity.this, listFavor.get(position).getId());
+            IntentUtils.toGoodDetail(DefaultMenuActivity.this, listFavor.get(position).getId());
         }
     };
 }

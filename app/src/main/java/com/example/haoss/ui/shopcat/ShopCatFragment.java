@@ -62,13 +62,12 @@ public class ShopCatFragment extends BaseFragment {
     private List<CartInfo> listCartInfo;    //购物车数据
     private ArrayList<CartInfo> listQueryShopping;   //查询后要处理的商品
     private ShoppingCartAdapter shoppingCartAdapter;    //购物车适配器
-    private boolean isOperate;  //是否允许操作
+    private boolean isOperate = true;  //是否允许操作
     private MyDialogTwoButton myDialogTwoButton;    //对话框
     private int flagOperate;    //操作标记:1：收藏，2：删除，3：支付
     private int isIntentActivity;   //是否跳转独立Activity
 
     private AppLibLication application;
-    private boolean hasAuth = false;
 
     public ShopCatFragment() {
     }
@@ -128,6 +127,8 @@ public class ShopCatFragment extends BaseFragment {
             pageBack.setVisibility(View.INVISIBLE);
         action_title_other = view.findViewById(R.id.action_title_other);
         action_title_other.setText("编辑");
+
+
         allCheck = view.findViewById(R.id.ui_shopcart_checkall_view);
         three_fragment_listview = view.findViewById(R.id.ui_shopcart_listview);
         totalPrice = view.findViewById(R.id.ui_shopcart_total_price);
@@ -186,20 +187,19 @@ public class ShopCatFragment extends BaseFragment {
                     ((Activity) mContext).finish();
                     break;
                 case R.id.action_title_other:   //编辑和完成
+                    isOperate = !isOperate;
+
                     if (isOperate) {  //编辑：允许删除和收藏
-                        isOperate = false;
                         action_title_other.setText("编辑");
                         shopCatView.findViewById(R.id.ui_shopcart_pay_view).setVisibility(View.GONE);
                         shopCatView.findViewById(R.id.ui_shopcart_operate).setVisibility(View.VISIBLE);
-
                     } else {  //完成：允许支付
-                        isOperate = true;
                         action_title_other.setText("完成");
                         shopCatView.findViewById(R.id.ui_shopcart_pay_view).setVisibility(View.VISIBLE);
                         shopCatView.findViewById(R.id.ui_shopcart_operate).setVisibility(View.GONE);
                     }
-                    if (shoppingCartAdapter != null)
-                        shoppingCartAdapter.defaultState();
+//                    if (shoppingCartAdapter != null)
+//                        shoppingCartAdapter.defaultState();
                     break;
                 case R.id.ui_shopcart_checkall_view:   //全选
                     if (shoppingCartAdapter != null)

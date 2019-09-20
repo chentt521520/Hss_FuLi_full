@@ -2,6 +2,7 @@ package com.example.haoss.ui.person;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -77,10 +78,10 @@ public class ShopOrderSortActivity extends BaseActivity {
     private void addTabList() {
         tabLayout.removeAllViews();
         textViews = new TextView[tabList.size()];
-        int layoutWidth = DensityUtil.dip2px(ShopOrderSortActivity.this, 110);
-        int width = DensityUtil.getScreenWidth(ShopOrderSortActivity.this);
-        if (layoutWidth < width / tabList.size()) {
-            layoutWidth = width / tabList.size();
+        int maxWidth = DensityUtil.dip2px(ShopOrderSortActivity.this, 120);
+        int avgWidth = DensityUtil.getScreenWidth(ShopOrderSortActivity.this);
+        if (maxWidth < avgWidth / tabList.size()) {
+            maxWidth = avgWidth / tabList.size();
         }
 
         int padding = DensityUtil.dip2px(ShopOrderSortActivity.this, 5);
@@ -90,12 +91,17 @@ public class ShopOrderSortActivity extends BaseActivity {
                 final int index = i;
                 TextView textView = new TextView(ShopOrderSortActivity.this);
 
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(layoutWidth, -1);
+                float textW = StringUtils.getTextWidth(ShopOrderSortActivity.this, tabList.get(i), 18f);
+                int width = DensityUtil.dip2px(ShopOrderSortActivity.this, textW);
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width > maxWidth ? maxWidth : width, -1);
                 textView.setLayoutParams(params);
                 textView.setText(tabList.get(i));
                 textView.setGravity(Gravity.CENTER);
+                textView.setTextSize(DensityUtil.sp2px(ShopOrderSortActivity.this, 6));
                 textView.setBackgroundColor(Color.parseColor("#ffffff"));
                 textView.setPadding(padding, padding, padding, padding);
+                textView.setMaxLines(2);
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -114,11 +120,11 @@ public class ShopOrderSortActivity extends BaseActivity {
     private void setSelect(int position) {
         for (int i = 0; i < textViews.length; i++) {
             if (i == position) {
-//                textViews[i].setBackgroundColor(Color.parseColor("#c22222"));
                 textViews[i].setTextColor(Color.parseColor("#c22222"));
+                textViews[i].getPaint().setFakeBoldText(true);
             } else {
-//                textViews[i].setBackgroundColor(Color.parseColor("#ffffff"));
                 textViews[i].setTextColor(Color.parseColor("#333333"));
+                textViews[i].getPaint().setFakeBoldText(false);
             }
         }
     }

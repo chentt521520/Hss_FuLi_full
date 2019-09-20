@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 
+import com.example.applibrary.base.ConfigVariate;
 import com.example.applibrary.custom.CustomerScrollView;
 import com.example.applibrary.entity.BannerInfo;
 import com.example.applibrary.entity.IndexInfo;
@@ -18,6 +19,7 @@ import com.example.applibrary.entity.IndexResult;
 import com.example.applibrary.entity.Recommond;
 import com.example.applibrary.httpUtils.OnHttpCallback;
 import com.example.applibrary.utils.DensityUtil;
+import com.example.applibrary.utils.SharedPreferenceUtils;
 import com.example.applibrary.utils.StringUtils;
 import com.example.applibrary.widget.CustomerCornerBg;
 import com.example.haoss.base.AppLibLication;
@@ -260,7 +262,7 @@ public class ExcellentShopActivity extends BaseFragment {
             @Override
             public void onClick(View view, int position) {
                 String category_id = listBanner.get(position).getCategory_id();
-                IntentUtils.toGoodList(getContext(),(int) Double.parseDouble(category_id));
+                IntentUtils.toGoodList(getContext(), (int) Double.parseDouble(category_id));
             }
         });
 
@@ -324,6 +326,15 @@ public class ExcellentShopActivity extends BaseFragment {
             bundle.putString("title", title);
             bundle.putInt("id", recommondId);
             switch (recommondId) {
+                case 32:
+                    int companyId = (int) SharedPreferenceUtils.getPreference(getContext(), ConfigVariate.companyId, "I");
+                    if (companyId == 0) {
+                        toast("您不是企业用户");
+                    } else {
+                        bundle.putInt("companyId", companyId);
+                        IntentUtils.startIntent(mContext, DefaultMenuActivity.class, bundle);
+                    }
+                    break;
                 case 48://美妆护肤
                 case 53://母婴用品
                     IntentUtils.startIntent(mContext, BrandMenuActivity.class, bundle);
@@ -343,7 +354,7 @@ public class ExcellentShopActivity extends BaseFragment {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             String category_id = listBrand.get(position).getCategory_id();
-            IntentUtils.toGoodList(getContext(),(int) Double.parseDouble(category_id));
+            IntentUtils.toGoodList(getContext(), (int) Double.parseDouble(category_id));
         }
     };
 

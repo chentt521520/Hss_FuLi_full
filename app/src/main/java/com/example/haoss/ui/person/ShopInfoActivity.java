@@ -20,6 +20,8 @@ public class ShopInfoActivity extends BaseActivity{
 
     private void initView() {
 
+        this.getTitleView().setTitleText("订单");
+
         findViewById(R.id.ui_shop_info_order_list).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

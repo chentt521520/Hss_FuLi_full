@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ui_site_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="#ffffff"
+    android:descendantFocusability="blocksDescendants">
+
+    <CheckBox
+        android:id="@+id/ui_week_list_item_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:button="@mipmap/check_box_false"
+        android:padding="@dimen/margin10" />
+
+    <TextView
+        android:id="@+id/ui_week_list_item_site_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin10"
+        android:layout_marginRight="@dimen/margin10"
+        android:layout_toStartOf="@+id/ui_week_list_item_check"
+        android:maxLines="1"
+        android:text=""
+        android:textColor="#666666"
+        android:textSize="14sp" />
+</RelativeLayout>

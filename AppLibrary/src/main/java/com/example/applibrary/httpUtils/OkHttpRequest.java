@@ -109,6 +109,7 @@ public class OkHttpRequest {
                 } else {
                     if (response.isSuccessful()) {
                         String jsonStr = response.body().string();//把原始数据转为 字符串
+                        Log.e("~~~~~~", jsonStr);
                         requestResult(jsonStr, callback, requestCallBack, true);
                     } else {
                         OkHttpRequest.delivery.postError(response.code(), response.message(), callback);

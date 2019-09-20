@@ -64,6 +64,13 @@ public class CompanyInfoActivity extends BaseActivity {
             }
         });
 
+        findViewById(R.id.ui_company_meal_rule).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentUtils.startIntent(CompanyInfoActivity.this, CompanyRuleActivity.class);
+            }
+        });
+
         findViewById(R.id.ui_company_address_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -6,8 +6,9 @@ import java.util.Map;
 //网络请求配置
 public class Netconfig {
     //地址
-//    public static final String httpHost = "http://demo.haoshusi.com/";
-    public static final String httpHost = "http://api.haoshusi.com/";
+    public static final String httpHost = "http://demo.haoshusi.com/";
+//    public static final String httpHost = "http://api.haoshusi.com/";
+//    public static final String httpHost = "http://132.232.201.194/";
 //    public static final String httpHost = "http://192.168.68.214/";
 
     //子级地址

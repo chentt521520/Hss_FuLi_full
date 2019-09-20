@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:orientation="horizontal" />
+
     </HorizontalScrollView>
 
     <ListView
@@ -25,7 +26,9 @@
         android:layout_marginTop="@dimen/height1"
         android:divider="#f0f0f0"
         android:dividerHeight="0.5dp"
-        android:scrollbars="none" />
+        android:scrollbars="none"
+        android:layout_margin="@dimen/margin10"
+        android:background="@drawable/bk_corner_border_grey_4"/>
 
 
 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.example.applibrary.utils;
 
+import android.content.Context;
+import android.text.TextPaint;
 import android.text.TextUtils;
 
 import org.apache.commons.lang.StringEscapeUtils;
@@ -157,6 +159,20 @@ public class StringUtils {
             String str = df.format(value);
             return str.split(".")[0];
         }
+    }
 
+    /**
+     * 计算字符串的长度（px）
+     *
+     * @param context  context
+     * @param text     text
+     * @param textSize textSize
+     * @return text所占的像素值
+     */
+    public static float getTextWidth(Context context, String text, float textSize) {
+        TextPaint paint = new TextPaint();
+        float scaledDensity = context.getResources().getDisplayMetrics().scaledDensity;
+        paint.setTextSize(scaledDensity * textSize);
+        return paint.measureText(text);
     }
 }

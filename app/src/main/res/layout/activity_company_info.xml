@@ -95,4 +95,18 @@
         android:padding="15dp"
         android:text="企业员工" />
 
+    <TextView
+        android:id="@+id/ui_company_meal_rule"
+        style="@style/_333333_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/height1"
+        android:background="#ffffff"
+        android:drawableEnd="@mipmap/right_arrow_grey_l"
+        android:drawablePadding="@dimen/width15"
+        android:lineSpacingExtra="@dimen/margin5"
+        android:padding="15dp"
+        android:text="团餐规则"
+        android:visibility="visible"/>
+
 </LinearLayout>
